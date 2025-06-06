@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallpapers - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-border {
+      border-image: linear-gradient(90deg, #22d3ee, #a855f7) 1;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .current-page {
+      position: relative;
+      color: white !important;
+    }
+    
+    .current-page:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.5px;
+      background-color: cyan;
+      transform: scaleX(1);
+    }
+    
+    .wallpaper-category {
+      transition: all 0.3s ease;
+      flex: 0 0 auto;
+    }
+    
+    .wallpaper-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+    }
+    
+    .wallpaper-category.active {
+      border-color: #22d3ee;
+      background-color: rgba(34, 211, 238, 0.1);
+    }
+    
+    .wallpaper-item {
+      transition: all 0.3s ease;
+    }
+    
+    .wallpaper-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+    }
+    
+    .games-scroll-container {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #22d3ee #1a1a1a;
+      padding-bottom: 12px;
+    }
+    
+    .games-scroll-container::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .games-scroll-container::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 3px;
+    }
+    
+    .games-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #22d3ee;
+      border-radius: 3px;
+    }
+    
+    .wallpapers-container {
+      display: none;
+    }
+    
+    .wallpapers-container.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+
+  <!-- Navbar -->
+  <header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 md:h-20">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <div class="relative">
+            <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
+          </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-1">
+          <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
+            Home
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </a>
+          <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+            Games
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </a>
+          <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+            Contact Us
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </a>
+          <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+            Support
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </a>
+          <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 animate-fade-in">
+            NEXIS AI
+          </a>
+          <a href="/wallpapers.html" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-300 group">
+            Wallpapers
+          </a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
+          <div class="relative w-6 h-6">
+            <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
+            <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
+            <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-300"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
+      <div class="px-4 py-3 space-y-3">
+        <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+          Home
+        </a>
+        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+          Games
+        </a>
+        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+          Contact Us
+        </a>
+        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+          Support
+        </a>
+        <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">
+          NEXIS AI
+        </a>
+        <a href="/wallpapers.html" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-300">
+          Wallpapers
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+    <div class="backdrop-blur-lg bg-[#1a1a1a]/80 rounded-3xl p-8 md:p-12 border border-cyan-600/30 shadow-[0_0_40px_#0ff1] animate-fade-in">
+      <!-- Header -->
+      <div class="text-center mb-12 animate-fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
+          Game Wallpapers
+        </h1>
+        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto animate-fade-in"></div>
+      </div>
+
+      <!-- Game Selection -->
+      <div class="mb-16 animate-fade-in">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Select a Game</h2>
+        
+        <div class="games-scroll-container space-x-4 pb-2">
+          <!-- Game 1 -->
+          <div class="wallpaper-category active bg-[#222]/80 p-6 rounded-xl border border-cyan-500/30 cursor-pointer w-64" data-game="game1">
+            <div class="flex items-center space-x-4">
+              <img src="/images/unlimited-roleplay-logo.png" alt="Game 1" class="w-16 h-16 rounded-lg">
+              <h3 class="text-xl font-bold text-white">Unlimited Roleplay Series</h3>
+            </div>
+          </div>
+          
+          <!-- Game 2 -->
+          <div class="wallpaper-category bg-[#222]/80 p-6 rounded-xl border border-cyan-500/20 cursor-pointer w-64" data-game="game2">
+            <div class="flex items-center space-x-4">
+              <img src="/images/TNTR.png" alt="Game 2" class="w-16 h-16 rounded-lg">
+              <h3 class="text-xl font-bold text-white">Try Not To Rage Series</h3>
+            </div>
+          </div>
+          
+          <!-- Game 3 -->
+          <div class="wallpaper-category bg-[#222]/80 p-6 rounded-xl border border-cyan-500/20 cursor-pointer w-64" data-game="game3">
+            <div class="flex items-center space-x-4">
+              <img src="/images/game3-icon.png" alt="Game 3" class="w-16 h-16 rounded-lg">
+              <h3 class="text-xl font-bold text-white">Coming Soon</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wallpaper Containers -->
+      <!-- Game 1 Wallpapers -->
+      <div id="game1-wallpapers" class="wallpapers-container active">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Unlimited Roleplay Series Wallpapers</h2>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Coming Soon</h3>
+          <p class="text-gray-400">Wallpapers for Unlimited Roleplay Series will be available soon!</p>
+        </div>
+      </div>
+      
+      <!-- Game 2 Wallpapers -->
+      <div id="game2-wallpapers" class="wallpapers-container">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Try Not To Rage Series Wallpapers</h2>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Coming Soon</h3>
+          <p class="text-gray-400">Wallpapers for Try Not To Rage Series will be available soon!</p>
+        </div>
+      </div>
+      
+      <!-- Game 3 Wallpapers -->
+      <div id="game3-wallpapers" class="wallpapers-container">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Blank</h2>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Coming Soon</h3>
+          <p class="text-gray-400">Wallpapers for Blank will be available soon!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright Notice -->
+    <div class="mt-16 p-6 bg-[#1a1a1a]/80 rounded-xl border border-cyan-600/30 animate-fade-in">
+      <h3 class="text-xl font-bold text-white mb-4">Copyright Notice</h3>
+      <p class="text-gray-400">
+        All wallpapers of Greek Games Studios games are protected by copyright. Copying, redistribution, or any commercial use without explicit permission from Greek Games Studios is strictly prohibited. They are intended for personal and non-commercial use only. For more information regarding copyright policies, feel free to contact us.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-500 text-sm">
+        © <span id="current-year"></span> Greek Games Studios. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLine1 = document.getElementById('mobile-line1');
+    const mobileLine2 = document.getElementById('mobile-line2');
+    const mobileLine3 = document.getElementById('mobile-line3');
+    
+    let menuOpen = false;
+    
+    mobileMenuButton.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
+        mobileLine1.style.backgroundColor = '#fff';
+        mobileLine2.style.opacity = '0';
+        mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+        mobileLine3.style.backgroundColor = '#fff';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
+        mobileLine1.style.backgroundColor = '#9CA3AF';
+        mobileLine2.style.opacity = '1';
+        mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
+        mobileLine3.style.backgroundColor = '#9CA3AF';
+      }
+    });
+
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Add fade-in animations to elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-fade-in');
+      elements.forEach((el, index) => {
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
+        }, 100);
+      });
+    });
+
+    // Game selection functionality
+    const gameCategories = document.querySelectorAll('.wallpaper-category');
+    
+    gameCategories.forEach(category => {
+      category.addEventListener('click', () => {
+        // Remove active class from all categories
+        gameCategories.forEach(c => c.classList.remove('active', 'border-cyan-500/30'));
+        gameCategories.forEach(c => c.classList.add('border-cyan-500/20'));
+        
+        // Add active class to clicked category
+        category.classList.add('active', 'border-cyan-500/30');
+        category.classList.remove('border-cyan-500/20');
+        
+        // Hide all wallpaper containers
+        document.querySelectorAll('.wallpapers-container').forEach(container => {
+          container.classList.remove('active');
+        });
+        
+        // Show selected game's wallpapers
+        const gameId = category.getAttribute('data-game');
+        document.getElementById(`${gameId}-wallpapers`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

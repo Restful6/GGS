@@ -1,0 +1,106 @@
+      <!-- Wallpaper Containers -->
+      <!-- Game 1 Wallpapers -->
+      <div id="game1-wallpapers" class="wallpapers-container active">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Olympus Legacy Wallpapers</h2>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Desktop Wallpapers</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="wallpaper-item bg-[#222]/80 rounded-xl overflow-hidden border border-cyan-500/20">
+              <img src="/images/olympus-desktop1.jpg" alt="Olympus Desktop 1" class="w-full h-64 object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Mount Olympus</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-cyan-400">1920x1080</span>
+                  <a href="/images/olympus-desktop1.jpg" download class="text-sm bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded-md transition-colors">Download</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="wallpaper-item bg-[#222]/80 rounded-xl overflow-hidden border border-cyan-500/20">
+              <img src="/images/olympus-desktop2.jpg" alt="Olympus Desktop 2" class="w-full h-64 object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Zeus Throne</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-cyan-400">2560x1440</span>
+                  <a href="/images/olympus-desktop2.jpg" download class="text-sm bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded-md transition-colors">Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Phone Wallpapers</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="wallpaper-item bg-[#222]/80 rounded-xl overflow-hidden border border-cyan-500/20">
+              <img src="/images/olympus-phone1.jpg" alt="Olympus Phone 1" class="w-full h-64 object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Divine Sky</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-cyan-400">1080x1920</span>
+                  <a href="/images/olympus-phone1.jpg" download class="text-sm bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded-md transition-colors">Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Game 2 Wallpapers -->
+      <div id="game2-wallpapers" class="wallpapers-container">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Aegean Odyssey Wallpapers</h2>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Desktop Wallpapers</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="wallpaper-item bg-[#222]/80 rounded-xl overflow-hidden border border-cyan-500/20">
+              <img src="/images/aegean-desktop1.jpg" alt="Aegean Desktop 1" class="w-full h-64 object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Sailing the Aegean</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-cyan-400">1920x1080</span>
+                  <a href="/images/aegean-desktop1.jpg" download class="text-sm bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded-md transition-colors">Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Artwork</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="wallpaper-item bg-[#222]/80 rounded-xl overflow-hidden border border-cyan-500/20">
+              <img src="/images/aegean-art1.jpg" alt="Aegean Art 1" class="w-full h-64 object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Ship Concept</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-cyan-400">2000x2000</span>
+                  <a href="/images/aegean-art1.jpg" download class="text-sm bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded-md transition-colors">Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Game 3 Wallpapers -->
+      <div id="game3-wallpapers" class="wallpapers-container">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Spartan Wars Wallpapers</h2>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Screenshots</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="wallpaper-item bg-[#222]/80 rounded-xl overflow-hidden border border-cyan-500/20">
+              <img src="/images/spartan-screenshot1.jpg" alt="Spartan Screenshot 1" class="w-full h-64 object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Battle Scene</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-cyan-400">1920x1080</span>
+                  <a href="/images/spartan-screenshot1.jpg" download class="text-sm bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded-md transition-colors">Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
