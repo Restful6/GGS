@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support Form - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -79,28 +80,29 @@
       </div>
 
       <!-- Support Form -->
-      <form class="max-w-3xl mx-auto">
+      <form name="support-form" method="POST" data-netlify="true" enctype="multipart/form-data">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <input type="hidden" name="form-name" value="support-form">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name *</label>
-            <input type="text" id="name" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+            <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
           </div>
           <div>
             <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address *</label>
-            <input type="email" id="email" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+            <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
           </div>
         </div>
 
         <div class="mb-8">
           <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject *</label>
-          <input type="text" id="subject" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+          <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
         </div>
 
         <div class="mb-8">
           <label for="game" class="block text-sm font-medium text-gray-400 mb-2">Related Game</label>
-          <select id="game" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300">
+          <select id="game" name="game" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300">
             <option value="">Select a game</option>
-            <option value="tech-tycoon">Tech Company Tycoon</option>
+            <option value="tech-tycoon">Try Not To Rage: Forest</option>
             <option value="unlimited-roleplay">Unlimited Roleplay (Roblox)</option>
             <option value="other">Other</option>
           </select>
@@ -108,29 +110,28 @@
 
         <div class="mb-8">
           <label for="issue-type" class="block text-sm font-medium text-gray-400 mb-2">Issue Type *</label>
-          <select id="issue-type" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+          <select id="issue-type" name="issue-type" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
             <option value="">Select issue type</option>
             <option value="technical">Technical Issue</option>
             <option value="account">Account Problem</option>
             <option value="payment">Payment/Billing</option>
-            <option value="feedback">Feedback/Suggestion</option>
             <option value="other">Other</option>
           </select>
         </div>
 
         <div class="mb-8">
           <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Description *</label>
-          <textarea id="message" rows="6" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required></textarea>
+          <textarea id="message" name="message" rows="6" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required></textarea>
         </div>
 
         <div class="mb-8">
           <label for="attachments" class="block text-sm font-medium text-gray-400 mb-2">Attachments (Screenshots, Logs, etc.)</label>
-          <input type="file" id="attachments" class="form-input w-full px-4 py-2 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" multiple>
+          <input type="file" id="attachments" name="attachments" class="form-input w-full px-4 py-2 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" multiple>
           <p class="text-xs text-gray-500 mt-2">Maximum file size: 10MB. Supported formats: JPG, PNG, PDF, TXT</p>
         </div>
 
         <div class="flex items-center mb-8">
-          <input id="terms" type="checkbox" class="w-4 h-4 bg-[#1a1a1a]/50 border border-gray-700/50 rounded focus:ring-cyan-500 focus:ring-2" required>
+          <input id="terms" type="checkbox" name="terms" class="w-4 h-4 bg-[#1a1a1a]/50 border border-gray-700/50 rounded focus:ring-cyan-500 focus:ring-2" required>
           <label for="terms" class="ml-2 text-sm text-gray-400">
             I agree to the <a href="/privacy-policy.html" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a> and understand my data will be processed according to it.
           </label>
