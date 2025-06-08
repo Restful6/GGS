@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlimited Roleplay - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .current-page {
+      position: relative;
+      color: white !important;
+    }
+    
+    .current-page:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.5px;
+      background-color: cyan;
+      transform: scaleX(1);
+    }
+    
+    /* Game Info Section */
+    .game-hero {
+      background: linear-gradient(135deg, #1e1e1e 0%, #111 50%, #1a1a1a 100%);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.1);
+    }
+    
+    .game-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(239, 68, 68, 0.5);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+    }
+    
+    .feature-card {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 1rem;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(239, 68, 68, 0.5);
+      box-shadow: 0 10px 25px rgba(239, 68, 68, 0.1);
+    }
+    
+    .status-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: rgba(239, 68, 68, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.5);
+      color: #ef4444;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+    }
+    
+    .back-button {
+      transition: all 0.3s ease;
+    }
+    
+    .back-button:hover {
+      transform: translateX(-5px);
+    }
+    
+    /* Warning Section */
+    .warning-section {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(30, 30, 30, 0.8) 100%);
+      border-left: 4px solid #ef4444;
+      border-radius: 0.5rem;
+    }
+    
+    /* Guide Section */
+    .guide-section {
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 1rem;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .guide-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .guide-step:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: #10b981;
+    }
+    
+    /* Job Category */
+    .job-category {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 1rem;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    /* Custom Notification */
+.notification {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.notification.show {
+  opacity: 1;
+  bottom: 3rem;
+}
+
+.notification-icon {
+  margin-right: 0.75rem;
+  color: #4ade80;
+}
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+
+<!-- Navbar -->
+<header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <div class="relative">
+          <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-1">
+        <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
+          Home
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
+          Games
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          Contact Us
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          Support
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 animate-fade-in">
+          NEXIS AI
+        </a>
+        <a href='/privacy-policy.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          Privacy Policy
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
+        <div class="relative w-6 h-6">
+          <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
+          <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
+          <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
+    <div class="px-4 py-3 space-y-3">
+      <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Home
+      </a>
+      <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Games
+      </a>
+      <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Contact Us
+      </a>
+      <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Support
+      </a>
+      <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">
+        NEXIS AI
+      </a>
+      <a href='/privacy-policy.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Privacy Policy
+      </a>
+    </div>
+  </div>
+</header>
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+    <!-- Back Button -->
+    <div class="mb-8 animate-fade-in">
+      <a href="/games.html" class="back-button inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Games
+      </a>
+    </div>
+
+    <!-- Game Hero Section -->
+    <div class="game-hero p-8 md:p-12 mb-16 relative overflow-hidden animate-fade-in">
+      <div class="status-badge">Under Development</div>
+      
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-12">
+          <img src="/images/unlimited-roleplay-logo.png" alt="Unlimited Roleplay Logo" class="game-image">
+        </div>
+        
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Unlimited Roleplay <span class="text-red-400">(Roblox)</span></h1>
+          <p class="text-xl text-gray-400 mb-6">The ultimate realistic Greek roleplay experience on Roblox</p>
+          
+          <div class="flex flex-wrap gap-4 mb-6">
+            <span class="px-3 py-1 bg-red-500/10 text-red-400 rounded-full text-sm font-medium">Roleplay</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm font-medium">Simulation</span>
+            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm font-medium">Greek</span>
+            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm font-medium">Open World</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <button class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-red-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Coming Soon
+            </button>     
+            <button id="shareButton" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+             </svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Warning Section -->
+    <div class="warning-section p-6 md:p-8 mb-16 animate-fade-in">
+      <div class="flex items-start">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-4">Warnings - Player Discretion Advised</h2>
+          <p class="text-gray-300 mb-4">
+            Unlimited Roleplay is a fictional multiplayer experience that may include weapons, criminal scenarios, references to illegal substances, and strong language. The content is designed for mature audiences (13+) and may not be suitable for all players.
+          </p>
+          <p class="text-gray-300 mb-4">
+            By continuing, you acknowledge that:
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-2 mb-4">
+            <li>You are aware of the in-game content and play at your own discretion and responsibility.</li>
+            <li>Greek Games Studios is not liable for any psychological discomfort or exposure to sensitive themes.</li>
+            <li>All elements in the game are fictional and do not promote or encourage real-life illegal behavior.</li>
+            <li>You may encounter user-generated content or language that may be inappropriate.</li>
+            <li>We provide reporting and moderation tools, but we cannot fully control live player interactions.</li>
+          </ul>
+          <p class="text-gray-300">
+            If you are sensitive to such themes or underage, we recommend not playing this experience.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ultimate Experience Section -->
+    <div class="mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">What Makes Unlimited Roleplay the Ultimate Greek Roleplay Experience on Roblox?</h2>
+      <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700">
+        <p class="text-gray-300 mb-4">
+          Unlimited Roleplay is an innovative Greek roleplay server on Roblox, meticulously crafted by Greek Games Studios (GGS) to provide an unparalleled and immersive gaming experience. Designed with attention to detail and a commitment to realism, Unlimited Roleplay transports players into a vibrant city where endless possibilities await.
+        </p>
+        <p class="text-gray-300 mb-4">
+          Whether you aspire to become a law enforcement officer, a business owner, or explore the many career paths available, the server's fully structured job and rank system ensures that every choice you make shapes your journey and influences the world around you.
+        </p>
+        <p class="text-gray-300 mb-4">
+          At the core of Unlimited Roleplay lies its impressive collection of custom-designed vehicles, built entirely in Blender with a focus on authenticity and interactive features. Each vehicle is crafted to offer a lifelike driving experience, enhanced with smooth animations, fully functional dashboards, and responsive controls.
+        </p>
+        <p class="text-gray-300 mb-4">
+          Beyond aesthetics, these vehicles come equipped with interactive storage systems and seamless handling, setting a new standard for quality and realism in Roblox roleplay. Future updates also promise expansions and optimizations, reflecting the commitment of Greek Games Studios to continually enhance the experience.
+        </p>
+        <p class="text-gray-300">
+          Security and fair play are top priorities in Unlimited Roleplay. To achieve this, the server is equipped with an advanced custom anti-cheat system, specifically developed to maintain a secure environment for all players. Greek Games Studios is committed to redefining the standards of roleplay in Roblox, delivering high-quality content, unique mechanics, and a level of immersion that stands out in the Greek gaming community.
+        </p>
+      </div>
+    </div>
+
+    <!-- Official Guide Section -->
+    <div class="guide-section p-6 md:p-8 mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Official Guide</h2>
+      <p class="text-gray-300 mb-6">
+        Welcome to the Unlimited Roleplay official guide! This comprehensive guide will walk you through everything you need to know to get started and thrive in the ultimate Greek roleplay experience on Roblox, created by Greek Games Studios (GGS).
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4">Getting Started</h3>
+      <p class="text-gray-300 mb-4">
+        Before you begin your journey, make sure you have a Roblox account and access to the Unlimited Roleplay server. Once inside, you will be introduced to the immersive world of Unlimited Roleplay, where you can choose your path, interact with other players, and experience a dynamic city full of opportunities.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Choose Your Path: Civilian or Criminal?</h3>
+      <p class="text-gray-300 mb-4">
+        In Unlimited Roleplay, you have the freedom to decide how you want to live your life. Will you be a law-abiding Civilian, working hard to earn your wealth and build your empire? Or maybe... just maybe, you prefer the thrill of the underworld, choosing the path of a Criminal, where high risks bring high rewards. The choice is yours—just be prepared to face the consequences of your actions!
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Character Creation</h3>
+      <p class="text-gray-300 mb-4">
+        Upon joining the server, you can customize your character to match your unique style. Choose from a variety of outfits, hairstyles, and accessories to stand out in the bustling city streets.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Jobs & Ranks</h3>
+      <p class="text-gray-300 mb-6">
+        One of the core features of Unlimited Roleplay is its structured Job and Rank System. Here are some of the main career paths available:
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Public Service Jobs -->
+        <div class="job-category p-5">
+          <h4 class="text-xl font-bold text-blue-400 mb-3">Public Service Jobs</h4>
+          <ul class="space-y-2">
+            <li class="guide-step"><span class="text-white font-medium">Police Officer:</span> Maintain law and order, protect citizens, and enforce the server's regulations.</li>
+            <li class="guide-step"><span class="text-white font-medium">Paramedic:</span> Save lives, respond to emergencies, and assist players in need.</li>
+            <li class="guide-step"><span class="text-white font-medium">Firefighter:</span> Respond to fires, rescue citizens, and protect property from damage.</li>
+          </ul>
+        </div>
+        
+        <!-- Business & Commerce -->
+        <div class="job-category p-5">
+          <h4 class="text-xl font-bold text-green-400 mb-3">Business & Commerce</h4>
+          <ul class="space-y-2">
+            <li class="guide-step"><span class="text-white font-medium">Business Owner:</span> Run your own shop, manage supplies, and serve the community.</li>
+            <li class="guide-step"><span class="text-white font-medium">Mechanic:</span> Repair vehicles, upgrade parts, and offer roadside assistance.</li>
+            <li class="guide-step"><span class="text-white font-medium">Courier:</span> Deliver packages across the city, earning money for each successful delivery.</li>
+            <li class="guide-step"><span class="text-white font-medium">Taxi Driver:</span> Transport citizens safely to their destinations.</li>
+          </ul>
+        </div>
+        
+        <!-- Labor & Freelance -->
+        <div class="job-category p-5">
+          <h4 class="text-xl font-bold text-yellow-400 mb-3">Labor & Freelance</h4>
+          <ul class="space-y-2">
+            <li class="guide-step"><span class="text-white font-medium">Fisherman:</span> Catch fish at the harbor and sell your catch for profit.</li>
+            <li class="guide-step"><span class="text-white font-medium">Miner:</span> Extract valuable minerals and resources, which can be sold or crafted.</li>
+            <li class="guide-step"><span class="text-white font-medium">Farmer:</span> Cultivate crops and raise livestock to supply local markets.</li>
+            <li class="guide-step"><span class="text-white font-medium">Garbage Collector:</span> Keep the city clean while earning money for every load you collect.</li>
+          </ul>
+        </div>
+        
+        <!-- Criminal Life -->
+        <div class="job-category p-5">
+          <h4 class="text-xl font-bold text-red-400 mb-3">Criminal Life</h4>
+          <p class="text-gray-300 mb-2">
+            For those who prefer danger and adrenaline, the life of a Criminal awaits. As a criminal, you can:
+          </p>
+          <ul class="space-y-2">
+            <li class="guide-step">Rob Stores and Banks: High-risk, high-reward heists for those willing to take on the police.</li>
+            <li class="guide-step">Black Market Trading: Buy and sell illegal items, weapons, and substances.</li>
+            <li class="guide-step">Vehicle Theft: Steal and modify vehicles to sell on the underground market.</li>
+            <li class="guide-step">Gang Wars: Join or create gangs, control territories, and fight for dominance.</li>
+            <li class="guide-step">Heists & Missions: Plan and execute big-time heists with your crew for maximum payout.</li>
+          </ul>
+          <p class="text-gray-300 mt-3">
+            Just remember: the more you dive into the criminal world, the more attention you attract from the authorities!
+          </p>
+        </div>
+      </div>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Custom Vehicles</h3>
+      <p class="text-gray-300 mb-4">
+        In Unlimited Roleplay, vehicles are more than just a means of transport. All vehicles are custom-designed in Blender, offering realistic driving mechanics, interactive dashboards, and fully functional storage systems. From cars to trucks, each model is carefully crafted to provide an unmatched driving experience.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Anti-Cheat System</h3>
+      <p class="text-gray-300 mb-4">
+        To maintain fair play and security, Unlimited Roleplay is equipped with a custom Anti-Cheat System. This system includes script whitelisting, full logging, and protective measures against unauthorized modifications, ensuring a safe and competitive environment for all players.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">How to Progress</h3>
+      <p class="text-gray-300 mb-4">
+        Your progress in Unlimited Roleplay is determined by your activity, job performance, and interactions with other players. Complete tasks, participate in events, and collaborate with the community to earn experience and climb the ranks. Public service jobs may offer unique missions and bonuses, while freelance jobs like Fisherman and Miner allow you to collect and sell valuable resources.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Economy & Money Management</h3>
+      <p class="text-gray-300 mb-4">
+        Unlimited Roleplay features a realistic economy system, where players can earn, save, and invest their money. Jobs provide a primary source of income, while side activities like mining, fishing, and deliveries allow for extra earnings. Players can purchase vehicles, properties, and even start their own businesses to expand their wealth. Bank accounts, ATMs, and transaction logs are available for secure money management. Collaborative projects, such as group businesses, also allow for cooperative growth.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Community & Events</h3>
+      <p class="text-gray-300 mb-4">
+        Greek Games Studios regularly hosts community events, such as racing tournaments, job fairs, and seasonal festivals, bringing players together for unique activities and rewards. Special events may also introduce limited-time missions, rare vehicles, and exclusive cosmetic items.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">Final Tips</h3>
+      <ul class="list-disc pl-6 text-gray-300 space-y-2">
+        <li>Always follow the server rules to maintain a positive experience for everyone.</li>
+        <li>Engage with other players—teamwork often leads to greater rewards.</li>
+        <li>Explore the city to discover hidden secrets and special opportunities.</li>
+        <li>Try different jobs to find the one that best fits your playstyle and earn the most rewards.</li>
+        <li>Participate in community events to earn exclusive items and boost your progress.</li>
+      </ul>
+      
+      <p class="text-gray-300 mt-6">
+        Unlimited Roleplay is constantly evolving, with new features and updates designed to enhance the player experience. Stay tuned for more content and improvements brought to you by Greek Games Studios.
+      </p>
+    </div>
+
+    <!-- Game Description -->
+    <div class="mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">About the Game</h2>
+      <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700">
+        <p class="text-gray-300 mb-4">
+          Unlimited Roleplay is an immersive Greek-inspired roleplay experience coming soon to Roblox. Designed with realism and freedom in mind, this game will allow players to create their own stories in a fully interactive world.
+        </p>
+        <p class="text-gray-300 mb-4">
+          Set in a beautifully crafted Greek environment, players can choose from various careers, build their own businesses, interact with a dynamic economy system, and experience realistic vehicle physics with our custom vehicle systems.
+        </p>
+        <p class="text-gray-300">
+          With advanced anti-cheat measures and regular updates, Unlimited Roleplay aims to provide the most authentic and fair roleplay experience on the Roblox platform.
+        </p>
+      </div>
+    </div>
+
+    <!-- Game Features -->
+    <div class="mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-8 gradient-text">Key Features</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Realistic Roleplay</h3>
+          <p class="text-gray-400">
+            Advanced roleplay systems including jobs, economy, housing, and social interactions designed for maximum immersion.
+          </p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Greek Environment</h3>
+          <p class="text-gray-400">
+            Authentic Greek-inspired map with iconic locations, architecture, and cultural elements for a unique setting.
+          </p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Custom Anti-Cheat</h3>
+          <p class="text-gray-400">
+            Proprietary anti-cheat system to ensure fair play and maintain the integrity of the roleplay experience.
+          </p>
+        </div>
+        
+       
+        <!-- Feature 4 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Vehicle Systems</h3>
+          <p class="text-gray-400">
+            Advanced vehicle physics with realistic handling, customization options, and interactive features.
+          </p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Business System</h3>
+          <p class="text-gray-400">
+            Own and operate businesses with dynamic supply and demand economics and player-driven markets.
+          </p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-pink-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Regular Updates</h3>
+          <p class="text-gray-400">
+            Continuous content updates with new features, events, and improvements based on community feedback.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Development Progress -->
+    <div class="animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-8 gradient-text">Development Progress</h2>
+      
+      <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700 mb-6">
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Game Development</span>
+            <span>35%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-red-500 h-2.5 rounded-full" style="width: 65%"></div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Map Design</span>
+            <span>20%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Vehicle Systems</span>
+            <span>15%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-purple-500 h-2.5 rounded-full" style="width: 45%"></div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Anti-Cheat System</span>
+            <span>5%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-green-500 h-2.5 rounded-full" style="width: 30%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="text-gray-400 text-sm">
+        Estimated release: Q4 2027 (subject to change based on development progress)
+      </p>
+    </div>
+  </main>
+
+<!-- Custom Notification -->
+<div id="customNotification" class="notification">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 notification-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span class="text-white font-medium">🔗 Link copied to clipboard!</span>
+</div>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col items-center space-y-6">
+        <div class="flex space-x-4">
+          <a href="/additionalHTMLS/wallpapers.html" class="px-6 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] border border-cyan-500/30 text-cyan-400 font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Wallpapers
+          </a>
+          <a href="/additionalHTMLS/trailers.html" class="px-6 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] border border-purple-500/30 text-purple-400 font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            Trailers
+          </a>
+        </div>
+        <p class="text-gray-500 text-sm text-center">
+          © <span id="current-year"></span> Greek Games Studios. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLine1 = document.getElementById('mobile-line1');
+    const mobileLine2 = document.getElementById('mobile-line2');
+    const mobileLine3 = document.getElementById('mobile-line3');
+    
+    let menuOpen = false;
+    
+    mobileMenuButton.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
+        mobileLine1.style.backgroundColor = '#fff';
+        mobileLine2.style.opacity = '0';
+        mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+        mobileLine3.style.backgroundColor = '#fff';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
+        mobileLine1.style.backgroundColor = '#9CA3AF';
+        mobileLine2.style.opacity = '1';
+        mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
+        mobileLine3.style.backgroundColor = '#9CA3AF';
+      }
+    });
+
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Add fade-in animations to elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-fade-in');
+      elements.forEach((el, index) => {
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
+        }, 100);
+      });
+    });
+
+    document.getElementById('shareButton').addEventListener('click', () => {
+  const urlToCopy = "https://www.roblox.com/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fshare-links%3Fcode%3Dbd1905921506a14ebee4540bdcd0232b%26type%3DExperienceDetails%26pid%3DExperienceDetails%26is_retargeting%3Dfalse%26deep_link_value%3Droblox%253A%252F%252Fnavigation%252Fshare_links%253Fcode%253Dbd1905921506a14ebee4540bdcd0232b%2526type%253DExperienceDetails";
+  
+  navigator.clipboard.writeText(urlToCopy).then(() => {
+    const notification = document.getElementById('customNotification');
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 3000);
+    
+  }).catch(err => {
+    console.error('Error copying link:', err);
+    // Μπορείς να προσθέσεις και ένα error notification εάν θες
+  });
+});
+  </script>
+</body>
+</html>
