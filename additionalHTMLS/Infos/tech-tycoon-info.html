@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Company Tycoon - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .current-page {
+      position: relative;
+      color: white !important;
+    }
+    
+    .current-page:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.5px;
+      background-color: cyan;
+      transform: scaleX(1);
+    }
+    
+    /* Game Info Section */
+    .game-hero {
+      background: linear-gradient(135deg, #1e1e1e 0%, #111 50%, #1a1a1a 100%);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.1);
+    }
+    
+    .game-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(239, 68, 68, 0.5);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+    }
+    
+    .feature-card {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 1rem;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(239, 68, 68, 0.5);
+      box-shadow: 0 10px 25px rgba(239, 68, 68, 0.1);
+    }
+    
+    .status-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: rgba(239, 68, 68, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.5);
+      color: #ef4444;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+    }
+    
+    .back-button {
+      transition: all 0.3s ease;
+    }
+    
+    .back-button:hover {
+      transform: translateX(-5px);
+    }
+    
+    /* Warning Section */
+    .warning-section {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(30, 30, 30, 0.8) 100%);
+      border-left: 4px solid #ef4444;
+      border-radius: 0.5rem;
+    }
+    
+    /* Guide Section */
+    .guide-section {
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 1rem;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .guide-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .guide-step:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: #10b981;
+    }
+    
+    /* Phase Category */
+    .phase-category {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 1rem;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    /* Custom Notification */
+    .notification {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 30, 30, 0.95);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .notification.show {
+      opacity: 1;
+      bottom: 3rem;
+    }
+
+    .notification-icon {
+      margin-right: 0.75rem;
+      color: #4ade80;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+
+<!-- Navbar -->
+<header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <div class="relative">
+          <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-1">
+        <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
+          Home
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
+          Games
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          Contact Us
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          Support
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+        <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 animate-fade-in">
+          NEXIS AI
+        </a>
+        <a href='/privacy-policy.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          Privacy Policy
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
+        <div class="relative w-6 h-6">
+          <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
+          <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
+          <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
+    <div class="px-4 py-3 space-y-3">
+      <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Home
+      </a>
+      <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Games
+      </a>
+      <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Contact Us
+      </a>
+      <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Support
+      </a>
+      <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">
+        NEXIS AI
+      </a>
+      <a href='/privacy-policy.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        Privacy Policy
+      </a>
+    </div>
+  </div>
+</header>
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+    <!-- Back Button -->
+    <div class="mb-8 animate-fade-in">
+      <a href="/games.html" class="back-button inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Games
+      </a>
+    </div>
+
+    <!-- Game Hero Section -->
+    <div class="game-hero p-8 md:p-12 mb-16 relative overflow-hidden animate-fade-in">
+      <div class="status-badge">Under Development</div>
+      
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-12">
+          <img src="/images/tech-tycoon-logo.jpg" alt="Tech Company Tycoon Logo" class="game-image">
+        </div>
+        
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Tech Company Tycoon</h1>
+          <p class="text-xl text-gray-400 mb-6">Build your empire from video games to robotics in this immersive business simulation</p>
+          
+          <div class="flex flex-wrap gap-4 mb-6">
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm font-medium">Simulation</span>
+            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm font-medium">Strategy</span>
+            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm font-medium">Business</span>
+            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm font-medium">Tycoon</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <button class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-red-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Coming Soon
+            </button>     
+            <button id="shareButton" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+             </svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Warning Section -->
+    <div class="warning-section p-6 md:p-8 mb-16 animate-fade-in">
+      <div class="flex items-start">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-4">Important Disclaimer</h2>
+          <p class="text-gray-300 mb-4">
+            Tech Company Tycoon is a fictional simulation. It does not represent real businesses, products, or financial advice. This is a simulation game. All products, companies, and events are fictional. Any resemblance to real tech giants is purely coincidental!
+          </p>
+          <p class="text-gray-300 mb-4">
+            By continuing, you acknowledge that:
+          </p>
+          <ul class="list-disc pl-6 text-gray-300 space-y-2 mb-4">
+            <li>This game is purely for entertainment purposes</li>
+            <li>No real financial or business advice is being provided</li>
+            <li>All company names, products, and technologies depicted are fictional</li>
+            <li>The economic systems are simplified for gameplay purposes</li>
+          </ul>
+          <p class="text-gray-300">
+            This game is not affiliated with or endorsed by any real technology companies.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ultimate Experience Section -->
+    <div class="mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">What Makes Tech Company Tycoon The Ultimate Experience?</h2>
+      <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700">
+        <p class="text-gray-300 mb-4">
+          Build your empire from video games to robots in one epic journey. Tech Company Tycoon offers a deep yet accessible business simulation where you start as a small startup and grow into a global tech powerhouse.
+        </p>
+        <p class="text-gray-300 mb-4">
+          Customize every aspect of your products, from game genres to smartphone features to car designs. Make strategic decisions about research, marketing, and expansion as you compete with AI-controlled rival companies.
+        </p>
+        <p class="text-gray-300 mb-4">
+          Experience deep strategy with smooth, mobile-friendly gameplay. The intuitive interface makes complex business decisions easy to understand while maintaining depth for serious tycoon players.
+        </p>
+        <p class="text-gray-300">
+          Every choice matters in your quest to become the ultimate tech visionary. Will you focus on premium quality products or mass market appeal? Disrupt existing markets or create new ones? The path to domination is yours to choose.
+        </p>
+      </div>
+    </div>
+
+    <!-- Official Guide Section -->
+    <div class="guide-section p-6 md:p-8 mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">Official Guide</h2>
+      <p class="text-gray-300 mb-6">
+        Welcome to Tech Company Tycoon! This guide will walk you through the different phases of building your tech empire, from humble beginnings as a game developer to becoming a leader in robotics and AI.
+      </p>
+      
+      <h3 class="text-2xl font-bold text-white mb-4">Goal</h3>
+      <p class="text-gray-300 mb-6">
+        Build your own tech empire starting from scratch! Evolve from making simple video games to creating powerful devices, consoles, cars, and advanced robots. Manage resources, make smart investments, and dominate the tech world!
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Phase 1 -->
+        <div class="phase-category p-5">
+          <h4 class="text-xl font-bold text-blue-400 mb-3">Phase 1: Video Game Startup</h4>
+          <p class="text-gray-300 mb-3">What You Do:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Create and sell mobile/PC games</li>
+            <li class="guide-step">Choose genre, platform, and features (story, graphics, multiplayer)</li>
+            <li class="guide-step">Manage budget, hire your first employee(s)</li>
+          </ul>
+          <p class="text-gray-300 mt-3">Tips:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Focus on 1 genre to build a fanbase</li>
+            <li class="guide-step">Invest early in marketing upgrades</li>
+          </ul>
+        </div>
+        
+        <!-- Phase 2 -->
+        <div class="phase-category p-5">
+          <h4 class="text-xl font-bold text-purple-400 mb-3">Phase 2: Device Development</h4>
+          <p class="text-gray-300 mb-3">Unlocks when: You reach $X revenue from games</p>
+          <p class="text-gray-300 mb-3">What You Do:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Design and launch your own smartphones, tablets, or smartwatches</li>
+            <li class="guide-step">Balance specs (battery, CPU, screen) vs. cost</li>
+            <li class="guide-step">Compete in tech reviews and sales</li>
+          </ul>
+          <p class="text-gray-300 mt-3">Tips:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Watch trends (e.g., people want fast charging or camera quality)</li>
+            <li class="guide-step">R&D upgrades unlock better components</li>
+          </ul>
+        </div>
+        
+        <!-- Phase 3 -->
+        <div class="phase-category p-5">
+          <h4 class="text-xl font-bold text-green-400 mb-3">Phase 3: Console Production</h4>
+          <p class="text-gray-300 mb-3">What You Do:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Create gaming consoles (portable, home, hybrid)</li>
+            <li class="guide-step">Decide OS, controller design, performance</li>
+            <li class="guide-step">Build exclusive games for your console or sign third-party devs</li>
+          </ul>
+          <p class="text-gray-300 mt-3">Tips:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Launch your console with a strong lineup of exclusive titles</li>
+            <li class="guide-step">Don't copy others — innovate</li>
+          </ul>
+        </div>
+        
+        <!-- Phase 4 -->
+        <div class="phase-category p-5">
+          <h4 class="text-xl font-bold text-yellow-400 mb-3">Phase 4: Cars Division</h4>
+          <p class="text-gray-300 mb-3">What You Do:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Enter the smart car market</li>
+            <li class="guide-step">Design electric cars with tech features (autopilot, smart dashboard)</li>
+            <li class="guide-step">Compete with futuristic brands</li>
+          </ul>
+          <p class="text-gray-300 mt-3">Tips:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Speed, battery life & safety affect car reviews</li>
+            <li class="guide-step">Car factories require heavy investment</li>
+          </ul>
+        </div>
+        
+        <!-- Phase 5 -->
+        <div class="phase-category p-5">
+          <h4 class="text-xl font-bold text-red-400 mb-3">Phase 5: Robotics & AI</h4>
+          <p class="text-gray-300 mb-3">What You Do:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Research & develop humanoid or industrial robots</li>
+            <li class="guide-step">Automate tasks, sell to companies or use them internally</li>
+            <li class="guide-step">Launch your AI system</li>
+          </ul>
+          <p class="text-gray-300 mt-3">Tips:</p>
+          <ul class="space-y-2">
+            <li class="guide-step">Robots can boost your own company's productivity</li>
+            <li class="guide-step">Ethical decisions may affect public opinion</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h3 class="text-2xl font-bold text-white mb-4 mt-8">General Tips</h3>
+      <ul class="list-disc pl-6 text-gray-300 space-y-2">
+        <li>Manage your money. Don't expand too fast</li>
+        <li>Upgrade departments like Marketing, R&D, HR</li>
+        <li>Watch the market. Compete with AI rival companies</li>
+        <li>Take risks, but smart ones — timing is everything</li>
+      </ul>
+    </div>
+
+    <!-- Game Description -->
+    <div class="mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">About the Game</h2>
+      <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700">
+        <p class="text-gray-300 mb-4">
+          Tech Company Tycoon is an immersive business simulation game where you build a technology empire from the ground up. Start as a small game development studio and gradually expand into hardware, automotive, and robotics industries.
+        </p>
+        <p class="text-gray-300 mb-4">
+          Make strategic decisions about product development, marketing, research, and human resources as you compete in dynamic markets. Balance short-term profits with long-term investments to outmaneuver your competitors.
+        </p>
+        <p class="text-gray-300">
+          With multiple paths to success and endless replayability, Tech Company Tycoon offers a deep yet accessible business simulation experience for both casual players and tycoon game enthusiasts.
+        </p>
+      </div>
+    </div>
+
+    <!-- Game Features -->
+    <div class="mb-16 animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-8 gradient-text">Key Features</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Five Industry Phases</h3>
+          <p class="text-gray-400">
+            Progress from game development to robotics across five distinct phases, each with unique challenges and opportunities.
+          </p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Deep Customization</h3>
+          <p class="text-gray-400">
+            Design and customize every product with dozens of options that affect performance, cost, and market appeal.
+          </p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Dynamic Economy</h3>
+          <p class="text-gray-400">
+            Compete in markets that react to your decisions, with supply and demand affecting prices and profitability.
+          </p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">AI Competitors</h3>
+          <p class="text-gray-400">
+            Face off against intelligent rival companies that adapt to market conditions and your business strategies.
+          </p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Research & Innovation</h3>
+          <p class="text-gray-400">
+            Invest in R&D to unlock new technologies and stay ahead of the competition with cutting-edge products.
+          </p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="feature-card p-6">
+          <div class="w-12 h-12 bg-pink-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Regular Updates</h3>
+          <p class="text-gray-400">
+            Continuous content updates with new features, products, and challenges to keep the experience fresh.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Development Progress -->
+    <div class="animate-fade-in">
+      <h2 class="text-3xl font-bold text-white mb-8 gradient-text">Development Progress</h2>
+      
+      <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700 mb-6">
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Core Gameplay</span>
+            <span>25%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 25%"></div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>UI/UX Design</span>
+            <span>15%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-purple-500 h-2.5 rounded-full" style="width: 15%"></div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>Economic Systems</span>
+            <span>10%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-green-500 h-2.5 rounded-full" style="width: 10%"></div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="flex justify-between text-sm text-gray-400 mb-1">
+            <span>AI Competitors</span>
+            <span>5%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2.5">
+            <div class="bg-red-500 h-2.5 rounded-full" style="width: 5%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="text-gray-400 text-sm">
+        Estimated release: Q3 2028 (subject to change based on development progress)
+      </p>
+    </div>
+  </main>
+
+<!-- Custom Notification -->
+<div id="customNotification" class="notification">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 notification-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span class="text-white font-medium">🔗 Link copied to clipboard!</span>
+</div>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col items-center space-y-6">
+        <div class="flex space-x-4">
+          <a href="/additionalHTMLS/wallpapers.html" class="px-6 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] border border-cyan-500/30 text-cyan-400 font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Wallpapers
+          </a>
+          <a href="/additionalHTMLS/trailers.html" class="px-6 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] border border-purple-500/30 text-purple-400 font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            Trailers
+          </a>
+        </div>
+        <p class="text-gray-500 text-sm text-center">
+          © <span id="current-year"></span> Greek Games Studios. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLine1 = document.getElementById('mobile-line1');
+    const mobileLine2 = document.getElementById('mobile-line2');
+    const mobileLine3 = document.getElementById('mobile-line3');
+    
+    let menuOpen = false;
+    
+    mobileMenuButton.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
+        mobileLine1.style.backgroundColor = '#fff';
+        mobileLine2.style.opacity = '0';
+        mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+        mobileLine3.style.backgroundColor = '#fff';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
+        mobileLine1.style.backgroundColor = '#9CA3AF';
+        mobileLine2.style.opacity = '1';
+        mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
+        mobileLine3.style.backgroundColor = '#9CA3AF';
+      }
+    });
+
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Add fade-in animations to elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-fade-in');
+      elements.forEach((el, index) => {
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
+        }, 100);
+      });
+    });
+
+    document.getElementById('shareButton').addEventListener('click', () => {
+      const urlToCopy = window.location.href;
+      
+      navigator.clipboard.writeText(urlToCopy).then(() => {
+        const notification = document.getElementById('customNotification');
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+          notification.classList.remove('show');
+        }, 3000);
+        
+      }).catch(err => {
+        console.error('Error copying link:', err);
+      });
+    });
+  </script>
+</body>
+</html>

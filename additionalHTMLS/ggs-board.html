@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Games - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000 url('/images/space-bg.jpg') no-repeat center/cover fixed;
+      color: #e2e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .space-overlay {
+      background: rgba(5, 15, 30, 0.85);
+      backdrop-filter: blur(8px);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .game-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(100, 116, 139, 0.3);
+      backdrop-filter: blur(12px);
+      transition: all 0.4s ease;
+      box-shadow: 0 0 30px rgba(96, 165, 250, 0.1);
+    }
+    
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.3);
+      border-color: rgba(96, 165, 250, 0.5);
+    }
+    
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--duration) infinite ease-in-out;
+      opacity: 0;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: var(--opacity); }
+    }
+    
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .status-released {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    
+    .status-development {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    
+    .btn-space {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-space:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(96, 165, 250, 0.7);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="relative">
+
+<!-- Starfield Background -->
+<div id="starfield"></div>
+
+<!-- Navbar -->
+<header class="fixed w-full top-0 left-0 z-50 space-overlay border-b border-slate-700/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <div class="relative">
+          <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-1">
+        <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-all duration-300 group">
+          Home
+        </a>
+        <a href="#games" class="relative px-4 py-2 rounded-lg text-sm font-medium text-white bg-slate-800/50 transition-all duration-300 group">
+          Games
+        </a>
+        <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-all duration-300 group">
+          Contact Us
+        </a>
+        <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-all duration-300 group">
+          Support
+        </a>
+        <a href="https://restful6.github.io/nexis/" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105">
+          NEXIS AI
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group">
+        <div class="relative w-6 h-6">
+          <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
+          <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
+          <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto relative z-10">
+  <div class="space-overlay rounded-3xl p-8 md:p-12 border border-slate-600/30">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
+        Explore Our Universe
+      </h1>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mx-auto"></div>
+    </div>
+
+    <!-- Games Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Unlimited Roleplay -->
+      <div class="game-card rounded-2xl overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-6">
+            <img src="/images/unlimited-roleplay-logo.png" alt="Unlimited Roleplay" class="w-16 h-16 rounded-full border-2 border-red-500/50">
+            <div>
+              <h2 class="text-xl font-bold text-white">Unlimited Roleplay</h2>
+              <p class="text-sm text-slate-400">Roblox Experience</p>
+            </div>
+          </div>
+          <p class="text-slate-300 mb-6">
+            Build your story in our Greek-inspired roleplay universe with advanced systems and total freedom.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="status-badge status-development">In Development</span>
+            <div class="flex space-x-2">
+              <button class="btn-space px-4 py-2 rounded-lg text-sm font-medium">
+                Coming Soon
+              </button>
+              <a href="/additionalHTMLS/Infos/Unlimited-roleplay-info.html" class="btn-space px-4 py-2 rounded-lg text-sm font-medium">
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Try Not To Rage: Forest -->
+      <div class="game-card rounded-2xl overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-6">
+            <img src="/images/try-not-to-rage-forest.png" alt="Try Not To Rage" class="w-16 h-16 rounded-full border-2 border-green-500/50">
+            <div>
+              <h2 class="text-xl font-bold text-white">Try Not To Rage: Forest</h2>
+              <p class="text-sm text-slate-400">Web Game</p>
+            </div>
+          </div>
+          <p class="text-slate-300 mb-6">
+            Test your skills with 25 challenging levels across three difficulty modes in this 2D platformer.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="status-badge status-released">Available Now</span>
+            <div class="flex space-x-2">
+              <a href="#" class="btn-space px-4 py-2 rounded-lg text-sm font-medium bg-blue-500/20 border-blue-500/50">
+                Play
+              </a>
+              <a href="/additionalHTMLS/Infos/NTRF-info.html" class="btn-space px-4 py-2 rounded-lg text-sm font-medium">
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Company Tycoon -->
+      <div class="game-card rounded-2xl overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-6">
+            <img src="/images/tech-tycoon-logo.jpg" alt="Tech Tycoon" class="w-16 h-16 rounded-full border-2 border-red-500/50">
+            <div>
+              <h2 class="text-xl font-bold text-white">Tech Company Tycoon</h2>
+              <p class="text-sm text-slate-400">Simulation Game</p>
+            </div>
+          </div>
+          <p class="text-slate-300 mb-6">
+            Start from a small office and grow your tech empire across multiple industries and innovations.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="status-badge status-development">In Development</span>
+            <div class="flex space-x-2">
+              <button class="btn-space px-4 py-2 rounded-lg text-sm font-medium">
+                Coming Soon
+              </button>
+              <a href="/additionalHTMLS/Infos/tech-tycoon-info.html" class="btn-space px-4 py-2 rounded-lg text-sm font-medium">
+                Details
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Try Not To Rage: Sky -->
+      <div class="game-card rounded-2xl overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-6">
+            <div class="w-16 h-16 rounded-full border-2 border-purple-500/50 flex items-center justify-center bg-slate-800/50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white">Try Not To Rage: Sky</h2>
+              <p class="text-sm text-slate-400">Coming 2026</p>
+            </div>
+          </div>
+          <p class="text-slate-300 mb-6">
+            The next chapter in our rage series takes the challenge to new heights with aerial obstacles.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="status-badge status-development">In Development</span>
+            <div class="flex space-x-2">
+              <button class="btn-space px-4 py-2 rounded-lg text-sm font-medium">
+                Coming Soon
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty Space Section -->
+    <div class="mt-24 text-center">
+      <div class="inline-block p-8 rounded-full border border-slate-700/50 mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-2">More Adventures Coming</h3>
+      <p class="text-slate-400 max-w-lg mx-auto">
+        We're constantly expanding our universe with new gaming experiences. Stay tuned for future releases!
+      </p>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="py-12 px-6 border-t border-slate-800/50 space-overlay relative z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col items-center space-y-6">
+      <div class="flex space-x-4">
+        <a href="/additionalHTMLS/wallpapers.html" class="btn-space px-6 py-2 rounded-lg font-medium flex items-center">
+          Wallpapers
+        </a>
+        <a href="/additionalHTMLS/trailers.html" class="btn-space px-6 py-2 rounded-lg font-medium flex items-center">
+          Trailers
+        </a>
+      </div>
+      <p class="text-slate-500 text-sm text-center">
+        © <span id="current-year"></span> Greek Games Studios. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Create starfield
+  function createStarfield() {
+    const container = document.getElementById('starfield');
+    const starCount = 100;
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      
+      // Random properties
+      const size = Math.random() * 3;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const opacity = Math.random();
+      const duration = 2 + Math.random() * 3 + 's';
+      const delay = Math.random() * 5 + 's';
+      
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${posX}%`;
+      star.style.top = `${posY}%`;
+      star.style.setProperty('--opacity', opacity);
+      star.style.setProperty('--duration', duration);
+      star.style.animationDelay = delay;
+      
+      container.appendChild(star);
+    }
+  }
+  
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLine1 = document.getElementById('mobile-line1');
+  const mobileLine2 = document.getElementById('mobile-line2');
+  const mobileLine3 = document.getElementById('mobile-line3');
+  
+  let menuOpen = false;
+  
+  mobileMenuButton.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    
+    if (menuOpen) {
+      mobileMenu.classList.remove('hidden');
+      mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
+      mobileLine1.style.backgroundColor = '#fff';
+      mobileLine2.style.opacity = '0';
+      mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+      mobileLine3.style.backgroundColor = '#fff';
+    } else {
+      mobileMenu.classList.add('hidden');
+      mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
+      mobileLine1.style.backgroundColor = '#9CA3AF';
+      mobileLine2.style.opacity = '1';
+      mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
+      mobileLine3.style.backgroundColor = '#9CA3AF';
+    }
+  });
+
+  // Set current year
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    createStarfield();
+  });
+</script>
+</body>
+</html>
