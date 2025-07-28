@@ -55,11 +55,14 @@
       position: relative;
       overflow: hidden;
       border-radius: 0.5rem;
+      display: block;
+      text-decoration: none;
     }
     
     .trailer-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+      text-decoration: none;
     }
     
     .play-button {
@@ -89,40 +92,6 @@
       border-left: 25px solid white;
       border-bottom: 15px solid transparent;
       margin-left: 5px;
-    }
-    
-    .video-container {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .video-wrapper {
-      width: 90%;
-      max-width: 1200px;
-      position: relative;
-    }
-    
-    .close-button {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-    }
-    
-    .video-player {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: none;
     }
     
     .coming-soon {
@@ -230,53 +199,52 @@
       <!-- Trailers Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Trailer 1 -->
-        <div class="trailer-item bg-[#222]/80 border border-cyan-500/20 animate-fade-in">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="trailer-item bg-[#222]/80 border border-cyan-500/20 animate-fade-in">
           <div class="relative">
-            <img src="/images/trailer1-thumb.jpg" alt="Game Trailer 1" class="w-full h-auto aspect-video object-cover">
+            <img src="/images/TRY_NOT_TO_RAGE_2.png" alt="Game Trailer 1" class="w-full h-auto aspect-video object-cover">
+            <div class="play-button">
+              <div class="play-icon"></div>
+            </div>
             <div class="coming-soon">Coming Soon</div>
           </div>
           <div class="p-4">
             <h3 class="text-xl font-bold text-white mb-2">Unlimited Roleplay Series - Gameplay Reveal</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+            <p class="text-gray-400 text-sm">Watch on YouTube</p>
           </div>
-        </div>
+        </a>
         
         <!-- Trailer 2 -->
-        <div class="trailer-item bg-[#222]/80 border border-cyan-500/20 animate-fade-in">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="trailer-item bg-[#222]/80 border border-cyan-500/20 animate-fade-in">
           <div class="relative">
             <img src="/images/trailer2-thumb.jpg" alt="Game Trailer 2" class="w-full h-auto aspect-video object-cover">
+            <div class="play-button">
+              <div class="play-icon"></div>
+            </div>
             <div class="coming-soon">Coming Soon</div>
           </div>
           <div class="p-4">
             <h3 class="text-xl font-bold text-white mb-2">Try Not To Rage - Launch Trailer</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+            <p class="text-gray-400 text-sm">Watch on YouTube</p>
           </div>
-        </div>
+        </a>
         
         <!-- Trailer 3 -->
-        <div class="trailer-item bg-[#222]/80 border border-cyan-500/20 animate-fade-in">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="trailer-item bg-[#222]/80 border border-cyan-500/20 animate-fade-in">
           <div class="relative">
             <img src="/images/trailer3-thumb.jpg" alt="Game Trailer 3" class="w-full h-auto aspect-video object-cover">
+            <div class="play-button">
+              <div class="play-icon"></div>
+            </div>
             <div class="coming-soon">Coming Soon</div>
           </div>
           <div class="p-4">
             <h3 class="text-xl font-bold text-white mb-2">Blank</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+            <p class="text-gray-400 text-sm">Watch on YouTube</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </main>
-
-  <!-- Video Player Container -->
-  <div id="video-container" class="video-container">
-    <div class="video-wrapper">
-      <span class="close-button" id="close-video">&times;</span>
-      <video id="video-player" class="video-player" controls>
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
@@ -329,38 +297,6 @@
           el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
         }, 100);
       });
-    });
-
-    // Video player functionality
-    const trailerItems = document.querySelectorAll('.trailer-item');
-    const videoContainer = document.getElementById('video-container');
-    const videoPlayer = document.getElementById('video-player');
-    const closeVideo = document.getElementById('close-video');
-    
-    trailerItems.forEach(item => {
-      item.addEventListener('click', () => {
-        // For now, just show the coming soon message
-        // When you have MP4 files, you can set the src like this:
-        // videoPlayer.src = '/videos/your-video.mp4';
-        videoContainer.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    
-    closeVideo.addEventListener('click', () => {
-      videoPlayer.pause();
-      videoPlayer.src = '';
-      videoContainer.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    });
-    
-    videoContainer.addEventListener('click', (e) => {
-      if (e.target === videoContainer) {
-        videoPlayer.pause();
-        videoPlayer.src = '';
-        videoContainer.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
     });
   </script>
 </body>
