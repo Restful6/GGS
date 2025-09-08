@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="keywords" content="greek games studios, greekgamesstudios, ggs, try not to rage, unlimited roleplay roblox, tech company tycoon">
+  <meta name="keywords" content="greek games studios, greekgamesstudios, ggs, try not to rage, tech company tycoon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Games - Greek Games Studios</title>
   <link rel="icon" type="png" href="/images/ggs-logo.png">
@@ -10,7 +10,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     
-        body {
+    body {
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
@@ -23,11 +23,12 @@
     }
     
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .animate-fade-in {
+      opacity: 0;
       animation: fadeIn 0.8s ease-out forwards;
     }
     
@@ -57,6 +58,14 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .game-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     
     .game-card:hover {
@@ -121,6 +130,14 @@
       overflow: hidden;
       position: relative;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .coming-soon-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     
     .coming-soon-card:hover {
@@ -155,6 +172,54 @@
       transform: rotate(10deg) scale(1.1);
     }
     
+    /* Series Card */
+    .series-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .series-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .series-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(139, 92, 246, 0.2);
+      border-color: rgba(139, 92, 246, 0.5);
+    }
+    
+    .series-content {
+      transition: max-height 0.5s ease-out;
+      overflow: hidden;
+    }
+    
+    .series-content.expanded {
+      max-height: 1000px;
+    }
+    
+    .series-games {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease-out, height 0.5s ease-out;
+    }
+    
+    .series-games.expanded {
+      opacity: 1;
+      height: auto;
+    }
+    
     /* Animations */
     @keyframes pulse {
       0% {
@@ -180,6 +245,14 @@
     .float-animation {
       animation: float 3s ease-in-out infinite;
     }
+    
+    /* Scroll animation delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
@@ -268,103 +341,125 @@
         <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto animate-fade-in"></div>
       </div>
 
-
-      <!-- Games Grid - First Row -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Game 1 - Under Development -->
-        <div class="game-card border border-gray-700 hover:border-red-500/50">
-          <div class="p-6">
-            <div class="flex items-center justify-center mb-6">
-              <img src="/images/unlimited-roleplay-logo.png" alt="Unlimited Roleplay Logo" class="game-image development">
-            </div>
-            <h2 class="text-2xl font-bold text-white text-center mb-4">Unlimited Roleplay (Roblox)</h2>
-            <p class="text-gray-400 text-center mb-6">
-              Experience the ultimate realistic roleplay in Unlimited Roleplay on Roblox! Get a job, rise through the ranks, drive custom vehicles with advanced systems, and explore a fully Greek-inspired RP world with unique features, custom anti-cheat, and total roleplay freedom. RP like you've never seen before – only on Roblox!
-            </p>
-            <div class="flex justify-center space-x-4">
-              <button class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Coming Soon
-              </button>
-              <a href="/additionalHTMLS/Infos/Unlimited-roleplay-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-               </svg>
-                 Info
-              </a>
-            </div>
+      <!-- Try Not To Rage Series Card -->
+      <div class="series-card delay-1 mb-8">
+        <div class="p-6 series-content" id="tnr-series-content">
+          <div class="flex items-center justify-center mb-6">
+            <img src="/images/TNTR.png" alt="Try Not To Rage Series Logo" class="game-image released" style="border-color: rgba(139, 92, 246, 0.5); box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);">
           </div>
-          <div class="status-footer development mt-auto">
-            Under Development
+          <h2 class="text-2xl font-bold text-white text-center mb-4">Try Not To Rage Series</h2>
+          <p class="text-gray-400 text-center mb-6">
+            A collection of challenging 2D platformers designed to test your skills and patience. Each game features unique environments, increasingly difficult levels, and the same satisfying gameplay that will keep you coming back for more.
+          </p>
+          <div class="flex justify-center">
+            <button onclick="toggleSeriesGames('tnr-series-games', this)" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+              <span class="see-games-text">See Games</span>
+              <span class="hide-games-text" style="display: none;">Hide Games</span>
+            </button>
           </div>
         </div>
-
-        <!-- Game 2 - Released -->
-        <div class="game-card border border-gray-700 hover:border-green-500/50">
-          <div class="p-6">
-            <div class="flex items-center justify-center mb-6">
-              <img src="/images/try-not-to-rage-forest.png" alt="Try Not To Rage: Forest Logo" class="game-image released">
-            </div>
-            <h2 class="text-2xl font-bold text-white text-center mb-4">Try Not To Rage: Forest</h2>
-            <p class="text-gray-400 text-center mb-6">
-              Enter the Forest of Fury in this intense 2D rage game! With 25 challenging levels (10 Easy, 10 Devil, 5 Nightmare), precise jumps and deadly traps await. Can you keep your cool or will you rage-quit? Try... not to rage!
-            </p>
-            <div class="flex justify-center space-x-4">
-              <a href="#" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Play Now
-              </a>
-              <a href="/additionalHTMLS/Infos/NTRF-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-               </svg>
-                 Info
-              </a>
+        
+        <!-- Series Games (Hidden by default) -->
+        <div class="series-games" id="tnr-series-games">
+          <!-- Try Not To Rage: Forest -->
+          <div class="border-t border-gray-700 p-6">
+            <div class="game-card border border-gray-700 hover:border-green-500/50">
+              <div class="p-6">
+                <div class="flex items-center justify-center mb-6">
+                  <img src="/images/try-not-to-rage-forest.png" alt="Try Not To Rage: Forest Logo" class="game-image released">
+                </div>
+                <h2 class="text-2xl font-bold text-white text-center mb-4">Try Not To Rage: Forest</h2>
+                <p class="text-gray-400 text-center mb-6">
+                  Enter the Forest of Fury in this intense 2D rage game! With 25 challenging levels (10 Easy, 10 Devil, 5 Nightmare), precise jumps and deadly traps await. Can you keep your cool or will you rage-quit? Try... not to rage!
+                </p>
+                <div class="flex justify-center space-x-4">
+                  <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest&pcampaignid=web_share" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Play Now
+                  </a>
+                  <a href="/additionalHTMLS/Infos/NTRF-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                   </svg>
+                     Info
+                  </a>
+                </div>
+              </div>
+              <div class="status-footer released mt-auto">
+                Released
+              </div>
             </div>
           </div>
-          <div class="status-footer released mt-auto">
-            Soon
-          </div>
+          
+<!-- Try Not To Rage: Sky -->
+<div class="border-t border-gray-700 p-6">
+  <div class="game-card border border-gray-700 hover:border-red-500/50">
+    <div class="p-6">
+      <div class="flex items-center justify-center mb-6">
+        <img src="/images/try-not-to-rage-sky.png" alt="Try Not To Rage: Sky Logo" class="game-image development">
+      </div>
+      <h2 class="text-2xl font-bold text-white text-center mb-4">Try Not To Rage: Sky</h2>
+      <p class="text-gray-400 text-center mb-6">
+        Take the challenge to new heights in this sky-themed rage game! Navigate through floating islands, avoid treacherous clouds, and master precision jumps in this aerial adventure. The next installment in the Try Not To Rage series.
+      </p>
+      <div class="flex justify-center space-x-4">
+        <button class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Coming Soon
+        </button>
+        <a href="/additionalHTMLS/Infos/TNTRS-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Info
+        </a>
+      </div>
+    </div>
+    <div class="status-footer development mt-auto">
+      Under Development
+    </div>
+  </div>
+</div>
         </div>
       </div>
 
-      <!-- Second Row - Single Game -->
-      <div class="mt-8 w-full md:w-2/3 lg:w-1/2 mx-auto">
-        <!-- Game 3 - Tech Company Tycoon (Under Development) -->
-        <div class="game-card border border-gray-700 hover:border-red-500/50">
-          <div class="p-6">
-            <div class="flex items-center justify-center mb-6">
-              <img src="/images/tech-tycoon-logo.jpg" alt="Tech Company Tycoon Logo" class="game-image development">
-            </div>
-            <h2 class="text-2xl font-bold text-white text-center mb-4">Tech Company Tycoon</h2>
-            <p class="text-gray-400 text-center mb-6">
-              Start from a small office making video games and build your own tech empire! Develop devices, consoles, cars, and robots as you unlock new technologies and dominate the market. Can you become the world’s leading tech company?
-            </p>
-            <div class="flex justify-center space-x-4">
-              <button class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Coming Soon
-              </button>
-              <a href="/additionalHTMLS/Infos/tech-tycoon-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-               </svg>
-                 Info
-              </a>
-            </div>
+      <!-- Tech Company Tycoon -->
+      <div class="game-card delay-2 border border-gray-700 hover:border-red-500/50">
+        <div class="p-6">
+          <div class="flex items-center justify-center mb-6">
+            <img src="/images/tech-tycoon-logo.jpg" alt="Tech Company Tycoon Logo" class="game-image development">
           </div>
-          <div class="status-footer development mt-auto">
-            Under Development
+          <h2 class="text-2xl font-bold text-white text-center mb-4">Tech Company Tycoon</h2>
+          <p class="text-gray-400 text-center mb-6">
+            Start from a small office making video games and build your own tech empire! Develop devices, consoles, cars, and robots as you unlock new technologies and dominate the market. Can you become the world's leading tech company?
+          </p>
+          <div class="flex justify-center space-x-4">
+            <button class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Coming Soon
+            </button>
+            <a href="/additionalHTMLS/Infos/tech-tycoon-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+             </svg>
+               Info
+            </a>
           </div>
+        </div>
+        <div class="status-footer development mt-auto">
+          Under Development
         </div>
       </div>
 
@@ -373,38 +468,38 @@
         <h2 class="text-3xl font-bold text-white mb-8 gradient-text text-center">Coming Soon</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Game 1 -->
-          <div class="coming-soon-card p-6 text-center">
+          <div class="coming-soon-card delay-3 p-6 text-center">
             <div class="coming-soon-icon border-purple-500/50 text-purple-400 mb-4 float-animation">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">Try Not To Rage: Sky</h3>
-            <p class="text-gray-400 text-sm mb-4">Try Not To Rage Game Series</p>
-            <span class="inline-block px-3 py-1 text-xs font-semibold text-purple-400 bg-purple-500/10 rounded-full">Coming 2026</span>
+            <h3 class="text-xl font-bold text-white mb-2">Try Not To Rage: Sea</h3>
+            <p class="text-gray-400 text-sm mb-4"></p>
+            <span class="inline-block px-3 py-1 text-xs font-semibold text-purple-400 bg-purple-500/10 rounded-full">Coming 202?</span>
           </div>
           
           <!-- Game 2 -->
-          <div class="coming-soon-card p-6 text-center">
+          <div class="coming-soon-card delay-4 p-6 text-center">
             <div class="coming-soon-icon border-cyan-500/50 text-cyan-400 mb-4 float-animation" style="animation-delay: 0.3s">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">???</h3>
-            <p class="text-gray-400 text-sm mb-4">????</p>
+            <h3 class="text-xl font-bold text-white mb-2">?????</h3>
+            <p class="text-gray-400 text-sm mb-4"></p>
             <span class="inline-block px-3 py-1 text-xs font-semibold text-cyan-400 bg-cyan-500/10 rounded-full">Coming ??</span>
           </div>
           
           <!-- Game 3 -->
-          <div class="coming-soon-card p-6 text-center">
+          <div class="coming-soon-card delay-5 p-6 text-center">
             <div class="coming-soon-icon border-pink-500/50 text-pink-400 mb-4 float-animation" style="animation-delay: 0.6s">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">??</h3>
-            <p class="text-gray-400 text-sm mb-4">????</p>
+            <h3 class="text-xl font-bold text-white mb-2">?????</h3>
+            <p class="text-gray-400 text-sm mb-4"></p>
             <span class="inline-block px-3 py-1 text-xs font-semibold text-pink-400 bg-pink-500/10 rounded-full">Coming ??</span>
           </div>
         </div>
@@ -479,7 +574,55 @@
           el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
         }, 100);
       });
+      
+      // Initialize scroll animations
+      initScrollAnimations();
     });
+
+    // Toggle series games visibility
+    function toggleSeriesGames(contentId, button) {
+      const content = document.getElementById(contentId);
+      const seeGamesText = button.querySelector('.see-games-text');
+      const hideGamesText = button.querySelector('.hide-games-text');
+      
+      content.classList.toggle('expanded');
+      
+      if (content.classList.contains('expanded')) {
+        seeGamesText.style.display = 'none';
+        hideGamesText.style.display = 'inline';
+        button.querySelector('svg').style.transform = 'rotate(180deg)';
+      } else {
+        seeGamesText.style.display = 'inline';
+        hideGamesText.style.display = 'none';
+        button.querySelector('svg').style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Scroll animation for game cards using Intersection Observer
+    function initScrollAnimations() {
+      const gameCards = document.querySelectorAll('.game-card, .series-card, .coming-soon-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Stop observing after animation
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      // Observe each game card
+      gameCards.forEach(card => {
+        observer.observe(card);
+      });
+    }
   </script>
 </body>
 </html>

@@ -147,6 +147,34 @@
     .difficulty-nightmare {
       border-color: rgba(239, 68, 68, 0.3);
     }
+
+        /* Custom Notification */
+    .notification {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 30, 30, 0.95);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .notification.show {
+      opacity: 1;
+      bottom: 3rem;
+    }
+
+    .notification-icon {
+      margin-right: 0.75rem;
+      color: #4ade80;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
@@ -239,7 +267,7 @@
 
     <!-- Game Hero Section -->
     <div class="game-hero p-8 md:p-12 mb-16 relative overflow-hidden animate-fade-in">
-      <div class="status-badge">Soon</div>
+      <div class="status-badge">Released</div>
       
       <div class="flex flex-col md:flex-row items-center">
         <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-12">
@@ -258,7 +286,7 @@
           </div>
           
           <div class="flex flex-wrap gap-4">
-            <a href="#" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-green-500/20">
+            <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest&pcampaignid=web_share" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-green-500/20">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -266,7 +294,7 @@
               Play Now
             </a>
             
-            <button class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+            <button id="shareButton" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
               </svg>
@@ -457,6 +485,14 @@
     </div>
   </main>
 
+<!-- Custom Notification -->
+<div id="customNotification" class="notification">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 notification-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span class="text-white font-medium">🔗 Link copied to clipboard!</span>
+</div>
+
   <!-- Footer -->
   <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
     <div class="max-w-6xl mx-auto">
@@ -523,6 +559,22 @@
         setTimeout(() => {
           el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
         }, 100);
+      });
+    });
+
+        document.getElementById('shareButton').addEventListener('click', () => {
+      const urlToCopy = "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest&pcampaignid=web_share";
+      
+      navigator.clipboard.writeText(urlToCopy).then(() => {
+        const notification = document.getElementById('customNotification');
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+          notification.classList.remove('show');
+        }, 3000);
+        
+      }).catch(err => {
+        console.error('Error copying link:', err);
       });
     });
   </script>
