@@ -272,6 +272,38 @@
     </div>
   </header>
 
+  <!-- Notification Bar -->
+<div id="notification-bar" class="fixed top-16 md:top-20 left-0 w-full bg-gradient-to-r from-cyan-900/90 to-purple-900/90 backdrop-blur-md border-b border-cyan-500/30 z-40 transform -translate-y-full transition-transform duration-500 ease-out shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <!-- Notification Icon -->
+      <div class="flex-shrink-0">
+        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      
+      <!-- Notification Text -->
+      <p class="text-white text-sm md:text-base">
+        <span class="font-medium">Our first game!</span> 
+        <span class="text-gray-200">Try Not To Rage: Forest is live NOW.</span>
+      </p>
+      
+      <!-- Notification Button -->
+      <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest&pcampaignid=web_share" class="ml-4 flex-shrink-0 px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-full transition-colors duration-300">
+        Check it
+      </a>
+    </div>
+    
+    <!-- Close Button -->
+    <button id="close-notification" class="flex-shrink-0 text-gray-300 hover:text-white transition-colors duration-300 p-1 rounded-full hover:bg-white/10">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
   <!-- Hero Section -->
   <section class="relative h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-br from-black via-[#0f0f2e] to-black overflow-hidden pt-16">
     <!-- Star Background -->
@@ -823,6 +855,37 @@
       });
     });
     });
+
+    // Notification Bar functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const notificationBar = document.getElementById('notification-bar');
+  const closeNotification = document.getElementById('close-notification');
+  
+  // Check if user has previously dismissed the notification
+  const notificationDismissed = localStorage.getItem('notificationDismissed');
+  
+  // Show notification after a short delay if not previously dismissed
+  if (!notificationDismissed) {
+    setTimeout(() => {
+      notificationBar.classList.remove('transform', '-translate-y-full');
+      notificationBar.classList.add('translate-y-0');
+    }, 1500);
+  }
+  
+  // Close notification functionality
+  if (closeNotification) {
+    closeNotification.addEventListener('click', function() {
+      notificationBar.classList.add('transform', '-translate-y-full');
+      notificationBar.classList.remove('translate-y-0');
+      
+      // Remember user's choice for 24 hours
+      localStorage.setItem('notificationDismissed', 'true');
+      setTimeout(() => {
+        localStorage.removeItem('notificationDismissed');
+      }, 24 * 60 * 60 * 1000); // 24 hours
+    });
+  }
+});
   </script>
 </body>
 </html>
