@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Try Not To Rage: Sky - Greek Games Studios</title>
+  <title>Try Not To Rage: Ocean - Greek Games Studios</title>
   <link rel="icon" type="png" href="/images/ggs-logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -50,8 +50,8 @@
     .game-hero {
       background: linear-gradient(135deg, #1e1e1e 0%, #111 50%, #1a1a1a 100%);
       border-radius: 1.5rem;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.1);
     }
     
     .game-image {
@@ -59,21 +59,21 @@
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid rgba(16, 185, 129, 0.5);
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+      border: 4px solid rgba(239, 68, 68, 0.5);
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
     }
     
     .feature-card {
       background: rgba(30, 30, 30, 0.7);
       border-radius: 1rem;
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.2);
       transition: all 0.3s ease;
     }
     
     .feature-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(16, 185, 129, 0.5);
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+      border-color: rgba(239, 68, 68, 0.5);
+      box-shadow: 0 10px 25px rgba(239, 68, 68, 0.1);
     }
     
     .status-badge {
@@ -86,9 +86,22 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      background-color: rgba(16, 185, 129, 0.1);
-      border: 2px solid rgba(16, 185, 129, 0.5);
-      color: #10b981;
+      background-color: rgba(239, 68, 68, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.5);
+      color: #ef4444;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
     }
     
     .back-button {
@@ -110,7 +123,7 @@
     .guide-section {
       background: rgba(30, 30, 30, 0.8);
       border-radius: 1rem;
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
     
     .guide-step {
@@ -126,26 +139,14 @@
       width: 1rem;
       height: 1rem;
       border-radius: 50%;
-      background-color: #6366f1;
+      background-color: #10b981;
     }
     
-    /* Difficulty Section */
-    .difficulty-section {
+    /* Phase Category */
+    .phase-category {
       background: rgba(30, 30, 30, 0.7);
       border-radius: 1rem;
-      border: 1px solid;
-    }
-    
-    .difficulty-easy {
-      border-color: rgba(16, 185, 129, 0.3);
-    }
-    
-    .difficulty-devil {
-      border-color: rgba(245, 158, 11, 0.3);
-    }
-    
-    .difficulty-nightmare {
-      border-color: rgba(239, 68, 68, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     /* Custom Notification */
@@ -174,6 +175,25 @@
     .notification-icon {
       margin-right: 0.75rem;
       color: #4ade80;
+    }
+    
+    /* Difficulty Section */
+    .difficulty-section {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 1rem;
+      border: 1px solid;
+    }
+    
+    .difficulty-easy {
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    
+    .difficulty-devil {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    
+    .difficulty-nightmare {
+      border-color: rgba(239, 68, 68, 0.3);
     }
   </style>
 </head>
@@ -267,37 +287,35 @@
 
     <!-- Game Hero Section -->
     <div class="game-hero p-8 md:p-12 mb-16 relative overflow-hidden animate-fade-in">
-      <div class="status-badge">Released</div>
+      <div class="status-badge">Under Development</div>
       
       <div class="flex flex-col md:flex-row items-center">
         <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-12">
-          <img src="/images/try-not-to-rage-sky.png" alt="Try Not To Rage: Sky Logo" class="game-image">
+          <img src="/images/try-not-to-rage-ocean.png" alt="Try Not To Rage: Ocean Logo" class="game-image">
         </div>
         
         <div>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Try Not To Rage: Sky</h1>
-          <p class="text-xl text-gray-400 mb-6">Take the challenge to new heights in this sky-themed rage game!</p>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Try Not To Rage: Ocean</h1>
+          <p class="text-xl text-gray-400 mb-6">Dive into the depths of frustration in this underwater rage game!</p>
           
           <div class="flex flex-wrap gap-4 mb-6">
-            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm font-medium">Platformer</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm font-medium">Underwater</span>
             <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm font-medium">Challenging</span>
             <span class="px-3 py-1 bg-red-500/10 text-red-400 rounded-full text-sm font-medium">Rage Game</span>
             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm font-medium">Precision</span>
           </div>
           
           <div class="flex flex-wrap gap-4">
-            <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-green-500/20">
+            <button class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-red-500/20">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
-              Play Now
-            </a>
-            
+              Coming Soon
+            </button>     
             <button id="shareButton" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-              </svg>
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+             </svg>
               Share
             </button>
           </div>
@@ -334,10 +352,10 @@
       <h2 class="text-3xl font-bold text-white mb-6 gradient-text">About the Game</h2>
       <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700">
         <p class="text-gray-300 mb-4">
-          Try Not To Rage: Sky is a hardcore 2D platformer where your patience is put to the ultimate test. Navigate through 25 uniquely designed levels filled with floating islands, treacherous clouds, and demanding aerial challenges.
+          Try Not To Rage: Ocean is a hardcore 2D platformer where your patience is put to the ultimate test in underwater environments. Navigate through 30 uniquely designed levels filled with treacherous currents, dangerous sea creatures, and demanding aquatic challenges.
         </p>
         <p class="text-gray-300">
-          With stunning sky-themed aesthetics and modern level design, the game combines classic platforming with the difficulty that true gamers love. Each level is crafted to push your skills to the limit while maintaining fair mechanics that reward mastery.
+          With stunning underwater aesthetics and modern level design, the game combines classic platforming with underwater physics that will challenge even the most skilled players. Each level is crafted to push your skills to the limit while maintaining fair mechanics that reward mastery.
         </p>
       </div>
     </div>
@@ -349,23 +367,23 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <!-- Easy Levels -->
         <div class="difficulty-section difficulty-easy p-5">
-          <h4 class="text-xl font-bold text-green-400 mb-3">Easy Levels (1-10)</h4>
+          <h4 class="text-xl font-bold text-green-400 mb-3">Easy Levels (1 10)</h4>
           <p class="text-gray-300">
-            Ideal for learning the basic mechanics. Don't be fooled by their simplicity — they're the calm before the storm. These levels introduce core gameplay elements while still providing a challenge.
+            Ideal for learning the basic underwater mechanics. These levels introduce core gameplay elements while still providing a challenge.
           </p>
         </div>
         
         <!-- Devil Levels -->
         <div class="difficulty-section difficulty-devil p-5">
-          <h4 class="text-xl font-bold text-yellow-400 mb-3">Devil Levels (11-20)</h4>
+          <h4 class="text-xl font-bold text-yellow-400 mb-3">Devil Levels (11 20)</h4>
           <p class="text-gray-300">
-            Every mistake costs you. Technique, timing and concentration are key. These levels will test your mastery of the mechanics introduced in the early stages.
+            Every mistake costs you. Technique, timing and concentration are key. These levels will test your mastery of underwater movement.
           </p>
         </div>
         
         <!-- Nightmare Levels -->
         <div class="difficulty-section difficulty-nightmare p-5">
-          <h4 class="text-xl font-bold text-red-400 mb-3">Nightmare Levels (21-25)</h4>
+          <h4 class="text-xl font-bold text-red-400 mb-3">Nightmare Levels (21 30)</h4>
           <p class="text-gray-300">
             The ultimate test. Here you prove your worth. Few make it to the end. These levels require perfect execution and will push your skills to their limits.
           </p>
@@ -374,27 +392,29 @@
       
       <h3 class="text-2xl font-bold text-white mb-4 mt-8">Tips:</h3>
       <ul class="list-disc pl-6 text-gray-300 space-y-2">
-        <li>Learn each track step by step</li>
-        <li>Take your time — rushing leads to mistakes</li>
-        <li>Rage doesn't help — only precision wins</li>
+        <li>Master underwater physics and currents</li>
+        <li>Take your time - rushing leads to mistakes</li>
+        <li>Rage doesn't help - only precision wins</li>
         <li>Practice difficult sections repeatedly</li>
         <li>Take breaks when frustrated</li>
+        <li>Watch out for underwater hazards and sea creatures</li>
       </ul>
     </div>
 
     <!-- Ultimate Experience Section -->
     <div class="mb-16 animate-fade-in">
-      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">What Makes Try Not To Rage: Sky The Ultimate Experience?</h2>
+      <h2 class="text-3xl font-bold text-white mb-6 gradient-text">What Makes Try Not To Rage: Ocean The Ultimate Experience?</h2>
       <div class="bg-[#1a1a1a]/80 rounded-xl p-6 md:p-8 border border-gray-700">
         <ul class="list-disc pl-6 text-gray-300 space-y-3">
-          <li><span class="font-bold">Captivating Level Design:</span> Each track is built with surgical precision to test specific skills while maintaining flow.</li>
-          <li><span class="font-bold">Visual Identity:</span> Beautiful sky-themed visuals with floating islands and cloud platforms set the perfect mood for your challenge.</li>
-          <li><span class="font-bold">Responsive Controls:</span> No excuses - every mistake is your own with our tight, responsive control scheme.</li>
+          <li><span class="font-bold">Captivating Level Design:</span> Each underwater track is built with surgical precision to test specific skills while maintaining flow.</li>
+          <li><span class="font-bold">Visual Identity:</span> Beautiful underwater aesthetics with coral reefs, deep sea trenches, and marine life set the perfect mood for your challenge.</li>
+          <li><span class="font-bold">Responsive Controls:</span> No excuses - every mistake is your own with our tight, responsive control scheme adapted for underwater movement.</li>
           <li><span class="font-bold">Natural Progression:</span> Difficulty rises organically, never feeling unfair, only more demanding.</li>
           <li><span class="font-bold">"One More Try" Feeling:</span> You can't put it down until you succeed - the hallmark of great game design.</li>
+          <li><span class="font-bold">Underwater Physics:</span> Unique water mechanics add a new dimension to the classic Try Not To Rage formula.</li>
         </ul>
         <p class="text-gray-300 mt-4">
-          If you manage to reach the end... you're not just a gamer. You're a survivor.
+          If you manage to reach the end... you're not just a gamer. You're a deep-sea survivor.
         </p>
       </div>
     </div>
@@ -406,14 +426,14 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Feature 1 -->
         <div class="feature-card p-6">
-          <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">25 Challenging Levels</h3>
+          <h3 class="text-xl font-bold text-white mb-2">30 Challenging Levels</h3>
           <p class="text-gray-400">
-            Carefully designed stages with increasing difficulty to test all aspects of your platforming skills.
+            Carefully designed underwater stages with increasing difficulty to test all aspects of your platforming skills.
           </p>
         </div>
         
@@ -424,9 +444,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">Precision Gameplay</h3>
+          <h3 class="text-xl font-bold text-white mb-2">Underwater Physics</h3>
           <p class="text-gray-400">
-            Pixel-perfect jumps and timed movements required to navigate through deadly obstacles.
+            Master buoyancy, currents, and underwater movement for pixel-perfect navigation through aquatic obstacles.
           </p>
         </div>
         
@@ -439,20 +459,20 @@
           </div>
           <h3 class="text-xl font-bold text-white mb-2">Rage-Inducing</h3>
           <p class="text-gray-400">
-            Designed to test your patience with carefully crafted challenges that are hard but fair.
+            Designed to test your patience with carefully crafted underwater challenges that are hard but fair.
           </p>
         </div>
         
         <!-- Feature 4 -->
         <div class="feature-card p-6">
-          <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-2">Unique Visual Style</h3>
           <p class="text-gray-400">
-            Stunning sky-themed aesthetic with clear visual cues to help navigate challenging sections.
+            Stunning underwater aesthetic with coral reefs, deep sea trenches, and marine life to navigate through.
           </p>
         </div>
         
@@ -465,7 +485,7 @@
           </div>
           <h3 class="text-xl font-bold text-white mb-2">Fair Challenge</h3>
           <p class="text-gray-400">
-            Difficult but never unfair - every death teaches you something new about the level.
+            Difficult but never unfair - every death teaches you something new about the underwater level.
           </p>
         </div>
         
@@ -478,13 +498,13 @@
           </div>
           <h3 class="text-xl font-bold text-white mb-2">Speedrun Mode</h3>
           <p class="text-gray-400">
-            Built-in timer and replay system for those who want to compete for the fastest times.
+            Built-in timer and replay system for those who want to compete for the fastest underwater times.
           </p>
         </div>
       </div>
     </div>
   </main>
-
+  
 <!-- Custom Notification -->
 <div id="customNotification" class="notification">
   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 notification-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -563,7 +583,7 @@
     });
 
     document.getElementById('shareButton').addEventListener('click', () => {
-      const urlToCopy = "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share";
+      const urlToCopy = window.location.href;
       
       navigator.clipboard.writeText(urlToCopy).then(() => {
         const notification = document.getElementById('customNotification');
