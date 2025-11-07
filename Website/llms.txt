@@ -1,0 +1,27 @@
+# Site: Greek Games Studios
+# Updated: 2025-09-22
+Short: Greek Games Studios — independent game studio from Thessaloniki, creating unique Roblox and mobile games. But not a company!
+
+## Homepage
+Short: Main landing page with latest news, featured games, and announcements.
+Link: https://greekgamesstudios.com/
+
+## Games
+Short: Showcase of all published and upcoming games by Greek Games Studios.
+Link: https://greekgamesstudios.com/games.html
+
+## Support
+Short: Help center for troubleshooting, FAQs, and player assistance.
+Link: https://greekgamesstudios.com/support.html
+
+## About
+Short: Learn about Greek Games Studios, its history, and the development team.
+Link: https://greekgamesstudios.com/about.html
+
+## Experimentals
+Short: Learn about Greek Games Studios's experimental features.
+Link: https://greekgamesstudios.com/additionalhtmls/experimentals.html
+
+## Contact us
+Short: These are our social media and contact methods.
+Link: https://greekgamesstudios.com/additionalhtmls/contact-us.html

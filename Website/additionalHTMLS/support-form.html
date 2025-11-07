@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Form - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-border {
+      border-image: linear-gradient(90deg, #22d3ee, #a855f7) 1;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .back-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      transform: translateX(-3px);
+    }
+    
+    .form-input {
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+
+  <!-- Back Button Header -->
+  <header class="fixed w-full top-0 left-0 z-40 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 md:h-20">
+        <a href="/support.html" class="back-btn flex items-center text-cyan-400 hover:text-cyan-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Support
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+    <div class="backdrop-blur-lg bg-[#1a1a1a]/80 rounded-3xl p-8 md:p-12 border border-cyan-600/30 shadow-[0_0_40px_#0ff1] animate-fade-in">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6 animate-fade-in">
+          Support Form
+        </h1>
+        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto animate-fade-in"></div>
+      </div>
+
+      <!-- Support Form -->
+      <form name="support-form" method="POST" data-netlify="true" enctype="multipart/form-data">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <input type="hidden" name="form-name" value="support-form">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name *</label>
+            <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject *</label>
+          <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+        </div>
+
+        <div class="mb-8">
+          <label for="game" class="block text-sm font-medium text-gray-400 mb-2">Related Game</label>
+          <select id="game" name="game" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300">
+            <option value="">Select a game</option>
+            <option value="tech-tycoon">Try Not To Rage: Forest</option>
+            <option value="unlimited-roleplay">Unlimited Roleplay (Roblox)</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="mb-8">
+          <label for="issue-type" class="block text-sm font-medium text-gray-400 mb-2">Issue Type *</label>
+          <select id="issue-type" name="issue-type" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required>
+            <option value="">Select issue type</option>
+            <option value="technical">Technical Issue</option>
+            <option value="account">Account Problem</option>
+            <option value="payment">Payment/Billing</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="mb-8">
+          <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Description *</label>
+          <textarea id="message" name="message" rows="6" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" required></textarea>
+        </div>
+
+        <div class="mb-8">
+          <label for="attachments" class="block text-sm font-medium text-gray-400 mb-2">Attachments (Screenshots, Logs, etc.)</label>
+          <input type="file" id="attachments" name="attachments" class="form-input w-full px-4 py-2 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white transition-all duration-300" multiple>
+          <p class="text-xs text-gray-500 mt-2">Maximum file size: 10MB. Supported formats: JPG, PNG, PDF, TXT</p>
+        </div>
+
+        <div class="flex items-center mb-8">
+          <input id="terms" type="checkbox" name="terms" class="w-4 h-4 bg-[#1a1a1a]/50 border border-gray-700/50 rounded focus:ring-cyan-500 focus:ring-2" required>
+          <label for="terms" class="ml-2 text-sm text-gray-400">
+            I agree to the <a href="/privacy-policy.html" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a> and understand my data will be processed according to it.
+          </label>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30">
+            Submit Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-500 text-sm">
+        © <span id="current-year"></span> Greek Games Studios. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Add fade-in animations to elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-fade-in');
+      elements.forEach((el, index) => {
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
+        }, 100);
+      });
+    });
+  </script>
+</body>
+</html>
