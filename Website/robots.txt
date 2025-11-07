@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://greekgamesstudios.com/sitemap.xml
