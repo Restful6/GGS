@@ -195,6 +195,28 @@
     .news-card.delay-4 { transition-delay: 0.4s; }
     .news-card.delay-5 { transition-delay: 0.5s; }
     .news-card.delay-6 { transition-delay: 0.6s; }
+    
+    /* Hide additional news cards initially */
+    .news-card.hidden-news {
+      display: none !important;
+    }
+    
+    /* Show all news cards */
+    .news-card.show-all {
+      display: block !important;
+    }
+    
+    /* View More button styling */
+    .view-more-container {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .view-more-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -348,7 +370,7 @@
         <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mt-6"></div>
       </div>
       
-      <div class="flex flex-col gap-16">
+      <div class="flex flex-col gap-16" id="news-container">
 
 <!-- News Card 10 - Added before existing cards -->
 <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
@@ -524,7 +546,7 @@
                 <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
                   <p class="mb-4">Try Not To Rage: Forest is officially online with the third trailer.</p>
                   <ul class="list-disc pl-5 space-y-2">
-                    <li>Watch the third trailer and learn the character’s back story.</li>
+                    <li>Watch the third trailer and learn the character's back story.</li>
                     <li>Play the game and try not to rage!</li>
                   </ul>
                   <p class="mt-4">Our team is working on the next game for this series.</p>
@@ -596,7 +618,7 @@
         </div>
 
         <!-- News Card 4 - Added before existing cards -->
-        <div class="news-card delay-3 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <div class="news-card hidden-news delay-3 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -636,7 +658,7 @@
         </div>
 
         <!-- News Card 5 - Added before existing cards -->
-        <div class="news-card delay-4 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <div class="news-card hidden-news delay-4 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -676,7 +698,7 @@
         </div>
 
         <!-- News Card 1 -->
-        <div class="news-card delay-5 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <div class="news-card hidden-news delay-5 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -719,7 +741,7 @@
         </div>
 
         <!-- News Card 2 -->
-        <div class="news-card delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <div class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -763,7 +785,7 @@
         </div>
 
         <!-- News Card 3 -->
-        <div class="news-card delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <div class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -805,6 +827,16 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- View More Button Container -->
+        <div id="view-more-container" class="view-more-container text-center">
+          <button id="view-more-btn" class="px-10 py-4 rounded-full bg-gradient-to-r from-cyan-600 to-purple-700 hover:from-cyan-500 hover:to-purple-600 text-lg font-semibold shadow-xl backdrop-blur-lg border border-cyan-400/50 flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50 mx-auto">
+            <span class="relative z-10">View More News</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -896,21 +928,23 @@
 
     // Button shine effect
     const heroButton = document.querySelector('section.relative a');
-    heroButton.addEventListener('mouseenter', () => {
-      const shine = document.createElement('span');
-      shine.className = 'absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent';
-      shine.style.left = '-100%';
-      heroButton.appendChild(shine);
-      
-      setTimeout(() => {
-        shine.style.left = '100%';
-        shine.style.transition = 'left 0.8s ease-out';
-      }, 10);
-      
-      setTimeout(() => {
-        heroButton.removeChild(shine);
-      }, 1000);
-    });
+    if (heroButton) {
+      heroButton.addEventListener('mouseenter', () => {
+        const shine = document.createElement('span');
+        shine.className = 'absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent';
+        shine.style.left = '-100%';
+        heroButton.appendChild(shine);
+        
+        setTimeout(() => {
+          shine.style.left = '100%';
+          shine.style.transition = 'left 0.8s ease-out';
+        }, 10);
+        
+        setTimeout(() => {
+          heroButton.removeChild(shine);
+        }, 1000);
+      });
+    }
 
     // Add staggered fade-in animations to elements
     document.addEventListener('DOMContentLoaded', () => {
@@ -945,9 +979,49 @@
       }
     }
 
+    // View More News functionality
+    function initViewMoreNews() {
+      const viewMoreBtn = document.getElementById('view-more-btn');
+      const viewMoreContainer = document.getElementById('view-more-container');
+      const hiddenNewsCards = document.querySelectorAll('.news-card.hidden-news');
+      const newsContainer = document.getElementById('news-container');
+      
+      if (!viewMoreBtn || !hiddenNewsCards.length) return;
+      
+      // Show view more button initially
+      setTimeout(() => {
+        viewMoreContainer.classList.add('visible');
+      }, 1000);
+      
+      viewMoreBtn.addEventListener('click', function() {
+        // Show all hidden news cards
+        hiddenNewsCards.forEach(card => {
+          card.classList.remove('hidden-news');
+          card.classList.add('show-all');
+          
+          // Trigger animation
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, 100);
+        });
+        
+        // Hide the view more button
+        viewMoreContainer.style.display = 'none';
+        
+        // Scroll to the newly revealed cards
+        setTimeout(() => {
+          hiddenNewsCards[0].scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 300);
+      });
+    }
+
     // Scroll animation for news cards using Intersection Observer
     function initScrollAnimations() {
       const newsCards = document.querySelectorAll('.news-card');
+      const viewMoreContainer = document.getElementById('view-more-container');
       
       const observerOptions = {
         root: null,
@@ -969,11 +1043,17 @@
       newsCards.forEach(card => {
         observer.observe(card);
       });
+      
+      // Observe view more container
+      if (viewMoreContainer) {
+        observer.observe(viewMoreContainer);
+      }
     }
 
-    // Initialize scroll animations when DOM is loaded
+    // Initialize all functionalities when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       initScrollAnimations();
+      initViewMoreNews();
     });
 
     // Performance optimization: Use requestAnimationFrame for animations
@@ -992,60 +1072,64 @@
         requestAnimationFrame(updateOnScroll);
         ticking = true;
       }
+    });
 
-          // Back to top button functionality
+    // Back to top button functionality
     const backToTopButton = document.getElementById('backToTop');
     
     // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) {
-        backToTopButton.classList.remove('opacity-0', 'scale-0');
-        backToTopButton.classList.add('opacity-100', 'scale-100');
-      } else {
-        backToTopButton.classList.remove('opacity-100', 'scale-100');
-        backToTopButton.classList.add('opacity-0', 'scale-0');
+      if (backToTopButton) {
+        if (window.scrollY > 500) {
+          backToTopButton.classList.remove('opacity-0', 'scale-0');
+          backToTopButton.classList.add('opacity-100', 'scale-100');
+        } else {
+          backToTopButton.classList.remove('opacity-100', 'scale-100');
+          backToTopButton.classList.add('opacity-0', 'scale-0');
+        }
       }
     });
     
     // Scroll to top when clicked
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    if (backToTopButton) {
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
-    });
-    });
+    }
 
     // Notification Bar functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const notificationBar = document.getElementById('notification-bar');
-  const closeNotification = document.getElementById('close-notification');
-  
-  // Check if user has previously dismissed the notification
-  const notificationDismissed = localStorage.getItem('notificationDismissed');
-  
-  // Show notification after a short delay if not previously dismissed
-  if (!notificationDismissed) {
-    setTimeout(() => {
-      notificationBar.classList.remove('transform', '-translate-y-full');
-      notificationBar.classList.add('translate-y-0');
-    }, 1500);
-  }
-  
-  // Close notification functionality
-  if (closeNotification) {
-    closeNotification.addEventListener('click', function() {
-      notificationBar.classList.add('transform', '-translate-y-full');
-      notificationBar.classList.remove('translate-y-0');
+    document.addEventListener('DOMContentLoaded', function() {
+      const notificationBar = document.getElementById('notification-bar');
+      const closeNotification = document.getElementById('close-notification');
       
-      // Remember user's choice for 24 hours
-      localStorage.setItem('notificationDismissed', 'true');
-      setTimeout(() => {
-        localStorage.removeItem('notificationDismissed');
-      }, 24 * 60 * 60 * 1000); // 24 hours
+      // Check if user has previously dismissed the notification
+      const notificationDismissed = localStorage.getItem('notificationDismissed');
+      
+      // Show notification after a short delay if not previously dismissed
+      if (!notificationDismissed) {
+        setTimeout(() => {
+          notificationBar.classList.remove('transform', '-translate-y-full');
+          notificationBar.classList.add('translate-y-0');
+        }, 1500);
+      }
+      
+      // Close notification functionality
+      if (closeNotification) {
+        closeNotification.addEventListener('click', function() {
+          notificationBar.classList.add('transform', '-translate-y-full');
+          notificationBar.classList.remove('translate-y-0');
+          
+          // Remember user's choice for 24 hours
+          localStorage.setItem('notificationDismissed', 'true');
+          setTimeout(() => {
+            localStorage.removeItem('notificationDismissed');
+          }, 24 * 60 * 60 * 1000); // 24 hours
+        });
+      }
     });
-  }
-});
   </script>
 </body>
 </html>
