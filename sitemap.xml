@@ -16,4 +16,16 @@
     <loc>https://greekgamesstudios.com/support.html</loc>
     <priority>0.50</priority>
   </url>
+    <url>
+    <loc>https://greekgamesstudios.com/contact-us.html</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://greekgamesstudios.com/privacy-policy.html</loc>
+    <priority>0.40</priority>
+  </url>
+    <url>
+    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html</loc>
+    <priority>0.80</priority>
+  </url>
 </urlset>

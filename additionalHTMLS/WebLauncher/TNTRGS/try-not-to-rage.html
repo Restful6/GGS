@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="try not to rage, greek games studios, greekgamesstudios, ggs, mini games">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try Not To Rage Game Series - Greek Games Studios</title>
+  <link rel="icon" type="png" href="/images/ggs-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #0d0d0d 0%, #111 50%, #0d0d0d 100%);
+      min-height: 100vh;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-left {
+      animation: slideInLeft 0.5s ease-out forwards;
+    }
+    
+    .slide-in-right {
+      animation: slideInRight 0.5s ease-out forwards;
+    }
+    
+    /* Game Cards */
+    .game-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(0, 255, 255, 0.15);
+    }
+    
+    /* Demo Game Container */
+    .demo-game-container {
+      width: 100%;
+      height: 800px;
+      background: linear-gradient(145deg, #1a1a1a, #151515);
+      border-radius: 1rem;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .demo-header {
+      background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .demo-iframe {
+      width: 100%;
+      height: calc(100% - 60px);
+      border: none;
+    }
+    
+    .demo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100% - 60px);
+      color: #666;
+    }
+    
+    /* Download Buttons */
+    .download-button {
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    
+    .download-button.forest {
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      border: 2px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+    
+    .download-button.sky {
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      color: #3b82f6;
+    }
+    
+    .download-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .download-button:hover::before {
+      left: 100%;
+    }
+    
+    .download-button.forest:hover {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.6);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+    }
+    
+    .download-button.sky:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.6);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* Game Info Buttons */
+    .info-button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      font-size: 0.9rem;
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      color: #a855f7;
+    }
+    
+    .info-button:hover {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.6);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+    }
+    
+    /* Info Cards */
+    .info-card {
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      border-radius: 1rem;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #22d3ee, #a855f7);
+    }
+    
+    .info-card:hover {
+      border-color: rgba(34, 211, 238, 0.3);
+      transform: translateY(-5px);
+    }
+    
+    /* Behind the Scenes Gallery */
+    .behind-scenes-gallery {
+      width: 100%;
+      overflow-x: auto;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(34, 211, 238, 0.5) rgba(30, 30, 30, 0.5);
+    }
+    
+    .behind-scenes-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .behind-scenes-gallery::-webkit-scrollbar-track {
+      background: rgba(30, 30, 30, 0.5);
+      border-radius: 4px;
+    }
+    
+    .behind-scenes-gallery::-webkit-scrollbar-thumb {
+      background: rgba(34, 211, 238, 0.5);
+      border-radius: 4px;
+    }
+    
+    .behind-scenes-gallery::-webkit-scrollbar-thumb:hover {
+      background: rgba(34, 211, 238, 0.7);
+    }
+    
+    .gallery-container {
+      display: flex;
+      gap: 1rem;
+      min-width: min-content;
+    }
+    
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 300px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      background: #1a1a1a;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34, 211, 238, 0.6);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.1);
+    }
+    
+    .gallery-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    }
+    
+    .gallery-caption {
+      padding: 1rem;
+      background: #1a1a1a;
+    }
+    
+    /* Section Divider */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.5), transparent);
+      margin: 3rem 0;
+    }
+    
+    /* Games Grid */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    /* Play Button */
+    .play-button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(145deg, #1e1e1e, #1a1a1a);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 0.75rem;
+      color: #10b981;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .play-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .play-button:hover::before {
+      left: 100%;
+    }
+    
+    .play-button:hover {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.6);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .demo-game-container {
+        min-height: 500px;
+      }
+      
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .info-card {
+        padding: 1.5rem;
+      }
+      
+      .gallery-item {
+        width: 280px;
+      }
+      
+      .download-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-300 overflow-x-hidden">
+
+<!-- Simple Header -->
+<header class="w-full py-4 px-6 border-b border-cyan-500/20">
+  <div class="max-w-7xl mx-auto">
+    <div class="header-content flex justify-between items-center">
+      <!-- Back Button -->
+      <a href="/additionalHTMLS/WebLauncher/play-and-demos.html#demos" class="px-4 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] border border-cyan-500/30 text-cyan-400 font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Demos
+      </a>
+      
+      <!-- Logo -->
+      <div class="logo-section flex items-center">
+        <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="py-8 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+  <!-- Page Header -->
+  <div class="text-center mb-12 animate-fade-in">
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <div class="px-3 py-1 text-xs font-semibold bg-green-500/20 text-green-400 rounded-full">AVAILABLE NOW</div>
+      <div class="px-3 py-1 text-xs font-semibold bg-cyan-500/20 text-cyan-400 rounded-full">ANDROID</div>
+    </div>
+    
+    <h1 class="flex flex-wrap items-center justify-center gap-4 text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+      <span class="gradient-text">Try Not To Rage</span>
+    </h1>
+    <p class="text-xl text-gray-400 mb-6 max-w-3xl mx-auto">
+      The ultimate challenge series where patience is your only weapon. Available now on Google Play!
+    </p>
+    <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mt-6"></div>
+  </div>
+
+  <!-- Web Prototype Section -->
+  <section class="mb-16 animate-fade-in">
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 text-center">Web Prototype</h2>
+    <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+      Try the web prototype to experience the core gameplay mechanics. A preview of what you'll find in the full mobile games.
+    </p>
+    
+    <div class="demo-game-container slide-in-left">
+      <div class="demo-header">
+        <div class="text-white font-bold">Try Not To Rage - Web Prototype</div>
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+      </div>
+      
+      <!-- ΑΝΤΙΚΑΤΕΣΤΗΣΕ ΜΕ ΤΟ ΠΡΑΓΜΑΤΙΚΟ GAME IFRAME -->
+      <div id="game-frame" class="demo-iframe">
+        <iframe src="Game.html" class="w-full h-full border-0"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Download Games Section -->
+  <section class="mb-16 animate-fade-in">
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 text-center">Download Full Games</h2>
+    <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+      Experience the complete games with all features, levels, and content. Available on Google Play Store.
+    </p>
+    
+    <div class="games-grid">
+      <!-- Try Not To Rage: Forest -->
+      <div class="game-card slide-in-left">
+        <div class="p-6 text-center">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-xl bg-gradient-to-br from-green-900/30 to-green-600/20 flex items-center justify-center overflow-hidden">
+            <!-- Replace with your Forest logo -->
+            <img src="/images/try-not-to-rage-forest.png" alt="Try Not To Rage: Forest Logo" class="w-full h-full object-contain p-2">
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Try Not To Rage: Forest</h3>
+          <p class="text-gray-400 mb-6">
+            Available on Google Play.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest" target="_blank" class="download-button forest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Try Not To Rage: Sky -->
+      <div class="game-card slide-in-right">
+        <div class="p-6 text-center">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-xl bg-gradient-to-br from-blue-900/30 to-blue-600/20 flex items-center justify-center overflow-hidden">
+            <!-- Replace with your Sky logo -->
+            <img src="/images/try-not-to-rage-sky.png" alt="Try Not To Rage: Sky Logo" class="w-full h-full object-contain p-2">
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Try Not To Rage: Sky</h3>
+          <p class="text-gray-400 mb-6">
+            Available on Google Play.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky" target="_blank" class="download-button sky">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- About the Series Section -->
+  <section class="mb-16 slide-in-right">
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 text-center">About the Series</h2>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <!-- Game Pages -->
+      <div class="info-card">
+        <h3 class="text-xl font-bold text-white mb-4">More Information</h3>
+        <p class="text-gray-400 mb-6">
+          Visit the dedicated pages for each game in the series to learn more about their features, gameplay, and content.
+        </p>
+        
+        <div class="flex flex-col gap-4">
+          <a href="/additionalHTMLS/Infos/NTRF-info.html" target="_blank" class="info-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Try Not To Rage: Forest
+          </a>
+          
+          <a href="/additionalHTMLS/Infos/TNTRS-info.html" target="_blank" class="info-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Try Not To Rage: Sky
+          </a>
+        </div>
+      </div>
+      
+      <!-- Series Concept -->
+      <div class="info-card">
+        <h3 class="text-xl font-bold text-white mb-4">Series Concept</h3>
+        <p class="text-gray-400 mb-4">
+          "Try Not To Rage" is a challenging game series that tests players patience, precision, and skill. 
+          Each game offers environments and obstacles designed to push your limits while maintaining fair gameplay.
+        </p>
+        <p class="text-gray-400">
+          The series is dedicated to getting on your nerves. 
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="px-3 py-1 text-xs font-semibold bg-red-500/20 text-red-400 rounded-full">Challenging</span>
+          <span class="px-3 py-1 text-xs font-semibold bg-yellow-500/20 text-yellow-400 rounded-full">Precision</span>
+          <span class="px-3 py-1 text-xs font-semibold bg-purple-500/20 text-purple-400 rounded-full">Fair Gameplay</span>
+        </div>
+      </div>
+    </div>
+
+<!-- Behind the Scenes Section -->
+<div>
+  <h3 class="text-xl font-bold text-white mb-6 text-center">Behind the Scenes</h3>
+  <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+    Take a look at the development process, concept art, and special moments from creating the Try Not To Rage series.
+  </p>
+  
+  <!-- Horizontal Scrollable Gallery -->
+  <div class="behind-scenes-gallery">
+    <div class="gallery-container">
+      <!-- Gallery Item 1 -->
+      <div class="gallery-item">
+        <img src="/images/LevelDesign.png" alt="Initial Concept Art for Try Not To Rage" class="gallery-image">
+        <div class="gallery-caption">
+          <p class="text-white font-medium mb-1">Game Design</p>
+          <p class="text-gray-500 text-sm">Early boards and ideas for the forest environment</p>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 2 -->
+      <div class="gallery-item">
+        <img src="/images/GameDev.png" alt="Level Design Process" class="gallery-image">
+        <div class="gallery-caption">
+          <p class="text-white font-medium mb-1">Level Design Process</p>
+          <p class="text-gray-500 text-sm">Creating challenging yet fair obstacle layouts</p>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 3 -->
+      <div class="gallery-item">
+        <img src="/images/UIDesign.png" alt="UI Development Screenshot" class="gallery-image">
+        <div class="gallery-caption">
+          <p class="text-white font-medium mb-1">UI Development</p>
+          <p class="text-gray-500 text-sm">Designing intuitive controls and interface elements</p>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 4 -->
+      <div class="gallery-item">
+        <img src="/images/Testing.png" alt="Game Testing Session" class="gallery-image">
+        <div class="gallery-caption">
+          <p class="text-white font-medium mb-1">Testing & Balancing</p>
+          <p class="text-gray-500 text-sm">Fine-tuning difficulty and gameplay mechanics</p>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 5 -->
+      <div class="gallery-item">
+        <img src="/images/EarlyMusicDesign.png" alt="Sound Design Process" class="gallery-image">
+        <div class="gallery-caption">
+          <p class="text-white font-medium mb-1">Sound Design</p>
+          <p class="text-gray-500 text-sm">Creating immersive audio experiences</p>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 6 -->
+      <div class="gallery-item">
+        <img src="/images/TeamCollaboration.png" alt="Team Collaboration" class="gallery-image">
+        <div class="gallery-caption">
+          <p class="text-white font-medium mb-1">Team Collaboration</p>
+          <p class="text-gray-500 text-sm">Working together to bring the games to life</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <p class="text-gray-500 text-sm text-center mt-4">Scroll horizontally to view more behind the scenes content</p>
+</div>
+
+<!-- Footer -->
+<footer class="py-8 px-6 border-t border-gray-800/50 animate-fade-in">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col items-center space-y-4">
+      <p class="text-gray-500 text-sm text-center">
+        © <span id="current-year"></span> Try Not To Rage Game Series - Greek Games Studios
+      </p>
+      <div class="flex space-x-4">
+        <a href="/index.html" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300 text-sm">
+          Main Site
+        </a>
+        <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300 text-sm">
+          Play & Demos
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Set current year
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  // Add fade-in animations to elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.animate-fade-in');
+    elements.forEach((el, index) => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.animation = `fadeIn 0.8s ease-out ${index * 0.1}s forwards`;
+      }, 100);
+    });
+    
+    // Add slide animations
+    const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-right');
+    slideElements.forEach((el, index) => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.animation = `${el.classList.contains('slide-in-left') ? 'slideInLeft' : 'slideInRight'} 0.5s ease-out ${index * 0.2}s forwards`;
+      }, 300);
+    });
+  });
+
+  // Load prototype function (placeholder)
+  function loadPrototype() {
+    const gameFrame = document.getElementById('game-frame');
+    const placeholder = gameFrame.querySelector('.demo-placeholder');
+    
+    if (placeholder) {
+      // Show loading state
+      placeholder.innerHTML = `
+        <div class="text-center">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-500 mb-4"></div>
+          <h3 class="text-xl font-bold text-gray-600 mb-2">Loading Prototype...</h3>
+          <p class="text-gray-500">The game prototype is being loaded. Please wait.</p>
+        </div>
+      `;
+      
+      // Simulate loading (replace with actual game load)
+      setTimeout(() => {
+        // This is where you would load your actual game
+        // For now, we'll show a message
+        placeholder.innerHTML = `
+          <div class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="text-xl font-bold text-white mb-2">Prototype Ready</h3>
+            <p class="text-gray-400 mb-4 max-w-md">The game prototype would load here. In a real implementation, this would be an iframe or embedded game.</p>
+            <div class="text-sm text-gray-500">Replace this with your actual game implementation</div>
+          </div>
+        `;
+      }, 1500);
+    }
+  }
+</script>
+</body>
+</html>

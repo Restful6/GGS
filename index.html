@@ -98,7 +98,23 @@
     
     .animate-fade-in {
       opacity: 0;
-      animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    /* ANIMATED GRADIENT for HERO TITLE - SLOWER */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .animate-gradient-text {
+      background: linear-gradient(270deg, #00ffff, #a855f7, #ec4899, #a855f7, #00ffff);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 20s ease infinite; /* Αργή κίνηση 12 δευτερόλεπτα */
     }
     
     .current-page {
@@ -237,29 +253,29 @@
           <a href="#home" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-300 group">
             Home
           </a>
-          <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
             Games
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </a>
-          <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
             Contact Us
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </a>
-          <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
             Support
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </a>
-          <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 animate-fade-in">
+          <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105">
             Experimentals
           </a>
-          <a href='/privacy-policy.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group animate-fade-in">
+          <a href='/privacy-policy.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
             Privacy Policy
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </a>
         </nav>
 
         <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group">
           <div class="relative w-6 h-6">
             <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
             <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
@@ -275,19 +291,19 @@
         <a href="#home" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-300">
           Home
         </a>
-        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
           Games
         </a>
-        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
           Contact Us
         </a>
-        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
           Support
         </a>
-        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">
+        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
           Experimentals
         </a>
-        <a href='/privacy-policy.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2 animate-fade-in">
+        <a href='/privacy-policy.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
           Privacy Policy
         </a>
       </div>
@@ -307,12 +323,12 @@
       
       <!-- Notification Text -->
       <p class="text-white text-sm md:text-base">
-        <span class="font-medium">Celebrating 1 year as a team!</span> 
-        <span class="text-gray-200">Check out our games.</span>
+        <span class="font-medium">Play & demos beta is out!</span> 
+        <span class="text-gray-200">Check it out.</span>
       </p>
       
       <!-- Notification Button -->
-      <a href="https://play.google.com/store/apps/dev?id=6360566859808386955&hl=en" class="ml-4 flex-shrink-0 px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-full transition-colors duration-300">
+      <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="ml-4 flex-shrink-0 px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-full transition-colors duration-300">
         Check it
       </a>
     </div>
@@ -341,12 +357,13 @@
     <div class="floating-particle top-1/3 right-1/3 w-4 h-4 bg-purple-500 opacity-60" style="animation: float2 10s ease-in-out infinite 1s;"></div>
     
     <div class="relative z-10">
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-fade-in">
+      <!-- H1 WITH ANIMATED GRADIENT - SLOW, SAME FADE-IN TIMING AS OTHERS -->
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight animate-gradient-text animate-fade-in">
         Greek Games Studios™
       </h1>
       
       <p class="text-lg md:text-2xl text-gray-300 mt-6 mb-10 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s">
-        Welcome to the future of Greek game development. Crafting immersive experiences that push boundaries.
+        Welcome to our website. Discover our latest news and play our games.
       </p>
       
       <div class="relative animate-fade-in" style="animation-delay: 0.4s">
@@ -372,159 +389,208 @@
       
       <div class="flex flex-col gap-16" id="news-container">
 
-<!-- News Card 10 - Added before existing cards -->
-<div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-  <div class="relative z-20">
-    <div class="overflow-hidden">
-      <img src="/images/TRY_NOT_TO_RAGE_SKY1.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-    </div>
-    <div class="p-8">
-      <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-        <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-        October 12, 2025
-      </span>
-      <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-        Try Not To Rage: Sky Official Release!
-      </h3>
-      <div class="news-content" id="news-content-10">
-        <p class="text-gray-300 text-lg leading-relaxed">
-          The long-awaited <strong>Try Not To Rage: Sky</strong> is finally here! The newest game in the <strong>Try Not To Rage</strong> series is now officially available on the <strong>Google Play Store</strong>.
-        </p>
-        <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-          <p class="mb-4">
-            Take your rage challenge to the skies with brand new levels, smoother gameplay, and improved visuals designed to push your patience to the limit.
-          </p>
-          <p class="mb-4">
-            Compete against yourself, test your reflexes, and experience the next evolution of the series that started it all.
-          </p>
-          <p class="mb-4">
-            Download <strong>Try Not To Rage: Sky</strong> today on the <strong>Google Play Store</strong> and see if you can reach the top without losing control!
-          </p>
-          <p class="mt-4">
-            <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share" target="_blank" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 8-16 8V4z" />
-              </svg>
-              Play on Google Play
-            </a>
-          </p>
-        </div>
-      </div>
-      <div class="mt-6">
-        <button onclick="toggleReadMore('news-content-10', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-          <span class="more-text">Read More</span>
-          <span class="less-text">Show Less</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-        <!-- News Card 9 - Added before existing cards -->
-<div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-  <div class="relative z-20">
-    <div class="overflow-hidden">
-      <img src="/images/Monetization.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-    </div>
-    <div class="p-8">
-      <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-        <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-        October 4, 2025
-      </span>
-      <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-        Monetization Is Now Live!
-      </h3>
-      <div class="news-content" id="news-content-9">
-        <p class="text-gray-300 text-lg leading-relaxed">
-          Monetization is now live in our game <strong>Try Not To Rage: Forest</strong> and will gradually be added to all our future titles.
-        </p>
-        <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-          <p class="mb-4">
-            By choosing to watch a few ads, you can support us completely for free and help us keep creating new experiences for everyone.
-          </p>
-          <p class="mb-4">
-            The next <strong>Try Not To Rage</strong> game is also coming very soon. While there are still some small issues to be resolved, our team is working daily to fix them as quickly as possible.
-          </p>
-          <p class="mt-4">
-            Thank you for your continued support.
-          </p>
-        </div>
-      </div>
-      <div class="mt-6">
-        <button onclick="toggleReadMore('news-content-9', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-          <span class="more-text">Read More</span>
-          <span class="less-text">Show Less</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-        <!-- News Card 8 - Added before existing cards -->
-<div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-  <div class="relative z-20">
-    <div class="overflow-hidden">
-      <img src="/images/WeAreSorry.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-    </div>
-    <div class="p-8">
-      <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-        <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-        October 1, 2025
-      </span>
-      <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-        Development Update: Monetization & Delays
-      </h3>
-      <div class="news-content" id="news-content-8">
-        <p class="text-gray-300 text-lg leading-relaxed">
-          At Greek Games Studios, we are currently working on an important new step for our games: implementing in-app monetization.
-        </p>
-        <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-          <p class="mb-4">
-            This means that players will soon be able to experience our games not only as free releases but also with new ways to support our work and access extra features.
-          </p>
-          <p class="mb-4">
-            However, while setting this up we have encountered several technical issues, including Gradle failures, permissions, and other unexpected obstacles.
-          </p>
-          <p class="mb-4">
-            Because of these challenges, the final monetization update for <strong>Try Not To Rage: Forest</strong>, the release of <strong>Try Not To Rage: Sky</strong>, as well as other projects in progress will unfortunately face delays.
-          </p>
-          <p class="mb-4">
-            As a small team, we cannot make everything happen overnight, but we are working every single day to solve these problems and move forward.
-          </p>
-          <p class="mt-4">
-            We sincerely apologize for these delays and thank you for your patience and continued support.
-          </p>
-        </div>
-      </div>
-      <div class="mt-6">
-        <button onclick="toggleReadMore('news-content-8', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-          <span class="more-text">Read More</span>
-          <span class="less-text">Show Less</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-        <!-- News Card 7 - Added before existing cards -->
+        <!-- NEW NEWS CARD 11 - Play & Demos Official Release (Most Recent) -->
         <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+          <div class="relative z-20">
+            <div class="overflow-hidden">
+              <img src="/images/P&DRelease.png" alt="Play & Demos Release" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                February 20, 2026
+              </span>
+              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
+                Play & Demos Is Now Live!
+              </h3>
+              <div class="news-content" id="news-content-11">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  We are proud to announce that Play & Demos is now live on our website.
+                </p>
+                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
+                  <p class="mb-4">
+                    Through Play & Demos, you can access and play our mini games, as well as selected prototypes and demos from games we have already released. This allows you to explore our work, our ideas, and parts of the development process.
+                  </p>
+                  <p class="mb-4">
+                    This is an important milestone for us and we will continue to expand it with more content over time. We look forward to your feedback.
+                  </p>
+                  <p class="mt-4">
+                    <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Play Now
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <button onclick="toggleReadMore('news-content-11', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
+                  <span class="more-text">Read More</span>
+                  <span class="less-text">Show Less</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 10 - Try Not To Rage: Sky Official Release -->
+        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+          <div class="relative z-20">
+            <div class="overflow-hidden">
+              <img src="/images/TRY_NOT_TO_RAGE_SKY1.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                October 12, 2025
+              </span>
+              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
+                Try Not To Rage: Sky Official Release!
+              </h3>
+              <div class="news-content" id="news-content-10">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  The long-awaited <strong>Try Not To Rage: Sky</strong> is finally here! The newest game in the <strong>Try Not To Rage</strong> series is now officially available on the <strong>Google Play Store</strong>.
+                </p>
+                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
+                  <p class="mb-4">
+                    Take your rage challenge to the skies with brand new levels, smoother gameplay, and improved visuals designed to push your patience to the limit.
+                  </p>
+                  <p class="mb-4">
+                    Compete against yourself, test your reflexes, and experience the next evolution of the series that started it all.
+                  </p>
+                  <p class="mb-4">
+                    Download <strong>Try Not To Rage: Sky</strong> today on the <strong>Google Play Store</strong> and see if you can reach the top without losing control!
+                  </p>
+                  <p class="mt-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share" target="_blank" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 8-16 8V4z" />
+                      </svg>
+                      Play on Google Play
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <button onclick="toggleReadMore('news-content-10', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
+                  <span class="more-text">Read More</span>
+                  <span class="less-text">Show Less</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 9 - Monetization Is Now Live! -->
+        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+          <div class="relative z-20">
+            <div class="overflow-hidden">
+              <img src="/images/Monetization.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                October 4, 2025
+              </span>
+              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
+                Monetization Is Now Live!
+              </h3>
+              <div class="news-content" id="news-content-9">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  Monetization is now live in our game <strong>Try Not To Rage: Forest</strong> and will gradually be added to all our future titles.
+                </p>
+                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
+                  <p class="mb-4">
+                    By choosing to watch a few ads, you can support us completely for free and help us keep creating new experiences for everyone.
+                  </p>
+                  <p class="mb-4">
+                    The next <strong>Try Not To Rage</strong> game is also coming very soon. While there are still some small issues to be resolved, our team is working daily to fix them as quickly as possible.
+                  </p>
+                  <p class="mt-4">
+                    Thank you for your continued support.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <button onclick="toggleReadMore('news-content-9', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
+                  <span class="more-text">Read More</span>
+                  <span class="less-text">Show Less</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 8 - Development Update: Monetization & Delays -->
+        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+          <div class="relative z-20">
+            <div class="overflow-hidden">
+              <img src="/images/WeAreSorry.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                October 1, 2025
+              </span>
+              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
+                Development Update: Monetization & Delays
+              </h3>
+              <div class="news-content" id="news-content-8">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  At Greek Games Studios, we are currently working on an important new step for our games: implementing in-app monetization.
+                </p>
+                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
+                  <p class="mb-4">
+                    This means that players will soon be able to experience our games not only as free releases but also with new ways to support our work and access extra features.
+                  </p>
+                  <p class="mb-4">
+                    However, while setting this up we have encountered several technical issues, including Gradle failures, permissions, and other unexpected obstacles.
+                  </p>
+                  <p class="mb-4">
+                    Because of these challenges, the final monetization update for <strong>Try Not To Rage: Forest</strong>, the release of <strong>Try Not To Rage: Sky</strong>, as well as other projects in progress will unfortunately face delays.
+                  </p>
+                  <p class="mb-4">
+                    As a small team, we cannot make everything happen overnight, but we are working every single day to solve these problems and move forward.
+                  </p>
+                  <p class="mt-4">
+                    We sincerely apologize for these delays and thank you for your patience and continued support.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <button onclick="toggleReadMore('news-content-8', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
+                  <span class="more-text">Read More</span>
+                  <span class="less-text">Show Less</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 7 - Try Not To Rage: Forest Release (HIDDEN initially) -->
+        <div class="news-card hidden-news delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -550,16 +616,16 @@
                     <li>Play the game and try not to rage!</li>
                   </ul>
                   <p class="mt-4">Our team is working on the next game for this series.</p>
-          <p class="mt-4">
-            <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest" target="_blank" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 8-16 8V4z" />
-              </svg>
-              Play on Google Play
-            </a>
-          </p>
-        </div>
-      </div>
+                  <p class="mt-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest" target="_blank" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 8-16 8V4z" />
+                      </svg>
+                      Play on Google Play
+                    </a>
+                  </p>
+                </div>
+              </div>
               <div class="mt-6">
                 <button onclick="toggleReadMore('news-content-7', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
                   <span class="more-text">Read More</span>
@@ -573,9 +639,8 @@
           </div>
         </div>
 
-
-        <!-- News Card 6 - Added before existing cards -->
-        <div class="news-card delay-2 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <!-- News Card 6 - Try Not To Rage: Forest Delay (HIDDEN initially) -->
+        <div class="news-card hidden-news delay-2 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
@@ -617,7 +682,7 @@
           </div>
         </div>
 
-        <!-- News Card 4 - Added before existing cards -->
+        <!-- News Card 4 - Try Not To Rage: Forest Second Trailer (HIDDEN initially) -->
         <div class="news-card hidden-news delay-3 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
@@ -657,7 +722,7 @@
           </div>
         </div>
 
-        <!-- News Card 5 - Added before existing cards -->
+        <!-- News Card 5 - Try Not To Rage: Forest First Trailer (HIDDEN initially) -->
         <div class="news-card hidden-news delay-4 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
@@ -697,7 +762,7 @@
           </div>
         </div>
 
-        <!-- News Card 1 -->
+        <!-- News Card 1 - Announces (HIDDEN initially) -->
         <div class="news-card hidden-news delay-5 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
@@ -740,7 +805,7 @@
           </div>
         </div>
 
-        <!-- News Card 2 -->
+        <!-- News Card 2 - NEXIS AI (HIDDEN initially) -->
         <div class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
@@ -784,7 +849,7 @@
           </div>
         </div>
 
-        <!-- News Card 3 -->
+        <!-- News Card 3 - Unlimited Roleplay Roblox (HIDDEN initially) -->
         <div class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
@@ -957,7 +1022,7 @@
         // Animate with requestAnimationFrame for smoother performance
         requestAnimationFrame(() => {
           setTimeout(() => {
-            el.style.transition = `opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
+            el.style.transition = `opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
           }, 50);

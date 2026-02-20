@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NEON TAC TOE</title>
+<link rel="icon" type="png" href="/images/WebNeon-Tac-ToeLogo.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@600&display=swap');
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 4rem;
+    text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    margin-bottom: 10px;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 20px #0ff, 0 0 40px #0ff; }
+    to { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
+  }
+
+  .menu { margin-bottom: 30px; text-align: center; }
+
+  button {
+    background: rgba(0, 255, 255, 0.2);
+    border: 2px solid #0ff;
+    color: #0ff;
+    padding: 12px 30px;
+    margin: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #0ff;
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    background: #0ff;
+    color: #000;
+    transform: scale(1.1);
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-gap: 15px;
+    margin: 30px;
+    perspective: 1000px;
+  }
+
+  .cell {
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 3px solid #0ff;
+    border-radius: 15px;
+    font-size: 4.5rem;
+    color: #0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: inset 0 0 20px #0ff, 0 0 20px #000;
+    transition: all 0.4s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .cell:hover { background: rgba(0, 255, 255, 0.3); transform: translateZ(20px); }
+
+  .cell.x { color: #ff00aa; text-shadow: 0 0 20px #ff00aa; }
+  .cell.o { color: #00ff00; text-shadow: 0 0 20px #00ff00; }
+
+  .cell.winner {
+    background: linear-gradient(45deg, #ff00aa, #00ffff) !important;
+    animation: winPulse 1.5s infinite;
+    border: 4px solid #fff !important;
+    box-shadow: 0 0 40px #fff, 0 0 80px #0ff !important;
+  }
+
+  @keyframes winPulse {
+    0% { transform: scale(1) translateZ(30px); }
+    50% { transform: scale(1.15) translateZ(50px); }
+    100% { transform: scale(1) translateZ(30px); }
+  }
+
+  .status {
+    font-size: 2rem;
+    margin: 20px;
+    text-shadow: 0 0 15px #0ff;
+  }
+
+  .winner-text { color: #ff00aa; animation: pulse 1s infinite; }
+
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+  .reset { margin-top: 30px; }
+
+  .powered {
+    margin-top: 20px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.1rem;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    letter-spacing: 2px;
+  }
+
+  .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+</style>
+</head>
+<body>
+
+<h1>NEON TAC TOE</h1>
+
+<div class="menu" id="menu">
+  <button onclick="startGame(1)">1 PLAYER (vs AI)</button>
+  <button onclick="startGame(2)">2 PLAYERS</button>
+  <div class="powered">Powered by <span style="color:#00ff00;">Greek Games Studios</span></div>
+</div>
+
+<div id="game" style="display:none; text-align:center;">
+  <div class="status" id="status">Player X's turn</div>
+  <div class="board" id="board"></div>
+  <button class="reset" onclick="resetGame()">NEW GAME</button>
+</div>
+
+<canvas class="particles" id="particles"></canvas>
+
+<script>
+// Particles (ίδιο)
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+let particlesArray = [];
+class Particle {
+  constructor(){ this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1; this.speedX = Math.random() * 1 - 0.5; this.speedY = Math.random() * 1 - 0.5; }
+  update(){ this.x += this.speedX; this.y += this.speedY; if (this.size > 0.2) this.size -= 0.01; }
+  draw(){ ctx.fillStyle = 'rgba(0,255,255,0.8)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+}
+function initParticles(){ for(let i=0;i<120;i++) particlesArray.push(new Particle()); }
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach((p,i) => { p.update(); p.draw();
+    if (p.size <= 0.2){ particlesArray.splice(i,1); particlesArray.push(new Particle()); }
+  });
+  requestAnimationFrame(animateParticles);
+}
+initParticles(); animateParticles();
+window.addEventListener('resize', ()=>{ canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+// Game logic
+let board = ['', '', '', '', '', '', '', '', ''];
+let currentPlayer = 'X';
+let gameActive = false;
+let gameMode = 0;
+
+const winningConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const statusDisplay = document.getElementById('status');
+const gameDiv = document.getElementById('game');
+const menuDiv = document.getElementById('menu');
+
+function startGame(mode) {
+  gameMode = mode; board = ['', '', '', '', '', '', '', '', '']; currentPlayer = 'X'; gameActive = true;
+  statusDisplay.innerHTML = `Player ${currentPlayer}'s turn`; statusDisplay.classList.remove('winner-text');
+  menuDiv.style.display = 'none'; gameDiv.style.display = 'block';
+  document.getElementById('board').innerHTML = '';
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell'); cell.setAttribute('data-index', i);
+    cell.addEventListener('click', handleCellClick);
+    document.getElementById('board').appendChild(cell);
+  }
+}
+
+function handleCellClick(e) {
+  const index = parseInt(e.target.getAttribute('data-index'));
+  if (board[index] !== '' || !gameActive) return;
+  makeMove(index, currentPlayer);
+  if (gameActive && gameMode === 1 && currentPlayer === 'O') setTimeout(aiMove, 600);
+}
+
+function makeMove(index, player) {
+  board[index] = player;
+  const cell = document.querySelector(`.cell[data-index="${index}"]`);
+  cell.textContent = player; cell.classList.add(player.toLowerCase());
+
+  const winningCombo = checkWinner(player);
+  if (winningCombo) {
+    statusDisplay.innerHTML = `Player ${player} WINS! 🎉`;
+    statusDisplay.classList.add('winner-text'); gameActive = false;
+    winningCombo.forEach(i => document.querySelector(`.cell[data-index="${i}"]`).classList.add('winner'));
+    return;
+  }
+  if (!board.includes('')) { statusDisplay.textContent = "It's a DRAW!"; gameActive = false; return; }
+
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  statusDisplay.innerHTML = (gameMode === 1 && currentPlayer === 'O') ? "AI thinking..." : `Player ${currentPlayer}'s turn`;
+}
+
+function checkWinner(player) {
+  for (let c of winningConditions) {
+    if (c.every(i => board[i] === player)) return c;
+  }
+  return false;
+}
+
+// ΝΕΟ AI — νικιέται εύκολα
+function aiMove() {
+  // 50% πιθανότητα να παίξει "χαζά" (τυχαία κίνηση)
+  if (Math.random() < 0.5) {
+    const available = board.map((val, idx) => val === '' ? idx : null).filter(val => val !== null);
+    const randomMove = available[Math.floor(Math.random() * available.length)];
+    makeMove(randomMove, 'O');
+    return;
+  }
+
+  // Αλλιώς παίζει τέλεια (Minimax)
+  let bestScore = -Infinity, move;
+  for (let i = 0; i < 9; i++) {
+    if (board[i] === '') {
+      board[i] = 'O';
+      let score = minimax(board, 0, false);
+      board[i] = '';
+      if (score > bestScore) { bestScore = score; move = i; }
+    }
+  }
+  makeMove(move, 'O');
+}
+
+const scores = { 'X': -1, 'O': 1, 'tie': 0 };
+function minimax(board, depth, isMaximizing) {
+  let result = checkResult();
+  if (result !== null) return scores[result];
+
+  if (isMaximizing) {
+    let best = -Infinity;
+    for (let i = 0; i < 9; i++) if (board[i] === '') { board[i] = 'O'; best = Math.max(best, minimax(board, depth+1, false)); board[i] = ''; }
+    return best;
+  } else {
+    let best = Infinity;
+    for (let i = 0; i < 9; i++) if (board[i] === '') { board[i] = 'X'; best = Math.min(best, minimax(board, depth+1, true)); board[i] = ''; }
+    return best;
+  }
+}
+
+function checkResult() {
+  for (let c of winningConditions) {
+    let [a,b,cPos] = c;
+    if (board[a] && board[a] === board[b] && board[a] === board[cPos]) return board[a];
+  }
+  return board.includes('') ? null : 'tie';
+}
+
+function resetGame() {
+  menuDiv.style.display = 'block';
+  gameDiv.style.display = 'none';
+}
+</script>
+</body>
+</html>

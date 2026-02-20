@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Not To Rage - Platformer Prototype</title>
+    <link rel="icon" type="png" href="/images/TNTR.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Mobile Warning Overlay */
+        #mobile-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .mobile-warning-content {
+            max-width: 500px;
+            background: rgba(26, 26, 26, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            border: 3px solid rgba(34, 211, 238, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        #mobile-warning h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ef4444;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        #mobile-warning p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+
+        #back-to-demos {
+            background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        #back-to-demos:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(34, 211, 238, 0.4);
+        }
+
+        #game-container {
+            position: relative;
+            width: 900px;
+            max-width: 95vw;
+            margin: 20px auto;
+        }
+
+        #game-canvas {
+            display: block;
+            width: 100%;
+            height: 500px;
+            background: #0a0a0a;
+            border-radius: 12px;
+            border: 3px solid rgba(34, 211, 238, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        #game-ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #game-ui > * {
+            pointer-events: auto;
+        }
+
+        .level-info {
+            background: rgba(26, 26, 26, 0.85);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 2px solid rgba(34, 211, 238, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .level-info .type {
+            color: #22d3ee;
+        }
+
+        .level-info .number {
+            color: #ffffff;
+            font-size: 1.3rem;
+        }
+
+        .death-count {
+            margin-left: 10px;
+            color: #ef4444;
+            font-size: 0.9rem;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: rgba(26, 26, 26, 0.85);
+            color: white;
+            border: 2px solid rgba(34, 211, 238, 0.4);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover {
+            background: rgba(34, 211, 238, 0.15);
+            border-color: rgba(34, 211, 238, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .control-btn.restart {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .control-btn.restart:hover {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.8);
+        }
+
+        #level-complete {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            z-index: 20;
+            backdrop-filter: blur(5px);
+        }
+
+        #level-complete h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #22d3ee, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        #level-complete p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 80%;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        #next-level {
+            background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #next-level:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        #game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            z-index: 25;
+            backdrop-filter: blur(5px);
+        }
+
+        #game-over h2 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        #game-over p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        #game-over .death-message {
+            font-size: 1.4rem;
+            color: #ef4444;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        #pause-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            z-index: 15;
+        }
+
+        #pause-overlay h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #22d3ee;
+        }
+
+        #pause-overlay p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: -100px;
+            left: 20px;
+            right: 20px;
+            background: rgba(26, 26, 26, 0.85);
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid rgba(34, 211, 238, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .key {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .key kbd {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            z-index: 30;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(34, 211, 238, 0.3);
+            border-top: 5px solid #22d3ee;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Particle Effects */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            #game-canvas {
+                height: 400px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .control-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .instructions {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            #level-complete h2 {
+                font-size: 2rem;
+            }
+
+            #game-over h2 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Warning Overlay -->
+    <div id="mobile-warning">
+        <div class="mobile-warning-content">
+            <h2>Mobile Unsupported</h2>
+            <p>This game is designed for desktop computers only. Mobile devices are not supported due to control requirements and performance considerations.</p>
+            <p>Please play this game on a computer with a keyboard for the best experience.</p>
+            <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" id="back-to-demos">Back to Play & Demos</a>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <canvas id="game-canvas" width="900" height="500"></canvas>
+        
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="spinner"></div>
+            <p>Loading Game Assets...</p>
+        </div>
+        
+        <!-- Game UI -->
+        <div id="game-ui">
+            <div class="level-info">
+                <span class="type" id="level-type">Forest</span> - 
+                Level <span class="number" id="level-number">1</span>/<span id="total-levels">15</span>
+                <span class="death-count" id="death-count">Deaths: 0</span>
+            </div>
+            
+            <div class="controls">
+                <button id="pause-btn" class="control-btn">
+                    <span class="icon">II</span> Pause
+                </button>
+                <button id="restart-btn" class="control-btn restart">
+                    <span class="icon">↻</span> Restart
+                </button>
+            </div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div id="pause-overlay">
+            <h2>PAUSED</h2>
+            <p>Game is paused. Click Resume to continue.</p>
+            <button id="resume-btn" class="control-btn">
+                <span class="icon">▶</span> Resume
+            </button>
+        </div>
+
+        <!-- Level Complete Screen -->
+        <div id="level-complete">
+            <h2>LEVEL COMPLETE!</h2>
+            <p id="completion-message">You successfully reached the portal!</p>
+            <p id="level-stats">Deaths: 0 | Time: 0s</p>
+            <button id="next-level">Next Level →</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over">
+            <h2>YOU DIED!</h2>
+            <p class="death-message" id="death-message">Fell to your death</p>
+            <p>Click Restart to try again</p>
+            <button id="restart-level-btn" class="control-btn restart">
+                <span class="icon">↻</span> Restart Level
+            </button>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <div class="key">
+                <kbd>←</kbd> <kbd>→</kbd> Move
+            </div>
+            <div class="key">
+                <kbd>SPACE</kbd> Jump
+            </div>
+            <div class="key">
+                <kbd>P</kbd> Pause
+            </div>
+            <div class="key">
+                <kbd>R</kbd> Restart
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // MOBILE DETECTION AND WARNING
+        // ============================================
+        function isMobileDevice() {
+            const toMatch = [
+                /Android/i,
+                /webOS/i,
+                /iPhone/i,
+                /iPad/i,
+                /iPod/i,
+                /BlackBerry/i,
+                /Windows Phone/i
+            ];
+            
+            return toMatch.some((toMatchItem) => {
+                return navigator.userAgent.match(toMatchItem);
+            });
+        }
+
+        function showMobileWarning() {
+            document.getElementById('mobile-warning').style.display = 'flex';
+            document.getElementById('game-container').style.display = 'none';
+        }
+
+        // ============================================
+        // PARTICLE SYSTEM FOR EFFECTS
+        // ============================================
+        class ParticleSystem {
+            constructor() {
+                this.particles = [];
+                this.container = document.getElementById('game-container');
+            }
+
+            createParticles(x, y, count, color, type = 'sparkle') {
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    let size, vx, vy, life, animation;
+                    
+                    switch(type) {
+                        case 'sparkle':
+                            size = 2 + Math.random() * 4;
+                            vx = (Math.random() - 0.5) * 8;
+                            vy = (Math.random() - 0.5) * 8 - 4;
+                            life = 400 + Math.random() * 400;
+                            animation = 'sparkle';
+                            break;
+                            
+                        case 'circle':
+                            size = 3 + Math.random() * 5;
+                            vx = (Math.random() - 0.5) * 6;
+                            vy = (Math.random() - 0.5) * 6;
+                            life = 600 + Math.random() * 600;
+                            animation = 'circle';
+                            break;
+                            
+                        case 'death':
+                            size = 4 + Math.random() * 6;
+                            vx = (Math.random() - 0.5) * 10;
+                            vy = (Math.random() - 0.5) * 10 - 5;
+                            life = 800 + Math.random() * 800;
+                            animation = 'death';
+                            break;
+                            
+                        case 'portal':
+                            size = 4 + Math.random() * 6;
+                            vx = (Math.random() - 0.5) * 4;
+                            vy = (Math.random() - 0.5) * 4;
+                            life = 1000 + Math.random() * 1000;
+                            animation = 'portal';
+                            break;
+                    }
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.background = color;
+                    particle.style.borderRadius = type === 'circle' ? '50%' : '0';
+                    particle.style.left = `${x}px`;
+                    particle.style.top = `${y}px`;
+                    particle.style.boxShadow = `0 0 ${size}px ${color}`;
+                    
+                    this.container.appendChild(particle);
+                    
+                    this.particles.push({
+                        element: particle,
+                        x, y,
+                        vx, vy,
+                        life: life,
+                        maxLife: life,
+                        size: size,
+                        color: color,
+                        type: animation
+                    });
+                }
+            }
+
+            update() {
+                for (let i = this.particles.length - 1; i >= 0; i--) {
+                    const p = this.particles[i];
+                    
+                    // Update position
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    
+                    // Apply gravity for some particles
+                    if (p.type === 'death') {
+                        p.vy += 0.1;
+                    }
+                    
+                    // Update element
+                    p.element.style.left = `${p.x}px`;
+                    p.element.style.top = `${p.y}px`;
+                    
+                    // Update life
+                    p.life -= 16; // Assuming 60fps
+                    
+                    // Update opacity
+                    const opacity = p.life / p.maxLife;
+                    p.element.style.opacity = opacity;
+                    
+                    // Update size for some effects
+                    if (p.type === 'portal') {
+                        const scale = 0.5 + (opacity * 0.5);
+                        p.element.style.transform = `scale(${scale}) rotate(${opacity * 360}deg)`;
+                    } else if (p.type === 'sparkle') {
+                        p.element.style.transform = `rotate(${opacity * 720}deg)`;
+                    }
+                    
+                    // Remove dead particles
+                    if (p.life <= 0) {
+                        p.element.remove();
+                        this.particles.splice(i, 1);
+                    }
+                }
+            }
+
+            clear() {
+                for (const p of this.particles) {
+                    p.element.remove();
+                }
+                this.particles = [];
+            }
+        }
+
+        // ============================================
+        // CUSTOM PNG ASSET LOADER
+        // ============================================
+        class PNGAssetLoader {
+            constructor() {
+                this.assets = {
+                    player: null,
+                    forestBackground: null,
+                    forestPlatformMain: null,
+                    forestPlatformMini: null,
+                    skyBackground: null,
+                    skyPlatformMain: null,
+                    skyPlatformMini: null,
+                    portal: null
+                };
+                
+                      this.loaded = false;
+                      this.assetPaths = {
+                    player: '/additionalHTMLS/WebLauncher/TNTRGS/player.png',
+                    forestBackground: '/additionalHTMLS/WebLauncher/TNTRGS/background.png',
+                    forestPlatformMain: '/additionalHTMLS/WebLauncher/TNTRGS/forest-platform-main.png',
+                    forestPlatformMini: '/additionalHTMLS/WebLauncher/TNTRGS/forest-platform-mini.png',
+                    skyBackground: '/additionalHTMLS/WebLauncher/TNTRGS/sky-background.png',
+                    skyPlatformMain: '/additionalHTMLS/WebLauncher/TNTRGS/sky-platform-main.png',
+                    skyPlatformMini: '/additionalHTMLS/WebLauncher/TNTRGS/sky-platform-main.png',
+                    portal: '/additionalHTMLS/WebLauncher/TNTRGS/portal.png'
+                };
+            }
+
+            async loadAssets() {
+                console.log('Loading custom PNG assets...');
+                
+                const loadPromises = [];
+                
+                for (const [key, path] of Object.entries(this.assetPaths)) {
+                    loadPromises.push(this.loadImage(key, path));
+                }
+                
+                try {
+                    await Promise.all(loadPromises);
+                    console.log('All PNG assets loaded successfully!');
+                    this.loaded = true;
+                    return true;
+                } catch (error) {
+                    console.warn('Failed to load some PNG assets:', error);
+                    console.log('Using fallback graphics...');
+                    this.createFallbackAssets();
+                    return true;
+                }
+            }
+
+            loadImage(key, path) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        this.assets[key] = img;
+                        console.log(`✓ Loaded: ${key} from ${path}`);
+                        resolve();
+                    };
+                    img.onerror = () => {
+                        console.warn(`✗ Failed to load: ${key} from ${path}`);
+                        this.assets[key] = null;
+                        resolve();
+                    };
+                    img.src = path;
+                });
+            }
+
+            createFallbackAssets() {
+                console.log('Creating fallback assets...');
+                
+                // Fallback Player
+                const playerCanvas = document.createElement('canvas');
+                playerCanvas.width = 30;
+                playerCanvas.height = 30;
+                const playerCtx = playerCanvas.getContext('2d');
+                playerCtx.fillStyle = '#22d3ee';
+                playerCtx.fillRect(0, 0, 30, 30);
+                playerCtx.fillStyle = 'white';
+                playerCtx.fillRect(8, 8, 4, 4);
+                playerCtx.fillRect(18, 8, 4, 4);
+                this.assets.player = playerCanvas;
+                
+                // Fallback Forest Background
+                const forestBg = document.createElement('canvas');
+                forestBg.width = 900;
+                forestBg.height = 500;
+                const forestCtx = forestBg.getContext('2d');
+                const forestGradient = forestCtx.createLinearGradient(0, 0, 0, 500);
+                forestGradient.addColorStop(0, '#1e3b1e');
+                forestGradient.addColorStop(1, '#0d200d');
+                forestCtx.fillStyle = forestGradient;
+                forestCtx.fillRect(0, 0, 900, 500);
+                this.assets.forestBackground = forestBg;
+                
+                // Fallback Sky Background
+                const skyBg = document.createElement('canvas');
+                skyBg.width = 900;
+                skyBg.height = 500;
+                const skyCtx = skyBg.getContext('2d');
+                const skyGradient = skyCtx.createLinearGradient(0, 0, 0, 500);
+                skyGradient.addColorStop(0, '#87ceeb');
+                skyGradient.addColorStop(1, '#e0f6ff');
+                skyCtx.fillStyle = skyGradient;
+                skyCtx.fillRect(0, 0, 900, 500);
+                this.assets.skyBackground = skyBg;
+                
+                // Fallback Platforms
+                this.createFallbackPlatform('forestPlatformMain', '#8b4513', '#a0522d');
+                this.createFallbackPlatform('forestPlatformMini', '#556b2f', '#8fbc8f');
+                this.createFallbackPlatform('skyPlatformMain', 'rgba(255, 255, 255, 0.9)', 'rgba(240, 240, 255, 0.9)');
+                this.createFallbackPlatform('skyPlatformMini', 'rgba(255, 255, 255, 0.7)', 'rgba(230, 230, 255, 0.7)');
+                
+                // Fallback Portal
+                const portalCanvas = document.createElement('canvas');
+                portalCanvas.width = 50;
+                portalCanvas.height = 50;
+                const portalCtx = portalCanvas.getContext('2d');
+                const portalGradient = portalCtx.createRadialGradient(25, 25, 5, 25, 25, 25);
+                portalGradient.addColorStop(0, '#22d3ee');
+                portalGradient.addColorStop(0.7, '#a855f7');
+                portalGradient.addColorStop(1, 'transparent');
+                portalCtx.fillStyle = portalGradient;
+                portalCtx.fillRect(0, 0, 50, 50);
+                this.assets.portal = portalCanvas;
+            }
+
+            createFallbackPlatform(name, color1, color2) {
+                const canvas = document.createElement('canvas');
+                canvas.width = name.includes('Main') ? 100 : 80;
+                canvas.height = name.includes('Main') ? 50 : 20;
+                const ctx = canvas.getContext('2d');
+                
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, color1);
+                gradient.addColorStop(1, color2);
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                this.assets[name] = canvas;
+            }
+
+            getAsset(name) {
+                return this.assets[name];
+            }
+
+            setAssetPath(key, newPath) {
+                this.assetPaths[key] = newPath;
+            }
+        }
+
+        // ============================================
+        // GAME CONSTANTS AND CONFIGURATION
+        // ============================================
+        const CONFIG = {
+            GRAVITY: 0.5,
+            PLAYER_JUMP_FORCE: -12,
+            PLAYER_SPEED: 3.5,
+            PLAYER_FRICTION: 0.85,
+            PLAYER_WIDTH: 30,
+            PLAYER_HEIGHT: 30,
+            PORTAL_SIZE: 50,
+            CANVAS_WIDTH: 900,
+            CANVAS_HEIGHT: 500,
+            DEATH_HEIGHT: 550, // Screen bottom + 50px
+            INVINCIBILITY_TIME: 1000 // ms after death/respawn
+        };
+
+        // ============================================
+        // AUDIO MANAGER
+        // ============================================
+        class AudioManager {
+            constructor() {
+                this.context = null;
+                this.init();
+            }
+
+            init() {
+                try {
+                    this.context = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (error) {
+                    console.warn('Web Audio API not supported:', error);
+                }
+            }
+
+            playJumpSound() {
+                if (!this.context) return;
+                
+                try {
+                    const now = this.context.currentTime;
+                    const oscillator = this.context.createOscillator();
+                    const gainNode = this.context.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.context.destination);
+                    
+                    oscillator.frequency.setValueAtTime(800, now);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.2, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                    
+                    oscillator.start(now);
+                    oscillator.stop(now + 0.1);
+                } catch (error) {
+                    console.warn('Jump sound failed:', error);
+                }
+            }
+
+            playLandSound() {
+                if (!this.context) return;
+                
+                try {
+                    const now = this.context.currentTime;
+                    const oscillator = this.context.createOscillator();
+                    const gainNode = this.context.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.context.destination);
+                    
+                    oscillator.frequency.setValueAtTime(400, now);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.15, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                    
+                    oscillator.start(now);
+                    oscillator.stop(now + 0.15);
+                } catch (error) {
+                    console.warn('Land sound failed:', error);
+                }
+            }
+
+            playDeathSound() {
+                if (!this.context) return;
+                
+                try {
+                    const now = this.context.currentTime;
+                    const oscillator = this.context.createOscillator();
+                    const gainNode = this.context.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.context.destination);
+                    
+                    oscillator.frequency.setValueAtTime(200, now);
+                    oscillator.frequency.setValueAtTime(100, now + 0.1);
+                    oscillator.frequency.setValueAtTime(50, now + 0.2);
+                    oscillator.type = 'sawtooth';
+                    
+                    gainNode.gain.setValueAtTime(0.3, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    
+                    oscillator.start(now);
+                    oscillator.stop(now + 0.3);
+                } catch (error) {
+                    console.warn('Death sound failed:', error);
+                }
+            }
+
+            playWinSound() {
+                if (!this.context) return;
+                
+                try {
+                    const now = this.context.currentTime;
+                    const oscillator = this.context.createOscillator();
+                    const gainNode = this.context.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.context.destination);
+                    
+                    oscillator.frequency.setValueAtTime(523.25, now);
+                    oscillator.frequency.setValueAtTime(659.25, now + 0.1);
+                    oscillator.frequency.setValueAtTime(783.99, now + 0.2);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.3, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                    
+                    oscillator.start(now);
+                    oscillator.stop(now + 0.5);
+                } catch (error) {
+                    console.warn('Win sound failed:', error);
+                }
+            }
+
+            playPortalSound() {
+                if (!this.context) return;
+                
+                try {
+                    const now = this.context.currentTime;
+                    const oscillator = this.context.createOscillator();
+                    const gainNode = this.context.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.context.destination);
+                    
+                    oscillator.frequency.setValueAtTime(300, now);
+                    oscillator.frequency.setValueAtTime(600, now + 0.1);
+                    oscillator.frequency.setValueAtTime(900, now + 0.2);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.2, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    
+                    oscillator.start(now);
+                    oscillator.stop(now + 0.4);
+                } catch (error) {
+                    console.warn('Portal sound failed:', error);
+                }
+            }
+        }
+
+        // ============================================
+        // LEVEL DATA (15 PLAYABLE Levels)
+        // ============================================
+        const LEVELS = [
+            // Forest Levels 1-8
+                {
+                id: 1,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 100, y: 200 },
+                portal: { x: 790, y: 150 },
+                platforms: [
+                    { x: 0, y: 450, width: 950, height: 200, type: 'main' },
+                    { x: 200, y: 360, width: 100, height: 20, type: 'mini' },
+                    { x: 430, y: 280, width: 80, height: 20, type: 'mini' },
+                    { x: 650, y: 250, width: 100, height: 20, type: 'mini' }
+                ]
+            },
+            {
+                id: 2,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 820, y: 100 },
+                platforms: [
+                    { x: 0, y: 400, width: 300, height: 100, type: 'main' },
+                    { x: 350, y: 400, width: 200, height: 100, type: 'main' },
+                    { x: 600, y: 400, width: 300, height: 100, type: 'main' },
+                    { x: 200, y: 310, width: 80, height: 20, type: 'mini' },
+                    { x: 430, y: 260, width: 80, height: 20, type: 'mini' },
+                    { x: 670, y: 210, width: 80, height: 20, type: 'mini' }
+                ]
+            },
+            {
+                id: 3,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 780, y: 200 },
+                platforms: [
+                    { x: 0, y: 400, width: 300, height: 100, type: 'main' },
+                    { x: 600, y: 400, width: 300, height: 100, type: 'main' },
+                    { x: 200, y: 320, width: 100, height: 20, type: 'mini' },
+                    { x: 430, y: 260, width: 50, height: 20, type: 'mini' },
+                    { x: 600, y: 200, width: 100, height: 20, type: 'mini' }
+                ]
+            },
+            {
+                id: 4,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 750, y: 150 },
+                platforms: [
+                    { x: 0, y: 400, width: 300, height: 100, type: 'main' },
+                    { x: 250, y: 320, width: 60, height: 20, type: 'mini' },
+                    { x: 430, y: 260, width: 60, height: 20, type: 'mini' },
+                    { x: 600, y: 200, width: 60, height: 20, type: 'mini' },
+                ]
+            },
+            {
+                id: 5,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 430, y: 350 },
+                portal: { x: 100, y: 150 },
+                platforms: [
+                    { x: 350, y: 400, width: 200, height: 100, type: 'main' },
+                    { x: 600, y: 320, width: 80, height: 20, type: 'mini' },
+                    { x: 750, y: 260, width: 80, height: 20, type: 'mini' },
+                    { x: 500, y: 170, width: 120, height: 20, type: 'mini' },
+                    { x: 300, y: 230, width: 80, height: 20, type: 'mini' }
+                ]
+            },
+            {
+                id: 6,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 800, y: 350 },
+                platforms: [
+                    { x: 0, y: 400, width: 150, height: 100, type: 'main' },
+                    { x: 750, y: 400, width: 150, height: 100, type: 'main' },
+                    { x: 200, y: 300, width: 50, height: 20, type: 'mini' },
+                    { x: 350, y: 250, width: 60, height: 20, type: 'mini' },
+                    { x: 500, y: 200, width: 80, height: 20, type: 'mini' }
+                ]
+            },
+            {
+                id: 7,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 780, y: 130 },
+                platforms: [
+                    { x: 0, y: 400, width: 150, height: 100, type: 'main' },
+                    { x: 200, y: 450, width: 50, height: 20, type: 'mini' },
+                    { x: 310, y: 330, width: 70, height: 20, type: 'mini' },
+                    { x: 520, y: 260, width: 60, height: 20, type: 'mini' },
+                    { x: 700, y: 300, width: 10, height: 20, type: 'mini' }
+                ]
+            },
+            {
+                id: 8,
+                type: 'forest',
+                name: 'Forest',
+                playerStart: { x: 780, y: 350 },
+                portal: { x: 50, y: 120 },
+                platforms: [
+                    { x: 700, y: 400, width: 200, height: 100, type: 'main' },
+                    { x: 600, y: 320, width: 30, height: 20, type: 'mini' },
+                    { x: 430, y: 250, width: 30, height: 20, type: 'mini' },
+                    { x: 270, y: 200, width: 30, height: 20, type: 'mini' },
+                    { x: 35, y: 200, width: 80, height: 20, type: 'mini' }
+                ]
+            },
+
+            // Sky Levels 9-15
+            
+            {
+                id: 9,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 750, y: 200 },
+                platforms: [
+                    { x: 0, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 220, y: 320, width: 80, height: 40, type: 'mini' },
+                    { x: 370, y: 280, width: 80, height: 40, type: 'mini' },
+                    { x: 560, y: 240, width: 80, height: 40, type: 'mini' }
+                ]
+            },
+            {
+                id: 10,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 450, y: 350 },
+                portal: { x: 750, y: 150 },
+                platforms: [
+                    { x: 400, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 200, y: 350, width: 80, height: 40, type: 'mini' },
+                    { x: 400, y: 230, width: 80, height: 40, type: 'mini' },
+                    { x: 600, y: 180, width: 80, height: 40, type: 'mini' }
+                ]
+            },
+            {
+                id: 11,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 750, y: 120 },
+                platforms: [
+                    { x: 0, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 700, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 200, y: 350, width: 80, height: 40, type: 'mini' },
+                    { x: 410, y: 250, width: 80, height: 40, type: 'mini' },
+                    { x: 640, y: 180, width: 80, height: 40, type: 'mini' }
+                ]
+            },
+            {
+                id: 12,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 750, y: 350 },
+                portal: { x: 780, y: 120 },
+                platforms: [
+                    { x: 700, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 500, y: 320, width: 80, height: 40, type: 'mini' },
+                    { x: 330, y: 250, width: 80, height: 40, type: 'mini' },
+                    { x: 530, y: 150, width: 80, height: 40, type: 'mini' }
+                ]
+            },
+            {
+                id: 13,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 750, y: 120 },
+                platforms: [
+                    { x: 0, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 100, y: 300, width: 70, height: 35, type: 'mini' },
+                    { x: 300, y: 300, width: 70, height: 35, type: 'mini' },
+                    { x: 500, y: 300, width: 70, height: 35, type: 'mini' },
+                    { x: 700, y: 300, width: 70, height: 35, type: 'mini' }
+                ]
+            },
+            {
+                id: 14,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 100, y: 350 },
+                portal: { x: 750, y: 100 },
+                platforms: [
+                    { x: 0, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 200, y: 320, width: 50, height: 25, type: 'mini' },
+                    { x: 300, y: 290, width: 30, height: 15, type: 'mini' },
+                    { x: 400, y: 260, width: 50, height: 25, type: 'mini' },
+                    { x: 500, y: 230, width: 30, height: 15, type: 'mini' },
+                    { x: 600, y: 200, width: 50, height: 25, type: 'mini' }
+                ]
+            },
+            {
+                id: 15,
+                type: 'sky',
+                name: 'Sky',
+                playerStart: { x: 100, y: 250 },
+                portal: { x: 750, y: 80 },
+                platforms: [
+                    { x: 170, y: 400, width: 140, height: 70, type: 'main' },
+                    { x: 390, y: 320, width: 50, height: 25, type: 'mini' },
+                    { x: 450, y: 230, width: 50, height: 25, type: 'mini' },
+                    { x: 650, y: 170, width: 50, height: 25, type: 'mini' }
+                ]
+            }
+        ];
+
+        // ============================================
+        // GAME ENGINE CORE
+        // ============================================
+        class PlatformerGame {
+            constructor() {
+                // Canvas setup
+                this.canvas = document.getElementById('game-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.canvas.width = CONFIG.CANVAS_WIDTH;
+                this.canvas.height = CONFIG.CANVAS_HEIGHT;
+
+                // Asset loader
+                this.assets = new PNGAssetLoader();
+                
+                // Game state
+                this.currentLevel = 0;
+                this.gameState = 'playing';
+                this.lastTime = 0;
+                this.keys = {};
+                this.initialized = false;
+
+                // Player object
+                this.player = {
+                    x: 0,
+                    y: 0,
+                    width: CONFIG.PLAYER_WIDTH,
+                    height: CONFIG.PLAYER_HEIGHT,
+                    velocityX: 0,
+                    velocityY: 0,
+                    isJumping: false,
+                    invincible: false,
+                    invincibilityTimer: 0,
+                    animationTime: 0,
+                    trailParticles: [],
+                    color: '#22d3ee'
+                };
+
+                // Game stats
+                this.deathCount = 0;
+                this.levelStartTime = 0;
+                this.levelTime = 0;
+                
+                // Current level data
+                this.level = null;
+                
+                // Audio manager
+                this.audio = new AudioManager();
+                
+                // Particle system
+                this.particles = new ParticleSystem();
+
+                // Initialize
+                this.init();
+            }
+
+            async init() {
+                // Show loading screen
+                document.getElementById('loading-screen').style.display = 'flex';
+                
+                // Load assets from YOUR PNG files
+                const assetsLoaded = await this.assets.loadAssets();
+                
+                if (!assetsLoaded) {
+                    alert('Failed to load game assets. Using fallback graphics.');
+                }
+                
+                // Load first level
+                this.loadLevel(this.currentLevel);
+                
+                // Setup event listeners
+                this.setupEventListeners();
+                this.setupUIListeners();
+                
+                // Hide loading screen
+                document.getElementById('loading-screen').style.display = 'none';
+                
+                // Start game loop
+                this.initialized = true;
+                this.gameLoop();
+            }
+
+            loadLevel(levelIndex) {
+                if (levelIndex >= LEVELS.length) {
+                    document.getElementById('level-complete').style.display = 'flex';
+                    document.getElementById('completion-message').textContent = 
+                        'Congratulations! You completed all 15 levels!';
+                    document.getElementById('next-level').style.display = 'none';
+                    this.gameState = 'levelComplete';
+                    return;
+                }
+
+                this.level = LEVELS[levelIndex];
+                this.player.x = this.level.playerStart.x;
+                this.player.y = this.level.playerStart.y;
+                this.player.velocityX = 0;
+                this.player.velocityY = 0;
+                this.player.isJumping = false;
+                this.player.invincible = true;
+                this.player.invincibilityTimer = CONFIG.INVINCIBILITY_TIME;
+                this.player.animationTime = 0;
+
+                // Update UI
+                document.getElementById('level-type').textContent = 
+                    this.level.type.charAt(0).toUpperCase() + this.level.type.slice(1);
+                document.getElementById('level-number').textContent = this.level.id;
+                document.getElementById('total-levels').textContent = LEVELS.length;
+                document.getElementById('death-count').textContent = `Deaths: ${this.deathCount}`;
+
+                // Reset level timer
+                this.levelStartTime = Date.now();
+                this.levelTime = 0;
+
+                // Hide screens
+                document.getElementById('level-complete').style.display = 'none';
+                document.getElementById('game-over').style.display = 'none';
+
+                // Clear particles
+                this.particles.clear();
+
+                this.gameState = 'playing';
+            }
+
+            setupEventListeners() {
+                window.addEventListener('keydown', (e) => {
+                    const key = e.key.toLowerCase();
+                    this.keys[key] = true;
+                    
+                    if (key === 'p') this.togglePause();
+                    if (key === 'r') this.restartLevel();
+                    
+                    if (key === ' ' && e.target === document.body) {
+                        e.preventDefault();
+                    }
+                });
+
+                window.addEventListener('keyup', (e) => {
+                    this.keys[e.key.toLowerCase()] = false;
+                });
+            }
+
+            setupUIListeners() {
+                document.getElementById('pause-btn').addEventListener('click', () => this.togglePause());
+                document.getElementById('resume-btn').addEventListener('click', () => this.togglePause());
+                document.getElementById('restart-btn').addEventListener('click', () => this.restartLevel());
+                document.getElementById('next-level').addEventListener('click', () => this.nextLevel());
+                document.getElementById('restart-level-btn').addEventListener('click', () => this.restartLevel());
+            }
+
+            togglePause() {
+                if (this.gameState === 'playing') {
+                    this.gameState = 'paused';
+                    document.getElementById('pause-overlay').style.display = 'flex';
+                } else if (this.gameState === 'paused') {
+                    this.gameState = 'playing';
+                    document.getElementById('pause-overlay').style.display = 'none';
+                    this.lastTime = performance.now();
+                }
+            }
+
+            restartLevel() {
+                this.loadLevel(this.currentLevel);
+            }
+
+            nextLevel() {
+                this.currentLevel++;
+                this.loadLevel(this.currentLevel);
+            }
+
+            handleInput() {
+                // Horizontal movement
+                if (this.keys['arrowleft'] || this.keys['a']) {
+                    this.player.velocityX = -CONFIG.PLAYER_SPEED;
+                } else if (this.keys['arrowright'] || this.keys['d']) {
+                    this.player.velocityX = CONFIG.PLAYER_SPEED;
+                } else {
+                    this.player.velocityX *= CONFIG.PLAYER_FRICTION;
+                    if (Math.abs(this.player.velocityX) < 0.1) this.player.velocityX = 0;
+                }
+
+                // Jumping
+                if ((this.keys[' '] || this.keys['arrowup'] || this.keys['w']) && !this.player.isJumping) {
+                    this.player.velocityY = CONFIG.PLAYER_JUMP_FORCE;
+                    this.player.isJumping = true;
+                    this.audio.playJumpSound();
+                    
+                    // Jump particles
+                    const particleX = this.player.x + this.player.width / 2;
+                    const particleY = this.player.y + this.player.height;
+                    this.particles.createParticles(particleX, particleY, 5, '#22d3ee', 'sparkle');
+                }
+            }
+
+            updatePhysics() {
+                // Update player animation time
+                this.player.animationTime += 16;
+                
+                // Update invincibility
+                if (this.player.invincible) {
+                    this.player.invincibilityTimer -= 16;
+                    if (this.player.invincibilityTimer <= 0) {
+                        this.player.invincible = false;
+                    }
+                }
+                
+                // Update level time
+                this.levelTime = Date.now() - this.levelStartTime;
+
+                // Apply gravity
+                this.player.velocityY += CONFIG.GRAVITY;
+
+                // Apply horizontal velocity
+                const nextX = this.player.x + this.player.velocityX;
+                const nextY = this.player.y + this.player.velocityY;
+
+                // Check horizontal collisions
+                let canMoveX = true;
+                const playerRight = nextX + this.player.width;
+                const playerLeft = nextX;
+                const playerTop = this.player.y;
+                const playerBottom = this.player.y + this.player.height;
+
+                for (const platform of this.level.platforms) {
+                    const platformRight = platform.x + platform.width;
+                    const platformLeft = platform.x;
+                    const platformTop = platform.y;
+                    const platformBottom = platform.y + platform.height;
+
+                    // Check if player will collide horizontally
+                    if (playerBottom > platformTop && 
+                        playerTop < platformBottom &&
+                        playerRight > platformLeft && 
+                        playerLeft < platformRight) {
+                        
+                        if (this.player.velocityX > 0) {
+                            this.player.x = platformLeft - this.player.width;
+                        } else if (this.player.velocityX < 0) {
+                            this.player.x = platformRight;
+                        }
+                        this.player.velocityX = 0;
+                        canMoveX = false;
+                        break;
+                    }
+                }
+
+                if (canMoveX) {
+                    this.player.x = nextX;
+                }
+
+                // Check vertical collisions
+                let canMoveY = true;
+                let wasJumping = this.player.isJumping;
+                this.player.isJumping = true;
+
+                for (const platform of this.level.platforms) {
+                    const platformRight = platform.x + platform.width;
+                    const platformLeft = platform.x;
+                    const platformTop = platform.y;
+                    const platformBottom = platform.y + platform.height;
+
+                    // Landing on platform
+                    if (this.player.velocityY > 0 &&
+                        nextY + this.player.height > platformTop &&
+                        this.player.y + this.player.height <= platformTop &&
+                        this.player.x + this.player.width > platformLeft &&
+                        this.player.x < platformRight) {
+                        
+                        this.player.y = platformTop - this.player.height;
+                        this.player.velocityY = 0;
+                        this.player.isJumping = false;
+                        canMoveY = false;
+                        
+                        if (wasJumping) {
+                            this.audio.playLandSound();
+                            // Landing particles
+                            const particleX = this.player.x + this.player.width / 2;
+                            const particleY = this.player.y + this.player.height;
+                            this.particles.createParticles(particleX, particleY, 3, '#10b981', 'circle');
+                        }
+                        break;
+                    }
+                }
+
+                if (canMoveY) {
+                    this.player.y = nextY;
+                }
+
+                // Keep player in bounds horizontally
+                if (this.player.x < 0) this.player.x = 0;
+                if (this.player.x + this.player.width > this.canvas.width) {
+                    this.player.x = this.canvas.width - this.player.width;
+                }
+                
+                // Check for death (falling off screen)
+                if (this.player.y > CONFIG.DEATH_HEIGHT) {
+                    this.playerDeath('Fell to your death');
+                }
+
+                // Portal collision
+                this.checkPortalCollision();
+                
+                // Update particles
+                this.particles.update();
+            }
+
+            checkPortalCollision() {
+                const portal = this.level.portal;
+                const playerCenterX = this.player.x + this.player.width / 2;
+                const playerCenterY = this.player.y + this.player.height / 2;
+                const portalCenterX = portal.x + CONFIG.PORTAL_SIZE / 2;
+                const portalCenterY = portal.y + CONFIG.PORTAL_SIZE / 2;
+
+                const dx = playerCenterX - portalCenterX;
+                const dy = playerCenterY - portalCenterY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < (this.player.width / 2 + CONFIG.PORTAL_SIZE / 2)) {
+                    this.completeLevel();
+                }
+            }
+
+            playerDeath(cause = 'Unknown') {
+                if (this.player.invincible) return;
+                
+                this.deathCount++;
+                document.getElementById('death-count').textContent = `Deaths: ${this.deathCount}`;
+                
+                // Play death sound
+                this.audio.playDeathSound();
+                
+                // Death particles
+                const deathX = this.player.x + this.player.width / 2;
+                const deathY = this.player.y + this.player.height / 2;
+                this.particles.createParticles(deathX, deathY, 15, '#ef4444', 'death');
+                
+                // Show game over screen
+                document.getElementById('death-message').textContent = cause;
+                document.getElementById('game-over').style.display = 'flex';
+                this.gameState = 'gameOver';
+            }
+
+            completeLevel() {
+                this.gameState = 'levelComplete';
+                this.audio.playWinSound();
+                this.audio.playPortalSound();
+                
+                // Portal particles
+                const portalX = this.level.portal.x + CONFIG.PORTAL_SIZE / 2;
+                const portalY = this.level.portal.y + CONFIG.PORTAL_SIZE / 2;
+                this.particles.createParticles(portalX, portalY, 20, '#a855f7', 'portal');
+                
+                // Show level complete screen
+                document.getElementById('level-complete').style.display = 'flex';
+                document.getElementById('completion-message').textContent = 
+                    `You completed ${this.level.name}!`;
+                
+                // Show stats
+                const seconds = Math.floor(this.levelTime / 1000);
+                document.getElementById('level-stats').textContent = 
+                    `Deaths: ${this.deathCount} | Time: ${seconds}s`;
+            }
+
+            draw() {
+                // Clear canvas
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Draw background
+                const bgAsset = this.level.type === 'forest' 
+                    ? this.assets.getAsset('forestBackground')
+                    : this.assets.getAsset('skyBackground');
+                
+                if (bgAsset) {
+                    this.ctx.drawImage(bgAsset, 0, 0, this.canvas.width, this.canvas.height);
+                } else {
+                    // Fallback background
+                    this.ctx.fillStyle = this.level.type === 'forest' ? '#1e3b1e' : '#87ceeb';
+                    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+
+                // Draw platforms
+                for (const platform of this.level.platforms) {
+                    let platformAsset;
+                    
+                    if (platform.type === 'main') {
+                        platformAsset = this.level.type === 'forest'
+                            ? this.assets.getAsset('forestPlatformMain')
+                            : this.assets.getAsset('skyPlatformMain');
+                    } else {
+                        platformAsset = this.level.type === 'forest'
+                            ? this.assets.getAsset('forestPlatformMini')
+                            : this.assets.getAsset('skyPlatformMini');
+                    }
+                    
+                    if (platformAsset) {
+                        this.ctx.drawImage(
+                            platformAsset,
+                            platform.x,
+                            platform.y,
+                            platform.width,
+                            platform.height
+                        );
+                    } else {
+                        // Fallback platform
+                        this.ctx.fillStyle = this.level.type === 'forest' 
+                            ? (platform.type === 'main' ? '#8b4513' : '#556b2f')
+                            : (platform.type === 'main' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.7)');
+                        this.ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+                    }
+                }
+
+                // Draw portal
+                this.drawPortal(this.level.portal.x, this.level.portal.y);
+
+                // Draw player with effects
+                this.drawPlayer();
+            }
+
+        drawPortal(x, y) {
+            const ctx = this.ctx;
+            const size = CONFIG.PORTAL_SIZE;
+            const time = Date.now() * 0.001;
+            
+            // Try to use custom portal image first
+            const portalAsset = this.assets.getAsset('portal');
+            if (portalAsset) {
+                // Draw portal WITHOUT any pink circles or unnecessary effects
+                ctx.save();
+                
+                // Draw the portal image
+                ctx.drawImage(portalAsset, x, y, size, size);
+                
+                // Simple glow effect (optional, but minimal)
+                ctx.globalAlpha = 0.3;
+                ctx.filter = 'blur(8px)';
+                ctx.drawImage(portalAsset, x - 5, y - 5, size + 10, size + 10);
+                
+                ctx.restore();
+                return;
+            }
+            
+            // SIMPLE fallback portal - NO pink circles
+            ctx.save();
+            
+            // Outer blue glow
+            const glowGradient = ctx.createRadialGradient(
+                x + size/2, y + size/2, size * 0.3,
+                x + size/2, y + size/2, size * 0.5
+            );
+            glowGradient.addColorStop(0, 'rgba(34, 211, 238, 0.8)');
+            glowGradient.addColorStop(1, 'transparent');
+            
+            ctx.fillStyle = glowGradient;
+            ctx.beginPath();
+            ctx.arc(x + size/2, y + size/2, size * 0.5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Inner portal core
+            const coreGradient = ctx.createRadialGradient(
+                x + size/2, y + size/2, 0,
+                x + size/2, y + size/2, size * 0.35
+            );
+            coreGradient.addColorStop(0, '#22d3ee');
+            coreGradient.addColorStop(0.7, '#0ea5e9');
+            coreGradient.addColorStop(1, '#0c8bc7');
+            
+            ctx.fillStyle = coreGradient;
+            ctx.beginPath();
+            ctx.arc(x + size/2, y + size/2, size * 0.35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Simple pulse effect (very subtle)
+            ctx.globalAlpha = 0.3 + Math.sin(time * 3) * 0.2;
+            ctx.beginPath();
+            ctx.arc(x + size/2, y + size/2, size * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.restore();
+        }
+
+            drawPlayer() {
+                const ctx = this.ctx;
+                const time = this.player.animationTime * 0.001;
+                
+                // Calculate player opacity (blink when invincible)
+                let opacity = 1;
+                if (this.player.invincible) {
+                    opacity = 0.5 + Math.sin(time * 10) * 0.5;
+                }
+                
+                ctx.save();
+                ctx.globalAlpha = opacity;
+                
+                // Try to use custom player image
+                const playerAsset = this.assets.getAsset('player');
+                if (playerAsset) {
+                    // Draw player with slight bounce animation
+                    const bounce = this.player.isJumping ? 0 : Math.sin(time * 5) * 2;
+                    ctx.drawImage(
+                        playerAsset,
+                        this.player.x,
+                        this.player.y + bounce,
+                        this.player.width,
+                        this.player.height
+                    );
+                    
+                    // Player glow when moving
+                    if (Math.abs(this.player.velocityX) > 1) {
+                        ctx.save();
+                        ctx.globalAlpha = 0.2;
+                        ctx.filter = 'blur(5px)';
+                        ctx.drawImage(
+                            playerAsset,
+                            this.player.x,
+                            this.player.y,
+                            this.player.width,
+                            this.player.height
+                        );
+                        ctx.restore();
+                    }
+                } else {
+                    // Fallback player with animations
+                    const bounce = this.player.isJumping ? 0 : Math.sin(time * 5) * 2;
+                    const yPos = this.player.y + bounce;
+                    
+                    // Player shadow
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                    ctx.fillRect(this.player.x + 3, yPos + 3, this.player.width, this.player.height);
+                    
+                    // Player body with gradient
+                    const gradient = ctx.createLinearGradient(
+                        this.player.x, yPos,
+                        this.player.x, yPos + this.player.height
+                    );
+                    gradient.addColorStop(0, '#22d3ee');
+                    gradient.addColorStop(1, '#0ea5e9');
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(this.player.x, yPos, this.player.width, this.player.height);
+                    
+                    // Player eyes with blink animation
+                    const blink = Math.sin(time * 2) > 0.5 ? 2 : 4;
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(this.player.x + 8, yPos + 8, 4, blink);
+                    ctx.fillRect(this.player.x + 18, yPos + 8, 4, blink);
+                    
+                    // Player trail effect when moving fast
+                    if (Math.abs(this.player.velocityX) > 3) {
+                        ctx.save();
+                        ctx.globalAlpha = 0.3;
+                        ctx.fillStyle = '#22d3ee';
+                        const trailCount = 3;
+                        const trailOffset = this.player.velocityX > 0 ? -1 : 1;
+                        for (let i = 1; i <= trailCount; i++) {
+                            ctx.fillRect(
+                                this.player.x + (trailOffset * i * 5),
+                                yPos,
+                                this.player.width,
+                                this.player.height
+                            );
+                        }
+                        ctx.restore();
+                    }
+                }
+                
+                ctx.restore();
+            }
+
+            gameLoop(currentTime = 0) {
+                if (!this.initialized) return;
+                
+                const deltaTime = currentTime - this.lastTime;
+                this.lastTime = currentTime;
+
+                if (this.gameState === 'playing') {
+                    this.handleInput();
+                    this.updatePhysics();
+                }
+
+                this.draw();
+                requestAnimationFrame((time) => this.gameLoop(time));
+            }
+        }
+
+        // ============================================
+        // INITIALIZE GAME
+        // ============================================
+        window.addEventListener('DOMContentLoaded', () => {
+            const game = new PlatformerGame();
+            window.game = game;
+            
+            console.log('Try Not To Rage Platformer initialized!');
+            console.log('Features: Death system, particle effects, animations, custom PNG loading');
+            // Check if on mobile device
+            if (isMobileDevice()) {
+                console.log('Mobile device detected - showing warning');
+                showMobileWarning();
+                return; // Stop game initialization
+            }
+        });
+
+        window.addEventListener('error', (event) => {
+            console.error('Game error:', event.error);
+            document.getElementById('loading-screen').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

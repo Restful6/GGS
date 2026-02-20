@@ -104,3 +104,61 @@
           </div>
         </div>
       </div>
+
+
+
+      _______________________________________________
+
+
+
+                <!-- Try Not To Rage: Ocean -->
+          <div class="border-t border-gray-700 p-6">
+            <div class="game-card border border-gray-700 hover:border-red-500/50">
+              <div class="p-6">
+                <div class="flex items-center justify-center mb-6">
+                  <img src="/images/try-not-to-rage-ocean.png" alt="Try Not To Rage: Ocean Logo" class="game-image development">
+                </div>
+                <h2 class="text-2xl font-bold text-white text-center mb-4">Try Not To Rage: Ocean</h2>
+                <p class="text-gray-400 text-center mb-6">
+                  Dive into the depths of frustration in this underwater rage game! Navigate through treacherous currents, avoid dangerous sea creatures, and master underwater physics in this aquatic challenge. The newest installment in the Try Not To Rage series.
+                </p>
+                <div class="flex justify-center space-x-4">
+                  <button class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Coming Soon
+                  </button>
+                  <a href="/additionalHTMLS/Infos/TNTRO-info.html" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Info
+                  </a>
+                </div>
+              </div>
+              <div class="status-footer development mt-auto">
+                Under Development
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+                      this.loaded = false;
+                this.assetPaths = {
+                    player: '/additionalHTMLS/WebLauncher/TNTRGS/player.png',
+                    forestBackground: '/additionalHTMLS/WebLauncher/TNTRGS/background.png',
+                    forestPlatformMain: '/additionalHTMLS/WebLauncher/TNTRGS/forest-platform-main.png',
+                    forestPlatformMini: '/additionalHTMLS/WebLauncher/TNTRGS/forest-platform-mini.png',
+                    skyBackground: '/additionalHTMLS/WebLauncher/TNTRGS/sky-background.png',
+                    skyPlatformMain: '/additionalHTMLS/WebLauncher/TNTRGS/sky-platform-main.png',
+                    skyPlatformMini: '/additionalHTMLS/WebLauncher/TNTRGS/sky-platform-main.png',
+                    portal: '/additionalHTMLS/WebLauncher/TNTRGS/portal.png'
+                };

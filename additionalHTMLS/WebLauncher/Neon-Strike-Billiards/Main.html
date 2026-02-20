@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Strike Billiards</title>
+    <link rel="icon" type="png" href="/images/WebNeonStrikeBilliardsLogo.png">
+    <style>
+        :root {
+            --bg-color: #0d0d1a;
+            --primary-neon: #00ffff;
+            --secondary-neon: #ff00ff;
+            --tertiary-neon: #ffff00;
+            --table-felt-dark: #004d26;
+            --table-felt-light: #005a2e;
+            --table-wood: #3a220f;
+            --text-color: #f0f0f0;
+            --text-muted: #888;
+        }
+
+        html, body {
+            overflow: hidden; /* Κανένα scroll */
+            background-color: var(--bg-color);
+        }
+
+        /* --- PC STYLES (UNCHANGED) --- */
+        body {
+            background-image: radial-gradient(circle at top left, rgba(0, 255, 255, 0.1), transparent 30%),
+                              radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.1), transparent 40%);
+            color: var(--text-color);
+            font-family: 'Consolas', 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        h1 {
+            color: var(--primary-neon);
+            text-shadow: 0 0 5px var(--primary-neon), 
+                         0 0 10px var(--primary-neon), 
+                         0 0 20px var(--primary-neon),
+                         0 0 30px #fff;
+            margin-bottom: 10px;
+            font-size: 3.5em;
+            letter-spacing: 2px;
+        }
+
+        #game-wrapper {
+            position: relative;
+            width: 1040px; /* 1000px canvas + 2*20px border */
+            height: 540px; /* 500px canvas + 2*20px border */
+            margin: 0 auto;
+        }
+        
+        canvas#pool-table {
+            background: radial-gradient(ellipse at center, var(--table-felt-light) 0%, var(--table-felt-dark) 100%);
+            border: 20px solid var(--table-wood);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7), 
+                        inset 0 0 15px rgba(0, 0, 0, 0.8),
+                        0 0 40px rgba(0, 255, 255, 0.2);
+            cursor: crosshair;
+            display: block;
+            width: 1000px;
+            height: 500px;
+        }
+
+        .game-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 1000px; 
+            height: 500px; 
+            padding: 20px;
+            background-color: rgba(13, 13, 26, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            color: var(--text-color);
+            border-radius: 0; 
+            box-sizing: border-box;
+        }
+        
+        #main-menu h2 { color: var(--tertiary-neon); text-shadow: 0 0 10px var(--tertiary-neon); font-size: 2.5em; }
+        #game-over-screen { display: none; }
+        #game-over-screen h2 { color: var(--tertiary-neon); font-size: 3em; text-shadow: 0 0 10px var(--tertiary-neon); }
+        #game-over-screen p { font-size: 1.5em; color: var(--text-color); }
+
+
+        .neon-button {
+            background-color: transparent; border: 2px solid var(--primary-neon);
+            color: var(--primary-neon); padding: 15px 30px; font-size: 1.5em;
+            font-family: 'Consolas', 'Courier New', monospace; cursor: pointer;
+            border-radius: 5px; text-shadow: 0 0 5px var(--primary-neon);
+            box-shadow: 0 0 10px var(--primary-neon), inset 0 0 5px var(--primary-neon);
+            transition: all 0.2s ease-in-out; margin-top: 20px;
+        }
+        .neon-button:hover {
+            background-color: var(--primary-neon); color: var(--bg-color);
+            box-shadow: 0 0 20px var(--primary-neon), 0 0 30px var(--primary-neon), inset 0 0 10px #fff;
+        }
+
+        #info {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            width: 1040px; 
+            margin: 15px auto; 
+            color: var(--text-color); 
+            font-size: 1.2em;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+        #score-display {
+            font-weight: bold; color: var(--tertiary-neon);
+            font-size: 2em;
+            text-shadow: 0 0 5px var(--tertiary-neon);
+        }
+        .instructions {
+            font-style: italic; color: var(--text-muted); font-size: 0.9em;
+            max-width: 450px;
+            text-align: right;
+        }
+        footer { margin-top: 20px; font-size: 1em; color: var(--text-muted); }
+        footer strong { color: var(--secondary-neon); text-shadow: 0 0 5px var(--secondary-neon); }
+        
+        /* --- END OF PC STYLES --- */
+
+
+        /* --- ✨ MOBILE "NOT SUPPORTED" STYLES FIX --- */
+        
+        #mobile-block { 
+            display: none; 
+            text-align: center;
+        }
+
+        /* Όταν το body πάρει την κλάση 'is-mobile'... */
+        body.is-mobile {
+            padding: 0; /* ✨ NEW: Reset PC padding */
+        }
+        
+        body.is-mobile h1,
+        body.is-mobile #game-wrapper,
+        body.is-mobile #info,
+        body.is-mobile footer {
+            display: none; /* ...κρύψε όλο το παιχνίδι... */
+        }
+
+        /* ...και δείξε μόνο το "not supported" μήνυμα, σε full screen */
+        body.is-mobile #mobile-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100svh; /* ✨ FIX: Χρήση 'svh' (Small Viewport Height) αντί για 'vh' */
+            background-color: var(--bg-color);
+            z-index: 200;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        body.is-mobile #mobile-block h2 {
+            color: var(--secondary-neon);
+            /* ✨ FIX: Responsive font size */
+            font-size: clamp(1.8em, 10vw, 2.8em); 
+        }
+        
+        body.is-mobile #mobile-block p {
+            font-size: clamp(1em, 5vw, 1.3em); /* ✨ FIX: Responsive font size */
+            color: var(--text-color);
+        }
+        /* --- END OF MOBILE FIX --- */
+
+    </style>
+</head>
+<body>
+
+    <h1>Neon Strike Billiards</h1>
+
+    <div id="game-wrapper">
+        <div id="main-menu" class="game-overlay">
+            <h2>Welcome to Neon Strike Billiards</h2>
+            <p>Click and drag *away* from the cue ball to aim. Release to shoot.</p>
+            <p>Pot multiple balls in one shot for a COMBO bonus!</p>
+            <button id="start-button" class="neon-button">Start Game</button>
+        </div>
+        <div id="game-over-screen" class="game-overlay">
+            <h2>YOU WIN!</h2>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="play-again-button" class="neon-button">Play Again</button>
+        </div>
+
+        <canvas id="pool-table" width="1000" height="500"></canvas>
+    </div>
+
+    <div id="info">
+        <p>SCORE: <span id="score-display">0</span></p>
+        <p class="instructions">Click and drag from the cue ball to shoot. Pot all colored balls to win!</p>
+    </div>
+
+    <footer>
+        <p><strong>Powered by Greek Games Studios</strong></p>
+    </footer>
+    
+    <div id="mobile-block">
+        <h2>NOT SUPPORTED</h2>
+        <p>Please play this game on a PC/Desktop.</p>
+    </div>
+
+    <script>
+        // --- 1. Setup ---
+        const canvas = document.getElementById('pool-table');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score-display');
+        const mainMenu = document.getElementById('main-menu');
+        const gameOverScreen = document.getElementById('game-over-screen');
+        const startButton = document.getElementById('start-button');
+        const playAgainButton = document.getElementById('play-again-button');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const mobileBlock = document.getElementById('mobile-block');
+
+        // --- 2. Game Settings (Scaled Up) ---
+        const FRICTION = 0.985;
+        const BALL_RADIUS = 13;
+        const POCKET_RADIUS = 23;
+        const CUE_POWER_MULTIPLIER = 0.15;
+        const MAX_POWER = 190;
+        let score = 0, ballsMoving = false, isAiming = false, animationFrameId;
+        let aimStart = { x: 0, y: 0 }, aimEnd = { x: 0, y: 0 };
+        let ballsPocketedThisTurn = 0, wasMoving = false;
+        let comboText = '', comboTimer = 0;
+        let collisionSparks = [], trailParticles = [], pocketFlashes = [];
+
+        // --- 3. Audio ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) { /* ... (same as before) ... */ 
+            if (!audioCtx) return; 
+            const oscillator = audioCtx.createOscillator(); const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode); gainNode.connect(audioCtx.destination);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime); 
+            if (type === 'hit') {
+                oscillator.type = 'triangle'; oscillator.frequency.setValueAtTime(400, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+                oscillator.start(audioCtx.currentTime); oscillator.stop(audioCtx.currentTime + 0.2);
+            } else if (type === 'collide') {
+                oscillator.type = 'sine'; oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                oscillator.start(audioCtx.currentTime); oscillator.stop(audioCtx.currentTime + 0.1);
+            } else if (type === 'cushion') {
+                oscillator.type = 'square'; oscillator.frequency.setValueAtTime(100, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); 
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                oscillator.start(audioCtx.currentTime); oscillator.stop(audioCtx.currentTime + 0.1);
+            } else if (type === 'pocket') {
+                oscillator.type = 'sine'; oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(800, audioCtx.currentTime + 0.2);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                oscillator.start(audioCtx.currentTime); oscillator.stop(audioCtx.currentTime + 0.3);
+            } else if (type === 'combo') {
+                oscillator.type = 'sawtooth'; oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(1200, audioCtx.currentTime + 0.3);
+                gainNode.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                oscillator.start(audioCtx.currentTime); oscillator.stop(audioCtx.currentTime + 0.5);
+            }
+        }
+
+        // --- 4. Definitions & Setup ---
+        let balls = [];
+        const pockets = [
+            { x: POCKET_RADIUS, y: POCKET_RADIUS }, { x: canvas.width / 2, y: POCKET_RADIUS - 5 },
+            { x: canvas.width - POCKET_RADIUS, y: POCKET_RADIUS }, { x: POCKET_RADIUS, y: canvas.height - POCKET_RADIUS },
+            { x: canvas.width / 2, y: canvas.height - (POCKET_RADIUS - 5) }, { x: canvas.width - POCKET_RADIUS, y: canvas.height - POCKET_RADIUS }
+        ];
+        function setupTable() { /* ... (same as before) ... */ 
+            balls = [];
+            balls.push({ x: canvas.width * 0.25, y: canvas.height / 2, vx: 0, vy: 0, color: '#ffffff', isPocketed: false, id: 'cue' });
+            const startX = canvas.width * 0.7; const startY = canvas.height / 2;
+            const colors = ['#ffff00', '#0000ff', '#ff0000', '#ff00ff', '#ffa500', '#00ff00'];
+            let row = 0, countInRow = 0, yOffset = 0;
+            for (let i = 0; i < 6; i++) {
+                if (countInRow === row) { row++; countInRow = 0; yOffset = -row * BALL_RADIUS; }
+                balls.push({
+                    x: startX + row * (BALL_RADIUS * 1.8), y: startY + yOffset + (countInRow * BALL_RADIUS * 2.1),
+                    vx: 0, vy: 0, color: colors[i % colors.length], isPocketed: false, id: i + 1 
+                });
+                countInRow++;
+            }
+            score = 0; updateScore(0);
+            ballsMoving = false; ballsPocketedThisTurn = 0; wasMoving = false;
+            comboText = ''; comboTimer = 0;
+            collisionSparks = []; trailParticles = []; pocketFlashes = [];
+        }
+
+        // --- 5. VFX Creation ---
+        function createCollisionSparks(x, y, angle) { /* ... (same as before) ... */ 
+            for (let i = 0; i < 5; i++) {
+                const speed = 2 + Math.random() * 3;
+                const spread = (Math.PI / 2) * (Math.random() - 0.5);
+                collisionSparks.push({
+                    x: x, y: y,
+                    vx: Math.cos(angle + spread) * speed + (Math.random() - 0.5),
+                    vy: Math.sin(angle + spread) * speed + (Math.random() - 0.5),
+                    life: 20 + Math.random() * 20,
+                    color: Math.random() > 0.5 ? 'var(--tertiary-neon)' : '#ffffff'
+                });
+            }
+        }
+        function createCueTrail(x, y) { /* ... (same as before) ... */ 
+            if (Math.random() > 0.3) return; 
+            trailParticles.push({
+                x: x, y: y,
+                life: 15 + Math.random() * 10,
+                radius: BALL_RADIUS * 0.5 * Math.random()
+            });
+        }
+        function createPocketFlash(x, y) { /* ... (same as before) ... */ 
+            pocketFlashes.push({
+                x: x, y: y,
+                radius: POCKET_RADIUS,
+                life: 20, maxLife: 20
+            });
+        }
+
+        // --- 6. Drawing Functions ---
+        function draw() { /* ... (same as before) ... */ 
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pockets.forEach(pocket => {
+                const gradient = ctx.createRadialGradient(pocket.x, pocket.y, 1, pocket.x, pocket.y, POCKET_RADIUS);
+                gradient.addColorStop(0, '#111'); gradient.addColorStop(1, '#000');
+                ctx.fillStyle = gradient;
+                ctx.beginPath(); ctx.arc(pocket.x, pocket.y, POCKET_RADIUS, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = 'var(--primary-neon)'; ctx.lineWidth = 1.5;
+                ctx.shadowColor = 'var(--primary-neon)'; ctx.shadowBlur = 10;
+                ctx.beginPath(); ctx.arc(pocket.x, pocket.y, POCKET_RADIUS, 0, Math.PI * 2); ctx.stroke();
+                ctx.shadowBlur = 0;
+            });
+            drawVFX(true);
+            balls.forEach(ball => {
+                if (ball.isPocketed) return;
+                ctx.beginPath(); ctx.arc(ball.x + 3, ball.y + 3, BALL_RADIUS, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; ctx.fill();
+                ctx.beginPath(); ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
+                ctx.fillStyle = ball.color; ctx.shadowColor = ball.color;
+                ctx.shadowBlur = 15; ctx.fill();
+                if (ball.id !== 'cue') {
+                    ctx.fillStyle = '#ffffff'; ctx.shadowBlur = 0;
+                    ctx.beginPath();
+                    ctx.arc(ball.x, ball.y, BALL_RADIUS * 0.6, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#000000';
+                    ctx.font = 'bold 12px Consolas';
+                    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                    ctx.fillText(ball.id, ball.x, ball.y + 0.5);
+                }
+                ctx.beginPath();
+                const gradient = ctx.createRadialGradient(
+                    ball.x - 4, ball.y - 4, 1, ball.x, ball.y, BALL_RADIUS);
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = gradient; ctx.fill();
+            });
+            ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+            drawVFX(false);
+            if (isAiming && !ballsMoving) {
+                const cueBall = balls[0];
+                const power = Math.min(Math.sqrt(Math.pow(aimStart.x - aimEnd.x, 2) + Math.pow(aimStart.y - aimEnd.y, 2)), MAX_POWER);
+                const angle = Math.atan2(aimEnd.y - aimStart.y, aimEnd.x - aimStart.x);
+                const cueX = cueBall.x - Math.cos(angle) * (power + 25);
+                const cueY = cueBall.y - Math.sin(angle) * (power + 25);
+                const endX = cueBall.x - Math.cos(angle) * (power + 250);
+                const endY = cueBall.y - Math.sin(angle) * (power + 250);
+                ctx.beginPath(); ctx.moveTo(cueX, cueY); ctx.lineTo(endX, endY);
+                ctx.strokeStyle = '#8B4513'; ctx.lineWidth = 10; ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(cueX, cueY); ctx.lineTo(endX, endY);
+                ctx.strokeStyle = '#D2B48C'; ctx.lineWidth = 4; ctx.stroke();
+                const powerRatio = power / MAX_POWER;
+                let aimColor = 'rgba(255, 255, 255, 0.3)'; 
+                if (powerRatio > 0.5) aimColor = 'rgba(255, 255, 0, 0.5)'; 
+                if (powerRatio > 0.85) aimColor = 'rgba(255, 0, 0, 0.7)'; 
+                ctx.beginPath(); ctx.moveTo(cueBall.x, cueBall.y);
+                ctx.lineTo(cueBall.x + Math.cos(angle) * 1000, cueBall.y + Math.sin(angle) * 1000);
+                ctx.strokeStyle = aimColor;
+                ctx.lineWidth = 2; ctx.setLineDash([5, 5]); ctx.stroke();
+                ctx.setLineDash([]); ctx.lineWidth = 1;
+            }
+            if (comboTimer > 0) {
+                ctx.fillStyle = 'var(--tertiary-neon)'; 
+                ctx.font = 'bold 45px "Consolas"';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.shadowColor = 'var(--tertiary-neon)'; ctx.shadowBlur = 15;
+                const wobble = Math.sin(comboTimer * 0.2) * 3;
+                ctx.fillText(comboText, canvas.width / 2 + wobble, canvas.height / 2 - 40);
+                ctx.shadowBlur = 0; comboTimer--;
+                if (comboTimer === 0) comboText = '';
+            }
+        }
+        function drawVFX(drawUnder) { /* ... (same as before) ... */ 
+            if (drawUnder) {
+                for (let i = trailParticles.length - 1; i >= 0; i--) {
+                    const p = trailParticles[i];
+                    ctx.fillStyle = `rgba(255, 255, 255, ${0.3 * (p.life / 25)})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius * (p.life / 25), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                for (let i = pocketFlashes.length - 1; i >= 0; i--) {
+                    const f = pocketFlashes[i];
+                    const opacity = (f.life / f.maxLife) * 0.8;
+                    const radius = f.radius + (f.maxLife - f.life) * 1.5;
+                    ctx.fillStyle = `rgba(0, 255, 255, ${opacity})`;
+                    ctx.shadowColor = 'var(--primary-neon)';
+                    ctx.shadowBlur = 20;
+                    ctx.beginPath();
+                    ctx.arc(f.x, f.y, radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+            else {
+                for (let i = collisionSparks.length - 1; i >= 0; i--) {
+                    const p = collisionSparks[i];
+                    ctx.fillStyle = p.color;
+                    ctx.shadowColor = p.color;
+                    ctx.shadowBlur = 10;
+                    ctx.beginPath();
+                    ctx.rect(p.x, p.y, 3, 3);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+        }
+
+        // --- 7. Physics & Update ---
+        function update() { /* ... (same as before) ... */ 
+            if (!ballsMoving) return;
+            ballsMoving = false;
+            balls.forEach(ball => {
+                if (ball.isPocketed) return;
+                ball.vx *= FRICTION; ball.vy *= FRICTION;
+                ball.x += ball.vx; ball.y += ball.vy;
+                const speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+                if (speed > 0.05) {
+                    ballsMoving = true;
+                } else { ball.vx = 0; ball.vy = 0; }
+                if (ball.id === 'cue' && speed > 4) {
+                    createCueTrail(ball.x - ball.vx, ball.y - ball.vy);
+                }
+                pockets.forEach(pocket => {
+                    const dist = Math.sqrt(Math.pow(ball.x - pocket.x, 2) + Math.pow(ball.y - pocket.y, 2));
+                    if (dist < POCKET_RADIUS) { handlePocket(ball, pocket); } 
+                });
+                if (ball.x + BALL_RADIUS > canvas.width) { ball.x = canvas.width - BALL_RADIUS; ball.vx *= -1; playSound('cushion'); } 
+                else if (ball.x - BALL_RADIUS < 0) { ball.x = BALL_RADIUS; ball.vx *= -1; playSound('cushion'); }
+                if (ball.y + BALL_RADIUS > canvas.height) { ball.y = canvas.height - BALL_RADIUS; ball.vy *= -1; playSound('cushion'); } 
+                else if (ball.y - BALL_RADIUS < 0) { ball.y = BALL_RADIUS; ball.vy *= -1; playSound('cushion'); }
+            });
+            for (let i = 0; i < balls.length; i++) {
+                if (balls[i].isPocketed) continue;
+                for (let j = i + 1; j < balls.length; j++) {
+                    if (balls[j].isPocketed) continue;
+                    handleBallCollision(balls[i], balls[j]);
+                }
+            }
+        }
+        function updateVFX() { /* ... (same as before) ... */ 
+            for (let i = collisionSparks.length - 1; i >= 0; i--) {
+                const p = collisionSparks[i];
+                p.x += p.vx; p.y += p.vy;
+                p.vy += 0.1; p.life--;
+                if (p.life <= 0) collisionSparks.splice(i, 1);
+            }
+            for (let i = trailParticles.length - 1; i >= 0; i--) {
+                const p = trailParticles[i];
+                p.life--;
+                if (p.life <= 0) trailParticles.splice(i, 1);
+            }
+             for (let i = pocketFlashes.length - 1; i >= 0; i--) {
+                const f = pocketFlashes[i];
+                f.life--;
+                if (f.life <= 0) pocketFlashes.splice(i, 1);
+            }
+        }
+        function handleBallCollision(ball1, ball2) { /* ... (same as before) ... */ 
+            const dx = ball2.x - ball1.x; const dy = ball2.y - ball1.y;
+            const dist = Math.sqrt(dx * dx + dy * dy); const totalRadius = BALL_RADIUS * 2;
+            if (dist < totalRadius) {
+                const angle = Math.atan2(dy, dx); const sin = Math.sin(angle); const cos = Math.cos(angle);
+                let pos1 = { x: 0, y: 0 }; let pos2 = { x: dist, y: 0 };
+                let vel1 = { x: ball1.vx * cos + ball1.vy * sin, y: ball1.vy * cos - ball1.vx * sin };
+                let vel2 = { x: ball2.vx * cos + ball2.vy * sin, y: ball2.vy * cos - ball2.vx * sin };
+                const vxTotal = vel1.x - vel2.x; vel1.x = vel2.x; vel2.x = vxTotal + vel1.x;
+                const overlap = totalRadius - dist; pos1.x -= overlap / 2; pos2.x += overlap / 2;
+                let pos1Final = { x: pos1.x * cos - pos1.y * sin, y: pos1.y * cos + pos1.x * sin };
+                let pos2Final = { x: pos2.x * cos - pos2.y * sin, y: pos2.y * cos + pos2.x * sin };
+                ball2.x = ball1.x + pos2Final.x; ball2.y = ball1.y + pos2Final.y;
+                ball1.x = ball1.x + pos1Final.x; ball1.y = ball1.y + pos1Final.y;
+                ball1.vx = vel1.x * cos - vel1.y * sin; ball1.vy = vel1.y * cos + vel1.x * sin;
+                ball2.vx = vel2.x * cos - vel2.y * sin; ball2.vy = vel2.y * cos + vel2.x * sin;
+                playSound('collide');
+                const collisionSpeed = Math.abs(vel1.x) + Math.abs(vel2.x);
+                if (collisionSpeed > 2) { 
+                    createCollisionSparks(ball1.x + dx / 2, ball1.y + dy / 2, angle);
+                }
+            }
+        }
+        function handlePocket(ball, pocket) { /* ... (same as before) ... */ 
+            ball.isPocketed = true; ball.vx = 0; ball.vy = 0;
+            playSound('pocket');
+            createPocketFlash(pocket.x, pocket.y); 
+            if (ball.id === 'cue') {
+                updateScore(-50); 
+                setTimeout(() => {
+                    ball.x = canvas.width * 0.25; ball.y = canvas.height / 2;
+                    ball.isPocketed = false;
+                }, 500);
+            } else {
+                ballsPocketedThisTurn++;
+            }
+        }
+        function calculateComboScore() { /* ... (same as before) ... */ 
+            if (ballsPocketedThisTurn === 0) return;
+            if (ballsPocketedThisTurn === 1) { updateScore(100); } 
+            else if (ballsPocketedThisTurn === 2) {
+                updateScore(300); comboText = "DOUBLE HIT! +300";
+                comboTimer = 120; playSound('combo');
+            } else if (ballsPocketedThisTurn >= 3) {
+                let bonus = ballsPocketedThisTurn * 100 + 500;
+                updateScore(bonus); comboText = "MULTI-BALL! +" + bonus;
+                comboTimer = 180; playSound('combo');
+            }
+        }
+        function updateScore(points) { score += points; scoreDisplay.textContent = score; }
+
+        // --- 8. Game Loop ---
+        function gameLoop() {
+            update(); updateVFX(); draw();       
+            if (!ballsMoving && wasMoving) { 
+                wasMoving = false; calculateComboScore();
+            }
+            if (ballsMoving) { wasMoving = true; }
+            const coloredBallsLeft = balls.slice(1).some(b => !b.isPocketed);
+            if (!coloredBallsLeft && !ballsMoving) { showWinScreen(); } 
+            else { animationFrameId = requestAnimationFrame(gameLoop); }
+        }
+        function showWinScreen() {
+            cancelAnimationFrame(animationFrameId); 
+            finalScoreDisplay.textContent = score;
+            gameOverScreen.style.display = 'flex';
+        }
+        
+        // --- 9. Event Handlers (PC Only) ---
+        function getCanvasCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const canvasX = e.clientX - rect.left;
+            const canvasY = e.clientY - rect.top;
+            return { x: canvasX, y: canvasY };
+        }
+        function onAimStart(e) {
+            if (ballsMoving) return; 
+            const coords = getCanvasCoords(e);
+            if (!coords) return;
+            aimStart = { x: coords.x, y: coords.y };
+            const cueBall = balls[0];
+            const dist = Math.sqrt(Math.pow(cueBall.x - aimStart.x, 2) + Math.pow(cueBall.y - aimStart.y, 2));
+            if (dist < BALL_RADIUS + 20) { 
+                 isAiming = true;
+                 aimEnd = { ...aimStart };
+            }
+        }
+        function onAimMove(e) {
+            if (!isAiming) return;
+            const coords = getCanvasCoords(e);
+            if (!coords) return;
+            aimEnd = { x: coords.x, y: coords.y };
+        }
+        function onAimEnd(e) {
+            if (!isAiming) return;
+            isAiming = false;
+            const cueBall = balls[0];
+            const angle = Math.atan2(aimEnd.y - aimStart.y, aimEnd.x - aimStart.x);
+            let power = Math.sqrt(Math.pow(aimStart.x - aimEnd.x, 2) + Math.pow(aimStart.y - aimEnd.y, 2));
+            power = Math.min(power, MAX_POWER); 
+            cueBall.vx = Math.cos(angle) * power * CUE_POWER_MULTIPLIER;
+            cueBall.vy = Math.sin(angle) * power * CUE_POWER_MULTIPLIER;
+            ballsMoving = true; playSound('hit');
+            ballsPocketedThisTurn = 0; wasMoving = true;
+        }
+
+        // --- 10. Initialization Logic ---
+        
+        const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        if (isMobile) {
+            // Είναι κινητό: Πρόσθεσε την κλάση στο body για να ενεργοποιηθεί το CSS fix
+            document.body.classList.add('is-mobile');
+        } else {
+            // Είναι PC: Σύνδεσε τα events του παιχνιδιού
+            startButton.addEventListener('click', () => {
+                mainMenu.style.display = 'none';
+                setupTable(); 
+                gameLoop();
+            });
+            
+            playAgainButton.addEventListener('click', () => { 
+                location.reload(); 
+            });
+            
+            canvas.addEventListener('mousedown', onAimStart);
+            canvas.addEventListener('mousemove', onAimMove);
+            canvas.addEventListener('mouseup', onAimEnd);
+            canvas.addEventListener('mouseleave', onAimEnd);
+        }
+        
+    </script>
+</body>
+</html>

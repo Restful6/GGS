@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Neon Breakout</title>
+    <link rel="icon" type="png" href="/images/WebNeonBreakoutLogo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        :root {
+            --neon-magenta: #f0f;
+            --neon-cyan: #0ff;
+            --main-bg: #000;
+            --dark-bg: #05000a;
+            --text-color: #fff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--main-bg);
+            color: var(--text-color);
+            font-family: 'Press Start 2P', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-shadow: 0 0 10px var(--neon-magenta);
+        }
+
+        h1 {
+            font-size: 2rem; /* Μικρότερο λίγο για να χωράει */
+            color: var(--neon-magenta);
+            animation: flicker 1.5s infinite alternate;
+            margin: 10px 0;
+        }
+
+        .game-wrapper {
+            position: relative;
+            /* ΑΛΛΑΓΗ 1: Μεγαλώσαμε το πλάτος */
+            width: 1200px; 
+            max-width: 98vw; /* Να πιάνει σχεδόν όλη την οθόνη αν είναι μικρότερη */
+            aspect-ratio: 1200/800; /* Διατηρεί την αναλογία */
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            color: var(--neon-cyan);
+        }
+        
+        #score { text-align: left; }
+        #lives { text-align: right; }
+
+        canvas {
+            background-color: var(--dark-bg);
+            border: 3px solid var(--neon-magenta);
+            box-shadow: 0 0 30px var(--neon-magenta), 0 0 10px var(--neon-magenta) inset;
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: none;
+        }
+
+        /* --- MENUS --- */
+        .menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 0, 10, 0.9);
+            border: 2px solid var(--neon-magenta);
+            box-shadow: 0 0 30px var(--neon-magenta);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #pause-menu, #game-over-menu { display: none; }
+        #start-menu p { font-size: 0.9rem; margin: 20px; line-height: 1.5; }
+
+        .menu-overlay h2 {
+            font-size: 2.5rem;
+            color: var(--neon-magenta);
+            margin-bottom: 30px;
+        }
+
+        .menu-button {
+            background-color: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--neon-cyan);
+            transition: all 0.2s ease;
+            margin: 10px;
+            width: 350px;
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+
+        .menu-button:hover {
+            background-color: var(--neon-cyan);
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px var(--neon-cyan), 0 0 10px #fff;
+            text-shadow: none;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-magenta),
+                0 0 40px var(--neon-magenta),
+                0 0 80px var(--neon-magenta);
+                opacity: 1;
+            }
+            20%, 24%, 55% { text-shadow: none; opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>NEON BREAKOUT</h1>
+
+    <div class="game-wrapper">
+        <div class="stats-container">
+            <div id="score">SCORE: 0</div>
+            <div id="lives">LIVES: 5</div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="start-menu" class="menu-overlay">
+            <h2>WELCOME</h2>
+            <p>PC: ARROWS | MOBILE: TOUCH<br>PRESS 'P' TO PAUSE</p>
+            <button id="startButton" class="menu-button">START GAME</button>
+            <div class="footer">Powered by Greek Games Studios</div>
+        </div>
+
+        <div id="pause-menu" class="menu-overlay">
+            <h2>PAUSED</h2>
+            <button id="resumeButton" class="menu-button">RESUME</button>
+        </div>
+
+        <div id="game-over-menu" class="menu-overlay">
+            <h2 id="final-message">GAME OVER</h2>
+            <p id="final-score"></p>
+            <button id="playAgainButton" class="menu-button">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DOM Elements ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreEl = document.getElementById('score');
+        const livesEl = document.getElementById('lives');
+        
+        const startMenu = document.getElementById('start-menu');
+        const pauseMenu = document.getElementById('pause-menu');
+        const gameOverMenu = document.getElementById('game-over-menu');
+        const finalMessage = document.getElementById('final-message');
+        const finalScore = document.getElementById('final-score');
+        
+        const startButton = document.getElementById('startButton');
+        const resumeButton = document.getElementById('resumeButton');
+        const playAgainButton = document.getElementById('playAgainButton');
+
+        // --- Game Setup ---
+        // ΑΛΛΑΓΗ 2: Αυξήσαμε την ανάλυση του καμβά
+        canvas.width = 1200;
+        canvas.height = 800;
+
+        let gameState = 'menu';
+        let score = 0;
+        let lives = 5;
+        let keysPressed = {};
+        let animationFrameId;
+
+        const mainColor = '#f0f'; // Neon Magenta
+        const accentColor = '#0ff'; // Neon Cyan
+
+        // --- Web Audio API ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (!audioCtx) return;
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+
+            if (type === 'paddle') {
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(250, audioCtx.currentTime);
+            } else if (type === 'brick') {
+                oscillator.type = 'triangle';
+                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+            } else if (type === 'wall') {
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(150, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            } else if (type === 'lose') {
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(100, audioCtx.currentTime);
+            }
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.07);
+        }
+
+        // --- Game Objects ---
+
+        class Paddle {
+            constructor(x, y, width, height, color) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.color = color;
+                this.speed = 14; // Λίγο πιο γρήγορο paddle για μεγαλύτερη οθόνη
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 15;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.shadowBlur = 0;
+            }
+
+            move() {
+                if (keysPressed['ArrowRight']) {
+                    this.x += this.speed;
+                } else if (keysPressed['ArrowLeft']) {
+                    this.x -= this.speed;
+                }
+                this.clamp();
+            }
+
+            moveTo(x) {
+                this.x = x - this.width / 2;
+                this.clamp();
+            }
+            
+            clamp() {
+                if (this.x < 0) this.x = 0;
+                if (this.x + this.width > canvas.width) this.x = canvas.width - this.width;
+            }
+        }
+
+        class Ball {
+            constructor(x, y, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.speed = 6;
+                this.dx = 5;
+                this.dy = -5;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 20;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fill();
+                ctx.closePath();
+                ctx.shadowBlur = 0;
+            }
+
+            move() {
+                this.x += this.dx;
+                this.y += this.dy;
+
+                // Wall collision (left/right)
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                    this.dx *= -1;
+                    playSound('wall');
+                }
+                // Wall collision (top)
+                if (this.y - this.radius < 0) {
+                    this.dy *= -1;
+                    playSound('wall');
+                }
+            }
+
+            reset() {
+                this.x = paddle.x + paddle.width / 2;
+                this.y = paddle.y - 20;
+                this.dx = (Math.random() - 0.5) * 10;
+                this.dy = -this.speed;
+            }
+        }
+
+        class Brick {
+            constructor(x, y, width, height, color) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.color = color;
+                this.visible = true;
+            }
+
+            draw() {
+                if (!this.visible) return;
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 10;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.shadowBlur = 0;
+            }
+        }
+        
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.radius = Math.random() * 2 + 1;
+                this.dx = (Math.random() - 0.5) * 4;
+                this.dy = (Math.random() - 0.5) * 4;
+                this.lifespan = 40;
+                this.opacity = 1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.dx;
+                this.y += this.dy;
+                this.lifespan--;
+                this.opacity = this.lifespan / 40;
+            }
+        }
+
+        // --- Create Objects ---
+        const paddle = new Paddle(canvas.width / 2 - 75, canvas.height - 40, 190, 15, mainColor);
+        const ball = new Ball(canvas.width / 2, canvas.height / 2, 8, accentColor);
+        let particles = [];
+        let bricks = [];
+
+        // --- Brick Setup (ΑΛΛΑΓΗ 3: Περισσότερα τουβλάκια) ---
+        const brickInfo = {
+            rows: 8,          // Παλιά: 6 | Τώρα: 8
+            cols: 12,         // Παλιά: 8 | Τώρα: 12 (Για να γεμίσει το πλάτος)
+            width: 80,
+            height: 20,
+            padding: 10,
+            offsetX: 65,      // Υπολογισμός για κεντράρισμα: (1200 - (12*90 - 10)) / 2
+            offsetY: 60
+        };
+        const brickColors = [mainColor, accentColor, '#f0a', '#a0f', '#0af', '#af0'];
+
+        function createBricks() {
+            bricks = [];
+            for (let r = 0; r < brickInfo.rows; r++) {
+                bricks[r] = [];
+                for (let c = 0; c < brickInfo.cols; c++) {
+                    const x = c * (brickInfo.width + brickInfo.padding) + brickInfo.offsetX;
+                    const y = r * (brickInfo.height + brickInfo.padding) + brickInfo.offsetY;
+                    const color = brickColors[r % brickColors.length];
+                    bricks[r][c] = new Brick(x, y, brickInfo.width, brickInfo.height, color);
+                }
+            }
+        }
+
+        // --- Game Functions ---
+        
+        function updateStats() {
+            scoreEl.textContent = `SCORE: ${score}`;
+            livesEl.textContent = `LIVES: ${lives}`;
+        }
+
+        function createParticles(x, y, color) {
+            for (let i = 0; i < 10; i++) {
+                particles.push(new Particle(x, y, color));
+            }
+        }
+
+        function handleParticles() {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                if (p.lifespan <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+        }
+
+        function handleCollisions() {
+            // Ball-Paddle collision
+            if (ball.x > paddle.x &&
+                ball.x < paddle.x + paddle.width &&
+                ball.y + ball.radius > paddle.y) 
+            {
+                ball.dy = -ball.speed;
+                let collidePoint = (ball.x - (paddle.x + paddle.width / 2));
+                ball.dx = collidePoint * 0.15; 
+                playSound('paddle');
+            }
+
+            // Ball-Brick collision
+            let allBricksBroken = true;
+            for (let r = 0; r < brickInfo.rows; r++) {
+                for (let c = 0; c < brickInfo.cols; c++) {
+                    const brick = bricks[r][c];
+                    if (brick.visible) {
+                        allBricksBroken = false;
+                        if (ball.x > brick.x &&
+                            ball.x < brick.x + brick.width &&
+                            ball.y > brick.y &&
+                            ball.y < brick.y + brick.height)
+                        {
+                            ball.dy *= -1;
+                            brick.visible = false;
+                            score += 10;
+                            updateStats();
+                            playSound('brick');
+                            createParticles(ball.x, ball.y, brick.color);
+                        }
+                    }
+                }
+            }
+            
+            if (allBricksBroken) {
+                winGame();
+            }
+        }
+        
+        function checkLoseLife() {
+            if (ball.y + ball.radius > canvas.height) {
+                lives--;
+                updateStats();
+                playSound('lose');
+                if (lives <= 0) {
+                    gameOver();
+                } else {
+                    ball.reset();
+                }
+            }
+        }
+        
+        function winGame() {
+            gameState = 'gameOver';
+            finalMessage.textContent = "YOU WIN!";
+            finalScore.textContent = `FINAL SCORE: ${score}`;
+            gameOverMenu.style.display = 'flex';
+        }
+        
+        function gameOver() {
+            gameState = 'gameOver';
+            finalMessage.textContent = "GAME OVER";
+            finalScore.textContent = `FINAL SCORE: ${score}`;
+            gameOverMenu.style.display = 'flex';
+        }
+        
+        function resetGame() {
+            score = 0;
+            lives = 5;
+            updateStats();
+            createBricks();
+            paddle.x = canvas.width / 2 - 75;
+            ball.reset();
+        }
+
+        // --- Main Logic (Update) ---
+        function update() {
+            if (gameState !== 'play') return;
+            
+            paddle.move();
+            ball.move();
+            
+            handleCollisions();
+            checkLoseLife();
+        }
+
+        // --- Main Render ---
+        function render() {
+            ctx.fillStyle = 'rgba(5, 0, 10, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let r = 0; r < brickInfo.rows; r++) {
+                for (let c = 0; c < brickInfo.cols; c++) {
+                    bricks[r][c].draw();
+                }
+            }
+            
+            paddle.draw();
+            ball.draw();
+            handleParticles();
+        }
+
+        // --- Game Loop ---
+        function gameLoop() {
+            update();
+            render();
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+
+        // --- Event Listeners ---
+
+        function showMenu(menuId) {
+            startMenu.style.display = 'none';
+            pauseMenu.style.display = 'none';
+            gameOverMenu.style.display = 'none';
+            if (menuId) {
+                document.getElementById(menuId).style.display = 'flex';
+            }
+        }
+
+        // Start
+        startButton.addEventListener('click', () => {
+            gameState = 'play';
+            showMenu(null);
+            // Ξεκινάει τον ήχο (χρειάζεται interaction)
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        });
+
+        // Pause (Keyboard)
+        window.addEventListener('keydown', (e) => {
+            keysPressed[e.key] = true;
+            if (e.key === 'p' || e.key === 'P') {
+                if (gameState === 'play') {
+                    gameState = 'pause';
+                    showMenu('pause-menu');
+                } else if (gameState === 'pause') {
+                    gameState = 'play';
+                    showMenu(null);
+                }
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keysPressed[e.key] = false;
+        });
+
+        // Resume
+        resumeButton.addEventListener('click', () => {
+            gameState = 'play';
+            showMenu(null);
+        });
+
+        // Play Again
+        playAgainButton.addEventListener('click', () => {
+            resetGame();
+            gameState = 'play';
+            showMenu(null);
+        });
+
+        // Touch Controls
+        function handleTouch(e) {
+            e.preventDefault();
+            if (gameState !== 'play') return;
+            
+            let rect = canvas.getBoundingClientRect();
+            let scaleX = canvas.width / rect.width;
+            let touchX = (e.touches[0].clientX - rect.left) * scaleX;
+            
+            paddle.moveTo(touchX);
+        }
+
+        canvas.addEventListener('touchstart', handleTouch, {passive: false});
+        canvas.addEventListener('touchmove', handleTouch, {passive: false});
+        
+        // --- Init ---
+        resetGame();
+        gameLoop();
+    </script>
+</body>
+</html>

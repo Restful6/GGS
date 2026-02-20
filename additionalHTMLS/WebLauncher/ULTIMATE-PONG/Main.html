@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Ultimate Pong</title>
+    <link rel="icon" type="png" href="/images/WebUltimatePongLogo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        :root {
+            --neon-blue: #0ff;
+            --main-bg: #000;
+            --dark-bg: #03030c;
+            --text-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--main-bg);
+            color: var(--text-color);
+            font-family: 'Press Start 2P', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        h1 {
+            font-size: 3rem; /* Μεγαλύτερο */
+            color: var(--neon-blue);
+            animation: flicker 1.5s infinite alternate;
+            margin: 10px 0;
+        }
+
+        .game-wrapper {
+            position: relative;
+            width: 1200px; /* Μεγαλύτερο */
+            max-width: 95vw;
+        }
+
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 3.5rem; /* Μεγαλύτερο */
+            padding: 0 50px;
+            color: var(--neon-blue);
+        }
+
+        #player-score { text-align: left; }
+        #ai-score { text-align: right; }
+
+        canvas {
+            background-color: var(--dark-bg);
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue), 0 0 10px var(--neon-blue) inset;
+            width: 100%;
+            display: block;
+            cursor: none; /* Κρύβουμε το ποντίκι αφού δεν χρησιμοποιείται */
+        }
+
+        /* --- MENUS --- */
+        .menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 10, 0.85);
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #settings-menu, #pause-menu, #game-over-menu {
+            display: none;
+        }
+
+        .menu-overlay h2 {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            margin-bottom: 30px;
+        }
+
+        .menu-overlay p {
+            font-size: 0.8rem;
+            margin-bottom: 25px;
+        }
+        /* Προσθήκη οδηγιών ελέγχου */
+        .controls-info {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            max-width: 80%;
+            margin-top: 20px;
+        }
+
+
+        .menu-button, .setting-group button {
+            background-color: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: all 0.2s ease;
+            margin: 10px;
+            width: 280px;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .menu-button:hover, .setting-group button:hover {
+            background-color: var(--neon-blue);
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px var(--neon-blue), 0 0 10px #fff;
+            text-shadow: none;
+        }
+
+        .setting-group { margin: 15px 0; }
+        .setting-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .setting-group button {
+            font-size: 0.9rem;
+            width: auto;
+            padding: 10px 15px;
+            margin: 0 5px;
+        }
+        .setting-group button.active {
+            background-color: var(--neon-blue);
+            color: var(--dark-bg);
+            text-shadow: none;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-blue),
+                0 0 40px var(--neon-blue),
+                0 0 80px var(--neon-blue),
+                0 0 120px var(--neon-blue);
+                opacity: 1;
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ULTIMATE PONG</h1>
+
+    <div class="game-wrapper">
+        <div class="score-container">
+            <div id="player-score">0</div>
+            <div id="ai-score">0</div>
+        </div>
+
+        <canvas id="pongCanvas"></canvas>
+
+        <div id="main-menu" class="menu-overlay">
+            <h2>MAIN MENU</h2>
+            <button id="onePlayerButton" class="menu-button">1 PLAYER</button>
+            <button id="twoPlayerButton" class="menu-button">2 PLAYERS</button>
+            <button id="settingsButton" class="menu-button">SETTINGS</button>
+            <div class="controls-info">
+                1P: W/S + ARROWS<br>
+                2P: P1 (W/S) | P2 (ARROWS)<br>
+                MOBILE: TOUCH
+            </div>
+            <div class="footer">Powered by Greek Games Studios</div>
+        </div>
+
+        <div id="settings-menu" class="menu-overlay">
+            <h2>SETTINGS</h2>
+            
+            <div class="setting-group" id="difficulty-group">
+                <label>DIFFICULTY (AI)</label>
+                <button data-value="easy" class="setting-btn" data-group="difficulty">EASY</button>
+                <button data-value="normal" class="setting-btn active" data-group="difficulty">NORMAL</button>
+                <button data-value="hard" class="setting-btn" data-group="difficulty">HARD</button>
+            </div>
+            
+            <div class="setting-group">
+                <label>WINNING SCORE</label>
+                <button data-value="3" class="setting-btn" data-group="score">3</button>
+                <button data-value="5" class="setting-btn active" data-group="score">5</button>
+                <button data-value="10" class="setting-btn" data-group="score">10</button>
+            </div>
+
+            <div class="setting-group">
+                <label>SOUND</label>
+                <button data-value="on" class="setting-btn active" data-group="sound">ON</button>
+                <button data-value="off" class="setting-btn" data-group="sound">OFF</button>
+            </div>
+            
+            <button id="settingsBackButton" class="menu-button" style="margin-top: 30px;">BACK</button>
+        </div>
+
+        <div id="pause-menu" class="menu-overlay">
+            <h2>PAUSED</h2>
+            <button id="resumeButton" class="menu-button">RESUME</button>
+            <button id="quitButton" class="menu-button">MAIN MENU</button>
+        </div>
+
+        <div id="game-over-menu" class="menu-overlay">
+            <h2 id="winner-message">GAME OVER</h2>
+            <button id="playAgainButton" class="menu-button">PLAY AGAIN</button>
+            <button id="gameOverMenuButton" class="menu-button">MAIN MENU</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DOM Elements ---
+        const canvas = document.getElementById('pongCanvas');
+        const ctx = canvas.getContext('2d');
+        const playerScoreEl = document.getElementById('player-score');
+        const aiScoreEl = document.getElementById('ai-score');
+        
+        // Menus
+        const mainMenu = document.getElementById('main-menu');
+        const settingsMenu = document.getElementById('settings-menu');
+        const pauseMenu = document.getElementById('pause-menu');
+        const gameOverMenu = document.getElementById('game-over-menu');
+        const winnerMessage = document.getElementById('winner-message');
+
+        // Buttons
+        const onePlayerButton = document.getElementById('onePlayerButton');
+        const twoPlayerButton = document.getElementById('twoPlayerButton');
+        const settingsButton = document.getElementById('settingsButton');
+        const settingsBackButton = document.getElementById('settingsBackButton');
+        const resumeButton = document.getElementById('resumeButton');
+        const quitButton = document.getElementById('quitButton');
+        const playAgainButton = document.getElementById('playAgainButton');
+        const gameOverMenuButton = document.getElementById('gameOverMenuButton');
+
+        // --- Game Settings ---
+        let settings = {
+            gameMode: '1P', 
+            difficulty: 'normal',
+            winningScore: 5,
+            soundEnabled: true
+        };
+        const aiSpeedLevels = { easy: 0.05, normal: 0.09, hard: 0.13 };
+        const mainColor = '#0ff'; 
+
+        // --- Game State ---
+        let gameState = 'main-menu'; 
+        let keysPressed = {};
+        let animationFrameId;
+
+        // Canvas Setup
+        canvas.width = 1200; // Μεγαλύτερο
+        canvas.height = 700; // Μεγαλύτερο
+
+        // --- Web Audio API (Sounds) ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (!audioCtx || !settings.soundEnabled) return;
+
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+
+            if (type === 'paddle') {
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+            } else if (type === 'wall') {
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(350, audioCtx.currentTime);
+            } else if (type === 'score') {
+                oscillator.type = 'triangle';
+                oscillator.frequency.setValueAtTime(500, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
+            }
+
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.07);
+        }
+
+        // --- Game Objects ---
+
+        class Paddle {
+            constructor(x, y, width, height, color) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.color = color;
+                this.score = 0;
+                this.speed = 12; // Αυξημένη ταχύτητα για μεγαλύτερο καμβά
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 15;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.shadowBlur = 0;
+            }
+
+            move(direction) {
+                if (direction === 'up') {
+                    this.y -= this.speed;
+                } else if (direction === 'down') {
+                    this.y += this.speed;
+                }
+                // Clamp position
+                if (this.y < 0) this.y = 0;
+                if (this.y + this.height > canvas.height) this.y = canvas.height - this.height;
+            }
+
+            // For touch
+            moveTo(y) {
+                this.y = y - this.height / 2;
+                // Clamp position
+                if (this.y < 0) this.y = 0;
+                if (this.y + this.height > canvas.height) this.y = canvas.height - this.height;
+            }
+        }
+
+        class Ball {
+            constructor(x, y, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.baseSpeed = 8; // Αυξημένη ταχύτητα
+                this.speed = this.baseSpeed;
+                this.dx = this.baseSpeed;
+                this.dy = this.baseSpeed;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 20;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fill();
+                ctx.closePath();
+                ctx.shadowBlur = 0;
+            }
+
+            move() {
+                this.x += this.dx;
+                this.y += this.dy;
+
+                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                    this.dy *= -1;
+                    playSound('wall');
+                    createParticles(this.x, this.y, '#fff');
+                }
+            }
+
+            reset() {
+                this.x = canvas.width / 2;
+                this.y = canvas.height / 2;
+                this.speed = this.baseSpeed;
+                this.dx = (Math.random() > 0.5 ? 1 : -1) * this.speed;
+                this.dy = (Math.random() * 2 - 1) * this.speed * 0.5;
+            }
+        }
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.radius = Math.random() * 3 + 1;
+                this.dx = (Math.random() - 0.5) * 5;
+                this.dy = (Math.random() - 0.5) * 5;
+                this.lifespan = 40;
+                this.opacity = 1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 10;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.dx;
+                this.y += this.dy;
+                this.lifespan--;
+                this.opacity = this.lifespan / 40;
+            }
+        }
+
+        // --- Create Objects ---
+        // Μεγαλύτερες ρακέτες και μπάλα, σωστή τοποθέτηση
+        const player = new Paddle(20, canvas.height / 2 - 70, 25, 180, mainColor);
+        const ai = new Paddle(canvas.width - 45, canvas.height / 2 - 70, 25, 180, mainColor);
+        const ball = new Ball(canvas.width / 2, canvas.height / 2, 12, mainColor);
+        let particles = [];
+
+        // --- Game Functions ---
+
+        function drawNet() {
+            ctx.strokeStyle = mainColor;
+            ctx.lineWidth = 4;
+            ctx.setLineDash([10, 10]);
+            ctx.shadowColor = mainColor;
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.shadowBlur = 0;
+        }
+
+        function createParticles(x, y, color) {
+            for (let i = 0; i < 15; i++) {
+                particles.push(new Particle(x, y, color));
+            }
+        }
+
+        function handleParticles() {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                if (p.lifespan <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+        }
+
+        function updateScore() {
+            playerScoreEl.textContent = player.score;
+            aiScoreEl.textContent = ai.score;
+        }
+
+        function checkCollision(b, p) {
+            return b.x + b.radius > p.x &&
+                   b.x - b.radius < p.x + p.width &&
+                   b.y + b.radius > p.y &&
+                   b.y - b.radius < p.y + p.height;
+        }
+
+        function checkWin() {
+            let winner = null;
+            if (player.score >= settings.winningScore) {
+                winner = 'PLAYER 1 WINS!';
+            } else if (ai.score >= settings.winningScore) {
+                winner = (settings.gameMode === '1P') ? 'COMPUTER WINS!' : 'PLAYER 2 WINS!';
+            }
+
+            if (winner) {
+                gameState = 'gameOver';
+                winnerMessage.textContent = winner;
+                gameOverMenu.style.display = 'flex';
+                ball.reset();
+            }
+        }
+
+        // *** ΝΕΑ ΛΟΓΙΚΗ ΕΛΕΓΧΟΥ (e.code) ***
+        function handleInput() {
+            // Player 1 (Left) - W/S (Using e.code 'KeyW', 'KeyS')
+            // This works regardless of keyboard language or Caps Lock
+            if (keysPressed['KeyW']) {
+                player.move('up');
+            }
+            if (keysPressed['KeyS']) {
+                player.move('down');
+            }
+
+            if (settings.gameMode === '1P') {
+                // Στο 1P, τα Arrows ελέγχουν *επίσης* τον P1
+                if (keysPressed['ArrowUp']) {
+                    player.move('up');
+                }
+                if (keysPressed['ArrowDown']) {
+                    player.move('down');
+                }
+            } else { // 2P mode
+                // Στο 2P, τα Arrows ελέγχουν τον P2 (ai paddle)
+                if (keysPressed['ArrowUp']) {
+                    ai.move('up'); 
+                }
+                if (keysPressed['ArrowDown']) {
+                    ai.move('down');
+                }
+            }
+        }
+
+        // --- Main Logic (Update) ---
+        function update() {
+            if (gameState !== 'play') return;
+
+            handleInput();
+            ball.move();
+
+            // AI Logic
+            if (settings.gameMode === '1P') {
+                let aiTargetY = ball.y - ai.height / 2;
+                let aiSpeed = aiSpeedLevels[settings.difficulty];
+                ai.y += (aiTargetY - ai.y) * aiSpeed;
+                // Clamp AI position
+                if (ai.y < 0) ai.y = 0;
+                if (ai.y + ai.height > canvas.height) ai.y = canvas.height - ai.height;
+            }
+
+            // Collision
+            let activePaddle = (ball.x < canvas.width / 2) ? player : ai;
+            if (checkCollision(ball, activePaddle)) {
+                playSound('paddle');
+                createParticles(ball.x, ball.y, mainColor);
+
+                let collidePoint = (ball.y - (activePaddle.y + activePaddle.height / 2));
+                collidePoint = collidePoint / (activePaddle.height / 2);
+                let angleRad = collidePoint * (Math.PI / 4);
+
+                let direction = (ball.x < canvas.width / 2) ? 1 : -1;
+                ball.dx = direction * ball.speed * Math.cos(angleRad);
+                ball.dy = ball.speed * Math.sin(angleRad);
+                ball.speed += 0.3; // Αύξηση ταχύτητας
+            }
+
+            // Score Check
+            if (ball.x - ball.radius < 0) { // AI/P2 scores
+                ai.score++;
+                playSound('score');
+                ball.reset();
+                updateScore();
+                checkWin();
+            } else if (ball.x + ball.radius > canvas.width) { // Player 1 scores
+                player.score++;
+                playSound('score');
+                ball.reset();
+                updateScore();
+                checkWin();
+            }
+        }
+
+        // --- Main Render ---
+        function render() {
+            // Clear with motion blur trail
+            ctx.fillStyle = 'rgba(3, 3, 12, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            drawNet();
+            player.draw();
+            ai.draw();
+            
+            if (gameState !== 'main-menu' && gameState !== 'settings') {
+                ball.draw();
+            }
+
+            handleParticles();
+        }
+
+        // --- Game Loop ---
+        function gameLoop() {
+            update();
+            render();
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+
+        // --- Menu/State Management ---
+        function showMenu(menuId) {
+            mainMenu.style.display = 'none';
+            settingsMenu.style.display = 'none';
+            pauseMenu.style.display = 'none';
+            gameOverMenu.style.display = 'none';
+
+            if (menuId) {
+                document.getElementById(menuId).style.display = 'flex';
+            }
+        }
+
+        function startGame() {
+            player.score = 0;
+            ai.score = 0;
+            updateScore();
+            ball.reset();
+            showMenu(null); // Hide all menus
+            gameState = 'play';
+        }
+
+        // --- Event Listeners ---
+
+        // Menu Navigation
+        onePlayerButton.addEventListener('click', () => {
+            settings.gameMode = '1P';
+            document.getElementById('difficulty-group').style.display = 'block';
+            startGame();
+        });
+
+        twoPlayerButton.addEventListener('click', () => {
+            settings.gameMode = '2P';
+            document.getElementById('difficulty-group').style.display = 'none';
+            startGame();
+        });
+
+        settingsButton.addEventListener('click', () => {
+            gameState = 'settings';
+            showMenu('settings-menu');
+        });
+
+        settingsBackButton.addEventListener('click', () => {
+            gameState = 'main-menu';
+            showMenu('main-menu');
+        });
+
+        resumeButton.addEventListener('click', () => {
+            gameState = 'play';
+            showMenu(null);
+        });
+
+        quitButton.addEventListener('click', () => {
+            gameState = 'main-menu';
+            showMenu('main-menu');
+        });
+
+        playAgainButton.addEventListener('click', startGame);
+        gameOverMenuButton.addEventListener('click', () => {
+            gameState = 'main-menu';
+            showMenu('main-menu');
+        });
+
+        // Settings Buttons
+        document.querySelectorAll('.setting-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const group = button.dataset.group;
+                const value = button.dataset.value;
+
+                // Update setting
+                if (group === 'difficulty') settings.difficulty = value;
+                if (group === 'score') settings.winningScore = parseInt(value);
+                if (group === 'sound') settings.soundEnabled = (value === 'on');
+
+                // Update active class
+                document.querySelectorAll(`.setting-btn[data-group="${group}"]`).forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+            });
+        });
+
+        // --- Input Handlers (UPDATED) ---
+
+        // Keyboard
+        window.addEventListener('keydown', (e) => {
+            // Prevent scrolling for game keys
+            if(["ArrowUp", "ArrowDown", "KeyW", "KeyS", "Space"].includes(e.code)) {
+                e.preventDefault();
+            }
+
+            // Use e.code instead of e.key
+            keysPressed[e.code] = true;
+
+            // Pause (P or Escape)
+            // Use e.code 'KeyP' instead of e.key 'p' (fixes Greek layout issue)
+            if (e.code === 'KeyP' || e.code === 'Escape') {
+                if (gameState === 'play') {
+                    gameState = 'pause';
+                    showMenu('pause-menu');
+                } else if (gameState === 'pause') {
+                    gameState = 'play';
+                    showMenu(null);
+                }
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            // Use e.code instead of e.key
+            keysPressed[e.code] = false;
+        });
+
+        // Touch (Mobile)
+        function handleTouch(e) {
+            e.preventDefault(); // Prevent scrolling
+            if (gameState !== 'play') return;
+            
+            let rect = canvas.getBoundingClientRect();
+            let scaleY = canvas.height / rect.height;
+            let scaleX = canvas.width / rect.width;
+
+            for (let i = 0; i < e.touches.length; i++) {
+                const touch = e.touches[i];
+                const touchX = (touch.clientX - rect.left) * scaleX;
+                const touchY = (touch.clientY - rect.top) * scaleY;
+
+                if (settings.gameMode === '1P') {
+                    player.moveTo(touchY);
+                } else { // 2P Mode
+                    if (touchX < canvas.width / 2) {
+                        player.moveTo(touchY); // Left side
+                    } else {
+                        ai.moveTo(touchY); // Right side
+                    }
+                }
+            }
+        }
+
+        canvas.addEventListener('touchstart', handleTouch);
+        canvas.addEventListener('touchmove', handleTouch);
+
+        // --- Start Game ---
+        gameLoop();
+    </script>
+</body>
+</html>

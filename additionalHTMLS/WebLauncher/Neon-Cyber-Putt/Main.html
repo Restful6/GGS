@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Neon Cyber-Putt</title>
+    <link rel="icon" type="png" href="/images/WebNeonCyberPuttLogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. General Setup & Neon Theme --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #0ff; /* Neon Cyan */
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            text-shadow: 0 0 5px #0ff;
+        }
+
+        h1, h2, p {
+            margin: 0;
+            text-align: center;
+        }
+
+        /* --- 2. Game Container & Canvas --- */
+        #game-container {
+            position: relative;
+            width: 95%;
+            max-width: 800px; /* Max size for PC */
+            aspect-ratio: 4 / 3;
+            margin: 10px auto;
+            border: 3px solid #f0f; /* Neon Magenta */
+            box-shadow: 0 0 15px #f0f, inset 0 0 10px #f0f;
+            border-radius: 10px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #010201; /* Very dark green */
+            border-radius: 7px;
+        }
+
+        /* --- 3. Menus (Start Only) --- */
+        .menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 10, 20, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 7px;
+        }
+
+        .menu h1 {
+            font-size: 2.5em;
+            color: #f0f;
+            text-shadow: 0 0 10px #f0f, 0 0 20px #f0f;
+            margin-bottom: 10px;
+        }
+
+        .menu p {
+            font-size: 1.2em;
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+            margin-bottom: 25px;
+            max-width: 90%;
+        }
+
+        /* --- 4. Neon Gaming Button --- */
+        .btn {
+            background: transparent;
+            border: 2px solid #0f0; /* Neon Green */
+            color: #0f0;
+            padding: 12px 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #0f0;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #0f0, inset 0 0 5px #0f0;
+        }
+
+        .btn:hover {
+            background: #0f0;
+            color: #000;
+            text-shadow: none;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        /* --- 5. In-Game UI --- */
+        #game-ui {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 5;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #0ff;
+            /* Hide UI during menus */
+            display: none; 
+            /* Make UI non-interactive so clicks go through to canvas */
+            pointer-events: none; 
+        }
+
+        footer {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #888;
+            text-shadow: none;
+        }
+        
+        /* Mobile specific adjustments */
+        @media (max-width: 600px) {
+            .menu h1 {
+                font-size: 2em;
+            }
+            .menu p {
+                font-size: 1em;
+            }
+            #game-ui {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        
+        <div id="start-menu" class="menu">
+            <h1>NEON CYBER-PUTT</h1>
+            <p>New Features: Boost Pads (Yellow) & Portals (Orange)! Aim margin is now larger. Good luck!</p>
+            <button id="play-btn" class="btn">Start Game</button>
+        </div>
+
+        <div id="game-ui">
+            <span id="level-ui">Level: 1</span>
+            <span id="strokes-ui">Strokes: 0</span>
+            <span id="total-strokes-ui">Total: 0</span>
+        </div>
+
+        <canvas id="game-canvas"></canvas>
+
+    </div>
+    
+    <footer>Powered by Greek Games Studios</footer>
+
+    <script>
+        // --- 1. Setup & DOM Elements ---
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // --- Φόρτωση Εικόνων (Assets) ---
+    const assets = {
+        ball: new Image(),
+        hole: new Image(),
+        wall: new Image(),
+        sand: new Image(),
+        boost: new Image()
+    };
+
+    // Εδώ ορίζεις τα ονόματα των αρχείων σου
+    assets.ball.src = 'ball.png';
+    assets.hole.src = 'hole.png';
+    assets.wall.src = 'wall.png';
+    assets.sand.src = 'sand.png';
+    assets.boost.src = 'boost.png';
+
+        canvas.width = 800;
+        canvas.height = 600;
+
+        const startMenu = document.getElementById('start-menu');
+        const gameUi = document.getElementById('game-ui');
+        const playBtn = document.getElementById('play-btn');
+
+        const levelUi = document.getElementById('level-ui');
+        const strokesUi = document.getElementById('strokes-ui');
+        const totalStrokesUi = document.getElementById('total-strokes-ui');
+
+        // --- 2. Game Objects & State ---
+        let ball = {
+            x: 50,
+            y: 300,
+            radius: 10,
+            vx: 0,
+            vy: 0,
+            color: '#f0f', // Neon Magenta ball
+            teleportCooldown: 0,
+            boostCooldown: 0
+        };
+
+        let hole = {
+            x: 750,
+            y: 300,
+            radius: 15,
+            color: '#0ff' // Neon Cyan hole
+        };
+        
+        let obstacles = [];
+        let currentLevel = 0;
+        let strokes = 0;
+        let totalStrokes = 0;
+
+        let isAiming = false;
+        let isBallMoving = false;
+        let aimStart = { x: 0, y: 0 };
+        let aimEnd = { x: 0, y: 0 };
+        
+        const FRICTION = 0.98;
+        const SAND_FRICTION = 0.92;
+        const MAX_POWER = 15;
+        const MIN_VELOCITY = 0.05;
+
+// --- 3. Level Design (No Overlap Logic) ---
+        
+        // Βοηθητική συνάρτηση για έλεγχο επικάλυψης
+        function checkOverlap(entity, others, padding = 20) {
+            // Μετατροπή του νέου entity σε ορθογώνιο (Bounding Box)
+            let r1 = getBoundingBox(entity);
+            // Επέκταση του κουτιού κατά το padding
+            r1.x -= padding;
+            r1.y -= padding;
+            r1.width += padding * 2;
+            r1.height += padding * 2;
+
+            for (let other of others) {
+                let r2 = getBoundingBox(other);
+                
+                // Έλεγχος τομής ορθογωνίων
+                if (r1.x < r2.x + r2.width &&
+                    r1.x + r1.width > r2.x &&
+                    r1.y < r2.y + r2.height &&
+                    r1.y + r1.height > r2.y) {
+                    return true; // Υπάρχει επικάλυψη
+                }
+            }
+            return false; // Καθαρό
+        }
+
+        // Βοηθητική για να παίρνουμε τις διαστάσεις ανάλογα τον τύπο
+        function getBoundingBox(obj) {
+            if (obj.radius) {
+                // Είναι κύκλος (Mπάλα, Τρύπα, Circle, Portal) -> Τον κάνουμε τετράγωνο
+                return {
+                    x: obj.x - obj.radius,
+                    y: obj.y - obj.radius,
+                    width: obj.radius * 2,
+                    height: obj.radius * 2
+                };
+            } else {
+                // Είναι ορθογώνιο (Rect, Sand, Boost)
+                return {
+                    x: obj.x,
+                    y: obj.y,
+                    width: obj.width,
+                    height: obj.height
+                };
+            }
+        }
+
+        function generateRandomLevel() {
+            const newLevel = { obstacles: [] };
+            
+            // 1. Τοποθέτηση Μπάλας (Πάντα αριστερά)
+            newLevel.ballStart = {
+                x: randomInt(50, 150),
+                y: randomInt(50, canvas.height - 50),
+                radius: 10
+            };
+
+            // 2. Τοποθέτηση Τρύપας (Πάντα δεξιά)
+            newLevel.hole = {
+                x: randomInt(canvas.width - 150, canvas.width - 50),
+                y: randomInt(50, canvas.height - 50),
+                radius: 15
+            };
+            
+            // Ενημέρωση των global αντικειμένων για να δουλέψει ο έλεγχος
+            hole.x = newLevel.hole.x;
+            hole.y = newLevel.hole.y;
+
+            // Λίστα με τα αντικείμενα που υπάρχουν ήδη (για να μην πέσουμε πάνω τους)
+            // Βάζουμε την μπάλα και την τρύπα μέσα
+            let existingItems = [newLevel.ballStart, newLevel.hole];
+
+            // 3. Δημιουργία Εμποδίων
+            const obstacleCount = randomInt(5, 10 + Math.floor(currentLevel / 2));
+            const maxAttempts = 50; // Πόσες φορές θα προσπαθήσει να βρει θέση πριν τα παρατήσει
+
+            for (let i = 0; i < obstacleCount; i++) {
+                let added = false;
+                
+                for (let attempt = 0; attempt < maxAttempts; attempt++) {
+                    let typeRoll = Math.random();
+                    let obs = {};
+
+                    // Τυχαία θέση (με περιθώριο από τις άκρες του canvas)
+                    let x = randomInt(50, canvas.width - 50);
+                    let y = randomInt(50, canvas.height - 50);
+
+                    if (typeRoll < 0.35) { 
+                        // --- Rect Wall ---
+                        let w = randomInt(20, 40);
+                        let h = randomInt(80, 150);
+                        // Τυχαία εναλλαγή κάθετο/οριζόντιο
+                        if (Math.random() > 0.5) { [w, h] = [h, w]; }
+                        obs = { type: 'rect', x: x, y: y, width: w, height: h, color: '#00f' };
+
+                    } else if (typeRoll < 0.55) { 
+                        // --- Circle Bouncer ---
+                        obs = { type: 'circle', x: x, y: y, radius: randomInt(20, 35), color: '#0f0' };
+
+                    } else if (typeRoll < 0.75) { 
+                        // --- Sand Trap ---
+                        obs = { type: 'sand', x: x, y: y, width: randomInt(60, 120), height: randomInt(60, 120), color: 'rgba(218, 165, 32, 0.4)' };
+
+                    } else if (typeRoll < 0.90) { 
+                        // --- Boost Pad ---
+                        // Να δείχνει γενικά προς την τρύπα, με λίγη τυχαιότητα
+                        let angleToHole = Math.atan2(newLevel.hole.y - y, newLevel.hole.x - x);
+                        let randomVar = (Math.random() - 0.5); // +/- λίγο γωνία
+                        obs = { type: 'boost', x: x, y: y, width: 50, height: 25, angle: angleToHole + randomVar, color: '#ff0' };
+
+                    } else {
+                        // --- Portals (Ζεύγος) ---
+                        // Πρώτο portal
+                        obs = { type: 'portal', x: x, y: y, radius: 15, color: '#FFA500', link: null, teleportCooldown: 0 };
+                        // Χρειαζόμαστε 2ο portal, θα το φτιάξουμε αν πετύχει το 1ο
+                    }
+
+                    // --- Ο ΚΡΙΣΙΜΟΣ ΕΛΕΓΧΟΣ ---
+                    // Ελέγχουμε αν το 'obs' πέφτει πάνω σε 'existingItems'
+                    if (!checkOverlap(obs, existingItems)) {
+                        
+                        // Ειδική περίπτωση για Portals (θέλουμε και 2ο)
+                        if (obs.type === 'portal') {
+                            let portal2 = null;
+                            // Προσπάθεια για το 2ο portal μακριά από το 1ο
+                            for (let p2 = 0; p2 < 50; p2++) {
+                                let x2 = randomInt(50, canvas.width - 50);
+                                let y2 = randomInt(50, canvas.height - 50);
+                                let pObs = { type: 'portal', x: x2, y: y2, radius: 15, color: '#FFA500', link: obs, teleportCooldown: 0 };
+                                
+                                // Να μην είναι κοντά στο 1ο portal (τουλάχιστον 200px απόσταση)
+                                let dist = Math.sqrt((x-x2)**2 + (y-y2)**2);
+                                
+                                // Έλεγχος overlaps για το 2ο portal
+                                if (dist > 200 && !checkOverlap(pObs, existingItems) && !checkOverlap(pObs, [obs])) {
+                                    portal2 = pObs;
+                                    break;
+                                }
+                            }
+                            
+                            if (portal2) {
+                                obs.link = portal2;
+                                newLevel.obstacles.push(obs);
+                                newLevel.obstacles.push(portal2);
+                                existingItems.push(obs, portal2);
+                                added = true;
+                            }
+                        } else {
+                            // Κανονικά αντικείμενα
+                            newLevel.obstacles.push(obs);
+                            existingItems.push(obs);
+                            added = true;
+                        }
+                    }
+
+                    if (added) break; // Βγήκαμε από το loop προσπαθειών, πάμε στο επόμενο εμπόδιο
+                }
+            }
+            return newLevel;
+        }
+
+        // --- 4. Game Loop & Drawing ---
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function update() {
+            // Update cooldowns
+            if (ball.teleportCooldown > 0) ball.teleportCooldown--;
+            if (ball.boostCooldown > 0) ball.boostCooldown--;
+            for (const obs of obstacles) {
+                if (obs.type === 'portal' && obs.teleportCooldown > 0) {
+                    obs.teleportCooldown--;
+                }
+            }
+
+            if (!isBallMoving) return;
+
+            // Apply friction
+            let currentFriction = FRICTION;
+            for (const obs of obstacles) {
+                if (obs.type === 'sand' && isPointInRect(ball.x, ball.y, obs)) {
+                    currentFriction = SAND_FRICTION;
+                    break;
+                }
+            }
+            
+            ball.vx *= currentFriction;
+            ball.vy *= currentFriction;
+
+            // Check collisions
+            checkCollisions();
+
+            // Update ball position
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+
+            // Stop ball if moving too slow
+            if (Math.abs(ball.vx) < MIN_VELOCITY && Math.abs(ball.vy) < MIN_VELOCITY) {
+                isBallMoving = false;
+                ball.vx = 0;
+                ball.vy = 0;
+                ball.teleportCooldown = 0; // Reset cooldowns on stop
+                ball.boostCooldown = 0;
+            }
+
+            // Check for win condition
+            const distToHole = getDistance(ball.x, ball.y, hole.x, hole.y);
+            if (distToHole < hole.radius) {
+                isBallMoving = false;
+                totalStrokes += strokes;
+                
+                // Animate ball into hole
+                const sinkSpeed = 0.1;
+                let sinkInterval = setInterval(() => {
+                    ball.radius *= 0.9;
+                    ball.x += (hole.x - ball.x) * sinkSpeed;
+                    ball.y += (hole.y - ball.y) * sinkSpeed;
+                    if (ball.radius < 1) {
+                        clearInterval(sinkInterval);
+                        nextLevel();
+                    }
+                }, 16);
+            }
+        }
+
+    function draw() {
+        // Καθαρισμός οθόνης
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 1. Ζωγραφίζουμε την Άμμο (Sand) πρώτα (για να είναι στο πάτωμα)
+        obstacles.filter(o => o.type === 'sand').forEach(drawObstacle);
+        
+        // 2. Ζωγραφίζουμε την Τρύπα (Hole) με εικόνα
+        ctx.shadowColor = hole.color;
+        ctx.shadowBlur = 15; // Κρατάμε το Neon
+        // Ζωγραφίζουμε την εικόνα κεντραρισμένη
+        ctx.drawImage(assets.hole, hole.x - hole.radius, hole.y - hole.radius, hole.radius * 2, hole.radius * 2);
+        
+        // 3. Ζωγραφίζουμε τα υπόλοιπα εμπόδια (Τοίχους, Boosts, Portals)
+        ctx.shadowColor = 'none';
+        ctx.shadowBlur = 0;
+        obstacles.filter(o => o.type !== 'sand').forEach(drawObstacle);
+
+        // 4. Ζωγραφίζουμε την Μπάλα με εικόνα
+        ctx.shadowColor = ball.color;
+        ctx.shadowBlur = 10; // Κρατάμε το Neon
+        ctx.drawImage(assets.ball, ball.x - ball.radius, ball.y - ball.radius, ball.radius * 2, ball.radius * 2);
+        
+        ctx.shadowColor = 'none';
+        ctx.shadowBlur = 0;
+
+        // 5. Ζωγραφίζουμε τη γραμμή στόχευσης (Αυτό μένει ίδιο)
+        if (isAiming) {
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]); 
+            ctx.beginPath();
+            ctx.moveTo(ball.x, ball.y);
+            ctx.lineTo(aimEnd.x, aimEnd.y);
+            ctx.stroke();
+            ctx.setLineDash([]); 
+        }
+    }
+
+    function drawObstacle(obs) {
+        // Ρυθμίζουμε το χρώμα της σκιάς για να κρατήσουμε το Neon εφέ γύρω από τις εικόνες
+        ctx.shadowColor = obs.color;
+        ctx.shadowBlur = 10;
+        
+        if (obs.type === 'rect') {
+            // --- ΤΟΙΧΟΣ (WALL) ---
+            // Χρησιμοποιούμε την εικόνα wall.png αντί για χρώμα
+            ctx.drawImage(assets.wall, obs.x, obs.y, obs.width, obs.height);
+
+        } else if (obs.type === 'sand') {
+            // --- ΑΜΜΟΣ (SLOWNESS) ---
+            ctx.shadowBlur = 0; // Η άμμος συνήθως δεν λάμπει πολύ
+            ctx.globalAlpha = 0.8; // Λίγο διαφανής
+            ctx.drawImage(assets.sand, obs.x, obs.y, obs.width, obs.height);
+            ctx.globalAlpha = 1.0; // Επαναφορά
+
+        } else if (obs.type === 'circle') {
+            // --- BOUNCERS (Κρατάμε το Neon σχέδιο εδώ γιατί είναι ωραίο) ---
+            ctx.fillStyle = obs.color;
+            ctx.beginPath();
+            ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+        } else if (obs.type === 'boost') {
+            // --- BOOST (SPEED) ---
+            ctx.save();
+            ctx.translate(obs.x + obs.width / 2, obs.y + obs.height / 2);
+            ctx.rotate(obs.angle);
+            
+            // Ζωγραφίζουμε την εικόνα του βέλους (boost.png)
+            // Προσοχή: Η εικόνα πρέπει να δείχνει προς τα δεξιά από μόνη της
+            ctx.drawImage(assets.boost, -obs.width / 2, -obs.height / 2, obs.width, obs.height);
+            
+            ctx.restore();
+
+        } else if (obs.type === 'portal') {
+            // --- PORTALS (Κρατάμε το Neon σχέδιο) ---
+            ctx.fillStyle = obs.color;
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2);
+            ctx.fill();
+            // Εφέ στροβιλισμού (μαύρο κέντρο)
+            ctx.fillStyle = '#000';
+            ctx.shadowBlur = 0;
+            ctx.beginPath();
+            ctx.arc(obs.x, obs.y, obs.radius * 0.5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        ctx.shadowColor = 'none';
+        ctx.shadowBlur = 0;
+    }
+        // --- 5. Collision Physics ---
+        function checkCollisions() {
+            // 1. Canvas Walls
+            if (ball.x + ball.radius >= canvas.width || ball.x - ball.radius <= 0) {
+                ball.vx *= -1;
+                ball.x = (ball.x + ball.radius >= canvas.width) ? canvas.width - ball.radius : ball.radius;
+            }
+            if (ball.y + ball.radius >= canvas.height || ball.y - ball.radius <= 0) {
+                ball.vy *= -1;
+                ball.y = (ball.y + ball.radius >= canvas.height) ? canvas.height - ball.radius : ball.radius;
+            }
+
+            // 2. Obstacles
+            for (const obs of obstacles) {
+                if (obs.type === 'rect') {
+                    let closestX = clamp(ball.x, obs.x, obs.x + obs.width);
+                    let closestY = clamp(ball.y, obs.y, obs.y + obs.height);
+                    let dist = getDistance(ball.x, ball.y, closestX, closestY);
+
+                    if (dist < ball.radius) {
+                        let overlapX = ball.radius - Math.abs(ball.x - closestX);
+                        let overlapY = ball.radius - Math.abs(ball.y - closestY);
+
+                        if (overlapX > overlapY) {
+                            ball.vy *= -1;
+                            ball.y = (ball.y < obs.y) ? obs.y - ball.radius : obs.y + obs.height + ball.radius;
+                        } else {
+                            ball.vx *= -1;
+                            ball.x = (ball.x < obs.x) ? obs.x - ball.radius : obs.x + obs.width + ball.radius;
+                        }
+                    }
+                } else if (obs.type === 'circle') {
+                    let dist = getDistance(ball.x, ball.y, obs.x, obs.y);
+                    if (dist < ball.radius + obs.radius) {
+                        let angle = Math.atan2(ball.y - obs.y, ball.x - obs.x);
+                        let speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+                        
+                        ball.vx = Math.cos(angle) * speed * 1.1; // Bouncers add a little speed
+                        ball.vy = Math.sin(angle) * speed * 1.1;
+
+                        let overlap = ball.radius + obs.radius - dist;
+                        ball.x += Math.cos(angle) * overlap;
+                        ball.y += Math.sin(angle) * overlap;
+                    }
+                } else if (obs.type === 'boost') {
+                    if (ball.boostCooldown === 0 && isPointInRect(ball.x, ball.y, obs)) {
+                        ball.vx = Math.cos(obs.angle) * MAX_POWER * 0.8; // 80% of max power
+                        ball.vy = Math.sin(obs.angle) * MAX_POWER * 0.8;
+                        ball.boostCooldown = 50; // Cooldown for ~1 second
+                    }
+                } else if (obs.type === 'portal') {
+                    let dist = getDistance(ball.x, ball.y, obs.x, obs.y);
+                    if (dist < ball.radius + obs.radius && ball.teleportCooldown === 0 && obs.teleportCooldown === 0) {
+                        ball.x = obs.link.x;
+                        ball.y = obs.link.y;
+                        ball.teleportCooldown = 100; // Cooldown for ball
+                        obs.link.teleportCooldown = 100; // Cooldown for exit portal
+                    }
+                }
+            }
+        }
+
+        // --- 6. Input Handling (PC & Mobile) ---
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            
+            let clientX, clientY;
+            if (e.touches) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
+            return {
+                x: (clientX - rect.left) * scaleX,
+                y: (clientY - rect.top) * scaleY
+            };
+        }
+
+        function onAimStart(e) {
+            e.preventDefault();
+            if (isBallMoving) return;
+
+            const pos = getMousePos(e);
+            // *** CHANGED: Increased aim margin ***
+            if (getDistance(pos.x, pos.y, ball.x, ball.y) < ball.radius + 80) {
+                isAiming = true;
+                aimStart = pos;
+            }
+        }
+
+        function onAimMove(e) {
+            e.preventDefault();
+            if (!isAiming) return;
+            
+            const pos = getMousePos(e);
+            aimEnd.x = ball.x - (pos.x - ball.x);
+            aimEnd.y = ball.y - (pos.y - ball.y);
+        }
+
+        function onAimEnd(e) {
+            e.preventDefault();
+            if (!isAiming) return;
+
+            isAiming = false;
+            isBallMoving = true;
+            strokes++;
+            updateUI();
+
+            const pos = getMousePos(e.changedTouches ? e.changedTouches[0] : e);
+
+            let dx = pos.x - ball.x;
+            let dy = pos.y - ball.y;
+            
+            let power = getDistance(0, 0, dx, dy) / 10;
+            power = Math.min(power, MAX_POWER);
+
+            ball.vx = -dx / 10 * (power / MAX_POWER * 0.5 + 0.5);
+            ball.vy = -dy / 10 * (power / MAX_POWER * 0.5 + 0.5);
+            
+            let speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+            if(speed > MAX_POWER) {
+                let scale = MAX_POWER / speed;
+                ball.vx *= scale;
+                ball.vy *= scale;
+            }
+            
+            // Reset cooldowns on new shot
+            ball.teleportCooldown = 0;
+            ball.boostCooldown = 0;
+        }
+
+        // --- 7. Game State & UI Functions ---
+        function startGame() {
+            startMenu.style.display = 'none';
+            gameUi.style.display = 'flex';
+            
+            currentLevel = 0;
+            totalStrokes = 0;
+            const firstLevel = generateRandomLevel();
+            loadLevel(firstLevel);
+            gameLoop();
+        }
+        
+        function nextLevel() {
+            currentLevel++;
+            const newLevel = generateRandomLevel();
+            loadLevel(newLevel);
+        }
+
+        function loadLevel(levelData) {
+            const level = levelData;
+            ball.x = level.ballStart.x;
+            ball.y = level.ballStart.y;
+            ball.vx = 0;
+            ball.vy = 0;
+            ball.radius = 10;
+            ball.teleportCooldown = 0;
+            ball.boostCooldown = 0;
+            
+            hole.x = level.hole.x;
+            hole.y = level.hole.y;
+            
+            obstacles = level.obstacles;
+            strokes = 0;
+            isBallMoving = false;
+            
+            updateUI();
+        }
+
+        function updateUI() {
+            levelUi.textContent = `Level: ${currentLevel + 1}`;
+            strokesUi.textContent = `Strokes: ${strokes}`;
+            totalStrokesUi.textContent = `Total: ${totalStrokes}`;
+        }
+
+        // --- 8. Helper Functions ---
+        function getDistance(x1, y1, x2, y2) {
+            return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+        }
+        
+        function clamp(value, min, max) {
+            return Math.max(min, Math.min(max, value));
+        }
+        
+        function isPointInRect(x, y, rect) {
+            // Basic AABB check
+            return x > rect.x && x < rect.x + rect.width && y > rect.y && y < rect.y + rect.height;
+        }
+
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // --- 9. Event Listeners ---
+        playBtn.addEventListener('click', startGame);
+
+        // PC Events
+        canvas.addEventListener('mousedown', onAimStart);
+        canvas.addEventListener('mousemove', onAimMove);
+        canvas.addEventListener('mouseup', onAimEnd);
+        canvas.addEventListener('mouseleave', onAimEnd);
+
+        // Mobile Events
+        canvas.addEventListener('touchstart', onAimStart);
+        canvas.addEventListener('touchmove', onAimMove);
+        canvas.addEventListener('touchend', onAimEnd);
+    </script>
+
+</body>
+</html>
