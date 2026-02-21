@@ -80,7 +80,12 @@
       </div>
 
       <!-- Support Form -->
-      <form name="support-form" method="POST" data-netlify="true" enctype="multipart/form-data">
+<form name="support-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" enctype="multipart/form-data">
+        
+        <p class="hidden" style="display:none;">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <input type="hidden" name="form-name" value="support-form">
           <div>
@@ -136,6 +141,8 @@
             I agree to the <a href="/privacy-policy.html" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a> and understand my data will be processed according to it.
           </label>
         </div>
+
+        <div data-netlify-recaptcha="true" class="mb-8 flex justify-center"></div>
 
         <div class="text-center">
           <button type="submit" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30">
