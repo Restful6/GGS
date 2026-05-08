@@ -723,12 +723,12 @@ function endRound(winner, combo) {
     playWinFlash(winner);
     sndWin();
     const name = (gameMode === 1 && winner === 'O') ? 'AI' : `Player ${winner}`;
-    setStatus(`${name} ${mX(winner)} wins! 🎉`);
+    setStatus(`${name} ${mX(winner)} wins!`);
   } else {
     tally.draw++;
     syncScores();
     sndDraw();
-    setStatus("It's a draw! 🤝");
+    setStatus("It's a draw!");
   }
 
   // Re-enable clicks (do nothing — cells are taken or game ended)
