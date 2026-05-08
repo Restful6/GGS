@@ -5,43 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Page Title -->
   <title>Greek Games Studios</title>
 
-  <!-- Favicon (classic) -->
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.greekgamesstudios.com/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Greek Games Studios">
+  <meta name="twitter:description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community.">
+  <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
+
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-  <!-- PNG favicons for desktop -->
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
 
-  <!-- SVG favicon -->
   <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png">
 
-  <!-- Touch Icon for iOS -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <!-- Touch Web App Title -->
   <meta name="apple-mobile-web-app-title" content="Greek Games Studios">
 
-  <!-- Web Manifest -->
   <link rel="manifest" href="/manifest.json">
 
-  <!-- SEO Meta Tags -->
-  <meta name="keywords" content="Games, Greek, games, greek, studios, Studios, Greek Games Studios, greek games studios, greekgamesstudios, ggs, GGS">
-  <meta name="description" content="Greek Games Studios is a rising force in video game development, creating unique experiences for PC, consoles, and mobile devices. With a passion for innovation and creativity, we blend high-quality graphics, immersive gameplay, and engaging storytelling. Our goal is to bring fresh ideas to the gaming industry and deliver unforgettable experiences to players worldwide.">
+  <meta name="description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community.">
   <meta name="author" content="Greek Games Studios">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Open Graph for social/Google preview -->
   <meta property="og:title" content="Greek Games Studios" />
-  <meta property="og:description" content="Greek Games Studios is a rising force in video game development, creating unique gaming experiences across all platforms." />
+  <meta property="og:description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community." />
   <meta property="og:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png" />
   <meta property="og:url" content="https://www.greekgamesstudios.com/" />
   <meta property="og:site_name" content="Greek Games Studios" />
   <meta property="og:type" content="website" />
 
-  <!-- Structured Data for Google -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -57,22 +53,16 @@
     }
   </script>
 
-  <!-- Tailwind & Framer -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
     body {
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
-    }
-
-    .star {
-      position: absolute;
-      background-color: white;
-      border-radius: 50%;
-      pointer-events: none;
     }
 
     /* Optimized animations */
@@ -84,11 +74,6 @@
     @keyframes float2 {
       0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
       50% { transform: translateY(30px) translateX(-15px); opacity: 0.9; }
-    }
-    
-    @keyframes starPulse {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: 1; transform: scale(1.2); }
     }
     
     @keyframes fadeIn {
@@ -109,12 +94,12 @@
     }
     
     .animate-gradient-text {
-      background: linear-gradient(270deg, #00ffff, #a855f7, #ec4899, #a855f7, #00ffff);
+      background: linear-gradient(270deg, #0D5EAF, #FFFFFF, #0D5EAF, #FFFFFF, #0D5EAF);
       background-size: 400% 400%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: gradientShift 20s ease infinite; /* Αργή κίνηση 12 δευτερόλεπτα */
+      animation: gradientShift 20s ease infinite; 
     }
     
     .current-page {
@@ -234,21 +219,19 @@
       transform: translateY(0);
     }
   </style>
+<base target="_blank">
 </head>
 
 <body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-white overflow-x-hidden">
-  <!-- Navbar -->
   <header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16 md:h-20">
-        <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
           <div class="relative">
             <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
           </div>
         </div>
 
-        <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-1">
           <a href="#home" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-300 group">
             Home
@@ -274,8 +257,7 @@
           </a>
         </nav>
 
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group">
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group" aria-label="Toggle Menu">
           <div class="relative w-6 h-6">
             <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
             <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
@@ -285,7 +267,6 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
       <div class="px-4 py-3 space-y-3">
         <a href="#home" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-300">
@@ -310,56 +291,47 @@
     </div>
   </header>
 
-  <!-- Notification Bar -->
-<div id="notification-bar" class="fixed top-16 md:top-20 left-0 w-full bg-gradient-to-r from-cyan-900/90 to-purple-900/90 backdrop-blur-md border-b border-cyan-500/30 z-40 transform -translate-y-full transition-transform duration-500 ease-out shadow-lg">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center space-x-3">
-      <!-- Notification Icon -->
-      <div class="flex-shrink-0">
-        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
+  <div id="notification-bar" class="fixed top-16 md:top-20 left-0 w-full bg-gradient-to-r from-cyan-900/90 to-purple-900/90 backdrop-blur-md border-b border-cyan-500/30 z-40 transform -translate-y-full transition-transform duration-500 ease-out shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="flex-shrink-0">
+          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        
+        <p class="text-white text-sm md:text-base">
+          <span class="font-medium">Play & demos beta V2 is out!</span> 
+          <span class="text-gray-200">Check it out.</span>
+        </p>
+        
+        <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="ml-4 flex-shrink-0 px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-full transition-colors duration-300">
+          Check it
+        </a>
       </div>
       
-      <!-- Notification Text -->
-      <p class="text-white text-sm md:text-base">
-        <span class="font-medium">Play & demos beta is out!</span> 
-        <span class="text-gray-200">Check it out.</span>
-      </p>
-      
-      <!-- Notification Button -->
-      <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="ml-4 flex-shrink-0 px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-full transition-colors duration-300">
-        Check it
-      </a>
+      <button id="close-notification" class="flex-shrink-0 text-gray-300 hover:text-white transition-colors duration-300 p-1 rounded-full hover:bg-white/10" aria-label="Close notification">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
-    
-    <!-- Close Button -->
-    <button id="close-notification" class="flex-shrink-0 text-gray-300 hover:text-white transition-colors duration-300 p-1 rounded-full hover:bg-white/10">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
   </div>
-</div>
 
-  <!-- Hero Section -->
-  <section class="relative h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-br from-black via-[#0f0f2e] to-black overflow-hidden pt-16">
-    <!-- Star Background -->
-    <div id="star-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+  <section id="home" class="relative h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-br from-black via-[#0f0f2e] to-black overflow-hidden pt-16">
     
-    <!-- Animated grid background -->
+    <canvas id="star-canvas" class="absolute inset-0 pointer-events-none"></canvas>
+    
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ=")] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"></div>
     </div>
     
-    <!-- Floating particles -->
     <div class="floating-particle top-1/4 left-1/4 w-3 h-3 bg-cyan-400 opacity-80" style="animation: float 8s ease-in-out infinite;"></div>
     <div class="floating-particle top-1/3 right-1/3 w-4 h-4 bg-purple-500 opacity-60" style="animation: float2 10s ease-in-out infinite 1s;"></div>
     
     <div class="relative z-10">
-      <!-- H1 WITH ANIMATED GRADIENT - SLOW, SAME FADE-IN TIMING AS OTHERS -->
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight animate-gradient-text animate-fade-in">
-        Greek Games Studios™
+        Greek Games Studios
       </h1>
       
       <p class="text-lg md:text-2xl text-gray-300 mt-6 mb-10 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s">
@@ -374,7 +346,6 @@
     </div>
   </section>
 
-  <!-- News Section -->
   <section class="py-24 px-6 md:px-12 lg:px-24 relative" id="news">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20 animate-fade-in">
@@ -389,13 +360,69 @@
       
       <div class="flex flex-col gap-16" id="news-container">
 
-        <!-- NEW NEWS CARD 11 - Play & Demos Official Release (Most Recent) -->
-        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/P&DRelease.png" alt="Play & Demos Release" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/P&Dev2.png" loading="lazy" alt="Play & Demos v2 Update" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-8">
+              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
+                May 8, 2026
+              </span>
+              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
+                Play & Demos v2: Major Update!
+              </h3>
+              <div class="news-content" id="news-content-12">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  We are thrilled to announce the release of <strong>Play & Demos v2</strong> a massive update packed with optimizations, reworks, and brand new mini games!
+                </p>
+                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
+                  <p class="mb-4">
+                    This update focuses on improving performance, fixing various issues and expanding the experience with more content and features.
+                  </p>
+                  <p class="mb-4 font-semibold text-cyan-300">What's new in v2:</p>
+                  <ul class="list-disc pl-5 space-y-2 mb-4">
+                    <li><span class="font-medium text-white">Optimizations:</span> Faster loading times and smoother gameplay across all mini games.</li>
+                    <li><span class="font-medium text-white">Reworks:</span> Several existing mini games have been redesigned with better mechanics, improved visuals, and additional features.</li>
+                    <li><span class="font-medium text-white">New Mini Games:</span> We've added <strong>5 brand new titles</strong> to the Play & Demos library, each offering unique challenges and fun experiences.</li>
+                    <li><span class="font-medium text-white">Bug Fixes:</span> Addressed stability issues and resolved physics control bugs affecting gameplay responsiveness.</li>
+                  </ul>
+                  <p class="mb-4">
+                    This is just the beginning, we will continue to support and expand Play & Demos with regular updates. Your feedback helps us grow, so don't hesitate to share your thoughts.
+                  </p>
+                  <p class="mt-4">
+                    <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Play Now
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <button onclick="toggleReadMore('news-content-12', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
+                  <span class="more-text">Read More</span>
+                  <span class="less-text">Show Less</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+          <div class="relative z-20">
+            <div class="overflow-hidden">
+              <img src="/images/P&DRelease.png" loading="lazy" alt="Play & Demos Release" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -438,15 +465,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 10 - Try Not To Rage: Sky Official Release -->
-        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/TRY_NOT_TO_RAGE_SKY1.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/TRY_NOT_TO_RAGE_SKY1.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -491,15 +517,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 9 - Monetization Is Now Live! -->
-        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/Monetization.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/Monetization.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -536,15 +561,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 8 - Development Update: Monetization & Delays -->
-        <div class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/WeAreSorry.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/WeAreSorry.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -587,15 +611,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 7 - Try Not To Rage: Forest Release (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/Try_Not_To_Rage_Forest_Release.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/Try_Not_To_Rage_Forest_Release.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -637,15 +660,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 6 - Try Not To Rage: Forest Delay (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-2 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-2 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/25_August.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/25_August.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -680,15 +702,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 4 - Try Not To Rage: Forest Second Trailer (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-3 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-3 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/TRY_NOT_TO_RAGE_2.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/TRY_NOT_TO_RAGE_2.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -720,15 +741,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 5 - Try Not To Rage: Forest First Trailer (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-4 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-4 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/TRY_NOT_TO_RAGE_1.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/TRY_NOT_TO_RAGE_1.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -760,15 +780,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 1 - Announces (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-5 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-5 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/June162025.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/June162025.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -803,15 +822,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 2 - NEXIS AI (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/NEXIS.webp" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/NEXIS.webp" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -847,15 +865,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- News Card 3 - Unlimited Roleplay Roblox (HIDDEN initially) -->
-        <div class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
+        <article class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
           <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
           <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
           <div class="relative z-20">
             <div class="overflow-hidden">
-              <img src="/images/Unlimited_RP.png" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
+              <img src="/images/Unlimited_RP.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
             </div>
             <div class="p-8">
               <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
@@ -892,9 +909,8 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- View More Button Container -->
         <div id="view-more-container" class="view-more-container text-center">
           <button id="view-more-btn" class="px-10 py-4 rounded-full bg-gradient-to-r from-cyan-600 to-purple-700 hover:from-cyan-500 hover:to-purple-600 text-lg font-semibold shadow-xl backdrop-blur-lg border border-cyan-400/50 flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50 mx-auto">
             <span class="relative z-10">View More News</span>
@@ -907,7 +923,6 @@
     </div>
   </section>
 
-  <!-- Footer Section -->
   <footer class="pb-24 px-6 relative">
     <div class="max-w-4xl mx-auto text-center">
       <div class="animate-fade-in">
@@ -930,8 +945,7 @@
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 opacity-0 scale-0 transform transition-all duration-300 z-40 flex items-center justify-center">
+  <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 opacity-0 scale-0 z-40 flex items-center justify-center" aria-label="Back to top">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M18 15l-6-6-6 6"/>
     </svg>
@@ -967,26 +981,48 @@
       }
     });
 
-    // Create stars
-    const starContainer = document.getElementById('star-container');
-    for (let i = 0; i < 80; i++) { // Reduced from 100 to 80 for better performance
-      const star = document.createElement('div');
-      star.className = 'star will-change-opacity';
-      
-      const size = Math.random() * 0.5 + 0.5;
-      const opacity = Math.random() * 0.5 + 0.3;
-      const duration = 3 + Math.random() * 5;
-      const delay = Math.random() * 2;
-      
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.opacity = opacity;
-      star.style.animation = `starPulse ${duration}s ${delay}s infinite`;
-      
-      starContainer.appendChild(star);
+    // --- Optimized Star Background using Canvas ---
+    const canvas = document.getElementById('star-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    const stars = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
     }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Create stars
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.5 + 0.2,
+        speed: (Math.random() * 0.003) + 0.002,
+        direction: Math.random() > 0.5 ? 1 : -1
+      });
+    }
+
+    // Animate stars
+    function animateStars() {
+      ctx.clearRect(0, 0, width, height);
+      stars.forEach(star => {
+        star.opacity += star.speed * star.direction;
+        if (star.opacity >= 1 || star.opacity <= 0.1) {
+          star.direction *= -1;
+        }
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+    // ---------------------------------------------
 
     // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -1015,11 +1051,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.animate-fade-in');
       elements.forEach((el, index) => {
-        // Set initial state
         el.style.opacity = '0';
         el.style.transform = 'translateY(10px)';
         
-        // Animate with requestAnimationFrame for smoother performance
         requestAnimationFrame(() => {
           setTimeout(() => {
             el.style.transition = `opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
@@ -1036,7 +1070,6 @@
       content.classList.toggle('expanded');
       button.classList.toggle('expanded');
       
-      // Smooth scroll to expanded content
       if (content.classList.contains('expanded')) {
         setTimeout(() => {
           content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1049,31 +1082,25 @@
       const viewMoreBtn = document.getElementById('view-more-btn');
       const viewMoreContainer = document.getElementById('view-more-container');
       const hiddenNewsCards = document.querySelectorAll('.news-card.hidden-news');
-      const newsContainer = document.getElementById('news-container');
       
       if (!viewMoreBtn || !hiddenNewsCards.length) return;
       
-      // Show view more button initially
       setTimeout(() => {
         viewMoreContainer.classList.add('visible');
       }, 1000);
       
       viewMoreBtn.addEventListener('click', function() {
-        // Show all hidden news cards
         hiddenNewsCards.forEach(card => {
           card.classList.remove('hidden-news');
           card.classList.add('show-all');
           
-          // Trigger animation
           setTimeout(() => {
             card.classList.add('visible');
           }, 100);
         });
         
-        // Hide the view more button
         viewMoreContainer.style.display = 'none';
         
-        // Scroll to the newly revealed cards
         setTimeout(() => {
           hiddenNewsCards[0].scrollIntoView({ 
             behavior: 'smooth', 
@@ -1098,52 +1125,26 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // Stop observing after animation
             observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
       
-      // Observe each news card
-      newsCards.forEach(card => {
-        observer.observe(card);
-      });
-      
-      // Observe view more container
-      if (viewMoreContainer) {
-        observer.observe(viewMoreContainer);
-      }
+      newsCards.forEach(card => observer.observe(card));
+      if (viewMoreContainer) observer.observe(viewMoreContainer);
     }
 
-    // Initialize all functionalities when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       initScrollAnimations();
       initViewMoreNews();
     });
 
-    // Performance optimization: Use requestAnimationFrame for animations
-    let lastScrollY = window.scrollY;
+    // Performance optimization: Throttled Scroll event
     let ticking = false;
-    
-    function updateOnScroll() {
-      // Add any scroll-based animations here if needed
-      ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-      lastScrollY = window.scrollY;
-      
-      if (!ticking) {
-        requestAnimationFrame(updateOnScroll);
-        ticking = true;
-      }
-    });
-
-    // Back to top button functionality
     const backToTopButton = document.getElementById('backToTop');
     
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', () => {
+    function updateOnScroll() {
+      // Show/hide Back To Top
       if (backToTopButton) {
         if (window.scrollY > 500) {
           backToTopButton.classList.remove('opacity-0', 'scale-0');
@@ -1153,28 +1154,47 @@
           backToTopButton.classList.add('opacity-0', 'scale-0');
         }
       }
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateOnScroll);
+        ticking = true;
+      }
     });
     
     // Scroll to top when clicked
     if (backToTopButton) {
       backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
 
-    // Notification Bar functionality
+    // Optimized Notification Bar functionality with Timestamp LocalStorage
     document.addEventListener('DOMContentLoaded', function() {
       const notificationBar = document.getElementById('notification-bar');
       const closeNotification = document.getElementById('close-notification');
       
-      // Check if user has previously dismissed the notification
-      const notificationDismissed = localStorage.getItem('notificationDismissed');
+      // Get saved data from LocalStorage
+      const dismissDataStr = localStorage.getItem('notificationDismissedData');
+      let shouldShow = true;
       
-      // Show notification after a short delay if not previously dismissed
-      if (!notificationDismissed) {
+      if (dismissDataStr) {
+        try {
+          const dismissData = JSON.parse(dismissDataStr);
+          const now = new Date().getTime();
+          // Check if 24 hours have passed (24 * 60 * 60 * 1000 ms)
+          if (now - dismissData.timestamp < 86400000) {
+            shouldShow = false;
+          }
+        } catch (e) {
+          shouldShow = true; // Parse error, show anyway
+        }
+      }
+      
+      // Show notification after a short delay
+      if (shouldShow && notificationBar) {
         setTimeout(() => {
           notificationBar.classList.remove('transform', '-translate-y-full');
           notificationBar.classList.add('translate-y-0');
@@ -1182,16 +1202,14 @@
       }
       
       // Close notification functionality
-      if (closeNotification) {
+      if (closeNotification && notificationBar) {
         closeNotification.addEventListener('click', function() {
           notificationBar.classList.add('transform', '-translate-y-full');
           notificationBar.classList.remove('translate-y-0');
           
-          // Remember user's choice for 24 hours
-          localStorage.setItem('notificationDismissed', 'true');
-          setTimeout(() => {
-            localStorage.removeItem('notificationDismissed');
-          }, 24 * 60 * 60 * 1000); // 24 hours
+          // Save actual timestamp so it works across sessions
+          const data = { timestamp: new Date().getTime() };
+          localStorage.setItem('notificationDismissedData', JSON.stringify(data));
         });
       }
     });

@@ -1,4 +1,49 @@
+# Greek Games Studios - robots.txt
+# Updated: 2026-04-25
+# https://greekgamesstudios.com
+
+# ============================================
+# ALL CRAWLERS
+# ============================================
 User-agent: *
 Allow: /
 
+# Utility / non-indexable pages
+Disallow: /404.html
+Disallow: /ComingSoon.html
+Disallow: /future.txt
+Disallow: /app-ads.txt
+Disallow: /google*.html
+
+# Test pages (internal use only)
+Disallow: /additionalHTMLS/ggs-board.html
+
+# Form pages (contain user-submitted data, no SEO value)
+Disallow: /additionalHTMLS/support-form.html
+Disallow: /additionalHTMLS/HelpUsImprove.html
+
+# ============================================
+# AI CRAWLERS (Explicit Allow)
+# ============================================
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ============================================
+# SITEMAP DECLARATION
+# ============================================
 Sitemap: https://greekgamesstudios.com/sitemap.xml

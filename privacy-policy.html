@@ -3,15 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Privacy Policy - Greek Games Studios</title>
-  <link rel="icon" type="png" href="/images/ggs-logo.png">
+
+      <!-- Canonical -->
+  <link rel="canonical" href="https://www.greekgamesstudios.com/privacy-policy.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Greek Games Studios">
+  <meta name="twitter:description" content="Read the Privacy Policy, Terms of Use, and Community Guidelines for Greek Games Studios.">
+  <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
+  
+  <meta name="description" content="Privacy Policy, Terms of Use, and Community Guidelines for Greek Games Studios. Learn how we handle your data, our rules, and community standards.">
+  <meta name="keywords" content="Greek Games Studios, Privacy Policy, Terms of Use, Community Guidelines, Gaming, Rules, Data Protection">
+  <meta name="author" content="Greek Games Studios">
+  
+  <meta property="og:title" content="Privacy Policy & Terms - Greek Games Studios">
+  <meta property="og:description" content="Read the Privacy Policy, Terms of Use, and Community Guidelines for Greek Games Studios.">
+  <meta property="og:image" content="/images/ggs-logo.png">
+  <meta property="og:url" content="https://greekgamesstudios.com/privacy-policy.html">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/png" href="/images/ggs-logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
     body {
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     
     .gradient-text {
@@ -25,13 +50,15 @@
       border-image: linear-gradient(90deg, #22d3ee, #a855f7) 1;
     }
     
+    /* Hardware-accelerated animations for better performance */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .animate-fade-in {
-      animation: fadeIn 0.3s ease-out forwards; /* Ταχύτερο animation */
+      opacity: 0; /* Default hidden state before JS kicks in */
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     
     .current-page {
@@ -45,15 +72,17 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 0.5px;
-      background-color: cyan;
+      height: 2px; /* Increased slightly for better visibility */
+      background-color: #22d3ee;
       transform: scaleX(1);
     }
     
+    /* Policy Tabs - Smooth Transitions */
     .policy-tab {
-      transition: all 0.15s ease; /* Ταχύτερο transition */
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      will-change: transform, box-shadow; /* Hint to browser for performance */
     }
     
     .policy-tab.active {
@@ -63,14 +92,14 @@
     }
     
     .policy-tab:not(.active):hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(34, 211, 238, 0.15);
     }
     
     .content-section {
       display: none;
       opacity: 0;
-      transition: opacity 0.15s ease; /* Ταχύτερο transition */
+      transition: opacity 0.3s ease-in-out;
     }
     
     .content-section.active {
@@ -79,25 +108,24 @@
     }
     
     .glow-effect {
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
     }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden selection:bg-cyan-500/30 selection:text-white">
 
-  <!-- Navbar -->
   <header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16 md:h-20">
-        <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <div class="relative">
-            <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
-          </div>
+          <a href="/index.html" aria-label="Greek Games Studios Home">
+            <div class="relative">
+              <img src="/images/ggs-logo.png" alt="Greek Games Studios Logo" class="h-10 w-auto" loading="lazy"> 
+            </div>
+          </a>
         </div>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-1">
+        <nav aria-label="Main Navigation" class="hidden md:flex space-x-1">
           <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 group">
             Home
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></span>
@@ -117,13 +145,12 @@
           <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-150 transform hover:scale-105 animate-fade-in">
             Experimentals
           </a>
-          <a href="#privacy" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-150 group">
+          <a href="#privacy" aria-current="page" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-150 group">
             Privacy Policy
           </a>
         </nav>
 
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
+        <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
           <div class="relative w-6 h-6">
             <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-150"></span>
             <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-150"></span>
@@ -133,104 +160,73 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
+    <nav id="mobile-menu" aria-label="Mobile Navigation" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
       <div class="px-4 py-3 space-y-3">
-        <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">
-          Home
-        </a>
-        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">
-          Games
-        </a>
-        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">
-          Contact Us
-        </a>
-        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">
-          Support
-        </a>
-        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">
-          Experimentals
-        </a>
-        <a href="#privacy" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-150">
-          Privacy Policy
-        </a>
+        <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Home</a>
+        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Games</a>
+        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Contact Us</a>
+        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Support</a>
+        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">Experimentals</a>
+        <a href="#privacy" aria-current="page" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-150">Privacy Policy</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Policy Tabs -->
-  <section class="pt-32 pb-8 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <!-- Privacy Policy Tab -->
-      <div class="policy-tab active bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 text-center cursor-pointer glow-effect" data-target="privacy-policy">
+  <main id="main-content" class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+    
+    <section aria-label="Policy Navigation" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" role="tablist">
+      
+      <button role="tab" aria-selected="true" aria-controls="privacy-policy" id="tab-privacy" class="policy-tab active w-full text-left bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 cursor-pointer glow-effect focus:outline-none focus:ring-2 focus:ring-cyan-500" data-target="privacy-policy">
         <div class="flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mb-3 shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
-          <p class="text-gray-400 mt-2 text-sm">How we handle your data and privacy</p>
+          <p class="text-gray-400 mt-2 text-sm text-center">How we handle your data and privacy</p>
         </div>
-      </div>
+      </button>
       
-      <!-- Terms of Use Tab -->
-      <div class="policy-tab bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 text-center cursor-pointer" data-target="terms-of-use">
+      <button role="tab" aria-selected="false" aria-controls="terms-of-use" id="tab-terms" class="policy-tab w-full text-left bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500" data-target="terms-of-use">
         <div class="flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center mb-3 shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-white">Terms of Use</h3>
-          <p class="text-gray-400 mt-2 text-sm">Rules and conditions for using our services</p>
+          <p class="text-gray-400 mt-2 text-sm text-center">Rules and conditions for using our services</p>
         </div>
-      </div>
+      </button>
       
-      <!-- Community Guidelines Tab -->
-      <div class="policy-tab bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 text-center cursor-pointer" data-target="community-guidelines">
+      <button role="tab" aria-selected="false" aria-controls="community-guidelines" id="tab-community" class="policy-tab w-full text-left bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-500" data-target="community-guidelines">
         <div class="flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 flex items-center justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 flex items-center justify-center mb-3 shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
           <h3 class="text-xl font-bold text-white">Community Guidelines</h3>
-          <p class="text-gray-400 mt-2 text-sm">How to interact in our community spaces</p>
+          <p class="text-gray-400 mt-2 text-sm text-center">How to interact in our community spaces</p>
         </div>
-      </div>
-    </div>
-  </section>
+      </button>
+    </section>
 
-  <!-- Main Content -->
-  <main class="pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
     <div class="backdrop-blur-lg bg-[#1a1a1a]/80 rounded-3xl p-8 md:p-12 border border-cyan-600/30 shadow-[0_0_40px_#0ff1] animate-fade-in">
       
-      <!-- Privacy Policy Content -->
-      <div id="privacy-policy" class="content-section active">
-        <!-- Header -->
-        <div class="text-center mb-12 animate-fade-in">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
-            Privacy Policy
-          </h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto animate-fade-in"></div>
-        </div>
+      <article id="privacy-policy" role="tabpanel" aria-labelledby="tab-privacy" class="content-section active">
+        <header class="text-center mb-12 animate-fade-in">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">Privacy Policy</h1>
+          <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto"></div>
+          <p class="text-cyan-400 text-lg mt-6">Last Updated: February 21, 2026</p>
+        </header>
 
-        <!-- Last Updated -->
-        <div class="text-center mb-12 animate-fade-in">
-          <p class="text-cyan-400 text-lg">
-            Last Updated: February 21, 2026
-          </p>
-        </div>
-
-        <!-- Policy Content -->
-        <div class="prose prose-invert max-w-none">
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">1. Introduction</h2>
-            <p class="mb-4">
-              Greek Games Studios ("we", "our", or "us") is committed to protecting the privacy of our users across all our platforms and services. This Privacy Policy explains how we collect, use, and protect information in connection with our games, apps, websites, and community services.
-            </p>
-            <p class="mb-4">This policy applies to:</p>
+        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">1. Introduction</h2>
+            <p class="mb-4">Greek Games Studios ("we", "our", or "us") is committed to protecting the privacy of our users across all our platforms and services. This Privacy Policy explains how we collect, use, and protect information in connection with our games, apps, websites, and community services.</p>
+            <p class="mb-2">This policy applies to:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li><strong>Main Games:</strong> Titles available on platforms such as Google Play Store and Steam</li>
               <li><strong>Mini Games:</strong> Experiences on Roblox, Minecraft, and similar platforms</li>
@@ -239,73 +235,45 @@
             </ul>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">2. Data Collection</h2>
-            <p class="mb-4">
-              We do not actively collect direct personal identifiers such as full names, home addresses, or phone numbers during normal gameplay or website browsing.
-            </p>
-            <p class="mb-4">
-              However, certain platform-based or technical identifiers may be automatically processed or stored to ensure proper functionality, performance, and moderation across our services.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">2. Data Collection</h2>
+            <p class="mb-4">We do not actively collect direct personal identifiers such as full names, home addresses, or phone numbers during normal gameplay or website browsing.</p>
+            <p class="mb-4">However, certain platform-based or technical identifiers may be automatically processed or stored to ensure proper functionality, performance, and moderation across our services.</p>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">a. Gameplay Logs and Usernames</h3>
-            <p class="mb-4">
-              Platform usernames, user IDs, and gameplay logs may be stored for analytics, moderation, or debugging purposes.
-            </p>
-            <p class="mb-4">
-              This may include:
-            </p>
+            <p class="mb-4">Platform usernames, user IDs, and gameplay logs may be stored for analytics, moderation, or debugging purposes.</p>
+            <p class="mb-2">This may include:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Error reports</li>
               <li>In-game actions</li>
               <li>Account-level information provided by the platform (e.g., Roblox User ID)</li>
             </ul>
-            <p class="mb-4">
-              When stored persistently for analytics, debugging, or moderation purposes, platform-provided identifiers (such as usernames or account IDs) may be treated as personal data under applicable data protection laws.
-            </p>
+            <p class="mb-4">When stored persistently for analytics, debugging, or moderation purposes, platform-provided identifiers (such as usernames or account IDs) may be treated as personal data under applicable data protection laws.</p>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">b. Testing and QA</h3>
-            <p class="mb-4">
-              Users may participate in testing phases (public or private) as part of early releases. We may monitor gameplay behavior and interactions to improve game balance and performance.
-            </p>
-            <p class="mb-4">
-              Platform-provided identifiers (such as usernames or account IDs) may be used during these processes for moderation or debugging purposes.
-            </p>
+            <p class="mb-4">Users may participate in testing phases (public or private) as part of early releases. We may monitor gameplay behavior and interactions to improve game balance and performance.</p>
+            <p class="mb-4">Platform-provided identifiers (such as usernames or account IDs) may be used during these processes for moderation or debugging purposes.</p>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">c. Moderation and Bans</h3>
-            <p class="mb-4">
-              If a user violates community or platform rules, ban or moderation data may be stored. This may include timestamps, offense type, and actions taken.
-            </p>
-            <p class="mb-4">
-              Moderation-related data may be retained under our legitimate interest in maintaining safe and fair community environments. In some cases, moderation data may be shared with the relevant platform provider.
-            </p>
+            <p class="mb-4">If a user violates community or platform rules, ban or moderation data may be stored. This may include timestamps, offense type, and actions taken.</p>
+            <p class="mb-4">Moderation-related data may be retained under our legitimate interest in maintaining safe and fair community environments. In some cases, moderation data may be shared with the relevant platform provider.</p>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">d. Contacting Us (Support or "Message Us")</h3>
-            <p class="mb-4">
-              If you voluntarily contact us through a support form, email, or "Message Us" feature on our website or services, we may temporarily store your email address and message content for the sole purpose of:
-            </p>
+            <p class="mb-4">If you voluntarily contact us through a support form, email, or "Message Us" feature on our website or services, we may temporarily store your email address and message content for the sole purpose of:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Responding to your request</li>
               <li>Providing technical assistance or support</li>
               <li>Investigating reported issues</li>
             </ul>
-            <p class="mb-4">
-              We do not use submitted contact information for marketing or analytics purposes.
-            </p>
-            <p class="mb-4">
-              Support-related information is retained only for as long as necessary to resolve the request and is deleted thereafter.
-            </p>
-            <p class="mb-4">
-              Some technical data (such as IP address or browser metadata) may be automatically processed by our hosting provider when forms are submitted or pages are accessed. This information is managed by the hosting provider in accordance with their own privacy policies.
-            </p>
+            <p class="mb-4">We do not use submitted contact information for marketing or analytics purposes.</p>
+            <p class="mb-4">Support-related information is retained only for as long as necessary to resolve the request and is deleted thereafter.</p>
+            <p class="mb-4">Some technical data (such as IP address or browser metadata) may be automatically processed by our hosting provider when forms are submitted or pages are accessed. This information is managed by the hosting provider in accordance with their own privacy policies.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">3. Automatically Collected Technical Data</h2>
-            <p class="mb-4">
-              Our services, including website access and browser-based Play & Demo experiences, may rely on essential technical data automatically processed by infrastructure providers to ensure stability and performance.
-            </p>
-            <p class="mb-4">This may include:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">3. Automatically Collected Technical Data</h2>
+            <p class="mb-4">Our services, including website access and browser-based Play & Demo experiences, may rely on essential technical data automatically processed by infrastructure providers to ensure stability and performance.</p>
+            <p class="mb-2">This may include:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>IP address</li>
               <li>Device type</li>
@@ -313,17 +281,13 @@
               <li>Operating system</li>
               <li>Basic session-level diagnostics</li>
             </ul>
-            <p class="mb-4">
-              We do not directly access or use this information for marketing or user profiling purposes.
-            </p>
+            <p class="mb-4">We do not directly access or use this information for marketing or user profiling purposes.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">4. Third-Party Services</h2>
-            <p class="mb-4">
-              We rely on external platforms and providers to operate certain services. Each platform manages its own data collection and privacy policies.
-            </p>
-            <p class="mb-4">These may include:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">4. Third-Party Services</h2>
+            <p class="mb-4">We rely on external platforms and providers to operate certain services. Each platform manages its own data collection and privacy policies.</p>
+            <p class="mb-2">These may include:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Roblox Corporation</li>
               <li>Mojang / Microsoft (Minecraft)</li>
@@ -332,16 +296,12 @@
               <li>Discord (Bots, servers)</li>
               <li>Netlify (Website hosting)</li>
             </ul>
-            <p class="mb-4">
-              Please refer to each provider's privacy policy for more information.
-            </p>
+            <p class="mb-4">Please refer to each provider's privacy policy for more information.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">5. Use of Data</h2>
-            <p class="mb-4">
-              Any data accessed or processed through our services (including moderation logs or gameplay records) is used solely for:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">5. Use of Data</h2>
+            <p class="mb-4">Any data accessed or processed through our services (including moderation logs or gameplay records) is used solely for:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Improving gameplay stability and performance</li>
               <li>Fixing bugs and preventing exploits</li>
@@ -350,67 +310,49 @@
               <li>Analyzing technical trends for development</li>
               <li>Ensuring compliance with platform terms</li>
             </ul>
-            <p class="mb-4">
-              We do not sell, rent, or trade user data under any circumstances.
-            </p>
+            <p class="mb-4">We do not sell, rent, or trade user data under any circumstances.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">6. Data Retention</h2>
-            <p class="mb-4">
-              Gameplay, testing, demo usage, and moderation-related data may be stored for up to 12 months unless required for:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">6. Data Retention</h2>
+            <p class="mb-4">Gameplay, testing, demo usage, and moderation-related data may be stored for up to 12 months unless required for:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Ongoing moderation</li>
               <li>Security investigations</li>
               <li>Technical analysis or service improvement</li>
             </ul>
-            <p class="mb-4">
-              Support communications are deleted once the related issue has been resolved.
-            </p>
+            <p class="mb-4">Support communications are deleted once the related issue has been resolved.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">7. Cookies and Tracking</h2>
-            <p class="mb-4">
-              Our website may use cookies or similar technologies for:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">7. Cookies and Tracking</h2>
+            <p class="mb-4">Our website may use cookies or similar technologies for:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Functional purposes (navigation, login)</li>
               <li>Analytics and traffic measurement</li>
               <li>Improving user experience</li>
             </ul>
-            <p class="mb-4">
-              You can manage or disable cookies through your browser settings.
-            </p>
+            <p class="mb-4">You can manage or disable cookies through your browser settings.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">8. Age Requirements</h2>
-            <p class="mb-4">
-              Our services are designed for users aged 13 and above. We do not knowingly collect personal information from children under 13. If such data is ever collected unintentionally, it will be deleted immediately upon discovery. Parents or guardians may contact us to request deletion.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">8. Age Requirements</h2>
+            <p class="mb-4">Our services are designed for users aged 13 and above. We do not knowingly collect personal information from children under 13. If such data is ever collected unintentionally, it will be deleted immediately upon discovery. Parents or guardians may contact us to request deletion.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">9. User Rights and Requests</h2>
-            <p class="mb-4">
-              Users may request access to or deletion of specific data linked to their activity (e.g., usernames, moderation logs, support messages). Requests must include proof of identity and will be handled within 30 days, where applicable.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">9. User Rights and Requests</h2>
+            <p class="mb-4">Users may request access to or deletion of specific data linked to their activity (e.g., usernames, moderation logs, support messages). Requests must include proof of identity and will be handled within 30 days, where applicable.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">10. External Links</h2>
-            <p class="mb-4">
-              Our services may contain links to external websites, stores, or platforms. We are not responsible for the content or privacy practices of these external services.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">10. External Links</h2>
+            <p class="mb-4">Our services may contain links to external websites, stores, or platforms. We are not responsible for the content or privacy practices of these external services.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">11. Payments and In-Game Purchases</h2>
-            <p class="mb-4">
-              Some of our games and apps may include paid features such as:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">11. Payments and In-Game Purchases</h2>
+            <p class="mb-4">Some of our games and apps may include paid features such as:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Full game purchases</li>
               <li>In-game or in-app purchases (virtual currency, passes, cosmetics)</li>
@@ -418,26 +360,18 @@
             </ul>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">a. Payment Processing</h3>
-            <p class="mb-4">
-              All payments are handled by third-party platforms. We do not store or process billing data (such as credit card or banking information).
-            </p>
+            <p class="mb-4">All payments are handled by third-party platforms. We do not store or process billing data (such as credit card or banking information).</p>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">b. Virtual Goods & Refunds</h3>
-            <p class="mb-4">
-              Virtual items and currency are non-refundable and non-transferable, unless stated otherwise. Abuse of payment systems may result in bans or restricted access.
-            </p>
+            <p class="mb-4">Virtual items and currency are non-refundable and non-transferable, unless stated otherwise. Abuse of payment systems may result in bans or restricted access.</p>
             
             <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">c. Testing/Promo Access</h3>
-            <p class="mb-4">
-              Some players may receive early or free access to premium content during tests or events. We reserve the right to remove or modify this content at any time without prior notice or compensation.
-            </p>
+            <p class="mb-4">Some players may receive early or free access to premium content during tests or events. We reserve the right to remove or modify this content at any time without prior notice or compensation.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">12. Play & Demos</h2>
-            <p class="mb-4">
-              Some of our services may include browser-based or downloadable Play & Demo experiences for testing or preview purposes.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">12. Play & Demos</h2>
+            <p class="mb-4">Some of our services may include browser-based or downloadable Play & Demo experiences for testing or preview purposes.</p>
             <p class="mb-4">During use of these features:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Temporary gameplay progress may be stored locally on the user’s device</li>
@@ -452,52 +386,35 @@
             </ul>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">13. Changes to This Policy</h2>
-            <p class="mb-4">
-              This Privacy Policy may be updated periodically. Updates will be posted on our official website with the "Last Updated" date. Continuing to use our services after changes means you accept the updated terms.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">13. Changes to This Policy</h2>
+            <p class="mb-4">This Privacy Policy may be updated periodically. Updates will be posted on our official website with the "Last Updated" date. Continuing to use our services after changes means you accept the updated terms.</p>
           </section>
 
-          <section class="animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">14. Contact Information</h2>
-            <p class="mb-4">
-              For any questions, data requests, or privacy concerns, you can reach us at:
-            </p>
-            <p class="mb-4">
-              <strong>Email:</strong> greekgamesstudios@gmail.com<br>
-              <strong>Discord:</strong> https://discord.gg/UmrwZpYZP3<br>
-              <strong>Website:</strong> https://greekgamesstudios.com
-            </p>
+          <section>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">14. Contact Information</h2>
+            <p class="mb-4">For any questions, data requests, or privacy concerns, you can reach us at:</p>
+            <address class="not-italic">
+              <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com" class="text-cyan-400 hover:underline">greekgamesstudios@gmail.com</a><br>
+              <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">https://discord.gg/UmrwZpYZP3</a><br>
+              <strong>Website:</strong> <a href="https://greekgamesstudios.com" class="text-cyan-400 hover:underline">https://greekgamesstudios.com</a>
+            </address>
           </section>
         </div>
-      </div>
+      </article>
       
-      <!-- Terms of Use Content -->
-      <div id="terms-of-use" class="content-section">
-        <!-- Header -->
-        <div class="text-center mb-12 animate-fade-in">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
-            Terms of Use
-          </h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full mx-auto animate-fade-in"></div>
-        </div>
+      <article id="terms-of-use" role="tabpanel" aria-labelledby="tab-terms" class="content-section" hidden>
+        <header class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">Terms of Use</h1>
+          <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full mx-auto"></div>
+          <p class="text-purple-400 text-lg mt-6">Last Updated: February 21, 2026</p>
+        </header>
 
-        <!-- Last Updated -->
-        <div class="text-center mb-12 animate-fade-in">
-          <p class="text-purple-400 text-lg">
-            Last Updated: February 21, 2026
-          </p>
-        </div>
-
-        <!-- Terms Content -->
-        <div class="prose prose-invert max-w-none">
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">1. Introduction</h2>
-            <p class="mb-4">
-              Welcome to Greek Games Studios (“we”, “our”, or “us”). By accessing or using any of our games, websites, Play & Demo experiences, or community services, you agree to these Terms of Use (“Terms”). If you do not agree with these Terms, please do not use our Services.
-            </p>
-            <p class="mb-4">These Terms apply to:</p>
+        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">1. Introduction</h2>
+            <p class="mb-4">Welcome to Greek Games Studios (“we”, “our”, or “us”). By accessing or using any of our games, websites, Play & Demo experiences, or community services, you agree to these Terms of Use (“Terms”). If you do not agree with these Terms, please do not use our Services.</p>
+            <p class="mb-2">These Terms apply to:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li><strong>Main Games:</strong> Titles available on platforms such as Google Play Store and Steam</li>
               <li><strong>Mini Games:</strong> Experiences on Roblox, Minecraft, and similar platforms</li>
@@ -507,43 +424,33 @@
             </ul>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">2. Eligibility</h2>
-            <p class="mb-4">
-              Our Services are intended for users aged 13 and older. If you are under 13, you are not permitted to access or use our Services. Parents or guardians are responsible for supervising minors’ activity when using our Services.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">2. Eligibility</h2>
+            <p class="mb-4">Our Services are intended for users aged 13 and older. If you are under 13, you are not permitted to access or use our Services. Parents or guardians are responsible for supervising minors’ activity when using our Services.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">3. Ownership and Intellectual Property</h2>
-            <p class="mb-4">
-              All content provided by Greek Games Studios including but not limited to:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">3. Ownership and Intellectual Property</h2>
+            <p class="mb-4">All content provided by Greek Games Studios including but not limited to:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Games, applications, and software</li>
               <li>Logos, artwork, and visual assets</li>
               <li>Music, sound effects, and videos</li>
               <li>Websites, Play & Demo builds, and digital tools</li>
             </ul>
-            <p class="mb-4">
-              is the exclusive property of Greek Games Studios.
-            </p>
-            <p class="mb-4">You may not:</p>
+            <p class="mb-4">is the exclusive property of Greek Games Studios.</p>
+            <p class="mb-2">You may not:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Copy, distribute, or modify our content without written permission</li>
               <li>Use our assets, builds, or code for commercial purposes</li>
               <li>Claim ownership or authorship of our projects or materials</li>
             </ul>
-            <p class="mb-4">
-              Violations may result in access restrictions, takedown requests, or legal action.
-            </p>
+            <p class="mb-4">Violations may result in access restrictions, takedown requests, or legal action.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">4. Acceptable Use</h2>
-            <p class="mb-4">
-              When using our Services, you agree to follow all applicable laws and community standards. You must not:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">4. Acceptable Use</h2>
+            <p class="mb-4">When using our Services, you agree to follow all applicable laws and community standards. You must not:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Use exploits, cheats, scripts, or third-party tools to gain unfair advantages</li>
               <li>Exploit bugs or unintended mechanics in any Play & Demo experience</li>
@@ -554,19 +461,13 @@
               <li>Circumvent moderation systems or access restrictions</li>
               <li>Impersonate Greek Games Studios or its members</li>
             </ul>
-            <p class="mb-4">
-              Failure to comply may lead to warnings, temporary suspension, or permanent bans from our Services.
-            </p>
+            <p class="mb-4">Failure to comply may lead to warnings, temporary suspension, or permanent bans from our Services.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">5. Accounts and Platform Data</h2>
-            <p class="mb-4">
-              Some Services may use platform-linked accounts. These accounts are created and managed by the respective platform providers.
-            </p>
-            <p class="mb-4">
-              We may access limited platform-provided data such as:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">5. Accounts and Platform Data</h2>
+            <p class="mb-4">Some Services may use platform-linked accounts. These accounts are created and managed by the respective platform providers.</p>
+            <p class="mb-2">We may access limited platform-provided data such as:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Username</li>
               <li>User ID</li>
@@ -574,17 +475,13 @@
               <li>Moderation-related activity</li>
               <li>Platform analytics</li>
             </ul>
-            <p class="mb-4">
-              This information may be used to maintain service functionality, fairness, and community safety.
-            </p>
+            <p class="mb-4">This information may be used to maintain service functionality, fairness, and community safety.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">6. Play & Demo Experiences</h2>
-            <p class="mb-4">
-              Our Services may provide access to Play & Demo versions of our games or interactive features for preview, testing, or evaluation purposes.
-            </p>
-            <p class="mb-4">By accessing these experiences, you acknowledge that:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">6. Play & Demo Experiences</h2>
+            <p class="mb-4">Our Services may provide access to Play & Demo versions of our games or interactive features for preview, testing, or evaluation purposes.</p>
+            <p class="mb-2">By accessing these experiences, you acknowledge that:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Play & Demo versions may differ from final released products</li>
               <li>Features, mechanics, or content may change at any time</li>
@@ -592,151 +489,104 @@
               <li>Services may be modified, limited, or discontinued</li>
               <li>Performance issues or incomplete functionality may occur</li>
             </ul>
-            <p class="mb-4">
-              Play & Demo environments are provided for testing purposes and are used at your own discretion.
-            </p>
+            <p class="mb-4">Play & Demo environments are provided for testing purposes and are used at your own discretion.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">7. Virtual Items and Payments</h2>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">7. Virtual Items and Payments</h2>
             
             <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">a. Payment Processing</h3>
-            <p class="mb-4">
-              All payments are securely handled by third-party platforms such as Google Play, Steam, or Roblox. We do not process or store billing or credit card information.
-            </p>
+            <p class="mb-4">All payments are securely handled by third-party platforms such as Google Play, Steam, or Roblox. We do not process or store billing or credit card information.</p>
             
             <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">b. Virtual Goods and Refunds</h3>
-            <p class="mb-4">
-              Virtual items and currency are non-refundable and non-transferable unless explicitly stated otherwise.
-            </p>
-            <p class="mb-4">
-              Refund requests must be made through the original purchase platform. Abuse of payment systems may lead to account restrictions or bans.
-            </p>
+            <p class="mb-4">Virtual items and currency are non-refundable and non-transferable unless explicitly stated otherwise.</p>
+            <p class="mb-4">Refund requests must be made through the original purchase platform. Abuse of payment systems may lead to account restrictions or bans.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">8. User-Generated Content</h2>
-            <p class="mb-4">
-              By sharing content within our Services or community spaces, you grant us a non-exclusive right to use, display, or moderate that content for the purpose of maintaining safe and functional environments.
-            </p>
-            <p class="mb-4">
-              We reserve the right to remove or restrict any user content that violates these Terms or community guidelines.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">8. User-Generated Content</h2>
+            <p class="mb-4">By sharing content within our Services or community spaces, you grant us a non-exclusive right to use, display, or moderate that content for the purpose of maintaining safe and functional environments.</p>
+            <p class="mb-4">We reserve the right to remove or restrict any user content that violates these Terms or community guidelines.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">9. Moderation and Enforcement</h2>
-            <p class="mb-4">
-              We may apply moderation actions if a user violates these Terms, service rules, or platform policies.
-            </p>
-            <p class="mb-4">Moderation actions may include:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">9. Moderation and Enforcement</h2>
+            <p class="mb-4">We may apply moderation actions if a user violates these Terms, service rules, or platform policies.</p>
+            <p class="mb-2">Moderation actions may include:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Warnings</li>
               <li>Temporary restrictions</li>
               <li>Permanent suspension of access</li>
               <li>Removal from Play & Demo environments</li>
             </ul>
-            <p class="mb-4">
-              Serious violations may be reported to platform providers or relevant authorities where required.
-            </p>
+            <p class="mb-4">Serious violations may be reported to platform providers or relevant authorities where required.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">10. Disclaimer of Warranty</h2>
-            <p class="mb-4">
-              Our Services are provided “as is” and “as available.” We do not guarantee uninterrupted operation, the correction of all technical issues, or compatibility with all devices or platforms.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">10. Disclaimer of Warranty</h2>
+            <p class="mb-4">Our Services are provided “as is” and “as available.” We do not guarantee uninterrupted operation, the correction of all technical issues, or compatibility with all devices or platforms.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">11. Limitation of Liability</h2>
-            <p class="mb-4">
-              To the fullest extent permitted by law, Greek Games Studios shall not be held liable for data loss, gameplay issues, service interruptions, technical failures, or indirect damages resulting from the use of our Services.
-            </p>
-            <p class="mb-4">
-              Your sole remedy for dissatisfaction is to discontinue use of our Services.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">11. Limitation of Liability</h2>
+            <p class="mb-4">To the fullest extent permitted by law, Greek Games Studios shall not be held liable for data loss, gameplay issues, service interruptions, technical failures, or indirect damages resulting from the use of our Services.</p>
+            <p class="mb-4">Your sole remedy for dissatisfaction is to discontinue use of our Services.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">12. Service Availability</h2>
-            <p class="mb-4">
-              We reserve the right to:
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">12. Service Availability</h2>
+            <p class="mb-2">We reserve the right to:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Modify or discontinue any part of our Services</li>
               <li>Reset progress or testing data</li>
               <li>Restrict access to maintain fairness or stability</li>
             </ul>
-            <p class="mb-4">
-              We are not responsible for any loss of progress or in-game data resulting from updates, resets, or technical issues.
-            </p>
+            <p class="mb-4">We are not responsible for any loss of progress or in-game data resulting from updates, resets, or technical issues.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">13. Changes to the Terms</h2>
-            <p class="mb-4">
-              We may update these Terms from time to time. Continued use of our Services after updates constitutes acceptance of the revised Terms.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">13. Changes to the Terms</h2>
+            <p class="mb-4">We may update these Terms from time to time. Continued use of our Services after updates constitutes acceptance of the revised Terms.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">14. Termination</h2>
-            <p class="mb-4">
-              We reserve the right to suspend or terminate access to our Services at any time, with or without notice, for reasons including violation of these Terms.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">14. Termination</h2>
+            <p class="mb-4">We reserve the right to suspend or terminate access to our Services at any time, with or without notice, for reasons including violation of these Terms.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">15. Governing Law</h2>
-            <p class="mb-4">
-              These Terms are governed by the laws of Greece and the European Union. Any disputes arising in connection with these Terms shall be subject to Greek jurisdiction.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">15. Governing Law</h2>
+            <p class="mb-4">These Terms are governed by the laws of Greece and the European Union. Any disputes arising in connection with these Terms shall be subject to Greek jurisdiction.</p>
           </section>
 
-          <section class="animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">16. Contact Information</h2>
-            <p class="mb-4">
-              Email: greekgamesstudios@gmail.com<br>
-              Discord: https://discord.gg/UmrwZpYZP3<br>
-              Website: https://greekgamesstudios.com
-            </p>
+          <section>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">16. Contact Information</h2>
+            <address class="not-italic">
+              <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com" class="text-purple-400 hover:underline">greekgamesstudios@gmail.com</a><br>
+              <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">https://discord.gg/UmrwZpYZP3</a><br>
+              <strong>Website:</strong> <a href="https://greekgamesstudios.com" class="text-purple-400 hover:underline">https://greekgamesstudios.com</a>
+            </address>
           </section>
         </div>
-      </div>
+      </article>
       
-      <!-- Community Guidelines Content -->
-      <div id="community-guidelines" class="content-section">
-        <!-- Header -->
-        <div class="text-center mb-12 animate-fade-in">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
-            Community Guidelines
-          </h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full mx-auto animate-fade-in"></div>
-        </div>
+      <article id="community-guidelines" role="tabpanel" aria-labelledby="tab-community" class="content-section" hidden>
+        <header class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">Community Guidelines</h1>
+          <div class="w-24 h-1 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full mx-auto"></div>
+          <p class="text-pink-400 text-lg mt-6">Last Updated: February 21, 2026</p>
+        </header>
 
-        <!-- Last Updated -->
-        <div class="text-center mb-12 animate-fade-in">
-          <p class="text-pink-400 text-lg">
-            Last Updated: February 21, 2026
-          </p>
-        </div>
-
-        <!-- Guidelines Content -->
-        <div class="prose prose-invert max-w-none">
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">1. Introduction</h2>
-            <p class="mb-4">
-              Our goal is to maintain a safe, positive, and respectful environment for everyone across all our Services. These Community Guidelines apply to all users interacting with our games, Play & Demo experiences, website, Discord server, and other digital platforms. By participating in our Services, you agree to follow these rules.
-            </p>
+        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">1. Introduction</h2>
+            <p class="mb-4">Our goal is to maintain a safe, positive, and respectful environment for everyone across all our Services. These Community Guidelines apply to all users interacting with our games, Play & Demo experiences, website, Discord server, and other digital platforms. By participating in our Services, you agree to follow these rules.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">2. Respectful Behavior</h2>
-            <p class="mb-4">
-              Treat all players, staff members, and community participants with respect.
-            </p>
-            <p class="mb-4">The following behavior is not tolerated:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">2. Respectful Behavior</h2>
+            <p class="mb-4">Treat all players, staff members, and community participants with respect.</p>
+            <p class="mb-2">The following behavior is not tolerated:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Harassment or bullying</li>
               <li>Discrimination or hate speech</li>
@@ -744,51 +594,39 @@
               <li>Toxic or intentionally disruptive conduct</li>
               <li>Doxxing or sharing private information</li>
             </ul>
-            <p class="mb-4">
-              We aim to maintain a welcoming environment for all users aged 13 and above.
-            </p>
+            <p class="mb-4">We aim to maintain a welcoming environment for all users aged 13 and above.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">3. Fair Play</h2>
-            <p class="mb-4">
-              All users must play fairly and avoid gaining unfair advantages.
-            </p>
-            <p class="mb-4">You must not:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">3. Fair Play</h2>
+            <p class="mb-4">All users must play fairly and avoid gaining unfair advantages.</p>
+            <p class="mb-2">You must not:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Use cheats, exploits, or unintended mechanics</li>
               <li>Use automation tools, scripts, or unauthorized software</li>
               <li>Attempt to bypass game systems or progression</li>
               <li>Interfere with gameplay experiences of others</li>
             </ul>
-            <p class="mb-4">
-              Users found violating fair play standards may face temporary or permanent restrictions.
-            </p>
+            <p class="mb-4">Users found violating fair play standards may face temporary or permanent restrictions.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">4. Play & Demo Participation</h2>
-            <p class="mb-4">
-              Some Services may include access to Play & Demo builds intended for preview or testing.
-            </p>
-            <p class="mb-4">When participating in these environments, you must not:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">4. Play & Demo Participation</h2>
+            <p class="mb-4">Some Services may include access to Play & Demo builds intended for preview or testing.</p>
+            <p class="mb-2">When participating in these environments, you must not:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Exploit unfinished systems or mechanics</li>
               <li>Attempt to gain unfair advantages using in-development features</li>
               <li>Disrupt testing environments intentionally</li>
               <li>Use third-party tools within testing builds</li>
             </ul>
-            <p class="mb-4">
-              Play & Demo environments may be modified, reset, or discontinued at any time to maintain fairness and stability.
-            </p>
+            <p class="mb-4">Play & Demo environments may be modified, reset, or discontinued at any time to maintain fairness and stability.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">5. Appropriate Content</h2>
-            <p class="mb-4">
-              Keep all messages, usernames, and shared content appropriate for all audiences aged 13 and above.
-            </p>
-            <p class="mb-4">Do not share:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">5. Appropriate Content</h2>
+            <p class="mb-4">Keep all messages, usernames, and shared content appropriate for all audiences aged 13 and above.</p>
+            <p class="mb-2">Do not share:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>NSFW or explicit content</li>
               <li>Violent or disturbing material</li>
@@ -798,24 +636,20 @@
             </ul>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">6. Account Responsibility</h2>
-            <p class="mb-4">
-              You are responsible for keeping your platform accounts secure.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">6. Account Responsibility</h2>
+            <p class="mb-2">You are responsible for keeping your platform accounts secure.</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Do not share your account credentials</li>
               <li>Do not attempt to access accounts belonging to others</li>
               <li>Report suspected impersonators or compromised accounts to moderators</li>
             </ul>
-            <p class="mb-4">
-              Greek Games Studios will never request your passwords or login credentials.
-            </p>
+            <p class="mb-4">Greek Games Studios will never request your passwords or login credentials.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">7. Advertising and Spam</h2>
-            <p class="mb-4">The following actions are not permitted:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">7. Advertising and Spam</h2>
+            <p class="mb-2">The following actions are not permitted:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Excessive self-promotion</li>
               <li>Repeated off-topic messages</li>
@@ -824,35 +658,27 @@
             </ul>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">8. Testing and Feedback</h2>
-            <p class="mb-4">
-              Constructive feedback is encouraged during testing phases.
-            </p>
-            <p class="mb-4">However, users must not:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">8. Testing and Feedback</h2>
+            <p class="mb-4">Constructive feedback is encouraged during testing phases.</p>
+            <p class="mb-2">However, users must not:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Share unreleased content publicly</li>
               <li>Leak in-development materials</li>
               <li>Misuse testing builds for unintended purposes</li>
             </ul>
-            <p class="mb-4">
-              Participation in testing does not grant ownership or distribution rights to any in-development content.
-            </p>
+            <p class="mb-4">Participation in testing does not grant ownership or distribution rights to any in-development content.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">9. Platform Compliance</h2>
-            <p class="mb-4">
-              Users must follow both these Community Guidelines and the rules of the platforms used to access our Services, including but not limited to Roblox, Steam, Discord, or Google Play.
-            </p>
-            <p class="mb-4">
-              Failure to comply with platform-level terms may result in access restrictions within our Services.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">9. Platform Compliance</h2>
+            <p class="mb-4">Users must follow both these Community Guidelines and the rules of the platforms used to access our Services, including but not limited to Roblox, Steam, Discord, or Google Play.</p>
+            <p class="mb-4">Failure to comply with platform-level terms may result in access restrictions within our Services.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">10. Moderation and Enforcement</h2>
-            <p class="mb-4">Violations of these Guidelines may result in:</p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">10. Moderation and Enforcement</h2>
+            <p class="mb-2">Violations of these Guidelines may result in:</p>
             <ul class="list-disc pl-6 space-y-2 mb-4">
               <li>Warnings</li>
               <li>Temporary mutes or restrictions</li>
@@ -860,32 +686,28 @@
               <li>Revocation of roles or permissions</li>
               <li>Temporary or permanent bans</li>
             </ul>
-            <p class="mb-4">
-              Serious or repeated violations may also be reported to platform providers where applicable.
-            </p>
+            <p class="mb-4">Serious or repeated violations may also be reported to platform providers where applicable.</p>
           </section>
 
-          <section class="mb-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">11. Updates to These Guidelines</h2>
-            <p class="mb-4">
-              We may update these Community Guidelines periodically. Continued use of our Services after updates constitutes acceptance of the revised rules.
-            </p>
+          <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">11. Updates to These Guidelines</h2>
+            <p class="mb-4">We may update these Community Guidelines periodically. Continued use of our Services after updates constitutes acceptance of the revised rules.</p>
           </section>
 
-          <section class="animate-fade-in">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">12. Contact Information</h2>
-            <p class="mb-4">
-              Email: greekgamesstudios@gmail.com<br>
-              Discord: https://discord.gg/UmrwZpYZP3<br>
-              Website: https://greekgamesstudios.com
-            </p>
+          <section>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">12. Contact Information</h2>
+            <address class="not-italic">
+              <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com" class="text-rose-400 hover:underline">greekgamesstudios@gmail.com</a><br>
+              <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer" class="text-rose-400 hover:underline">https://discord.gg/UmrwZpYZP3</a><br>
+              <strong>Website:</strong> <a href="https://greekgamesstudios.com" class="text-rose-400 hover:underline">https://greekgamesstudios.com</a>
+            </address>
           </section>
         </div>
-      </div>
+      </article>
+      
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
     <div class="max-w-6xl mx-auto text-center">
       <p class="text-gray-500 text-sm">
@@ -895,69 +717,90 @@
   </footer>
 
   <script>
-    // Mobile menu functionality
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLine1 = document.getElementById('mobile-line1');
-    const mobileLine2 = document.getElementById('mobile-line2');
-    const mobileLine3 = document.getElementById('mobile-line3');
-    
-    let menuOpen = false;
-    
-    mobileMenuButton.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      
-      if (menuOpen) {
-        mobileMenu.classList.remove('hidden');
-        mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
-        mobileLine1.style.backgroundColor = '#fff';
-        mobileLine2.style.opacity = '0';
-        mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
-        mobileLine3.style.backgroundColor = '#fff';
-      } else {
-        mobileMenu.classList.add('hidden');
-        mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
-        mobileLine1.style.backgroundColor = '#9CA3AF';
-        mobileLine2.style.opacity = '1';
-        mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
-        mobileLine3.style.backgroundColor = '#9CA3AF';
-      }
-    });
-
-    // Set current year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // Add faster fade-in animations to elements
     document.addEventListener('DOMContentLoaded', () => {
+      
+      // Mobile menu functionality (Optimized with requestAnimationFrame)
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLine1 = document.getElementById('mobile-line1');
+      const mobileLine2 = document.getElementById('mobile-line2');
+      const mobileLine3 = document.getElementById('mobile-line3');
+      
+      let menuOpen = false;
+      
+      mobileMenuButton.addEventListener('click', () => {
+        // Accessibility Update
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        menuOpen = !isExpanded;
+        
+        // requestAnimationFrame for smooth UI rendering 
+        requestAnimationFrame(() => {
+          if (menuOpen) {
+            mobileMenu.classList.remove('hidden');
+            mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
+            mobileLine1.style.backgroundColor = '#fff';
+            mobileLine2.style.opacity = '0';
+            mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            mobileLine3.style.backgroundColor = '#fff';
+          } else {
+            mobileMenu.classList.add('hidden');
+            mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
+            mobileLine1.style.backgroundColor = '#9CA3AF';
+            mobileLine2.style.opacity = '1';
+            mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
+            mobileLine3.style.backgroundColor = '#9CA3AF';
+          }
+        });
+      });
+
+      // Set current year dynamically
+      const yearSpan = document.getElementById('current-year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Hardware accelerated staggered fade-in animations
       const elements = document.querySelectorAll('.animate-fade-in');
       elements.forEach((el, index) => {
-        el.style.opacity = '0';
-        setTimeout(() => {
-          el.style.animation = `fadeIn 0.2s ease-out ${index * 0.02}s forwards`; // Ταχύτερο και πιο πυκνό
-        }, 10);
+        // Only animate elements that are actually meant to fade in on load
+        requestAnimationFrame(() => {
+          el.style.animationDelay = `${index * 0.03}s`;
+        });
       });
-    });
 
-    // Policy tabs functionality
-    const policyTabs = document.querySelectorAll('.policy-tab');
-    const contentSections = document.querySelectorAll('.content-section');
-    
-    policyTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const targetId = tab.getAttribute('data-target');
-        
-        // Update active tab
-        policyTabs.forEach(t => {
-          t.classList.remove('active', 'glow-effect');
+      // Policy tabs functionality (Accessible & Optimized)
+      const policyTabs = document.querySelectorAll('.policy-tab');
+      const contentSections = document.querySelectorAll('.content-section');
+      
+      policyTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const targetId = tab.getAttribute('data-target');
+          
+          requestAnimationFrame(() => {
+            // Update active tab styles and ARIA states
+            policyTabs.forEach(t => {
+              t.classList.remove('active', 'glow-effect');
+              t.setAttribute('aria-selected', 'false');
+            });
+            tab.classList.add('active', 'glow-effect');
+            tab.setAttribute('aria-selected', 'true');
+            
+            // Update active content section visibility
+            contentSections.forEach(section => {
+              section.classList.remove('active');
+              section.setAttribute('hidden', 'true');
+            });
+            
+            const targetSection = document.getElementById(targetId);
+            if(targetSection) {
+              targetSection.classList.add('active');
+              targetSection.removeAttribute('hidden');
+            }
+          });
         });
-        tab.classList.add('active', 'glow-effect');
-        
-        // Update active content section
-        contentSections.forEach(section => {
-          section.classList.remove('active');
-        });
-        document.getElementById(targetId).classList.add('active');
       });
+      
     });
   </script>
 </body>
