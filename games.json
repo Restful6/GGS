@@ -4,23 +4,35 @@
     "title": "Try Not To Rage: Forest",
     "status": "Available",
     "desc": "Enter the Forest of Fury in this intense 2D rage game! With 25 challenging levels (10 Easy, 10 Devil, 5 Nightmare), precise jumps and deadly traps await. Can you keep your cool or will you rage-quit? Try... not to rage!",
-    "image": "https://www.greekgamesstudios.com/images/try-not-to-rage-forest.png",
-    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest"
+    "image": "/images/try-not-to-rage-forest.png",
+    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest",
+    "fullDesc": "Try Not To Rage: Forest is a hardcore 2D platformer where your patience is put to the ultimate test. Navigate through 25 uniquely designed levels filled with traps, precision jumps and demanding challenges. With retro aesthetics but modern level design, the game combines classic gameplay with the difficulty that true gamers love. Each level is crafted to push your skills to the limit while maintaining fair mechanics that reward mastery. Features include captivating level design built with surgical precision, vibrant colors and dark forest vibes, responsive controls with no excuses, natural difficulty progression, and that addictive 'one more try' feeling. If you manage to reach the end... you're not just a gamer. You're a survivor."
   },
   {
     "id": "tnr_sky",
     "title": "Try Not To Rage: Sky",
     "status": "Available",
     "desc": "Take the challenge to new heights in this sky-themed rage game! Navigate through floating islands, avoid treacherous clouds, and master precision jumps in this aerial adventure. The next installment in the Try Not To Rage series.",
-    "image": "https://www.greekgamesstudios.com/images/try-not-to-rage-sky.png",
-    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky"
+    "image": "/images/try-not-to-rage-sky.png",
+    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky",
+    "fullDesc": "Try Not To Rage: Sky takes the challenge to new heights in this sky-themed 2D platformer. Navigate through floating islands, avoid treacherous clouds, and master precision jumps in this aerial adventure. As the next installment in the Try Not To Rage series, it brings the same hardcore platforming action to the skies with unique aerial mechanics, stunning sky-high visuals, and increasingly difficult levels that will test your patience and reflexes like never before."
   },
   {
     "id": "tech_company_tycoon",
     "title": "Tech Company Tycoon",
     "status": "In Development",
     "desc": "Start from a small office making video games and build your own tech empire! Develop devices, consoles, cars, and robots as you unlock new technologies and dominate the market. Can you become the world's leading tech company?",
-    "image": "https://www.greekgamesstudios.com/images/TechCompanyTycoon.png",
-    "url": null
+    "image": "/images/TechCompanyTycoon.png",
+    "url": null,
+    "fullDesc": "Tech Company Tycoon is an immersive business simulation game where you build a technology empire from the ground up. Start as a small game development studio and gradually expand into hardware, automotive, and robotics industries. Make strategic decisions about product development, marketing, research, and human resources as you compete in dynamic markets. Balance short-term profits with long-term investments to outmaneuver your competitors. Progress through five industry phases: Video Game Startup, Device Development, Console Production, Cars Division, and Robotics & AI. With deep customization for every product, a dynamic economy, AI competitors, research and innovation systems, and endless replayability, Tech Company Tycoon offers a deep yet accessible business simulation experience for both casual players and tycoon game enthusiasts."
+  },
+  {
+    "id": "tnr_ocean",
+    "title": "Try Not To Rage: Ocean",
+    "status": "Concept",
+    "desc": "",
+    "image": "/images/try-not-to-rage-ocean.png",
+    "url": null,
+    "fullDesc": "Try Not To Rage: Ocean is a hardcore 2D platformer where your patience is put to the ultimate test in underwater environments. Navigate through 30 uniquely designed levels filled with treacherous currents, dangerous sea creatures, and demanding aquatic challenges. With stunning underwater aesthetics and modern level design, the game combines classic platforming with underwater physics that will challenge even the most skilled players. Each level is crafted to push your skills to the limit while maintaining fair mechanics that reward mastery. Features include unique underwater physics with buoyancy and currents, beautiful underwater aesthetics with coral reefs and deep sea trenches, responsive controls adapted for underwater movement, and 30 challenging levels across Easy, Devil, and Nightmare difficulties. If you manage to reach the end... you're not just a gamer. You're a deep-sea survivor."
   }
 ]
