@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tnr_forest",
+    "title": "Try Not To Rage: Forest",
+    "status": "Available",
+    "desc": "Enter the Forest of Fury in this intense 2D rage game! With 25 challenging levels (10 Easy, 10 Devil, 5 Nightmare), precise jumps and deadly traps await. Can you keep your cool or will you rage-quit? Try... not to rage!",
+    "image": "https://www.greekgamesstudios.com/images/try-not-to-rage-forest.png",
+    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest"
+  },
+  {
+    "id": "tnr_sky",
+    "title": "Try Not To Rage: Sky",
+    "status": "Available",
+    "desc": "Take the challenge to new heights in this sky-themed rage game! Navigate through floating islands, avoid treacherous clouds, and master precision jumps in this aerial adventure. The next installment in the Try Not To Rage series.",
+    "image": "https://www.greekgamesstudios.com/images/try-not-to-rage-sky.png",
+    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky"
+  },
+  {
+    "id": "tech_company_tycoon",
+    "title": "Tech Company Tycoon",
+    "status": "In Development",
+    "desc": "Start from a small office making video games and build your own tech empire! Develop devices, consoles, cars, and robots as you unlock new technologies and dominate the market. Can you become the world's leading tech company?",
+    "image": "https://www.greekgamesstudios.com/images/TechCompanyTycoon.png",
+    "url": null
+  }
+]
