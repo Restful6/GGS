@@ -1,86 +1,105 @@
-[
-  {
-    "id": "12",
-    "title": "Play & Demos v2: Major Update!",
-    "date": "MAY 8, 2026",
-    "tag": "MAJOR UPDATE",
-    "desc": "A massive update packed with optimizations, reworks, and 5 brand new mini games!"
+{
+  "notification": {
+    "title": "Play & Demos Beta V2 is Out!",
+    "subtitle": "Check it out!",
+    "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html"
   },
-  {
-    "id": "11",
-    "title": "Play & Demos Is Now Live!",
-    "date": "FEB 20, 2026",
-    "tag": "LAUNCH",
-    "desc": "Play & Demos is now live on our website. Access mini games, prototypes and demos."
-  },
-  {
-    "id": "10",
-    "title": "Try Not To Rage: Sky Official Release!",
-    "date": "OCT 12, 2025",
-    "tag": "NEW GAME",
-    "desc": "The newest game in the Try Not To Rage series is now officially available on Google Play."
-  },
-  {
-    "id": "9",
-    "title": "Monetization Is Now Live!",
-    "date": "OCT 4, 2025",
-    "tag": "UPDATE",
-    "desc": "Monetization is now live in Try Not To Rage: Forest and will gradually be added to all future titles."
-  },
-  {
-    "id": "8",
-    "title": "Development Update: Monetization & Delays",
-    "date": "OCT 1, 2025",
-    "tag": "DEV UPDATE",
-    "desc": "Working on in-app monetization. The monetization update and Try Not To Rage: Sky will face delays."
-  },
-  {
-    "id": "7",
-    "title": "Try Not To Rage: Forest",
-    "date": "SEP 8, 2025",
-    "tag": "NEW GAME",
-    "desc": "Try Not To Rage: Forest is officially online with the third trailer and back story."
-  },
-  {
-    "id": "6",
-    "title": "Try Not To Rage: Forest",
-    "date": "AUG 20, 2025",
-    "tag": "NEWS",
-    "desc": "The release of Try Not To Rage: Forest will be delayed due to Google Play Store approval and testing."
-  },
-  {
-    "id": "4",
-    "title": "Try Not To Rage: Forest",
-    "date": "AUG 1, 2025",
-    "tag": "TRAILER",
-    "desc": "The second trailer for Try Not To Rage: Forest is officially live on our Youtube channel."
-  },
-  {
-    "id": "5",
-    "title": "Try Not To Rage: Forest",
-    "date": "JUN 27, 2025",
-    "tag": "TRAILER",
-    "desc": "The first trailer for Try Not To Rage: Forest is officially live on our Youtube channel."
-  },
-  {
-    "id": "3",
-    "title": "Announces",
-    "date": "APR 2, 2025",
-    "tag": "ANNOUNCEMENT",
-    "desc": "Something Is Coming… June 16th Marks the Dawn of a New Era by Greek Games Studios."
-  },
-  {
-    "id": "2",
-    "title": "NEXIS AI",
-    "date": "MAR 13, 2025",
-    "tag": "ANNOUNCEMENT",
-    "desc": "NEXIS: The Ultimate AI Experience by Greek Games Studios – Step Into the Future of Intelligence!"
-  },
-  {
-    "id": "1",
-    "title": "Unlimited Roleplay Roblox",
-    "date": "FEB 3, 2025",
-    "tag": "ANNOUNCEMENT",
-    "desc": "Unlimited Roleplay: The Ultimate Greek RP Experience on Roblox – A New Era of Limitless Roleplay Begins!"
-  }
-]
+  "news": [
+    {
+      "id": "12",
+      "title": "Play & Demos v2: Major Update!",
+      "date": "May 8, 2026",
+      "tag": "MAJOR UPDATE",
+      "desc": "A massive update packed with optimizations, reworks, and 5 brand new mini games!",
+      "fullText": "We are thrilled to announce the release of Play & Demos v2 a massive update packed with optimizations, reworks, and brand new mini games! This update focuses on improving performance, fixing various issues and expanding the experience with more content and features. What's new in v2: Optimizations: Faster loading times and smoother gameplay across all mini games. Reworks: Several existing mini games have been redesigned with better mechanics, improved visuals, and additional features. New Mini Games: We've added 5 brand new titles to the Play & Demos library, each offering unique challenges and fun experiences. Bug Fixes: Addressed stability issues and resolved physics control bugs affecting gameplay responsiveness. This is just the beginning, we will continue to support and expand Play & Demos with regular updates. Your feedback helps us grow, so don't hesitate to share your thoughts. Play Now at /additionalHTMLS/WebLauncher/WebLauncher.html"
+    },
+    {
+      "id": "11",
+      "title": "Play & Demos Is Now Live!",
+      "date": "February 20, 2026",
+      "tag": "LAUNCH",
+      "desc": "Play & Demos is now live on our website. Access mini games, prototypes and demos.",
+      "fullText": "We are proud to announce that Play & Demos is now live on our website. Through Play & Demos, you can access and play our mini games, as well as selected prototypes and demos from games we have already released. This allows you to explore our work, our ideas, and parts of the development process. This is an important milestone for us and we will continue to expand it with more content over time. We look forward to your feedback. Play Now at /additionalHTMLS/WebLauncher/WebLauncher.html"
+    },
+    {
+      "id": "10",
+      "title": "Try Not To Rage: Sky Official Release!",
+      "date": "October 12, 2025",
+      "tag": "NEW GAME",
+      "desc": "The newest game in the Try Not To Rage series is now officially available on Google Play.",
+      "fullText": "The long-awaited Try Not To Rage: Sky is finally here! The newest game in the Try Not To Rage series is now officially available on the Google Play Store. Take your rage challenge to the skies with brand new levels, smoother gameplay, and improved visuals designed to push your patience to the limit. Compete against yourself, test your reflexes, and experience the next evolution of the series that started it all. Download Try Not To Rage: Sky today on the Google Play Store and see if you can reach the top without losing control! Play on Google Play: https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share"
+    },
+    {
+      "id": "9",
+      "title": "Monetization Is Now Live!",
+      "date": "October 4, 2025",
+      "tag": "UPDATE",
+      "desc": "Monetization is now live in Try Not To Rage: Forest and will gradually be added to all future titles.",
+      "fullText": "Monetization is now live in our game Try Not To Rage: Forest and will gradually be added to all our future titles. By choosing to watch a few ads, you can support us completely for free and help us keep creating new experiences for everyone. The next Try Not To Rage game is also coming very soon. While there are still some small issues to be resolved, our team is working daily to fix them as quickly as possible. Thank you for your continued support."
+    },
+    {
+      "id": "8",
+      "title": "Development Update: Monetization & Delays",
+      "date": "October 1, 2025",
+      "tag": "DEV UPDATE",
+      "desc": "Working on in-app monetization. The monetization update and Try Not To Rage: Sky will face delays.",
+      "fullText": "At Greek Games Studios, we are currently working on an important new step for our games: implementing in-app monetization. This means that players will soon be able to experience our games not only as free releases but also with new ways to support our work and access extra features. However, while setting this up we have encountered several technical issues, including Gradle failures, permissions, and other unexpected obstacles. Because of these challenges, the final monetization update for Try Not To Rage: Forest, the release of Try Not To Rage: Sky, as well as other projects in progress will unfortunately face delays. As a small team, we cannot make everything happen overnight, but we are working every single day to solve these problems and move forward. We sincerely apologize for these delays and thank you for your patience and continued support."
+    },
+    {
+      "id": "7",
+      "title": "Try Not To Rage: Forest",
+      "date": "September 8, 2025",
+      "tag": "NEW GAME",
+      "desc": "Try Not To Rage: Forest is officially online with the third trailer and back story.",
+      "fullText": "Try Not To Rage: Forest is officially online! Try Not To Rage: Forest is officially online with the third trailer. Watch the third trailer and learn the character's back story. Play the game and try not to rage! Our team is working on the next game for this series. Play on Google Play: https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest"
+    },
+    {
+      "id": "6",
+      "title": "Try Not To Rage: Forest",
+      "date": "August 20, 2025",
+      "tag": "NEWS",
+      "desc": "The release of Try Not To Rage: Forest will be delayed due to Google Play Store approval and testing.",
+      "fullText": "The release of Try Not To Rage: Forest will be delayed! Due to external factors related to the game's distribution process. Specifically: The approval and publishing process on the Google Play Store is particularly strict and requires additional time. In addition, the testing cycle with testers must be completed, as it is essential in order to finalize the official release. Our team is closely monitoring these procedures and working to ensure that the game will be available as soon as possible. We sincerely thank you for your understanding and continued support."
+    },
+    {
+      "id": "5",
+      "title": "Try Not To Rage: Forest",
+      "date": "August 1, 2025",
+      "tag": "TRAILER",
+      "desc": "The second trailer for Try Not To Rage: Forest is officially live on our Youtube channel.",
+      "fullText": "The second trailer for Try Not To Rage: Forest is officially live! Greek Games Studios is thrilled to announce our second trailer for Try Not To Rage: Forest! Check it out to our Youtube channel."
+    },
+    {
+      "id": "4",
+      "title": "Try Not To Rage: Forest",
+      "date": "June 27, 2025",
+      "tag": "TRAILER",
+      "desc": "The first trailer for Try Not To Rage: Forest is officially live on our Youtube channel.",
+      "fullText": "The first trailer for Try Not To Rage: Forest is officially live! Greek Games Studios is thrilled to announce our first trailer for Try Not To Rage: Forest! Check it out to our Youtube channel."
+    },
+    {
+      "id": "3",
+      "title": "Announces",
+      "date": "April 2, 2025",
+      "tag": "ANNOUNCEMENT",
+      "desc": "Something Is Coming… June 16th Marks the Dawn of a New Era by Greek Games Studios.",
+      "fullText": "Something Is Coming… June 16th Marks the Dawn of a New Era by Greek Games Studios. June 16th, 2025, Greek Games Studios will unveil something... unexpected. A new game announcement. Major game updates. Official NEXIS AI showcase. Watch the official trailer now on our social media."
+    },
+    {
+      "id": "2",
+      "title": "NEXIS AI",
+      "date": "March 13, 2025",
+      "tag": "ANNOUNCEMENT",
+      "desc": "NEXIS: The Ultimate AI Experience by Greek Games Studios – Step Into the Future of Intelligence!",
+      "fullText": "NEXIS: The Ultimate AI Experience by Greek Games Studios – Step Into the Future of Intelligence! Greek Games Studios proudly presents NEXIS, the most advanced AI we've ever created! Smart responses & data analysis. Real-time natural conversation. Unmatched adaptability for any use. Are you ready to experience the future? Stay tuned – something big is coming!"
+    },
+    {
+      "id": "1",
+      "title": "Unlimited Roleplay Roblox",
+      "date": "February 3, 2025",
+      "tag": "ANNOUNCEMENT",
+      "desc": "Unlimited Roleplay: The Ultimate Greek RP Experience on Roblox – A New Era of Limitless Roleplay Begins!",
+      "fullText": "Unlimited Roleplay: The Ultimate Greek RP Experience on Roblox – A New Era of Limitless Roleplay Begins! Greek Games Studios παρουσιάζει με υπερηφάνεια: Unlimited Roleplay – Η απόλυτη εμπειρία Greek RP στο Roblox! Ρεαλιστική οικονομία και επαγγέλματα. Προηγμένοι μηχανισμοί ρόλων. Ατελείωτες δυνατότητες για κάθε παίκτη. Είσαι έτοιμος να μπεις σε έναν κόσμο απεριόριστου roleplay? Μείνε συντονισμένος – κάτι μεγάλο έρχεται!"
+    }
+  ]
+}
