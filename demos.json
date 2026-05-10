@@ -1,0 +1,110 @@
+{
+  "mini_games": [
+    {
+      "id": "mg_1",
+      "title": "Ultimate Pong",
+      "tag": "MINI GAME",
+      "desc": "The classic Pong game reimagined with modern graphics and challenging AI opponents. Can you become the ultimate Pong champion?",
+      "image": "https://www.greekgamesstudios.com/images/WebUltimatePongLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/ULTIMATE-PONG/Main.html"
+    },
+    {
+      "id": "mg_2",
+      "title": "Cyber Putt",
+      "tag": "MINI GAME",
+      "desc": "A futuristic mini golf experience with cyberpunk aesthetics and challenging courses that test your precision and timing.",
+      "image": "https://www.greekgamesstudios.com/images/WebCyberPuttLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Cyber-Putt/Main.html"
+    },
+    {
+      "id": "mg_3",
+      "title": "Breakout",
+      "tag": "MINI GAME",
+      "desc": "Breakout meets cyberpunk in this brick breaker.",
+      "image": "https://www.greekgamesstudios.com/images/WebBreakoutLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Breakout/Main.html"
+    },
+    {
+      "id": "mg_4",
+      "title": "Maze of Echoes",
+      "tag": "MINI GAME",
+      "desc": "Navigate through mysterious mazes. A unique puzzle experience that challenges your spatial awareness.",
+      "image": "https://www.greekgamesstudios.com/images/WebMaze-of-EchoesLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Maze-of-Echoes/Main.html"
+    },
+    {
+      "id": "mg_5",
+      "title": "Epic Memory Game",
+      "tag": "MINI GAME",
+      "desc": "Sharpen your memory by matching pairs as the challenge grows with each level. Test your cognitive skills in this vibrant memory challenge!",
+      "image": "https://www.greekgamesstudios.com/images/WebEpic-Memory-GameLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Epic-Memory-Game/Main.html"
+    },
+    {
+      "id": "mg_6",
+      "title": "Tic Tac Toe",
+      "tag": "MINI GAME",
+      "desc": "The classic Tic Tac Toe game! Challenge your friends or test your skills against our intelligent AI in this futuristic take on a timeless game.",
+      "image": "https://www.greekgamesstudios.com/images/Web-Tac-ToeLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Tac-Toe/Main.html"
+    },
+    {
+      "id": "mg_7",
+      "title": "Strike Billiards",
+      "tag": "MINI GAME",
+      "desc": "The classic game of billiards. Sink the balls, master your aim and challenge your skills in this fast, stylish web mini game where precision meets futuristic vibes.",
+      "image": "https://www.greekgamesstudios.com/images/WebStrikeBilliardsLogo.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Strike-Billiards/Main.html"
+    },
+    {
+      "id": "mg_8",
+      "title": "Cyber Worm",
+      "tag": "MINI GAME",
+      "desc": "Cyberpunk Snake action. Eat data, dodge firewalls, trigger power ups and chain combos to dominate the mainframe.",
+      "image": "https://www.greekgamesstudios.com/images/WebCYBER-WORM.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/CYBER-WORM/Main.html"
+    },
+    {
+      "id": "mg_9",
+      "title": "DroneX",
+      "tag": "MINI GAME",
+      "desc": "Neon drone runner. Tap to fly, dodge moving obstacles, collect data chips and unleash EMP blasts or shields to survive.",
+      "image": "https://www.greekgamesstudios.com/images/WebDRONEX.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/DroneX/Main.html"
+    },
+    {
+      "id": "mg_10",
+      "title": "Grid Breach",
+      "tag": "MINI GAME",
+      "desc": "Clear data lines, unleash power-ups and survive escalating corruption in this block stacker.",
+      "image": "https://www.greekgamesstudios.com/images/WebGRID-BREACH.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Grid-Breach/Main.html"
+    },
+    {
+      "id": "mg_11",
+      "title": "Data Link",
+      "tag": "MINI GAME",
+      "desc": "Link data, breach firewalls and unlock powerful upgrades. A rhythmic puzzle where every cleared line brings you closer to system collapse.",
+      "image": "https://www.greekgamesstudios.com/images/WebDATA-LINK.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Data-Link/Main.html"
+    },
+    {
+      "id": "mg_12",
+      "title": "Cyber Swarm",
+      "tag": "MINI GAME",
+      "desc": "Pixel aliens are attacking. Shoot, dodge, upgrade and survive as long as you can.",
+      "image": "https://www.greekgamesstudios.com/images/WebCyber-Swarm.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/Cyber-Swarm/Main.html"
+    }
+  ],
+  "demos": [
+    {
+      "id": "demo_1",
+      "title": "Try Not To Rage Game Series",
+      "tag": "DEMO",
+      "desc": "Information and prototypes before the official release of the Try Not To Rage game series. Play and learn what to expect in the full game!",
+      "image": "https://www.greekgamesstudios.com/images/TNTR.png",
+      "url": "https://www.greekgamesstudios.com/additionalHTMLS/WebLauncher/TNTRGS/try-not-to-rage.html"
+    }
+  ]
+}
