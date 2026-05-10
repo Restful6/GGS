@@ -557,13 +557,39 @@ function levelUpSP(){
 }
 
 function dieSP(){
-  state='dead'; snd('die'); shk=16;
-  clearTimeout(cTimer); clearTimeout(puTimer); clearTimeout(glitchTimer);
-  const deadSnake=[...snake];
-  deadSnake.forEach(s=>burstArr(s.x,s.y,'#ff2255',4, parts));
-  const isNew=score>hi;
-  if(isNew){hi=score;try{localStorage.setItem('_dex_hi',hi);}catch(e){}}
-  setTimeout(()=>showGOSP(isNew),950);
+  state = 'dead'; 
+  snd('die'); 
+  shk = 16;
+  
+  // Καθαρισμός όλων των ενεργών timers του παιχνιδιού
+  clearTimeout(cTimer); 
+  clearTimeout(puTimer); 
+  clearTimeout(glitchTimer);
+  
+  // Εφέ έκρηξης για το φίδι
+  const deadSnake = [...snake];
+  deadSnake.forEach(s => burstArr(s.x, s.y, '#ff2255', 4, parts));
+  
+  // Έλεγχος high score
+  const isNew = score > hi;
+  if(isNew){
+    hi = score;
+    try { localStorage.setItem('_dex_hi', hi); } catch(e) {}
+  }
+
+  // ΑΠΟΣΤΟΛΗ ΣΤΟΙΧΕΙΩΝ ΣΤΗΝ ΕΦΑΡΜΟΓΗ (React Native)
+  if (window.ReactNativeWebView) {
+    const scoreData = {
+      type: 'SEND_SCORE',
+      score: score, 
+      game: 'Cyber-Worm',
+      isNewRecord: isNew
+    };
+    window.ReactNativeWebView.postMessage(JSON.stringify(scoreData));
+  }
+
+  // Εμφάνιση του Game Over screen μετά από λίγο
+  setTimeout(() => showGOSP(isNew), 950);
 }
 
 function updateHUDSP(){
