@@ -181,6 +181,7 @@ header h1 em{color:var(--pink);font-style:normal;text-shadow:0 0 20px rgba(240,3
   .mini-cvs{max-width:52px;margin:0 auto;}
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 <canvas id="matrix"></canvas>
@@ -898,10 +899,25 @@ function drawCityscape(){
 // ════════════════════════════════════════════════════════
 //  GAME-OVER ANIMATION — dramatic system overload
 // ════════════════════════════════════════════════════════
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Grid Breach',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function triggerGameOver(){
   if(over) return;
   over=true; goAnimPhase=1; goAnimT=2.2;
   shakeN=35; sndOver();
+  // Send score to app
+  const prevBest = parseInt(localStorage.getItem('gb_best')||'0');
+  sendScoreToApp(score, score > prevBest);
   // Collect board blocks for collapse
   goAnimBlocks=[];
   for(let r=0;r<ROWS;r++){

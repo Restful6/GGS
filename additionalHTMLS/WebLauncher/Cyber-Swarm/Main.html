@@ -186,6 +186,7 @@
             #btn-coop { display: none; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1116,9 +1117,21 @@ function startGame(numPlayers) {
     loop(lastTime);
 }
 
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Cyber Swarm',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function gameOver() {
     if (gameState === 'GAMEOVER') return; // guard against multiple calls
     gameState = 'GAMEOVER';
+    sendScoreToApp(score, score > 0 && score >= highScore);
 
     const newRecord = score > 0 && score >= highScore;
     document.getElementById('finalScore').textContent = score.toLocaleString();

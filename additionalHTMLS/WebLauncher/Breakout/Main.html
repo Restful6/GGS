@@ -184,6 +184,7 @@ canvas {
     white-space: nowrap; /* Για να μην αλλάζει γραμμή αν μικρύνει πολύ η οθόνη */
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -892,12 +893,27 @@ function triggerLevelWin() {
     showMenu('level-menu');
 }
 
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Breakout',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function endGame(win) {
     gameState = 'over';
     try {
         if (score > highScore) { highScore = score; localStorage.setItem('brk_hs', ''+highScore); }
     } catch(e){}
-    document.getElementById('over-msg').textContent   = win ? '🏆 YOU WIN!' : 'GAME OVER';
+    const isNew = score > highScore;
+  sendScoreToApp(score, isNew);
+
+  document.getElementById('over-msg').textContent   = win ? '🏆 YOU WIN!' : 'GAME OVER';
     document.getElementById('over-score').textContent = `SCORE: ${score}   BEST: ${highScore}`;
     showMenu('game-over-menu');
 }

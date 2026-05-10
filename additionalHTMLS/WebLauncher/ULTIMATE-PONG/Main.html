@@ -213,6 +213,7 @@
             20%,24%,55%                  { opacity: 0.72; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -771,6 +772,18 @@ function updateScoreDOM() {
 }
 
 /** Returns true if someone won (sets gameOver state). */
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Ultimate Pong',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function checkWin() {
     let winner = null;
     if (P1.score >= settings.winningScore) winner = 'PLAYER 1 WINS!';
@@ -778,6 +791,9 @@ function checkWin() {
         winner = settings.gameMode === '1P' ? 'COMPUTER WINS!' : 'PLAYER 2 WINS!';
 
     if (winner) {
+        // Send score to app
+        sendScoreToApp(P1.score, false);
+
         gameState = 'gameOver';
         winnerMsg.textContent = winner;
         gameOverMenu.style.display = 'flex';

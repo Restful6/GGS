@@ -371,6 +371,7 @@
 
   .board-wrap { position: relative; width: min(340px, 90vw); }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -709,11 +710,28 @@ function doMove(idx, player) {
 /* ═══════════════════════════════════════════════
    ROUND END
 ═══════════════════════════════════════════════ */
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Tic Tac Toe',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function endRound(winner, combo) {
   gameActive = false;
   aiLock = false;
 
-  if (winner) {
+  // Send score after each round (wins count as score)
+    if (gameMode === 1) {
+      sendScoreToApp(tally.X, false);
+    }
+
+    if (winner) {
     // highlight winning cells with stagger
     combo.forEach((i, d) => setTimeout(() => boardEl.children[i].classList.add('winner', winner.toLowerCase()), d * 80));
     // draw svg win line

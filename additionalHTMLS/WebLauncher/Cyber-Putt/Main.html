@@ -286,6 +286,7 @@ footer {
     letter-spacing: 3px;
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1153,13 +1154,29 @@ function skipHole() {
     triggerHoleComplete();
 }
 
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Cyber Putt',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function showGameOver() {
     gameState = 'gameOver';
     HUD.style.display     = 'none';
     skipBtn.style.display = 'none';
 
     const rat = finalRating(totalStrokes);
-    document.getElementById('go-score').textContent = `Total: ${totalStrokes}  ·  Par ${TOTAL_PAR}`;
+    // Convert to score: lower strokes = higher score (max 10000 base)
+  const gameScore = Math.max(0, 100000 - totalStrokes * 1000);
+  sendScoreToApp(gameScore, false);
+
+  document.getElementById('go-score').textContent = `Total: ${totalStrokes}  ·  Par ${TOTAL_PAR}`;
     const goR = document.getElementById('go-rating');
     goR.textContent = rat.label; goR.style.color = rat.color;
 

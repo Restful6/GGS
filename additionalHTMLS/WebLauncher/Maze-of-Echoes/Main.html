@@ -1026,7 +1026,19 @@
     // === GAME FLOW ================================================== //
     // ================================================================ //
 
-    function handleWin(winnerId) {
+    // ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Maze of Echoes',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
+function handleWin(winnerId) {
         gameState.gameActive = false;
         const winner  = gameState[winnerId];
         const elapsed = Math.round((Date.now() - winner.startTime) / 1000);

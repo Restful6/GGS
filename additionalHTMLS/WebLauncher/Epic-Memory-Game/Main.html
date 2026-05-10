@@ -352,6 +352,7 @@
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<base target="_blank">
 </head>
 <body>
 
@@ -832,6 +833,18 @@ function showStreak(n) {
 }
 
 // ── Win ────────────────────────────────────────────────────────────────────
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Epic Memory Game',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function checkWin() {
   if (matchCount !== cards.length / 2) return;
   clearInterval(timerID);
@@ -844,6 +857,7 @@ function checkWin() {
   if (numPlayers === 1) {
     const final = Math.max(score, 0);
     const isNew = saveBest(final);
+    sendScoreToApp(final, isNew);
     title.textContent = "VICTORY! ★";
     winDetails.innerHTML = `
       <p>Time: <strong>${timerEl.textContent}</strong></p>

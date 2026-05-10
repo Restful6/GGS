@@ -313,6 +313,7 @@
             font-size: clamp(0.6em, 2vw, 0.82em);
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -979,10 +980,27 @@ function loop() {
     rafId = requestAnimationFrame(loop);
 }
 
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Strike Billiards',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function showOver() {
     cancelAnimationFrame(rafId);
     snd('win');
     phase='over';
+
+    // Send score for singleplayer mode
+    if (numP === 1) {
+      sendScoreToApp(players[0].score, false);
+    }
 
     const ranked = [...players].sort((a,b)=>b.score-a.score);
     const winner = ranked[0];

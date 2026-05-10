@@ -268,6 +268,7 @@
         }
         .g-studio { color: var(--blue); opacity: 1; }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -719,6 +720,18 @@ function startGame() {
     }, 3800);
 }
 
+// ── SCORE REPORTING TO APP ──
+function sendScoreToApp(score, isNewRecord) {
+  if (window.ReactNativeWebView) {
+    window.ReactNativeWebView.postMessage(JSON.stringify({
+      type: 'SEND_SCORE',
+      score: score,
+      game: 'Data Link',
+      isNewRecord: isNewRecord,
+    }));
+  }
+}
+
 function endGame(won) {
     if (!GS.playing) return;  // guard against double-call
     GS.playing = false;
@@ -730,7 +743,10 @@ function endGame(won) {
 
     UI.modalHi.style.display = 'none';
 
-    if (won) {
+    const isNew = won && score > GS.highScore;
+  sendScoreToApp(score, isNew);
+
+  if (won) {
         if (score > GS.highScore) {
             GS.highScore = score;
             localStorage.setItem('dl2_hi', GS.highScore);
