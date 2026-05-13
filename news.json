@@ -1,4 +1,6 @@
 {
+  "minVersion": "2.1.0",
+
   "notification": {
     "title": "Play & Demos Beta V2 is Out!",
     "subtitle": "Check it out!",
