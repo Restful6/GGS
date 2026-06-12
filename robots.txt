@@ -12,8 +12,6 @@ Allow: /
 Disallow: /404.html
 Disallow: /ComingSoon.html
 Disallow: /future.txt
-Disallow: /app-ads.txt
-Disallow: /google*.html
 
 # Test pages (internal use only)
 Disallow: /additionalHTMLS/ggs-board.html
