@@ -54,18 +54,6 @@
     <priority>0.50</priority>
   </url>
   
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/trailers.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.10</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/wallpapers.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.10</priority>
-  </url>
-  
   <!-- GAME INFO PAGES (Main Games) -->
   <url>
     <loc>https://greekgamesstudios.com/additionalHTMLS/Infos/NTRF-info.html</loc>
@@ -87,91 +75,6 @@
   
   <url>
     <loc>https://greekgamesstudios.com/additionalHTMLS/Infos/TNTRS-info.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <!-- WEB LAUNCHER (Web-Based Mini Games) -->
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.70</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Breakout/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Cyber-Putt/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Cyber-Swarm/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/CYBER-WORM/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Data-Link/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/DroneX/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Epic-Memory-Game/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Grid-Breach/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Maze-of-Echoes/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Strike-Billards/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/Tac-Toe/Main.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.50</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/TNTRGS/try-not-to-rage.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <priority>0.40</priority>
-  </url>
-  
-  <url>
-    <loc>https://greekgamesstudios.com/additionalHTMLS/WebLauncher/ULTIMATE-PONG/Main.html</loc>
     <lastmod>2026-04-25</lastmod>
     <priority>0.50</priority>
   </url>

@@ -66,10 +66,6 @@ Structured data file for game demos and experimental builds.
 Structured data file containing latest news and announcements feed.
 [news.json](https://greekgamesstudios.com/news.json)
 
-## Web Launcher (External Domain)
-Browser-based mini games have moved to their own dedicated domain:
-[Web Launcher](https://weblauncher.greekgamesstudios.com/)
-
 ## Community & Media
 
 ### Q&A
