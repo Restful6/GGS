@@ -48,11 +48,38 @@
     }
   ],
   "notification": {
-    "title": "Play & Demos Beta V2 is Out!",
+    "title": "A New Look for GGS!",
     "subtitle": "Check it out!",
-    "url": "https://weblauncher.greekgamesstudios.com/"
+    "url": "https://greekgamesstudios.com/"
   },
   "news": [
+    {
+  "id": "13",
+  "title": "GGS Hub Official Release!",
+  "date": "July 10, 2026",
+  "tag": "NEW APP",
+  "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.ggshub",
+  "desc": "The official GGS Hub app is now live on Google Play. Your gateway to everything Greek Games Studios.",
+  "fullText": "We are excited to announce that GGS Hub is now officially available on Google Play. The official app for Greek Games Studios keeps you connected with our latest games, news and updates. A key feature is the built-in mini games where you can earn GGS Coins and redeem them in our upcoming titles for exclusive rewards and content. Browse our portfolio, track development progress and start collecting coins today. This is just the beginning, we plan to expand the app with more features based on your feedback. Download GGS Hub now and take Greek Games Studios with you wherever you go!",
+  "image": "https://greekgamesstudios.com/images/GGSHubSlide.png",
+  "images": {
+    "featured": "https://greekgamesstudios.com/images/GGSHubSlide.png",
+    "card": "https://greekgamesstudios.com/images/GGSHubSlide.png"
+  },
+  "author": "Greek Games Studios",
+  "publisher": "Greek Games Studios",
+  "inLanguage": "en",
+  "articleSection": "NEW APP",
+  "keywords": [
+    "NEW APP",
+    "GGS",
+    "Hub",
+    "Release!"
+  ],
+  "wordCount": 108,
+  "articleBody": "We are excited to announce that GGS Hub is now officially available on Google Play. The official app for Greek Games Studios keeps you connected with our latest games, news and updates. A key feature is the built-in mini game where you can earn GGS Coins and redeem them in our upcoming titles for exclusive rewards and content. Browse our portfolio, track development progress and start collecting coins today. This is just the beginning, we plan to expand the app with more features based on your feedback. Download GGS Hub now and take Greek Games Studios with you wherever you go!",
+  "mainEntityOfPage": "https://www.greekgamesstudios.com/news.html"
+    },
     {
       "id": "12",
       "title": "Play & Demos v2: Major Update!",
