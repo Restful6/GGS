@@ -1,19 +1,19 @@
 {
-  "minVersion": "3.9.1",
+  "minVersion": "3.9.6",
   "heroSlides": [
     {
-      "id": "slide_sky",
+      "id": "slide_ggshub",
       "category": "Latest Release",
-      "title": "Try Not To Rage: Sky",
-      "subtitle": "The newest entry in the rage-inducing platformer series. Now on Google Play.",
-      "image": "https://greekgamesstudios.com/images/TNTRSSlide.png",
+      "title": "GGS Hub",
+      "subtitle": "The official app for Greek Games Studios. Now available on Google Play.",
+      "image": "https://greekgamesstudios.com/images/GGSHubSlide.png",
       "ctaPrimary": {
         "text": "Play Now",
-        "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky"
+        "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.ggshub"
       },
       "ctaSecondary": {
         "text": "Learn More",
-        "url": "https://greekgamesstudios.com/additionalHTMLS/Infos/tnr_sky-info.html"
+        "url": "https://greekgamesstudios.com/additionalHTMLS/Infos/ggshub-info.html"
       }
     },
     {
@@ -24,11 +24,11 @@
       "image": "https://greekgamesstudios.com/images/P&DV2Slide.png",
       "ctaPrimary": {
         "text": "Play Now",
-        "url": "https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html"
+        "url": "https://weblauncher.greekgamesstudios.com/"
       },
       "ctaSecondary": {
         "text": "Read More",
-        "url": "https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html"
+        "url": "https://weblauncher.greekgamesstudios.com/"
       }
     },
     {
@@ -50,7 +50,7 @@
   "notification": {
     "title": "Play & Demos Beta V2 is Out!",
     "subtitle": "Check it out!",
-    "url": "https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html"
+    "url": "https://weblauncher.greekgamesstudios.com/"
   },
   "news": [
     {
@@ -58,7 +58,7 @@
       "title": "Play & Demos v2: Major Update!",
       "date": "May 8, 2026",
       "tag": "MAJOR UPDATE",
-      "url": "https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html",
+      "url": "https://weblauncher.greekgamesstudios.com/",
       "desc": "A massive update packed with optimizations, reworks and 5 brand new mini games!",
       "fullText": "We are thrilled to announce the release of Play & Demos v2 a massive update packed with optimizations, reworks and brand new mini games! This update focuses on improving performance, fixing various issues and expanding the experience with more content and features. What's new in v2: Optimizations: Faster loading times and smoother gameplay across all mini games. Reworks: Several existing mini games have been redesigned with better mechanics, improved visuals and additional features. New Mini Games: We've added 5 brand new titles to the Play & Demos library, each offering unique challenges and fun experiences. Bug Fixes: Addressed stability issues and resolved physics control bugs affecting gameplay responsiveness. This is just the beginning, we will continue to support and expand Play & Demos with regular updates. Your feedback helps us grow, so don't hesitate to share your thoughts.",
       "image": "https://greekgamesstudios.com/images/P&Dev2.png",
