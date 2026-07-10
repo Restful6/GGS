@@ -3,187 +3,399 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support Form - Greek Games Studios</title>
-  
-  <meta name="description" content="Submit a support ticket to Greek Games Studios. We are here to help with any technical issues, billing, or account problems.">
-  <meta name="robots" content="noindex, nofollow"> <link rel="icon" type="image/png" href="/images/ggs-logo.png">
-
+  <title>Support - Greek Games Studios</title>
+  <meta name="description" content="Submit a support ticket to Greek Games Studios. We are here to help with technical issues, billing, or account problems.">
+  <meta name="author" content="Greek Games Studios">
+  <link rel="canonical" href="https://www.greekgamesstudios.com/support-form.html">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Support - Greek Games Studios">
+  <meta name="twitter:description" content="Submit a support ticket to Greek Games Studios. We are here to help with technical issues, billing, or account problems.">
+  <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta property="og:title" content="Support - Greek Games Studios" />
+  <meta property="og:description" content="Submit a support ticket to Greek Games Studios. We are here to help with technical issues, billing, or account problems." />
+  <meta property="og:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png" />
+  <meta property="og:url" content="https://www.greekgamesstudios.com/support-form.html" />
+  <meta property="og:site_name" content="Greek Games Studios" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Support - Greek Games Studios",
+    "description": "Submit a support ticket to Greek Games Studios. We are here to help with technical issues, billing, or account problems.",
+    "url": "https://www.greekgamesstudios.com/support-form.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.greekgamesstudios.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Support", "item": "https://www.greekgamesstudios.com/support.html" },
+        { "@type": "ListItem", "position": 3, "name": "Support Form", "item": "https://www.greekgamesstudios.com/support-form.html" }
+      ]
+    },
+    "mainEntity": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://www.greekgamesstudios.com/support-form.html",
+      "availableLanguage": ["English", "Greek"]
+    }
+  }
+  </script>
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-TileColor" content="#0D5EAF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="General">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@greekgamestudio">
+  <meta name="twitter:creator" content="@greekgamestudio">
+  <meta name="twitter:image:alt" content="Greek Games Studios Support">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#0D5EAF">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
 
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #000000; --bg-secondary: #0a0a0a; --bg-card: #111111; --bg-card-hover: #1a1a1a;
+      --greek-blue: #0D5EAF; --greek-blue-bright: #1478D9; --cyan: #00D4FF; --cyan-dim: rgba(0, 212, 255, 0.15);
+      --text-primary: #FFFFFF; --text-secondary: #A0A0A0; --text-muted: #666666;
+      --border-subtle: rgba(255, 255, 255, 0.08); --border-accent: rgba(0, 212, 255, 0.3);
+      --error: #ff5555; --success: #10b981;
     }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Page Transition */
+    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
+    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; }
+    .header.scrolled { background: rgba(0,0,0,0.95); }
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .header-logo { display: flex; align-items: center; gap: 12px; }
+    .header-logo img { height: 36px; width: auto; display: block; }
+    .header-logo span { font-size: 14px; font-weight: 700; color: white; letter-spacing: -0.02em; }
+    .header-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s ease, transform 0.2s ease; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--border-subtle); }
+    .header-back:hover { color: var(--cyan); border-color: var(--border-accent); transform: translateX(-3px); }
+    .header-back svg { width: 16px; height: 16px; }
+
+    /* Hero - matching news.html style */
+    .support-hero { position: relative; width: 100%; min-height: 35vh; display: flex; align-items: flex-end; padding: 120px 48px 60px; overflow: hidden; }
+    .support-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13, 94, 175, 0.15) 0%, rgba(0, 212, 255, 0.08) 50%, transparent 100%); z-index: 0; }
+    .support-hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .support-hero-particles .particle { position: absolute; width: 3px; height: 3px; background: var(--cyan); border-radius: 50%; opacity: 0.3; animation: float 8s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-20px) translateX(10px); } 50% { transform: translateY(-10px) translateX(-10px); } 75% { transform: translateY(-30px) translateX(5px); } }
+    .support-hero-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%; }
+    .support-hero-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; opacity: 0; transform: translateY(20px); }
+    .support-hero-title { font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; opacity: 0; transform: translateY(30px); }
+    .support-hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.6; opacity: 0; transform: translateY(20px); }
+
+    /* Form Section - matching news spacing */
+    .form-section { max-width: 1280px; margin: 0 auto; padding: 48px 48px 80px; }
+    .form-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 40px; position: relative; overflow: hidden; }
+    .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border-accent), transparent); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-label .required { color: var(--error); margin-left: 4px; }
+    .form-input { width: 100%; padding: 12px 16px; border-radius: 10px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
+    .form-input::placeholder { color: var(--text-muted); }
+    .form-input:focus { border-color: var(--border-accent); box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1); }
+    .form-input:hover { border-color: rgba(255,255,255,0.15); }
+    select.form-input { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+    select.form-input option { background: var(--bg-card); color: var(--text-primary); }
+    textarea.form-input { resize: vertical; min-height: 140px; line-height: 1.6; }
+    input[type="file"].form-input { padding: 10px 16px; font-size: 13px; }
+    input[type="file"].form-input::file-selector-button { background: var(--bg-card-hover); border: 1px solid var(--border-subtle); color: var(--text-secondary); border-radius: 6px; padding: 6px 12px; margin-right: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; transition: all 0.2s ease; }
+    input[type="file"].form-input::file-selector-button:hover { background: var(--border-subtle); color: var(--text-primary); }
+
+    /* Checkbox */
+    .form-checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin: 24px 0; }
+    .form-checkbox { width: 18px; height: 18px; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--bg-secondary); appearance: none; -webkit-appearance: none; cursor: pointer; flex-shrink: 0; margin-top: 2px; transition: all 0.2s ease; position: relative; }
+    .form-checkbox:checked { background: var(--greek-blue); border-color: var(--greek-blue); }
+    .form-checkbox:checked::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+    .form-checkbox:focus { box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1); }
+    .form-checkbox-label { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+    .form-checkbox-label a { color: var(--cyan); transition: color 0.2s ease; }
+    .form-checkbox-label a:hover { color: var(--text-primary); text-decoration: underline; }
+
+    /* Honeypot */
+    .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+    /* Submit */
+    .form-submit-wrap { display: flex; justify-content: center; margin-top: 32px; }
+    .form-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 40px; border-radius: 100px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; font-family: 'Inter', sans-serif; }
+    .form-submit:hover { transform: scale(1.03); box-shadow: 0 0 24px rgba(0, 212, 255, 0.3); }
+    .form-submit:active { transform: scale(0.98); }
+    .form-submit svg { width: 16px; height: 16px; }
+
+    /* File helper */
+    .file-helper { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+    /* Recaptcha container */
+    .recaptcha-wrap { display: flex; justify-content: center; margin: 24px 0; }
+
+    /* Footer */
+    .footer-simple { background: #050505; border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 48px; text-align: center; }
+    .footer-simple p { font-size: 13px; color: var(--text-muted); }
+    .footer-simple a { color: var(--text-secondary); transition: color 0.2s ease; }
+    .footer-simple a:hover { color: white; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-inner { padding: 0 24px; }
+      .header-logo span { display: none; }
+      .support-hero { padding: 100px 24px 40px; min-height: 35vh; }
+      .form-section { padding: 32px 24px 60px; }
+      .form-card { padding: 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-simple { padding: 24px; }
     }
-    
-    .fade-element {
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-    
-    .fade-in-active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .back-btn {
-      transition: all 0.3s ease;
-    }
-    
-    .back-btn:hover {
-      transform: translateX(-3px);
-    }
-    
-    .form-input {
-      transition: all 0.3s ease;
-    }
-    
-    .form-input:focus {
-      border-color: #22d3ee;
-      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .support-hero-label, .support-hero-title, .support-hero-subtitle { opacity: 1; transform: none; }
     }
   </style>
+<base target="_blank">
 </head>
-<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+<body itemscope itemtype="https://schema.org/ContactPage">
 
-  <header class="fixed w-full top-0 left-0 z-40 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl" role="banner">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top navigation">
-      <div class="flex justify-between items-center h-16 md:h-20">
-        <a href="/support.html" class="back-btn flex items-center text-cyan-400 hover:text-cyan-300" aria-label="Go back to Support Page">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Support
-        </a>
-      </div>
-    </nav>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition-overlay" id="transitionOverlay"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="/support.html" class="header-back" target="_self">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        Back to Support
+      </a>
+      <a href="/index.html" class="header-logo" target="_self">
+        <img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios">
+        <span>Greek Games Studios</span>
+      </a>
+    </div>
   </header>
 
-  <main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto" role="main">
-    <div class="backdrop-blur-lg bg-[#1a1a1a]/80 rounded-3xl p-8 md:p-12 border border-cyan-600/30 shadow-[0_0_40px_#0ff1] fade-element">
-      
-      <header class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
-          Support Form
-        </h1>
-        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto"></div>
-      </header>
+  <!-- Hero - matching news.html exactly -->
+  <section class="support-hero" id="supportHero">
+    <div class="support-hero-bg"></div>
+    <div class="support-hero-particles" id="heroParticles"></div>
+    <div class="support-hero-content">
+      <div class="support-hero-label" id="heroLabel">Support</div>
+      <h1 class="support-hero-title" id="heroTitle">How can we help?</h1>
+      <p class="support-hero-subtitle" id="heroSubtitle">Fill out the form below and our team will get back to you as soon as possible.</p>
+    </div>
+  </section>
 
-      <section aria-labelledby="form-title">
-        <h2 id="form-title" class="sr-only">Submit your details</h2>
-        <form name="support-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" enctype="multipart/form-data" aria-label="Technical Support Form">
-          
-          <p class="hidden" style="display:none;">
-            <label>Don’t fill this out if you’re human: <input name="bot-field" tabindex="-1"/></label>
-          </p>
+  <!-- Form Section - matching news spacing (48px top, 80px bottom) -->
+  <section class="form-section" id="formSection">
+    <div class="form-card" id="formCard">
+      <form name="support-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" enctype="multipart/form-data" aria-label="Technical Support Form">
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <input type="hidden" name="form-name" value="support-form">
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name <span class="text-red-500" aria-hidden="true">*</span></label>
-              <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white" required aria-required="true">
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address <span class="text-red-500" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white" required aria-required="true">
-            </div>
+        <!-- Honeypot -->
+        <p class="honeypot">
+          <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1"/></label>
+        </p>
+
+        <input type="hidden" name="form-name" value="support-form">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required aria-required="true">
           </div>
-
-          <div class="mb-8">
-            <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject <span class="text-red-500" aria-hidden="true">*</span></label>
-            <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white" required aria-required="true">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address <span class="required" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required aria-required="true">
           </div>
-
-          <div class="mb-8">
-            <label for="game" class="block text-sm font-medium text-gray-400 mb-2">Related Game</label>
-            <select id="game" name="game" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white">
+          <div class="form-group full">
+            <label for="subject" class="form-label">Subject <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="What's this about?" required aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="game" class="form-label">Related Game</label>
+            <select id="game" name="game" class="form-input">
               <option value="">Select a game</option>
-              <option value="tech-tycoon">Try Not To Rage: Forest</option>
-              <option value="unlimited-roleplay">Try Not To Rage: Sky</option>
+              <option value="try-not-to-rage-forest">Try Not To Rage: Forest</option>
+              <option value="try-not-to-rage-sky">Try Not To Rage: Sky</option>
               <option value="other">Other</option>
             </select>
           </div>
-
-          <div class="mb-8">
-            <label for="issue-type" class="block text-sm font-medium text-gray-400 mb-2">Issue Type <span class="text-red-500" aria-hidden="true">*</span></label>
-            <select id="issue-type" name="issue-type" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white" required aria-required="true">
+          <div class="form-group">
+            <label for="issue-type" class="form-label">Issue Type <span class="required" aria-hidden="true">*</span></label>
+            <select id="issue-type" name="issue-type" class="form-input" required aria-required="true">
               <option value="">Select issue type</option>
               <option value="technical">Technical Issue</option>
               <option value="account">Account Problem</option>
-              <option value="payment">Payment/Billing</option>
+              <option value="payment">Payment / Billing</option>
               <option value="other">Other</option>
             </select>
           </div>
-
-          <div class="mb-8">
-            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Description <span class="text-red-500" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="6" class="form-input w-full px-4 py-3 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white" required aria-required="true"></textarea>
+          <div class="form-group full">
+            <label for="message" class="form-label">Description <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" class="form-input" placeholder="Describe your issue in detail..." rows="6" required aria-required="true"></textarea>
           </div>
-
-          <div class="mb-8">
-            <label for="attachments" class="block text-sm font-medium text-gray-400 mb-2">Attachments (Screenshots, Logs, etc.)</label>
-            <input type="file" id="attachments" name="attachments" class="form-input w-full px-4 py-2 bg-[#1a1a1a]/50 border border-gray-700/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent text-white" multiple>
-            <p class="text-xs text-gray-500 mt-2" id="file-desc">Maximum file size: 10MB. Supported formats: JPG, PNG, PDF, TXT</p>
+          <div class="form-group full">
+            <label for="attachments" class="form-label">Attachments</label>
+            <input type="file" id="attachments" name="attachments" class="form-input" multiple>
+            <p class="file-helper">Maximum file size: 10MB. Supported formats: JPG, PNG, PDF, TXT</p>
           </div>
+        </div>
 
-          <div class="flex items-center mb-8">
-            <input id="terms" type="checkbox" name="terms" class="w-4 h-4 bg-[#1a1a1a]/50 border border-gray-700/50 rounded focus:ring-cyan-500 focus:ring-2" required aria-required="true">
-            <label for="terms" class="ml-2 text-sm text-gray-400">
-              I agree to the <a href="/privacy-policy.html" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a> and understand my data will be processed according to it.
-            </label>
-          </div>
+        <div class="form-checkbox-group">
+          <input id="terms" type="checkbox" name="terms" class="form-checkbox" required aria-required="true">
+          <label for="terms" class="form-checkbox-label">
+            I agree to the <a href="/privacy-policy.html" target="_self">Privacy Policy</a> and understand my data will be processed according to it.
+          </label>
+        </div>
 
-          <div data-netlify-recaptcha="true" class="mb-8 flex justify-center"></div>
+        <div data-netlify-recaptcha="true" class="recaptcha-wrap"></div>
 
-          <div class="text-center">
-            <button type="submit" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30">
-              Submit Request
-            </button>
-          </div>
-        </form>
-      </section>
+        <div class="form-submit-wrap">
+          <button type="submit" class="form-submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Submit Request
+          </button>
+        </div>
+      </form>
     </div>
-  </main>
+  </section>
 
-  <footer class="py-12 px-6 border-t border-gray-800/50 fade-element" role="contentinfo">
-    <div class="max-w-6xl mx-auto text-center">
-      <p class="text-gray-500 text-sm">
-        © <span id="current-year"></span> Greek Games Studios. All rights reserved.
-      </p>
-    </div>
+  <!-- Simple Footer -->
+  <footer class="footer-simple" id="footer">
+    <p>&copy; <span id="footerYear">2026</span> Greek Games Studios. All rights reserved.</p>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('current-year').textContent = new Date().getFullYear();
+  // =====================
+  // LENIS SMOOTH SCROLL
+  // =====================
+  const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
 
-      // Performance: IntersectionObserver API for smooth fading
-      const fadeObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            requestAnimationFrame(() => {
-              entry.target.classList.add('fade-in-active');
-              observer.unobserve(entry.target);
-            });
-          }
-        });
-      }, { root: null, rootMargin: '0px', threshold: 0.1 });
+// =====================
+// CROSS-DOCUMENT TRANSITIONS (unified – works from any page to any page)
+// =====================
+(function initTransitions() {
+  const overlay = document.getElementById('transitionOverlay');
+  if (!overlay) return;
 
-      document.querySelectorAll('.fade-element').forEach(el => fadeObserver.observe(el));
+  // Ένα μοναδικό κλειδί για όλες τις σελίδες
+  const NAV_KEY = 'fromAnyPage';
+
+  // ─── ΑΦΙΞΗ ──────────────────────────────────────────────
+  // Αν υπάρχει το κλειδί, σημαίνει ότι ερχόμαστε από άλλη σελίδα
+  if (sessionStorage.getItem(NAV_KEY) === 'true') {
+    sessionStorage.removeItem(NAV_KEY);
+    overlay.classList.add('revealing');
+    setTimeout(() => overlay.classList.remove('revealing'), 700);
+  }
+
+  // ─── ΑΝΑΧΩΡΗΣΗ ──────────────────────────────────────────
+  const path = window.location.pathname;
+
+  // Παρεμβολή σε όλους τους εσωτερικούς συνδέσμους
+  document.querySelectorAll('a[href^="/"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#')) return;
+    if (href === path || href === path.replace('.html', '')) return;
+    if (href.includes('#') && href.split('#')[0] === path) return;
+
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      overlay.classList.add('animating');
+      sessionStorage.setItem(NAV_KEY, 'true');
+      setTimeout(() => window.location.href = href, 500);
     });
+  });
+})();
+
+
+  // =====================
+  // HERO PARTICLES
+  // =====================
+  (function initParticles() {
+    const container = document.getElementById('heroParticles');
+    if (!container) return;
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.animationDuration = (6 + Math.random() * 6) + 's';
+      const size = 2 + Math.random() * 3;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      container.appendChild(p);
+    }
+  })();
+
+  // =====================
+  // HEADER SCROLL
+  // =====================
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 100);
+  }, { passive: true });
+
+  // =====================
+  // GSAP ANIMATIONS
+  // =====================
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.header', { opacity: 0, duration: 0.4, ease: 'power3.out' });
+  gsap.to('#heroLabel', { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: 'power3.out' });
+  gsap.to('#heroTitle', { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' });
+  gsap.to('#heroSubtitle', { opacity: 1, y: 0, duration: 0.6, delay: 0.35, ease: 'power3.out' });
+  gsap.from('#formCard', { 
+    scrollTrigger: { trigger: '#formSection', start: 'top 85%', toggleActions: 'play none none none' },
+    y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' 
+  });
+  gsap.from('.form-group', { 
+    scrollTrigger: { trigger: '#formCard', start: 'top 80%', toggleActions: 'play none none none' },
+    y: 20, opacity: 0, duration: 0.6, stagger: 0.06, ease: 'power3.out' 
+  });
+
+  // =====================
+  // COPYRIGHT YEAR
+  // =====================
+  const yearEl = document.getElementById('footerYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
