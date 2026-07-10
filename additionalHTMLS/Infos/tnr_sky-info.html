@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try Not To Rage: Sky - Greek Games Studios</title>
+  <meta name="description" content="Try Not To Rage: Sky is a hardcore 2D platformer by Greek Games Studios. 25 sky-themed levels that test your patience and precision. Download now on Google Play.">
+  <meta name="author" content="Greek Games Studios">
+  <link rel="canonical" href="https://greekgamesstudios.com/additionalHTMLS/Infos/TNTRS-info.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:title" content="Try Not To Rage: Sky - Greek Games Studios">
+  <meta property="og:description" content="The ultimate test of patience. 25 challenging sky-themed platformer levels. Download on Google Play.">
+  <meta property="og:image" content="https://greekgamesstudios.com/images/try-not-to-rage-sky.png">
+  <meta property="og:url" content="https://greekgamesstudios.com/additionalHTMLS/Infos/TNTRS-info.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Greek Games Studios">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Try Not To Rage: Sky - Greek Games Studios">
+  <meta name="twitter:description" content="25 challenging platformer levels. Download on Google Play.">
+  <meta name="twitter:image" content="https://greekgamesstudios.com/images/try-not-to-rage-sky.png">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Try Not To Rage: Sky","description":"A hardcore 2D platformer with 25 challenging sky-themed levels designed to test patience and precision.","author":{"@type":"Organization","name":"Greek Games Studios","url":"https://greekgamesstudios.com"},"publisher":{"@type":"Organization","name":"Greek Games Studios"},"genre":["Platformer","Rage Game","Precision Platformer"],"gamePlatform":"Android","applicationCategory":"Game","operatingSystem":"Android","url":"https://greekgamesstudios.com/additionalHTMLS/Infos/TNTRS-info.html","image":"https://greekgamesstudios.com/images/try-not-to-rage-sky.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"}}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #000000; --bg-secondary: #0a0a0a; --bg-card: #111111; --bg-card-hover: #1a1a1a;
+      --greek-blue: #0D5EAF; --greek-blue-bright: #1478D9; --cyan: #00D4FF;
+      --text-primary: #FFFFFF; --text-secondary: #A0A0A0; --text-muted: #666666;
+      --border-subtle: rgba(255,255,255,0.08); --border-accent: rgba(0,212,255,0.3);
+      --ease-out: cubic-bezier(0.23,1,0.32,1);
+      --accent: #10b981;
+    }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* PAGE TRANSITION */
+    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
+    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77,0,0.175,1) forwards; }
+    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77,0,0.175,1) forwards; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; }
+    .navbar.scrolled { background: rgba(0,0,0,0.95); }
+    .navbar-container { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .navbar-logo img { height: 36px; width: auto; }
+    .navbar-links { display: flex; align-items: center; gap: 40px; margin-left: auto; }
+    .navbar-link { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); transition: color 0.2s ease; position: relative; }
+    .navbar-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: var(--cyan); transform: scaleX(0); transition: transform 0.2s ease; }
+    .navbar-link:hover { color: var(--text-primary); }
+    .navbar-link:hover::after { transform: scaleX(1); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; cursor: pointer; background: none; border: none; position: relative; z-index: 1001; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; position: absolute; transition: all 0.4s cubic-bezier(0.68,-0.6,0.32,1.6); }
+    .hamburger span:nth-child(1) { top: 11px; }
+    .hamburger span:nth-child(2) { top: 19px; }
+    .hamburger span:nth-child(3) { top: 27px; }
+    .hamburger.active span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+    .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.98); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 0.3s ease; }
+    .mobile-menu.active { transform: translateY(0); }
+    .mobile-menu a { font-size: 20px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 32px; border-radius: 100px; min-width: 220px; text-align: center; transition: color 0.2s ease; }
+    .mobile-menu a:hover { color: white; background: rgba(255,255,255,0.05); }
+
+    /* HERO */
+    .info-hero { padding: 120px 48px 64px; position: relative; overflow: hidden; }
+    .info-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 30% 0%, rgba(16,185,129,0.1) 0%, transparent 70%); pointer-events: none; }
+    .info-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 40px; transition: color 0.2s ease, transform 0.2s ease; }
+    .back-link:hover { color: var(--cyan); transform: translateX(-4px); }
+    .back-link svg { width: 16px; height: 16px; }
+    .game-card-hero { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 40px 48px; position: relative; overflow: hidden; }
+    .game-card-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(16,185,129,0.06) 0%, transparent 60%); pointer-events: none; }
+    .game-image { width: 160px; height: 160px; border-radius: 20px; object-fit: cover; border: 1px solid rgba(16,185,129,0.25); flex-shrink: 0; position: relative; z-index: 1; }
+    .game-info { position: relative; z-index: 1; }
+    .game-status { display: inline-flex; align-items: center; gap: 7px; padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: var(--accent); margin-bottom: 16px; }
+    .game-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .game-title { font-size: clamp(28px,4vw,44px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 10px; }
+    .game-subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 20px; }
+    .game-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .tag { padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; border: 1px solid; }
+    .tag-green { color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); }
+    .tag-yellow { color: #f59e0b; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.08); }
+    .tag-red { color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08); }
+    .tag-blue { color: var(--greek-blue-bright); border-color: rgba(13,94,175,0.3); background: rgba(13,94,175,0.08); }
+    .tag-cyan { color: var(--cyan); border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.08); }
+    .game-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 100px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 24px rgba(0,212,255,0.3); }
+    .btn-primary svg { width: 15px; height: 15px; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 100px; background: transparent; color: var(--text-secondary); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid var(--border-subtle); cursor: pointer; transition: all 0.2s ease; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.06); color: white; }
+    .btn-secondary svg { width: 15px; height: 15px; }
+
+    /* MAIN CONTENT */
+    .info-main { max-width: 1280px; margin: 0 auto; padding: 0 48px 80px; }
+    .info-section { margin-bottom: 64px; }
+    .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 10px; }
+    .section-title { font-size: 26px; font-weight: 800; color: white; margin-bottom: 6px; }
+    .section-line { width: 36px; height: 3px; background: var(--greek-blue); margin-bottom: 28px; }
+
+    /* CONTENT BLOCKS */
+    .content-block { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px 32px; }
+    .content-block p { color: var(--text-secondary); font-size: 15px; line-height: 1.75; }
+    .content-block p + p { margin-top: 14px; }
+
+    /* WARNING */
+    .warning-block { background: rgba(239,68,68,0.06); border-left: 3px solid #ef4444; border-radius: 0 12px 12px 0; padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; }
+    .warning-block svg { width: 22px; height: 22px; color: #ef4444; flex-shrink: 0; margin-top: 2px; }
+    .warning-block h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 10px; }
+    .warning-block p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+    .warning-block ul { list-style: disc; padding-left: 18px; margin-top: 10px; }
+    .warning-block ul li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
+    .warning-block .final-note { margin-top: 12px; font-weight: 600; color: #ef4444; font-size: 14px; }
+
+    /* FEATURE GRID */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 24px; transition: transform 0.3s var(--ease-out), border-color 0.2s ease; }
+    .feature-card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.15); }
+    .feature-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .feature-icon svg { width: 20px; height: 20px; }
+    .feature-card h3 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* DIFFICULTY GRID */
+    .difficulty-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .diff-card { background: var(--bg-card); border-radius: 14px; border: 1px solid; padding: 22px; }
+    .diff-card.easy { border-color: rgba(16,185,129,0.25); }
+    .diff-card.devil { border-color: rgba(245,158,11,0.25); }
+    .diff-card.nightmare { border-color: rgba(239,68,68,0.25); }
+    .diff-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .diff-card.easy h4 { color: #10b981; }
+    .diff-card.devil h4 { color: #f59e0b; }
+    .diff-card.nightmare h4 { color: #ef4444; }
+    .diff-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* TIPS */
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .tips-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--greek-blue); flex-shrink: 0; margin-top: 8px; }
+
+    /* WHAT MAKES IT */
+    .highlight-list { display: flex; flex-direction: column; gap: 14px; }
+    .highlight-item { display: flex; gap: 14px; align-items: flex-start; }
+    .highlight-item .hl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; margin-top: 8px; }
+    .highlight-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+    .highlight-item strong { color: white; }
+
+    /* FOOTER */
+    .footer { background: #050505; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 0; }
+    .footer-top { max-width: 1280px; margin: 0 auto; padding: 64px 48px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; }
+    .footer-brand-logo img { height: 40px; width: auto; display: block; margin-bottom: 12px; }
+    .footer-brand-name { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+    .footer-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
+    .footer-links a:hover { color: white; }
+    .footer-socials { display: flex; gap: 12px; flex-wrap: wrap; }
+    .footer-socials a { color: var(--text-secondary); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-subtle); transition: color 0.2s ease, transform 0.2s ease, border-color 0.2s ease; }
+    .footer-socials a:hover { color: var(--cyan); transform: translateY(-2px); border-color: var(--border-accent); }
+    .footer-socials svg { width: 18px; height: 18px; }
+    .footer-handle { font-size: 14px; color: var(--text-muted); margin-top: 12px; }
+    .footer-bottom { max-width: 1280px; margin: 0 auto; padding: 24px 48px; display: flex; justify-content: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-copyright { font-size: 13px; color: var(--text-muted); }
+
+    /* TOAST */
+    .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--bg-card); border: 1px solid rgba(16,185,129,0.4); border-radius: 100px; padding: 12px 24px; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: white; z-index: 2000; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast svg { width: 16px; height: 16px; color: #10b981; }
+
+    /* BACK TO TOP */
+    .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 200; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease; }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .back-to-top:hover { background: var(--cyan); color: black; border-color: var(--cyan); }
+    .back-to-top svg { width: 18px; height: 18px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .difficulty-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hamburger { display: flex; }
+      .info-hero { padding: 100px 24px 48px; }
+      .game-card-hero { grid-template-columns: 1fr; text-align: center; padding: 28px 24px; gap: 24px; }
+      .game-image { width: 120px; height: 120px; margin: 0 auto; }
+      .game-tags { justify-content: center; }
+      .game-actions { justify-content: center; }
+      .info-main { padding: 0 24px 64px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .difficulty-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+      .footer-bottom { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+  </style>
+  <base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+<div class="page-transition-overlay" id="transitionOverlay"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a href="/index.html" class="navbar-logo" target="_self"><img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios"></a>
+    <div class="navbar-links">
+      <a href="/index.html" class="navbar-link" target="_self">Home</a>
+      <a href="/news.html" class="navbar-link" target="_self">News</a>
+      <a href="/about-us.html" class="navbar-link" target="_self">About</a>
+      <a href="/contact-us.html" class="navbar-link" target="_self">Contact</a>
+      <a href="/support.html" class="navbar-link" target="_self">Support</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/index.html" class="mobile-link" target="_self">Home</a>
+  <a href="/news.html" class="mobile-link" target="_self">News</a>
+  <a href="/about-us.html" class="mobile-link" target="_self">About</a>
+  <a href="/contact-us.html" class="mobile-link" target="_self">Contact</a>
+  <a href="/support.html" class="mobile-link" target="_self">Support</a>
+</div>
+
+<!-- HERO -->
+<section class="info-hero" id="infoHero">
+  <div class="info-hero-bg"></div>
+  <div class="info-hero-inner">
+    <a href="/games.html" class="back-link" target="_self" id="backLink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Games
+    </a>
+    <div class="game-card-hero" id="gameHeroCard">
+      <img src="/images/try-not-to-rage-sky.png" alt="Try Not To Rage: Sky" class="game-image">
+      <div class="game-info">
+        <div class="game-status"><span class="dot"></span>Released</div>
+        <h1 class="game-title">Try Not To Rage: Sky</h1>
+        <p class="game-subtitle">A 2D platformer set in a sky environment. 25 levels. Gets hard fast. Not for everyone.</p>
+        <div class="game-tags">
+          <span class="tag tag-green">Platformer</span>
+          <span class="tag tag-yellow">Challenging</span>
+          <span class="tag tag-red">Rage Game</span>
+          <span class="tag tag-blue">Precision</span>
+          <span class="tag tag-cyan">Android</span>
+        </div>
+        <div class="game-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share" class="btn-primary" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Download Free
+          </a>
+          <button class="btn-secondary" id="shareBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="info-main">
+
+  <!-- WARNING -->
+  <div class="info-section" id="secWarning">
+    <div class="warning-block">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      <div>
+        <h3>Player Discretion Advised</h3>
+        <p>This game is extremely challenging and designed to test your patience, focus and reflexes.</p>
+        <ul>
+          <li>May cause frustration or rage</li>
+          <li>Not recommended for players seeking a relaxing experience</li>
+          <li>Sudden difficulty spikes and fast paced obstacles ahead</li>
+          <li>Completion requires precision, persistence and mental endurance</li>
+        </ul>
+        <p class="final-note">You've been warned. Try... not to rage.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="info-section" id="secAbout">
+    <div class="section-label">Overview</div>
+    <div class="section-title">About the Game</div>
+    <div class="section-line"></div>
+    <div class="content-block">
+      <p>Try Not To Rage: Sky is the second entry in the series, this time with a sky theme. Same formula: 25 levels, no checkpoints, die and restart. The setting is clouds and floating platforms instead of forest ground, but the core remains identical move right, jump over things, try not to fall.</p>
+      <p>The sky theme changes the background and some platform aesthetics, but do not expect a visual overhaul. It is still a simple 2D game with basic sprites. The difficulty curve is similar to the first game: manageable early on, then increasingly punishing. If you played the Forest version, you know what to expect.</p>
+    </div>
+  </div>
+
+  <!-- DIFFICULTY GUIDE -->
+  <div class="info-section" id="secGuide">
+    <div class="section-label">Official Guide</div>
+    <div class="section-title">Level Difficulty</div>
+    <div class="section-line"></div>
+    <div class="difficulty-grid">
+      <div class="diff-card easy">
+        <h4>Easy Levels (1-10)</h4>
+        <p>Levels 1-10 get you used to the controls and the sky-themed platforms. The jumps are forgiving and the traps are obvious. Use this section to learn how the physics feel you will need it later.</p>
+      </div>
+      <div class="diff-card devil">
+        <h4>Devil Levels (11-20)</h4>
+        <p>Levels 11-20 add longer sequences between safe spots, moving platforms and tighter timing. Mistakes here mean restarting the level, not just the section. You will need to memorize layouts to get through consistently.</p>
+      </div>
+      <div class="diff-card nightmare">
+        <h4>Nightmare Levels (21-25)</h4>
+        <p>Levels 21-25 are where the game earns its name. The gaps are wide, the timing is tight and one mistake sends you back to the start. Most players will not finish these. That is by design.</p>
+      </div>
+    </div>
+    <div class="content-block">
+      <p style="font-weight:700;color:white;margin-bottom:14px;">Tips</p>
+      <ul class="tips-list">
+        <li>Memorize trap patterns before trying to speed through</li>
+        <li>Don't rush the levels are designed to punish impatience</li>
+        <li>Expect to die a lot that is how the game is structured</li>
+        <li>Break hard sections into smaller parts and practice each one</li>
+        <li>Step away when stuck coming back with fresh eyes helps</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="info-section" id="secFeatures">
+    <div class="section-label">What's Inside</div>
+    <div class="section-title">Key Features</div>
+    <div class="section-line"></div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(16,185,129,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>25 Challenging Levels</h3>
+        <p>25 levels total, same structure as the Forest version. The sky theme is mostly cosmetic the challenge is what you are here for.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(245,158,11,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3>Precision Gameplay</h3>
+        <p>Jump timing and landing precision matter. Some platforms are small and the gaps are wide. The controls are consistent, but the margin for error shrinks as you progress.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(239,68,68,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        </div>
+        <h3>Rage-Inducing</h3>
+        <p>The game is built around frustration. That is the hook. If you do not enjoy difficult platformers, this will not change your mind.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(13,94,175,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0D5EAF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Fair Challenge</h3>
+        <p>Patterns are learnable and deaths are usually your fault. That said, the difficulty is relentless and the game does not ease up. Fair is a matter of perspective.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT MAKES IT -->
+  <div class="info-section" id="secUltimate">
+    <div class="section-label">Deep Dive</div>
+    <div class="section-title">What Makes It the Ultimate Experience?</div>
+    <div class="section-line"></div>
+    <div class="content-block">
+      <div class="highlight-list">
+        <div class="highlight-item"><div class="hl-dot"></div><p><strong>Level Design:</strong> The layouts are functional and get the job done. Each level adds new trap combinations and tighter spacing. Nothing groundbreaking, but it works.</p></div>
+        <div class="highlight-item"><div class="hl-dot"></div><p><strong>Controls:</strong> Simple on-screen buttons for left, right and jump. They work reliably. The challenge is in your execution, not the input response.</p></div>
+        <div class="highlight-item"><div class="hl-dot"></div><p><strong>Difficulty Curve:</strong> It climbs steadily. By level 15 you will notice a clear jump from the early stages. There is no difficulty setting everyone gets the same experience.</p></div>
+      </div>
+      <p style="margin-top:20px;font-style:italic;">If you finish all 25 levels, you have either played the Forest version already or you are unusually persistent. Either way, it is an accomplishment.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-logo"><img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios"></div>
+      <div class="footer-brand-name">Greek Games Studios</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Games</div>
+      <ul class="footer-links" id="footerGames"></ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">More</div>
+      <ul class="footer-links">
+        <li><a href="/additionalHTMLS/Experimentals.html" target="_self">Experimentals</a></li>
+        <li><a href="/about-us.html" target="_self">About Us</a></li>
+        <li><a href="/support.html" target="_self">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Connect</div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/greekgamesstudios" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a href="https://www.youtube.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+        <a href="https://www.tiktok.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>
+        <a href="https://x.com/greekgamestudio" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://threads.net/@greekgamesstudios" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.804 1.157 8.554 0 12.14 0h.044c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.781 3.632 2.695 6.54 2.717 1.986-.013 3.758-.47 5.268-1.36 1.633-.979 2.832-2.438 3.565-4.338h-5.97v-2.112h8.362c.08 1.29-.026 2.525-.317 3.669-.729 2.91-2.325 5.27-4.742 7.028-2.326 1.691-5.094 2.58-8.168 2.232z"/></svg></a>
+        <a href="https://discord.com/invite/UUQcQQQKBY" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg></a>
+      </div>
+      <div class="footer-handle">@greekgamesstudios</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Legal</div>
+      <ul class="footer-links">
+        <li><a href="/privacy-policy.html#privacy-policy" target="_self">Privacy Policy</a></li>
+        <li><a href="/privacy-policy.html#terms-of-services" target="_self">Terms of Services</a></li>
+        <li><a href="/privacy-policy.html#community-guidelines" target="_self">Community Guidelines</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copyright" id="footerCopyright"></div></div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
+  Link copied!
+</div>
+
+<script>
+  const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t) => { lenis.raf(t * 1000); });
+  gsap.ticker.lagSmoothing(0);
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Navbar
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 80); }, { passive: true });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('active');
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open);
+    open ? lenis.stop() : lenis.start();
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+    mobileMenu.classList.remove('active'); hamburger.classList.remove('active'); lenis.start();
+  }));
+
+  // Share
+  document.getElementById('shareBtn').addEventListener('click', () => {
+    navigator.clipboard.writeText('https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share').then(() => {
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    });
+  });
+
+  // Back to top
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 500); }, { passive: true });
+  btt.addEventListener('click', () => lenis.scrollTo(0, { duration: 1.2 }));
+
+  // Copyright
+  document.getElementById('footerCopyright').textContent = '© ' + new Date().getFullYear() + ' Greek Games Studios. All rights reserved.';
+
+  // Footer games
+  fetch('/games.json').then(r => r.json()).then(games => {
+    const el = document.getElementById('footerGames');
+    games.filter(g => g.footer).forEach(g => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = g.url || '/additionalHTMLS/Infos/' + g.id + '-info.html';
+      a.target = '_self'; a.textContent = g.title;
+      li.appendChild(a); el.appendChild(li);
+    });
+  }).catch(() => {});
+
+// =====================
+// =====================
+// CROSS-DOCUMENT TRANSITIONS – Universal with MutationObserver
+// =====================
+(function initTransitions() {
+  const overlay = document.getElementById('transitionOverlay');
+  if (!overlay) return;
+
+  const NAV_KEY = 'fromAnyPage';
+
+  // ─── ΑΦΙΞΗ ──────────────────────────────────────────────
+  if (sessionStorage.getItem(NAV_KEY) === 'true') {
+    sessionStorage.removeItem(NAV_KEY);
+    overlay.classList.add('revealing');
+    setTimeout(() => overlay.classList.remove('revealing'), 700);
+  }
+
+  // ─── ΣΥΝΑΡΤΗΣΗ ΠΟΥ ΠΡΟΣΘΕΤΕΙ LISTENERS ────────────────
+  function attachTransitionListeners() {
+    const path = window.location.pathname;
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      if (href === path || href === path.replace('.html', '')) return;
+      if (href.includes('#') && href.split('#')[0] === path) return;
+
+      // Αφαιρούμε παλιό listener (για να μη διπλασιάζεται)
+      link.removeEventListener('click', transitionHandler);
+      link.addEventListener('click', transitionHandler);
+    });
+  }
+
+  function transitionHandler(e) {
+    e.preventDefault();
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('animating');
+    sessionStorage.setItem('fromAnyPage', 'true');
+    setTimeout(() => window.location.href = this.getAttribute('href'), 500);
+  }
+
+  // ─── ΑΡΧΙΚΗ ΠΡΟΣΘΗΚΗ ──────────────────────────────────
+  attachTransitionListeners();
+
+  // ─── MUTATION OBSERVER ΓΙΑ ΝΕΟΥΣ ΣΥΝΔΕΣΜΟΥΣ ──────────
+  const observer = new MutationObserver(() => {
+    attachTransitionListeners();
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+})();
+
+  // GSAP animations
+  gsap.from('.navbar', { opacity: 0, duration: 0.4, ease: 'power3.out' });
+  gsap.from('#backLink', { opacity: 0, x: -20, duration: 0.5, delay: 0.1, ease: 'power3.out' });
+  gsap.from('#gameHeroCard', { opacity: 0, y: 30, duration: 0.7, delay: 0.2, ease: 'power3.out' });
+
+  gsap.utils.toArray('.info-section').forEach((sec, i) => {
+    gsap.from(sec, {
+      scrollTrigger: { trigger: sec, start: 'top 85%', toggleActions: 'play none none none' },
+      opacity: 0, y: 32, duration: 0.65, ease: 'power3.out'
+    });
+  });
+  gsap.from('.footer-top > div', {
+    scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none none' },
+    y: 24, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out'
+  });
+</script>
+</body>
+</html>
