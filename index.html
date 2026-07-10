@@ -1,1217 +1,955 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Greek Games Studios</title>
-
-  <!-- Canonical -->
+  <meta name="description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community.">
+  <meta name="author" content="Greek Games Studios">
   <link rel="canonical" href="https://www.greekgamesstudios.com/">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Greek Games Studios">
-  <meta name="twitter:description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community.">
+  <meta name="twitter:description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project.">
   <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
-
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
-
   <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-title" content="Greek Games Studios">
-
   <link rel="manifest" href="/manifest.json">
-
-  <meta name="description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community.">
-  <meta name="author" content="Greek Games Studios">
-
   <meta property="og:title" content="Greek Games Studios" />
   <meta property="og:description" content="Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community." />
   <meta property="og:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png" />
   <meta property="og:url" content="https://www.greekgamesstudios.com/" />
   <meta property="og:site_name" content="Greek Games Studios" />
   <meta property="og:type" content="website" />
-
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Greek Games Studios",
-      "url": "https://www.greekgamesstudios.com",
-      "logo": "https://www.greekgamesstudios.com/images/ggs-logo.png",
-      "sameAs": [
-        "https://www.instagram.com/greekgamesstudios",
-        "https://www.youtube.com/@greekgamesstudios",
-        "https://www.tiktok.com/@greekgamesstudios"
-      ]
-    }
+    {"@context":"https://schema.org","@type":"Organization","name":"Greek Games Studios","url":"https://www.greekgamesstudios.com","logo":"https://www.greekgamesstudios.com/images/ggs-logo.png","sameAs":["https://www.instagram.com/greekgamesstudios","https://www.youtube.com/@greekgamesstudios","https://www.tiktok.com/@greekgamesstudios","https://x.com/greekgamestudio","https://threads.net/@greekgamesstudios","https://discord.com/invite/UUQcQQQKBY"]}
   </script>
-
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"Greek Games Studios","url":"https://www.greekgamesstudios.com","potentialAction":{"@type":"SearchAction","target":"https://www.greekgamesstudios.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
+  <meta name="keywords" content="Greek Games Studios, indie games, mobile games, Try Not To Rage, Play & Demos, Greek game developer, Android games, platformer games, Sky, Forest, Shapes Into Crime">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #000000; --bg-secondary: #0a0a0a; --bg-card: #111111; --bg-card-hover: #1a1a1a;
+      --greek-blue: #0D5EAF; --greek-blue-bright: #1478D9; --cyan: #00D4FF; --cyan-dim: rgba(0, 212, 255, 0.15);
+      --text-primary: #FFFFFF; --text-secondary: #A0A0A0; --text-muted: #666666;
+      --border-subtle: rgba(255, 255, 255, 0.08); --border-accent: rgba(0, 212, 255, 0.3);
+    }
+    html { scroll-behavior: auto; }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; }
+    .navbar.scrolled { background: rgba(0,0,0,0.95); }
+    .navbar-container { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .navbar-logo img { height: 36px; width: auto; display: block; }
+    .navbar-links { display: flex; align-items: center; gap: 40px; margin-left: auto; }
+    .navbar-link { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); transition: color 0.2s ease; position: relative; }
+    .navbar-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: var(--cyan); transform: scaleX(0); transition: transform 0.2s ease; }
+    .navbar-link:hover { color: var(--text-primary); }
+    .navbar-link:hover::after { transform: scaleX(1); }
+    .navbar-cta { padding: 10px 24px; border-radius: 100px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .navbar-cta:hover { transform: scale(1.03); box-shadow: 0 0 24px rgba(0, 212, 255, 0.3); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; cursor: pointer; padding: 0; position: relative; z-index: 1001; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; position: absolute; transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
+    .hamburger span:nth-child(1) { top: 11px; }
+    .hamburger span:nth-child(2) { top: 19px; }
+    .hamburger span:nth-child(3) { top: 27px; }
+    .hamburger.active span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+    .hamburger.active span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.98); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 0.3s ease; }
+    .mobile-menu.active { transform: translateY(0); }
+    .mobile-menu a { font-size: 20px; font-weight: 700; color: var(--text-secondary); transition: color 0.2s ease; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 32px; border-radius: 100px; min-width: 220px; text-align: center; }
+    .mobile-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+    .mobile-menu-close { display: none; }
+
+    /* CROSS-DOCUMENT TRANSITION */
+    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
+    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
+    /* HERO */
+    .hero { position: relative; width: 100%; height: 100vh; min-height: 600px; overflow: hidden; }
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease-out; }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 8s ease-out; z-index: 1; }
+    .hero-slide.active .hero-slide-bg { transform: scale(1); }
+    .hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 40%, transparent 70%); z-index: 2; }
+    .hero-content { position: absolute; bottom: 120px; left: 80px; max-width: 600px; z-index: 2; }
+    .hero-category { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; opacity: 0; transform: translateY(20px); }
+    .hero-title { font-size: 48px; font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; opacity: 0; transform: translateY(30px); }
+    .hero-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; opacity: 0; transform: translateY(20px); }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; transform: translateY(20px); }
+    .hero-slide.active .hero-category, .hero-slide.active .hero-title, .hero-slide.active .hero-subtitle, .hero-slide.active .hero-ctas { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .hero-slide.active .hero-category { transition-delay: 0.2s; }
+    .hero-slide.active .hero-title { transition-delay: 0.3s; }
+    .hero-slide.active .hero-subtitle { transition-delay: 0.4s; }
+    .hero-slide.active .hero-ctas { transition-delay: 0.5s; }
+
+    /* BUTTONS */
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 100px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 24px rgba(0, 212, 255, 0.3); }
+    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 100px; background: transparent; color: white; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; transition: all 0.2s ease; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* CAROUSEL CONTROLS */
+    .carousel-dots { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 3; }
+    .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s ease; border: none; }
+    .carousel-dot.active { background: white; transform: scale(1.3); }
+    .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(0,0,0,0.5); border: none; color: white; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 3; transition: background 0.2s ease; }
+    .carousel-arrow:hover { background: rgba(0,0,0,0.8); }
+    .carousel-arrow.prev { left: 24px; }
+    .carousel-arrow.next { right: 24px; }
+    .carousel-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--cyan); z-index: 3; transition: width 0.1s linear; }
+    .swipe-hint { display: none; }
+
+    /* SECTIONS */
+    .section { padding: 80px 24px; max-width: 1280px; margin: 0 auto; }
+    .section-header { margin-bottom: 48px; }
+    .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 12px; }
+    .section-title { font-size: 36px; font-weight: 800; color: white; line-height: 1.2; }
+    .section-line { width: 48px; height: 3px; background: var(--greek-blue); margin-top: 16px; }
+    .section-title-center { text-align: center; }
+    .section-title-center .section-line { margin-left: auto; margin-right: auto; }
+    .view-more-container { display: flex; justify-content: center; margin-top: 80px; }
+
+    /* NEWS */
+    .news-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+    .news-featured { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 10; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .news-featured:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .news-featured-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; z-index: 0; }
+    .news-featured:hover .news-featured-img { transform: scale(1.05); }
+    .news-featured-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 80%); }
+    .news-featured-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; }
+    .news-featured-category { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 8px; }
+    .news-featured-date { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
+    .news-featured-title { font-size: 28px; font-weight: 700; color: white; line-height: 1.3; }
+    .news-side { display: flex; flex-direction: column; gap: 16px; }
+    .news-side-card { display: flex; gap: 16px; cursor: pointer; padding: 12px; border-radius: 8px; transition: background 0.2s ease; }
+    .news-side-card:hover { background: var(--bg-card); }
+    .news-side-img { width: 120px; height: 120px; border-radius: 8px; background-size: cover; background-position: center; flex-shrink: 0; transition: transform 0.3s ease; z-index: 1; }
+    .news-side-card:hover .news-side-img { transform: scale(1.05); }
+    .news-side-content { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+    .news-side-category { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cyan); }
+    .news-side-date { font-size: 13px; color: var(--text-muted); }
+    .news-side-title { font-size: 16px; font-weight: 600; color: white; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s ease; }
+    .news-side-card:hover .news-side-title { color: var(--cyan); }
+
+    /* GAMES */
+    .games-section { background: var(--bg-secondary); padding: 80px 24px; }
+    .games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1280px; margin: 0 auto; }
+    .game-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 3 / 4; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .game-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.6); }
+    .game-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.6s ease; z-index: 0; }
+    .game-card:hover .game-card-img { transform: scale(1.06); }
+    .game-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 80%); z-index: 1; transition: background 0.3s ease; }
+    .game-card:hover .game-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 75%); }
+    .game-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; text-align: center; z-index: 2; }
+    .game-card-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cyan); margin-bottom: 8px; }
+    .game-card-title { font-size: 22px; font-weight: 700; color: white; margin-bottom: 12px; }
+    .game-card-desc { font-size: 14px; color: var(--text-secondary); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+    .game-card:hover .game-card-desc { opacity: 1; transform: translateY(0); }
+    .game-card-platforms { display: flex; justify-content: center; gap: 8px; margin-top: 12px; opacity: 0.7; }
+    .game-card-platforms svg { width: 20px; height: 20px; fill: white; }
+
+    /* FEATURED BANNER - DESKTOP */
+    .featured-banner { position: relative; width: 100%; height: 400px; overflow: hidden; }
+    .featured-banner-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-attachment: fixed; }
+    .featured-banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+    .featured-banner-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 24px; }
+    .featured-banner-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; }
+    .featured-banner-title { font-size: 42px; font-weight: 800; color: white; margin-bottom: 16px; }
+    .featured-banner-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin-bottom: 32px; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+    .about-body { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin: 24px 0; }
+    .about-socials { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; align-items: center; }
+    .about-socials a { color: var(--text-secondary); transition: color 0.2s ease, transform 0.2s ease; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: var(--bg-card); border: 1px solid var(--border-subtle); }
+    .about-socials a:hover { color: var(--cyan); transform: translateY(-3px); border-color: var(--border-accent); }
+    .about-socials svg { width: 20px; height: 20px; }
+    .about-img-wrapper { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 0 80px rgba(0, 212, 255, 0.1); }
+    .about-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+
+    /* FOOTER */
+    .footer { background: #050505; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-top { max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; }
+    .footer-brand-logo img { height: 40px; width: auto; display: block; margin-bottom: 12px; }
+    .footer-brand-name { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+    .footer-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
+    .footer-links a:hover { color: white; }
+    .footer-socials { display: flex; gap: 12px; }
+    .footer-socials a { color: var(--text-secondary); transition: color 0.2s ease, transform 0.2s ease; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-subtle); }
+    .footer-socials a:hover { color: var(--cyan); transform: translateY(-2px); border-color: var(--border-accent); }
+    .footer-socials svg { width: 18px; height: 18px; }
+    .footer-handle { font-size: 14px; color: var(--text-muted); margin-top: 12px; }
+    .footer-bottom { max-width: 1280px; margin: 0 auto; padding: 24px 24px; display: flex; justify-content: center; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-copyright { font-size: 13px; color: var(--text-muted); text-align: center; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .games-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hamburger { display: flex; }
+      .carousel-dots { bottom: 110px; }
+      .hero-content { left: 24px; right: 24px; bottom: 130px; max-width: none; }
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 16px; }
+      .carousel-arrow { display: none; }
+      .swipe-hint { display: flex; position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); z-index: 3; gap: 16px; align-items: center; color: rgba(255,255,255,0.4); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+      .swipe-hint svg { width: 20px; height: 20px; opacity: 0.4; }
+      .news-grid { grid-template-columns: 1fr; }
+      .games-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .featured-banner { height: auto; min-height: 300px; padding: 48px 24px; }
+      .featured-banner-content { height: auto; padding: 16px; }
+      .featured-banner-label { margin-bottom: 8px; font-size: 11px; }
+      .featured-banner-title { font-size: 24px; margin-bottom: 8px; line-height: 1.2; }
+      .featured-banner-subtitle { font-size: 14px; line-height: 1.5; margin-bottom: 20px; max-width: 90%; }
+      .featured-banner .btn-secondary { padding: 12px 24px; font-size: 12px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .section { padding: 48px 24px; }
     }
 
-    /* Optimized animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.8; }
-      50% { transform: translateY(-20px) translateX(10px); opacity: 0.4; }
-    }
-    
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
-      50% { transform: translateY(30px) translateX(-15px); opacity: 0.9; }
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .animate-fade-in {
-      opacity: 0;
-      animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-    
-    /* ANIMATED GRADIENT for HERO TITLE - SLOWER */
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    .animate-gradient-text {
-      background: linear-gradient(270deg, #0D5EAF, #FFFFFF, #0D5EAF, #FFFFFF, #0D5EAF);
-      background-size: 400% 400%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: gradientShift 20s ease infinite; 
-    }
-    
-    .current-page {
-      position: relative;
-      color: white !important;
-    }
-    
-    .current-page:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0.5px;
-      background-color: cyan;
-      transform: scaleX(1);
-    }
-    
-    /* New styles for expandable content */
-    .news-content {
-      max-height: 100px;
-      overflow: hidden;
-      transition: max-height 0.5s ease-out;
-    }
-    
-    .news-content.expanded {
-      max-height: 1000px;
-    }
-    
-    .read-more-btn .more-text {
-      display: inline;
-    }
-    
-    .read-more-btn .less-text {
-      display: none;
-    }
-    
-    .read-more-btn.expanded .more-text {
-      display: none;
-    }
-    
-    .read-more-btn.expanded .less-text {
-      display: inline;
-    }
-    
-    .additional-content {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    }
-    
-    .news-content.expanded .additional-content {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Performance optimizations */
-    .will-change-transform {
-      will-change: transform;
-    }
-    
-    .will-change-opacity {
-      will-change: opacity;
-    }
-    
-    .backface-hidden {
-      backface-visibility: hidden;
-    }
-    
-    /* Optimized floating particles */
-    .floating-particle {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(4px);
-      will-change: transform, opacity;
-    }
-    
-    /* Scroll animation classes */
-    .news-card {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    
-    .news-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Staggered delays for cards */
-    .news-card.delay-1 { transition-delay: 0.1s; }
-    .news-card.delay-2 { transition-delay: 0.2s; }
-    .news-card.delay-3 { transition-delay: 0.3s; }
-    .news-card.delay-4 { transition-delay: 0.4s; }
-    .news-card.delay-5 { transition-delay: 0.5s; }
-    .news-card.delay-6 { transition-delay: 0.6s; }
-    
-    /* Hide additional news cards initially */
-    .news-card.hidden-news {
-      display: none !important;
-    }
-    
-    /* Show all news cards */
-    .news-card.show-all {
-      display: block !important;
-    }
-    
-    /* View More button styling */
-    .view-more-container {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    
-    .view-more-container.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .hero-slide-bg { transform: none !important; }
     }
   </style>
+  
+
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-TileColor" content="#0D5EAF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="General">
+  <meta name="revisit-after" content="7 days">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@greekgamestudio">
+  <meta name="twitter:creator" content="@greekgamestudio">
+  <meta name="twitter:image:alt" content="Greek Games Studios Logo">
+  <meta name="ai-seo-content-type" content="game-development-studio">
+  <meta name="ai-seo-primary-topic" content="indie mobile games, Greek game development, Android platformer games, crime puzzle games">
+  <meta name="ai-seo-audience" content="mobile gamers, indie game enthusiasts, Android users, casual gamers">
+  <meta name="ai-seo-content-summary" content="Greek Games Studios is an independent mobile game developer creating immersive experiences like Shapes Into Crime, Try Not To Rage, and Play & Demos. Small team with big dreams based in Greece.">
+  <meta name="ai-seo-entity-type" content="Organization, VideoGame, SoftwareApplication">
+  <meta name="ai-seo-key-entities" content="Greek Games Studios, Shapes Into Crime, Try Not To Rage, Play & Demos, indie games, mobile games, Android games">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#0D5EAF">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Greek Games Studios - Indie Mobile Game Developer",
+    "description": "Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project.",
+    "url": "https://www.greekgamesstudios.com/",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "VideoGame",
+            "name": "Shapes Into Crime",
+            "description": "An immersive crime-themed experience where every shape hides a story, a mystery, or a criminal underworld waiting to be uncovered.",
+            "genre": ["Crime", "Puzzle", "Immersive"],
+            "gamePlatform": "Android",
+            "applicationCategory": "Game",
+            "operatingSystem": "Android",
+            "url": "https://www.greekgamesstudios.com/additionalHTMLS/Infos/shapes-into-crime-info.html",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/PreOrder"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Greek Games Studios"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "VideoGame",
+            "name": "Try Not To Rage",
+            "description": "A challenging rage-inducing mobile game designed to test your patience and reflexes.",
+            "genre": ["Arcade", "Challenge"],
+            "gamePlatform": "Android",
+            "applicationCategory": "Game",
+            "operatingSystem": "Android",
+            "url": "https://www.greekgamesstudios.com/additionalHTMLS/Infos/try-not-to-rage-info.html",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Greek Games Studios"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "VideoGame",
+            "name": "Play & Demos",
+            "description": "Experimental games and demos from Greek Games Studios showcasing new ideas and mechanics.",
+            "genre": ["Experimental", "Demo"],
+            "gamePlatform": "Android",
+            "applicationCategory": "Game",
+            "operatingSystem": "Android",
+            "url": "https://www.greekgamesstudios.com/additionalHTMLS/Experimentals.html",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Greek Games Studios"
+            }
+          }
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Greek Games Studios",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.greekgamesstudios.com/images/ggs-logo.png"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.greekgamesstudios.com/"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://www.greekgamesstudios.com/support.html",
+    "availableLanguage": ["English", "Greek"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "name": "Main Navigation",
+    "hasPart": [
+      { "@type": "SiteNavigationElement", "name": "Home", "url": "https://www.greekgamesstudios.com/" },
+      { "@type": "SiteNavigationElement", "name": "Games", "url": "https://www.greekgamesstudios.com/#games" },
+      { "@type": "SiteNavigationElement", "name": "News", "url": "https://www.greekgamesstudios.com/news.html" },
+      { "@type": "SiteNavigationElement", "name": "About", "url": "https://www.greekgamesstudios.com/#about" },
+      { "@type": "SiteNavigationElement", "name": "Support", "url": "https://www.greekgamesstudios.com/support.html" }
+    ]
+  }
+  </script>
+
+
+<base target="_blank">
 </head>
+<body itemscope itemtype="https://schema.org/WebPage">
 
-<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-white overflow-x-hidden">
-  <header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16 md:h-20">
-        <div class="flex-shrink-0 flex items-center">
-          <div class="relative">
-            <img src="/images/ggs-logo.png" alt="GGS Logo" class="h-10 w-auto"> 
-          </div>
-        </div>
-
-        <nav class="hidden md:flex space-x-1">
-          <a href="#home" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-300 group">
-            Home
-          </a>
-          <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Games
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Contact Us
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Support
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105">
-            Experimentals
-          </a>
-          <a href='/privacy-policy.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Privacy Policy
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-        </nav>
-
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group" aria-label="Toggle Menu">
-          <div class="relative w-6 h-6">
-            <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
-            <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
-            <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-300"></span>
-          </div>
-        </button>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-logo" target="_self">
+        <img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios">
+      </a>
+      <div class="navbar-links">
+        <a href="#games" class="navbar-link" target="_self">Games</a>
+        <a href="#news" class="navbar-link" target="_self">News</a>
+        <a href="#about" class="navbar-link" target="_self">About</a>
+        <a href="#contact" class="navbar-link" target="_self">Contact</a>
+        <a href="/support.html" class="navbar-link" target="_self">Support</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
       </div>
     </div>
+  </nav>
 
-    <div id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
-      <div class="px-4 py-3 space-y-3">
-        <a href="#home" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-300">
-          Home
-        </a>
-        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
-          Games
-        </a>
-        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
-          Contact Us
-        </a>
-        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
-          Support
-        </a>
-        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white">
-          Experimentals
-        </a>
-        <a href='/privacy-policy.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">
-          Privacy Policy
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <div id="notification-bar" class="fixed top-16 md:top-20 left-0 w-full bg-gradient-to-r from-cyan-900/90 to-purple-900/90 backdrop-blur-md border-b border-cyan-500/30 z-40 transform -translate-y-full transition-transform duration-500 ease-out shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="flex-shrink-0">
-          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-        </div>
-        
-        <p class="text-white text-sm md:text-base">
-          <span class="font-medium">Play & demos beta V2 is out!</span> 
-          <span class="text-gray-200">Check it out.</span>
-        </p>
-        
-        <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="ml-4 flex-shrink-0 px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-full transition-colors duration-300">
-          Check it
-        </a>
-      </div>
-      
-      <button id="close-notification" class="flex-shrink-0 text-gray-300 hover:text-white transition-colors duration-300 p-1 rounded-full hover:bg-white/10" aria-label="Close notification">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+        <a href="#games" class="navbar-link mobile-link" target="_self">Games</a>
+        <a href="#news" class="navbar-link mobile-link" target="_self">News</a>
+        <a href="#about" class="navbar-link mobile-link" target="_self">About</a>
+        <a href="#contact" class="navbar-link mobile-link" target="_self">Contact</a>
+        <a href="/support.html" class="navbar-link mobile-link" target="_self">Support</a>
   </div>
 
-  <section id="home" class="relative h-screen flex flex-col items-center justify-center text-center px-6 bg-gradient-to-br from-black via-[#0f0f2e] to-black overflow-hidden pt-16">
-    
-    <canvas id="star-canvas" class="absolute inset-0 pointer-events-none"></canvas>
-    
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ=")] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"></div>
-    </div>
-    
-    <div class="floating-particle top-1/4 left-1/4 w-3 h-3 bg-cyan-400 opacity-80" style="animation: float 8s ease-in-out infinite;"></div>
-    <div class="floating-particle top-1/3 right-1/3 w-4 h-4 bg-purple-500 opacity-60" style="animation: float2 10s ease-in-out infinite 1s;"></div>
-    
-    <div class="relative z-10">
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight animate-gradient-text animate-fade-in">
-        Greek Games Studios
-      </h1>
-      
-      <p class="text-lg md:text-2xl text-gray-300 mt-6 mb-10 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.2s">
-        Welcome to our website. Discover our latest news and play our games.
-      </p>
-      
-      <div class="relative animate-fade-in" style="animation-delay: 0.4s">
-        <a href="/games.html" class="relative px-10 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-purple-700 hover:from-purple-600 hover:to-cyan-500 text-lg font-semibold shadow-xl backdrop-blur-lg border border-cyan-400/50 flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50">
-          <span class="relative z-10">Explore Our Games</span>
-        </a>
-      </div>
+  <!-- Cross-Document Transition Overlay -->
+  <div class="page-transition-overlay" id="transitionOverlay"></div>
+
+  <!-- HERO CAROUSEL -->
+  <section class="hero" id="hero">
+    <div id="heroSlidesContainer"></div>
+    <button class="carousel-arrow prev" id="carouselPrev">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="carousel-arrow next" id="carouselNext">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <div class="carousel-dots" id="carouselDots"></div>
+    <div class="carousel-progress" id="carouselProgress"></div>
+    <div class="swipe-hint" id="swipeHint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <span>Swipe</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </div>
   </section>
 
-  <section class="py-24 px-6 md:px-12 lg:px-24 relative" id="news">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-20 animate-fade-in">
-        <span class="text-cyan-400 font-medium mb-4 inline-block">
-          Latest Updates
-        </span>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-cyan-300 via-purple-400 to-purple-500 bg-clip-text text-transparent">
-          GGS Newsroom
-        </h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto mt-6"></div>
+  <!-- NEWS SECTION -->
+  <section class="section" id="news" itemscope itemtype="https://schema.org/ItemList">
+    <div class="section-header" id="newsHeader">
+      <div class="section-label">Newsroom</div>
+      <h2 class="section-title">Latest Updates</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="news-grid" id="newsGrid">
+      <div class="news-featured" id="newsFeatured"></div>
+      <div class="news-side" id="newsSide"></div>
+    </div>
+    <div class="view-more-container">
+      <a href="/news.html" class="btn-secondary" id="viewAllNews" target="_self">View All News</a>
+    </div>
+  </section>
+
+  <!-- GAMES SECTION -->
+  <section class="games-section" id="games" itemscope itemtype="https://schema.org/ItemList">
+    <div class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="section-header section-title-center" id="gamesHeader">
+        <div class="section-label">Our Games</div>
+        <h2 class="section-title">Explore Our World</h2>
+        <div class="section-line"></div>
       </div>
-      
-      <div class="flex flex-col gap-16" id="news-container">
+    </div>
+    <div class="games-grid" id="gamesGrid"></div>
+    <div class="view-more-container">
+      <a href="/games.html" class="btn-secondary nav-transition" data-href="/games.html" id="viewAllGames" target="_self">View All Games</a>
+    </div>
+  </section>
 
-        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/P&Dev2.png" loading="lazy" alt="Play & Demos v2 Update" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                May 8, 2026
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Play & Demos v2: Major Update!
-              </h3>
-              <div class="news-content" id="news-content-12">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  We are thrilled to announce the release of <strong>Play & Demos v2</strong> a massive update packed with optimizations, reworks, and brand new mini games!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">
-                    This update focuses on improving performance, fixing various issues and expanding the experience with more content and features.
-                  </p>
-                  <p class="mb-4 font-semibold text-cyan-300">What's new in v2:</p>
-                  <ul class="list-disc pl-5 space-y-2 mb-4">
-                    <li><span class="font-medium text-white">Optimizations:</span> Faster loading times and smoother gameplay across all mini games.</li>
-                    <li><span class="font-medium text-white">Reworks:</span> Several existing mini games have been redesigned with better mechanics, improved visuals, and additional features.</li>
-                    <li><span class="font-medium text-white">New Mini Games:</span> We've added <strong>5 brand new titles</strong> to the Play & Demos library, each offering unique challenges and fun experiences.</li>
-                    <li><span class="font-medium text-white">Bug Fixes:</span> Addressed stability issues and resolved physics control bugs affecting gameplay responsiveness.</li>
-                  </ul>
-                  <p class="mb-4">
-                    This is just the beginning, we will continue to support and expand Play & Demos with regular updates. Your feedback helps us grow, so don't hesitate to share your thoughts.
-                  </p>
-                  <p class="mt-4">
-                    <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Play Now
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-12', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
+  <!-- FEATURED BANNER -->
+  <section class="featured-banner" id="featuredBanner">
+    <div class="featured-banner-bg" id="featuredBannerBg"></div>
+    <div class="featured-banner-overlay"></div>
+    <div class="featured-banner-content" id="featuredBannerContent"></div>
+  </section>
 
-        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/P&DRelease.png" loading="lazy" alt="Play & Demos Release" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                February 20, 2026
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Play & Demos Is Now Live!
-              </h3>
-              <div class="news-content" id="news-content-11">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  We are proud to announce that Play & Demos is now live on our website.
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">
-                    Through Play & Demos, you can access and play our mini games, as well as selected prototypes and demos from games we have already released. This allows you to explore our work, our ideas, and parts of the development process.
-                  </p>
-                  <p class="mb-4">
-                    This is an important milestone for us and we will continue to expand it with more content over time. We look forward to your feedback.
-                  </p>
-                  <p class="mt-4">
-                    <a href="/additionalHTMLS/WebLauncher/WebLauncher.html" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Play Now
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-11', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/TRY_NOT_TO_RAGE_SKY1.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                October 12, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Try Not To Rage: Sky Official Release!
-              </h3>
-              <div class="news-content" id="news-content-10">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  The long-awaited <strong>Try Not To Rage: Sky</strong> is finally here! The newest game in the <strong>Try Not To Rage</strong> series is now officially available on the <strong>Google Play Store</strong>.
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">
-                    Take your rage challenge to the skies with brand new levels, smoother gameplay, and improved visuals designed to push your patience to the limit.
-                  </p>
-                  <p class="mb-4">
-                    Compete against yourself, test your reflexes, and experience the next evolution of the series that started it all.
-                  </p>
-                  <p class="mb-4">
-                    Download <strong>Try Not To Rage: Sky</strong> today on the <strong>Google Play Store</strong> and see if you can reach the top without losing control!
-                  </p>
-                  <p class="mt-4">
-                    <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share" target="_blank" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 8-16 8V4z" />
-                      </svg>
-                      Play on Google Play
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-10', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/Monetization.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                October 4, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Monetization Is Now Live!
-              </h3>
-              <div class="news-content" id="news-content-9">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  Monetization is now live in our game <strong>Try Not To Rage: Forest</strong> and will gradually be added to all our future titles.
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">
-                    By choosing to watch a few ads, you can support us completely for free and help us keep creating new experiences for everyone.
-                  </p>
-                  <p class="mb-4">
-                    The next <strong>Try Not To Rage</strong> game is also coming very soon. While there are still some small issues to be resolved, our team is working daily to fix them as quickly as possible.
-                  </p>
-                  <p class="mt-4">
-                    Thank you for your continued support.
-                  </p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-9', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/WeAreSorry.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                October 1, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Development Update: Monetization & Delays
-              </h3>
-              <div class="news-content" id="news-content-8">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  At Greek Games Studios, we are currently working on an important new step for our games: implementing in-app monetization.
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">
-                    This means that players will soon be able to experience our games not only as free releases but also with new ways to support our work and access extra features.
-                  </p>
-                  <p class="mb-4">
-                    However, while setting this up we have encountered several technical issues, including Gradle failures, permissions, and other unexpected obstacles.
-                  </p>
-                  <p class="mb-4">
-                    Because of these challenges, the final monetization update for <strong>Try Not To Rage: Forest</strong>, the release of <strong>Try Not To Rage: Sky</strong>, as well as other projects in progress will unfortunately face delays.
-                  </p>
-                  <p class="mb-4">
-                    As a small team, we cannot make everything happen overnight, but we are working every single day to solve these problems and move forward.
-                  </p>
-                  <p class="mt-4">
-                    We sincerely apologize for these delays and thank you for your patience and continued support.
-                  </p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-8', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-1 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/Try_Not_To_Rage_Forest_Release.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                September 8, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Try Not To Rage: Forest
-              </h3>
-              <div class="news-content" id="news-content-7">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  Try Not To Rage: Forest is officially online!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">Try Not To Rage: Forest is officially online with the third trailer.</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>Watch the third trailer and learn the character's back story.</li>
-                    <li>Play the game and try not to rage!</li>
-                  </ul>
-                  <p class="mt-4">Our team is working on the next game for this series.</p>
-                  <p class="mt-4">
-                    <a href="https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest" target="_blank" class="inline-flex items-center px-5 py-2 bg-cyan-600/20 border border-cyan-400/40 rounded-full text-cyan-300 hover:bg-cyan-600/30 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_#00ffff80]">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l16 8-16 8V4z" />
-                      </svg>
-                      Play on Google Play
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-7', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-2 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/25_August.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                August 20, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Try Not To Rage: Forest
-              </h3>
-              <div class="news-content" id="news-content-6">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  The release of Try Not To Rage: Forest will be delayed!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">Due to external factors related to the game's distribution process. Specifically:</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>The approval and publishing process on the Google Play Store is particularly strict and requires additional time.</li>
-                    <li>In addition, the testing cycle with testers must be completed, as it is essential in order to finalize the official release.</li>
-                  </ul>
-                  <p class="mt-4">Our team is closely monitoring these procedures and working to ensure that the game will be available as soon as possible.</p>
-                  <p class="mt-4">We sincerely thank you for your understanding and continued support.</p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-6', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-3 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/TRY_NOT_TO_RAGE_2.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                August 1, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Try Not To Rage: Forest
-              </h3>
-              <div class="news-content" id="news-content-4">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  The second trailer for Try Not To Rage: Forest is officially live!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">Greek Games Studios is thrilled to announce our second trailer for Try Not To Rage: Forest!</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>Check it out to our Youtube channel</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-4', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-4 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/TRY_NOT_TO_RAGE_1.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                June 27, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Try Not To Rage: Forest
-              </h3>
-              <div class="news-content" id="news-content-5">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  The first trailer for Try Not To Rage: Forest is officially live!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">Greek Games Studios is thrilled to announce our first trailer for Try Not To Rage: Forest!</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>Check it out to our Youtube channel</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-5', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-5 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/June162025.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                April 2, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Announces
-              </h3>
-              <div class="news-content" id="news-content-1">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  Something Is Coming… June 16th Marks the Dawn of a New Era by Greek Games Studios
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">June 16th, 2025, Greek Games Studios will unveil something... unexpected</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>A new game announcement</li>
-                    <li>Major game updates</li>
-                    <li>Official NEXIS AI showcase</li>
-                  </ul>
-                  <p class="mt-4">Watch the official trailer now on our social media.</p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-1', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/NEXIS.webp" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                March 13, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                NEXIS AI
-              </h3>
-              <div class="news-content" id="news-content-2">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  NEXIS: The Ultimate AI Experience by Greek Games Studios – Step Into the Future of Intelligence!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">Greek Games Studios proudly presents NEXIS, the most advanced AI we've ever created!</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>Smart responses & data analysis</li>
-                    <li>Real-time natural conversation</li>
-                    <li>Unmatched adaptability for any use</li>
-                  </ul>
-                  <p class="mt-4 font-medium">Are you ready to experience the future?</p>
-                  <p class="mt-1 italic">Stay tuned – something big is coming!</p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-2', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="news-card hidden-news delay-6 relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#111]/80 backdrop-blur-xl border border-cyan-600/30 rounded-3xl overflow-hidden shadow-[0_0_40px_#0ff1] hover:shadow-[0_0_60px_#a855f73] transition-all duration-500 group">
-          <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-          <div class="relative z-20">
-            <div class="overflow-hidden">
-              <img src="/images/Unlimited_RP.png" loading="lazy" alt="News" class="w-full h-64 object-cover sm:rounded-t-3xl group-hover:scale-105 transition-transform duration-700">
-            </div>
-            <div class="p-8">
-              <span class="text-cyan-400 text-sm font-medium inline-flex items-center">
-                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></span>
-                February 3, 2025
-              </span>
-              <h3 class="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent">
-                Unlimited Roleplay Roblox
-              </h3>
-              <div class="news-content" id="news-content-3">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                  Unlimited Roleplay: The Ultimate Greek RP Experience on Roblox – A New Era of Limitless Roleplay Begins!
-                </p>
-                <div class="additional-content mt-4 text-gray-300 text-lg leading-relaxed">
-                  <p class="mb-4">Greek Games Studios παρουσιάζει με υπερηφάνεια:</p>
-                  <p class="mb-4 font-semibold">Unlimited Roleplay – Η απόλυτη εμπειρία Greek RP στο Roblox!</p>
-                  <ul class="list-disc pl-5 space-y-2">
-                    <li>Ρεαλιστική οικονομία και επαγγέλματα</li>
-                    <li>Προηγμένοι μηχανισμοί ρόλων</li>
-                    <li>Ατελείωτες δυνατότητες για κάθε παίκτη</li>
-                  </ul>
-                  <p class="mt-4 font-medium">Είσαι έτοιμος να μπεις σε έναν κόσμο απεριόριστου roleplay;</p>
-                  <p class="mt-1 italic">Μείνε συντονισμένος – κάτι μεγάλο έρχεται!</p>
-                </div>
-              </div>
-              <div class="mt-6">
-                <button onclick="toggleReadMore('news-content-3', this)" class="read-more-btn px-6 py-2 rounded-full bg-cyan-600/10 border border-cyan-400/30 text-cyan-300 hover:bg-cyan-600/20 hover:text-white transition-all duration-300 text-sm font-medium flex items-center hover:shadow-cyan-500/20 hover:translate-x-1">
-                  <span class="more-text">Read More</span>
-                  <span class="less-text">Show Less</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <div id="view-more-container" class="view-more-container text-center">
-          <button id="view-more-btn" class="px-10 py-4 rounded-full bg-gradient-to-r from-cyan-600 to-purple-700 hover:from-cyan-500 hover:to-purple-600 text-lg font-semibold shadow-xl backdrop-blur-lg border border-cyan-400/50 flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50 mx-auto">
-            <span class="relative z-10">View More News</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2">
-              <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-          </button>
+  <!-- ABOUT SECTION -->
+  <section class="section" id="about" itemscope itemtype="https://schema.org/AboutPage">
+    <div class="about-grid" id="aboutGrid">
+      <div class="about-content" id="aboutContent">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Small Team, Big Dreams</h2>
+        <div class="section-line"></div>
+        <p class="about-body">Greek Games Studios is a small independent team working on game development for mobile. We focus on creating fun and engaging experiences while learning and improving with every project. Our aim is to share our ideas through games and slowly grow within the gaming community.</p>
+        <div class="about-socials">
+          <a href="https://www.instagram.com/greekgamesstudios" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.youtube.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+          <a href="https://www.tiktok.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          </a>
+          <a href="https://x.com/greekgamestudio" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://threads.net/@greekgamesstudios" target="_blank" rel="noopener" aria-label="Threads" title="Threads">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.804 1.157 8.554 0 12.14 0h.044c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.781 3.632 2.695 6.54 2.717 1.986-.013 3.758-.47 5.268-1.36 1.633-.979 2.832-2.438 3.565-4.338h-5.97v-2.112h8.362c.08 1.29-.026 2.525-.317 3.669-.729 2.91-2.325 5.27-4.742 7.028-2.326 1.691-5.094 2.58-8.168 2.232z"/></svg>
+          </a>
+          <a href="https://discord.com/invite/UUQcQQQKBY" target="_blank" rel="noopener" aria-label="Discord" title="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+          </a>
+        </div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px;">
+          <a href="/contact-us.html" class="btn-primary" target="_self">Contact Us</a>
+          <a href="/about-us.html" class="btn-secondary" style="font-size: 13px;" target="_self">Learn More</a>
         </div>
       </div>
+      <div class="about-img-wrapper" id="aboutImg">
+        <img src="/images/GGSOffice2.jpg" alt="Greek Games Studios workspace" class="about-img">
+      </div>
     </div>
   </section>
 
-  <footer class="pb-24 px-6 relative">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="animate-fade-in">
-        <h3 class="text-2xl md:text-3xl font-bold text-white mb-6">
-          Ready to join the future of gaming?
-        </h3>
-        <a href="/about-us.html" class="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 to-white text-black font-bold text-md hover:scale-105 transition-all duration-300 border border-gray-800 shadow-lg group hover:shadow-white/30">
-          <span>About Us</span>
-          <span class="ml-2 group-hover:translate-x-1 transition-transform duration-300">
-            →
-          </span>
-        </a>
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios"></div>
+        <div class="footer-brand-name">Greek Games Studios</div>
       </div>
-      
-      <div class="mt-16 pt-8 border-t border-gray-800/50 animate-fade-in">
-        <p class="text-gray-400">
-          © <span id="current-year"></span> Greek Games Studios. All rights reserved.
-        </p>
+      <div class="footer-col">
+        <div class="footer-heading">Games</div>
+        <ul class="footer-links" id="footerGames"></ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">More</div>
+        <ul class="footer-links">
+          <li><a href="/additionalHTMLS/Experimentals.html" target="_self">Experimentals</a></li>
+          <li><a href="/about-us.html" target="_self">About Us</a></li>
+          <li><a href="/support.html" target="_self">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Connect</div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/greekgamesstudios" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.youtube.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+          <a href="https://www.tiktok.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>
+          <a href="https://x.com/greekgamestudio" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://threads.net/@greekgamesstudios" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.804 1.157 8.554 0 12.14 0h.044c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.781 3.632 2.695 6.54 2.717 1.986-.013 3.758-.47 5.268-1.36 1.633-.979 2.832-2.438 3.565-4.338h-5.97v-2.112h8.362c.08 1.29-.026 2.525-.317 3.669-.729 2.91-2.325 5.27-4.742 7.028-2.326 1.691-5.094 2.58-8.168 2.232z"/></svg></a>
+          <a href="https://discord.com/invite/UUQcQQQKBY" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg></a>
+        </div>
+        <div class="footer-handle">@greekgamesstudios</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy.html#privacy-policy" target="_self">Privacy Policy</a></li>
+          <li><a href="/privacy-policy.html#terms-of-services" target="_self">Terms of Services</a></li>
+          <li><a href="/privacy-policy.html#community-guidelines" target="_self">Community Guidelines</a></li>
+        </ul>
       </div>
     </div>
+    <div class="footer-bottom"><div class="footer-copyright" id="footerCopyright"></div></div>
   </footer>
 
-  <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 opacity-0 scale-0 z-40 flex items-center justify-center" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
-
   <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLine1 = document.getElementById('mobile-line1');
-    const mobileLine2 = document.getElementById('mobile-line2');
-    const mobileLine3 = document.getElementById('mobile-line3');
-    
-    let menuOpen = false;
-    
-    mobileMenuButton.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      
-      if (menuOpen) {
-        mobileMenu.classList.remove('hidden');
-        mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
-        mobileLine1.style.backgroundColor = '#fff';
-        mobileLine2.style.opacity = '0';
-        mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
-        mobileLine3.style.backgroundColor = '#fff';
-      } else {
-        mobileMenu.classList.add('hidden');
-        mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
-        mobileLine1.style.backgroundColor = '#9CA3AF';
-        mobileLine2.style.opacity = '1';
-        mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
-        mobileLine3.style.backgroundColor = '#9CA3AF';
-      }
+  // =====================
+  // LENIS SMOOTH SCROLL
+  // =====================
+  const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  // =====================
+  // NAVBAR SCROLL
+  // =====================
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 100);
+  }, { passive: true });
+
+// =====================
+// MOBILE MENU
+// =====================
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('active');
+    if (isOpen) {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        lenis.start();
+    } else {
+        mobileMenu.classList.add('active');
+        hamburger.classList.add('active');
+        lenis.stop();
+    }
+});
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        lenis.start();
     });
+});
 
-    // --- Optimized Star Background using Canvas ---
-    const canvas = document.getElementById('star-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    const stars = [];
+  // =====================
+  // DYNAMIC DATA RENDERING
+  // =====================
+  const androidIcon = `<svg viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0225 3.503C15.5902 8.4799 13.8533 8.1382 12 8.1382c-1.8533 0-3.5902.3417-5.1367.9529L4.8407 5.588a.416.416 0 00-.5676-.1521.4156.4156 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589.3432 18.6617h23.3136c0-4.0028-2.3457-7.475-5.775-9.3403"/></svg>`;
 
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+  async function loadData() {
+    try {
+      const [newsRes, gamesRes] = await Promise.all([
+        fetch('/news.json'),
+        fetch('/games.json')
+      ]);
+      const newsData = await newsRes.json();
+      const games = await gamesRes.json();
+      return { newsData, games };
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
     }
-    window.addEventListener('resize', resize);
-    resize();
+  }
 
-    // Create stars
-    for (let i = 0; i < 100; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.5 + 0.2,
-        speed: (Math.random() * 0.003) + 0.002,
-        direction: Math.random() > 0.5 ? 1 : -1
-      });
+  function renderHeroSlides(slides) {
+    const container = document.getElementById('heroSlidesContainer');
+    const dotsContainer = document.getElementById('carouselDots');
+    if (!slides || !slides.length) return;
+    container.innerHTML = slides.map((slide, i) => {
+      const primary = slide.ctaPrimary ? `<a href="${slide.ctaPrimary.url}" class="btn-primary" ${slide.ctaPrimary.url.startsWith('http') ? 'target="_blank"' : 'target="_self"'}>${slide.ctaPrimary.text}</a>` : '';
+      const secondary = slide.ctaSecondary ? `<a href="${slide.ctaSecondary.url}" class="btn-secondary" ${slide.ctaSecondary.url.startsWith('http') ? 'target="_blank"' : 'target="_self"'}>${slide.ctaSecondary.text}</a>` : '';
+      return `
+        <div class="hero-slide ${i === 0 ? 'active' : ''}" data-slide="${i}">
+          <div class="hero-slide-bg" style="background-image: url('${slide.image}')"></div>
+          <div class="hero-slide-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-category">${slide.category}</div>
+            <h1 class="hero-title">${slide.title}</h1>
+            <p class="hero-subtitle">${slide.subtitle}</p>
+            <div class="hero-ctas">${primary}${secondary}</div>
+          </div>
+        </div>`;
+    }).join('');
+    dotsContainer.innerHTML = slides.map((_, i) => `
+      <button class="carousel-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></button>
+    `).join('');
+  }
+
+  function renderNewsSection(newsItems) {
+    if (!newsItems || !newsItems.length) return;
+    const [featured, ...side] = newsItems;
+    const featImg = featured.images?.featured || featured.image;
+    document.getElementById('newsFeatured').innerHTML = `
+      <div class="news-featured-img" style="background-image: url('${featImg}')"></div>
+      <div class="news-featured-overlay"></div>
+      <div class="news-featured-content">
+        <div class="news-featured-category">${featured.tag}</div>
+        <div class="news-featured-date">${featured.date}</div>
+        <h3 class="news-featured-title">${featured.title}</h3>
+      </div>`;
+    const featuredEl = document.getElementById('newsFeatured');
+    if (featured.url) {
+      featuredEl.style.cursor = 'pointer';
+      featuredEl.addEventListener('click', () => { window.location.href = featured.url; });
     }
+    document.getElementById('newsSide').innerHTML = side.map(item => {
+      const img = item.images?.card || item.image;
+      return `
+        <div class="news-side-card" onclick="window.location.href='${item.url}'">
+          <div class="news-side-img" style="background-image: url('${img}')"></div>
+          <div class="news-side-content">
+            <div class="news-side-category">${item.tag}</div>
+            <div class="news-side-date">${item.date}</div>
+            <div class="news-side-title">${item.title}</div>
+          </div>
+        </div>`;
+    }).join('');
+  }
 
-    // Animate stars
-    function animateStars() {
-      ctx.clearRect(0, 0, width, height);
-      stars.forEach(star => {
-        star.opacity += star.speed * star.direction;
-        if (star.opacity >= 1 || star.opacity <= 0.1) {
-          star.direction *= -1;
-        }
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(animateStars);
-    }
-    animateStars();
-    // ---------------------------------------------
+  function renderGamesGrid(games) {
+    const container = document.getElementById('gamesGrid');
+    if (!games || !games.length) return;
+    container.innerHTML = games.map(game => {
+      const img = game.images?.banner || game.image;
+      const platforms = (game.platforms || []).map(() => androidIcon).join('');
+      return `
+        <div class="game-card" onclick="window.location.href='${game.url || '#'}'">
+          <div class="game-card-img" style="background-image: url('${img}')"></div>
+          <div class="game-card-overlay"></div>
+          <div class="game-card-content">
+            <div class="game-card-tag">${game.category || game.status}</div>
+            <h3 class="game-card-title">${game.title}</h3>
+            <p class="game-card-desc">${game.desc}</p>
+            <div class="game-card-platforms">${platforms}</div>
+          </div>
+        </div>`;
+    }).join('');
+  }
 
-    // Set current year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+function renderFeaturedBanner(game) {
+  if (!game) return;
+  const img = game.images?.banner || game.image;
+  const label = game.bannerLabel || game.status || 'Coming Soon';
+  const desc = game.bannerDesc || game.desc || game.fullDesc;
 
-    // Button shine effect
-    const heroButton = document.querySelector('section.relative a');
-    if (heroButton) {
-      heroButton.addEventListener('mouseenter', () => {
-        const shine = document.createElement('span');
-        shine.className = 'absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent';
-        shine.style.left = '-100%';
-        heroButton.appendChild(shine);
-        
-        setTimeout(() => {
-          shine.style.left = '100%';
-          shine.style.transition = 'left 0.8s ease-out';
-        }, 10);
-        
-        setTimeout(() => {
-          heroButton.removeChild(shine);
-        }, 1000);
-      });
-    }
+  // Κατασκευάζουμε το URL της σελίδας info
+  const infoUrl = `/additionalHTMLS/Infos/${game.id}-info.html`;
 
-    // Add staggered fade-in animations to elements
-    document.addEventListener('DOMContentLoaded', () => {
-      const elements = document.querySelectorAll('.animate-fade-in');
-      elements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(10px)';
-        
-        requestAnimationFrame(() => {
-          setTimeout(() => {
-            el.style.transition = `opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-          }, 50);
-        });
-      });
+  document.getElementById('featuredBannerBg').style.backgroundImage = `url('${img}')`;
+  document.getElementById('featuredBannerContent').innerHTML = `
+    <div class="featured-banner-label">${label}</div>
+    <h2 class="featured-banner-title">${game.title}</h2>
+    <p class="featured-banner-subtitle">${desc}</p>
+    <a href="${infoUrl}" class="btn-secondary" target="_self">Learn More</a>
+  `;
+}
+
+  function renderFooterGames(games) {
+    const container = document.getElementById('footerGames');
+    if (!games || !games.length) return;
+    container.innerHTML = games.map(game => {
+      const url = game.url || `/additionalHTMLS/Infos/${game.id}-info.html`;
+      return `<li><a href="${url}" ${game.url && game.url.startsWith('http') ? 'target="_blank" rel="noopener"' : 'target="_self"'}>${game.title}</a></li>`;
+    }).join('');
+  }
+
+  // =====================
+  // CAROUSEL LOGIC
+  // =====================
+  let slides, dots, currentSlide = 0, isPaused = false, progressInterval;
+  const SLIDE_DURATION = 6000;
+  const progressBar = document.getElementById('carouselProgress');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const hero = document.getElementById('hero');
+
+  function initCarousel() {
+    slides = document.querySelectorAll('.hero-slide');
+    dots = document.querySelectorAll('.carousel-dot');
+    currentSlide = 0;
+    if (!slides.length) return;
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goToSlide(i));
     });
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    hero.addEventListener('mouseenter', () => { isPaused = true; });
+    hero.addEventListener('mouseleave', () => { isPaused = false; });
 
-    // Toggle read more/less functionality
-    function toggleReadMore(contentId, button) {
-      const content = document.getElementById(contentId);
-      content.classList.toggle('expanded');
-      button.classList.toggle('expanded');
-      
-      if (content.classList.contains('expanded')) {
-        setTimeout(() => {
-          content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-      }
-    }
+    // Touch
+    let touchStartX = 0, touchEndX = 0, touchStartY = 0, isSwiping = false;
+    hero.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      isSwiping = true; isPaused = true;
+    }, { passive: true });
+    hero.addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+      const diffX = touchStartX - e.changedTouches[0].screenX;
+      const diffY = touchStartY - e.changedTouches[0].screenY;
+      if (Math.abs(diffX) > Math.abs(diffY)) e.preventDefault();
+    }, { passive: false });
+    hero.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+      isSwiping = false; isPaused = false;
+    }, { passive: true });
 
-    // View More News functionality
-    function initViewMoreNews() {
-      const viewMoreBtn = document.getElementById('view-more-btn');
-      const viewMoreContainer = document.getElementById('view-more-container');
-      const hiddenNewsCards = document.querySelectorAll('.news-card.hidden-news');
-      
-      if (!viewMoreBtn || !hiddenNewsCards.length) return;
-      
-      setTimeout(() => {
-        viewMoreContainer.classList.add('visible');
-      }, 1000);
-      
-      viewMoreBtn.addEventListener('click', function() {
-        hiddenNewsCards.forEach(card => {
-          card.classList.remove('hidden-news');
-          card.classList.add('show-all');
-          
-          setTimeout(() => {
-            card.classList.add('visible');
-          }, 100);
-        });
-        
-        viewMoreContainer.style.display = 'none';
-        
-        setTimeout(() => {
-          hiddenNewsCards[0].scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }, 300);
-      });
-    }
+    resetAutoPlay();
+  }
 
-    // Scroll animation for news cards using Intersection Observer
-    function initScrollAnimations() {
-      const newsCards = document.querySelectorAll('.news-card');
-      const viewMoreContainer = document.getElementById('view-more-container');
-      
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      
-      newsCards.forEach(card => observer.observe(card));
-      if (viewMoreContainer) observer.observe(viewMoreContainer);
-    }
+  function goToSlide(index) {
+    if (!slides.length) return;
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    resetAutoPlay();
+  }
+  function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+  function prevSlide() { goToSlide((currentSlide - 1 + slides.length) % slides.length); }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      initScrollAnimations();
-      initViewMoreNews();
+  function startProgress() {
+    let startTime = Date.now(), pausedTime = 0, lastPauseStart = 0;
+    progressInterval = setInterval(() => {
+      if (isPaused) { if (lastPauseStart === 0) lastPauseStart = Date.now(); return; }
+      if (lastPauseStart > 0) { pausedTime += Date.now() - lastPauseStart; lastPauseStart = 0; }
+      const elapsed = Date.now() - startTime - pausedTime;
+      const progress = Math.min(elapsed / SLIDE_DURATION, 1);
+      progressBar.style.width = (progress * 100) + '%';
+      if (progress >= 1) { nextSlide(); startTime = Date.now(); pausedTime = 0; }
+    }, 50);
+  }
+  function resetProgress() { progressBar.style.width = '0%'; }
+  function resetAutoPlay() { clearInterval(progressInterval); resetProgress(); startProgress(); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    else if (e.key === 'ArrowRight') nextSlide();
+  });
+
+  // =====================
+  // GSAP ANIMATIONS
+  // =====================
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.navbar', { opacity: 0, duration: 0.4, ease: 'power3.out' });
+  gsap.from('.hero', { opacity: 0, duration: 0.6, delay: 0.2, ease: 'power3.out' });
+
+  function initAnimations() {
+    gsap.from('#newsHeader', { scrollTrigger: { trigger: '#news', start: 'top 80%', toggleActions: 'play none none none' }, y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.from('#newsFeatured', { scrollTrigger: { trigger: '#newsGrid', start: 'top 80%', toggleActions: 'play none none none' }, x: -40, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.from('#newsSide .news-side-card', { scrollTrigger: { trigger: '#newsGrid', start: 'top 80%', toggleActions: 'play none none none' }, x: 20, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' });
+    gsap.from('#gamesHeader', { scrollTrigger: { trigger: '#games', start: 'top 80%', toggleActions: 'play none none none' }, y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.from('#gamesGrid .game-card', { scrollTrigger: { trigger: '#gamesGrid', start: 'top 75%', toggleActions: 'play none none none' }, y: 50, opacity: 0, duration: 0.7, stagger: 0.2, ease: 'power3.out' });
+    gsap.from('.featured-banner-content', { scrollTrigger: { trigger: '#featuredBanner', start: 'top 80%', toggleActions: 'play none none none' }, y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.to('.featured-banner-bg', { scrollTrigger: { trigger: '#featuredBanner', start: 'top bottom', end: 'bottom top', scrub: true }, yPercent: -20, ease: 'none' });
+    gsap.from('#aboutContent', { scrollTrigger: { trigger: '#about', start: 'top 75%', toggleActions: 'play none none none' }, y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.from('#aboutImg', { scrollTrigger: { trigger: '#about', start: 'top 75%', toggleActions: 'play none none none' }, scale: 0.95, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.from('.footer-top > div', { scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none none' }, y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' });
+  }
+
+  // =====================
+  // SMOOTH SCROLL
+  // =====================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) lenis.scrollTo(target, { offset: -64 });
     });
+  });
 
-    // Performance optimization: Throttled Scroll event
-    let ticking = false;
-    const backToTopButton = document.getElementById('backToTop');
-    
-    function updateOnScroll() {
-      // Show/hide Back To Top
-      if (backToTopButton) {
-        if (window.scrollY > 500) {
-          backToTopButton.classList.remove('opacity-0', 'scale-0');
-          backToTopButton.classList.add('opacity-100', 'scale-100');
-        } else {
-          backToTopButton.classList.remove('opacity-100', 'scale-100');
-          backToTopButton.classList.add('opacity-0', 'scale-0');
-        }
-      }
-      ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateOnScroll);
-        ticking = true;
-      }
-    });
-    
-    // Scroll to top when clicked
-    if (backToTopButton) {
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
+  // =====================
+  // COPYRIGHT YEAR
+  // =====================
+  const copyrightEl = document.getElementById('footerCopyright');
+  if (copyrightEl) copyrightEl.innerHTML = '&copy; ' + new Date().getFullYear() + ' Greek Games Studios. All rights reserved.';
 
-    // Optimized Notification Bar functionality with Timestamp LocalStorage
-    document.addEventListener('DOMContentLoaded', function() {
-      const notificationBar = document.getElementById('notification-bar');
-      const closeNotification = document.getElementById('close-notification');
-      
-      // Get saved data from LocalStorage
-      const dismissDataStr = localStorage.getItem('notificationDismissedData');
-      let shouldShow = true;
-      
-      if (dismissDataStr) {
-        try {
-          const dismissData = JSON.parse(dismissDataStr);
-          const now = new Date().getTime();
-          // Check if 24 hours have passed (24 * 60 * 60 * 1000 ms)
-          if (now - dismissData.timestamp < 86400000) {
-            shouldShow = false;
-          }
-        } catch (e) {
-          shouldShow = true; // Parse error, show anyway
-        }
-      }
-      
-      // Show notification after a short delay
-      if (shouldShow && notificationBar) {
-        setTimeout(() => {
-          notificationBar.classList.remove('transform', '-translate-y-full');
-          notificationBar.classList.add('translate-y-0');
-        }, 1500);
-      }
-      
-      // Close notification functionality
-      if (closeNotification && notificationBar) {
-        closeNotification.addEventListener('click', function() {
-          notificationBar.classList.add('transform', '-translate-y-full');
-          notificationBar.classList.remove('translate-y-0');
-          
-          // Save actual timestamp so it works across sessions
-          const data = { timestamp: new Date().getTime() };
-          localStorage.setItem('notificationDismissedData', JSON.stringify(data));
-        });
-      }
+// =====================
+// CROSS-DOCUMENT TRANSITIONS – Universal with MutationObserver
+// =====================
+(function initTransitions() {
+  const overlay = document.getElementById('transitionOverlay');
+  if (!overlay) return;
+
+  const NAV_KEY = 'fromAnyPage';
+
+  // ─── ΑΦΙΞΗ ──────────────────────────────────────────────
+  if (sessionStorage.getItem(NAV_KEY) === 'true') {
+    sessionStorage.removeItem(NAV_KEY);
+    overlay.classList.add('revealing');
+    setTimeout(() => overlay.classList.remove('revealing'), 700);
+  }
+
+  // ─── ΣΥΝΑΡΤΗΣΗ ΠΟΥ ΠΡΟΣΘΕΤΕΙ LISTENERS ────────────────
+  function attachTransitionListeners() {
+    const path = window.location.pathname;
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      if (href === path || href === path.replace('.html', '')) return;
+      if (href.includes('#') && href.split('#')[0] === path) return;
+
+      // Αφαιρούμε παλιό listener (για να μη διπλασιάζεται)
+      link.removeEventListener('click', transitionHandler);
+      link.addEventListener('click', transitionHandler);
     });
+  }
+
+  function transitionHandler(e) {
+    e.preventDefault();
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('animating');
+    sessionStorage.setItem('fromAnyPage', 'true');
+    setTimeout(() => window.location.href = this.getAttribute('href'), 500);
+  }
+
+  // ─── ΑΡΧΙΚΗ ΠΡΟΣΘΗΚΗ ──────────────────────────────────
+  attachTransitionListeners();
+
+  // ─── MUTATION OBSERVER ΓΙΑ ΝΕΟΥΣ ΣΥΝΔΕΣΜΟΥΣ ──────────
+  const observer = new MutationObserver(() => {
+    attachTransitionListeners();
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+})();
+
+  // =====================
+  // INIT
+  // =====================
+  async function init() {
+    const data = await loadData();
+    if (!data) return;
+
+    const { newsData, games } = data;
+
+    // Hero slides from news.json heroSlides
+    renderHeroSlides(newsData.heroSlides || []);
+
+    // News: 4 most recent
+    const allNews = [...(newsData.news || [])].sort((a, b) => new Date(b.date) - new Date(a.date));
+    renderNewsSection(allNews.slice(0, 4));
+
+    // Games: homePage=true
+    const homeGames = games.filter(g => g.homePage);
+    renderGamesGrid(homeGames);
+
+    // Featured banner
+    const featuredGame = games.find(g => g.featured);
+    renderFeaturedBanner(featuredGame);
+
+    // Footer games
+    const footerGames = games.filter(g => g.footer);
+    renderFooterGames(footerGames);
+
+    // Init carousel & animations
+    initCarousel();
+    initAnimations();
+  }
+
+  init();
+
+
+
   </script>
 </body>
 </html>

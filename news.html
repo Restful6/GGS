@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Games - Greek Games Studios</title>
-  <meta name="description" content="Discover all games by Greek Games Studios. From the rage-inducing Try Not To Rage series to upcoming titles like Shapes Into Crime and Tech Company Tycoon. Play our indie mobile games on Android.">
+  <title>News - Greek Games Studios</title>
+  <meta name="description" content="Stay updated with the latest news, updates, and announcements from Greek Games Studios. Discover new game releases, behind-the-scenes content, and community highlights.">
   <meta name="author" content="Greek Games Studios">
-  <link rel="canonical" href="https://www.greekgamesstudios.com/games.html">
+  <link rel="canonical" href="https://www.greekgamesstudios.com/news.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Our Games - Greek Games Studios">
-  <meta name="twitter:description" content="Discover all games by Greek Games Studios. Play our indie mobile games on Android.">
+  <meta name="twitter:title" content="News - Greek Games Studios">
+  <meta name="twitter:description" content="Stay updated with the latest news from Greek Games Studios.">
   <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <meta property="og:title" content="Our Games - Greek Games Studios" />
-  <meta property="og:description" content="Discover all games by Greek Games Studios. From the rage-inducing Try Not To Rage series to upcoming titles. Play on Android." />
+  <meta property="og:title" content="News - Greek Games Studios" />
+  <meta property="og:description" content="Stay updated with the latest news, updates, and announcements from Greek Games Studios." />
   <meta property="og:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png" />
-  <meta property="og:url" content="https://www.greekgamesstudios.com/games.html" />
+  <meta property="og:url" content="https://www.greekgamesstudios.com/news.html" />
   <meta property="og:site_name" content="Greek Games Studios" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,13 +42,6 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-
-    /* ========== CROSS-DOCUMENT TRANSITION ========== */
-    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
-    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
-    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
-    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
 
     /* ========== NAVBAR ========== */
     .navbar { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; }
@@ -81,21 +73,28 @@
     .mobile-menu a { font-size: 20px; font-weight: 700; color: var(--text-secondary); transition: color 0.2s ease; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 32px; border-radius: 100px; min-width: 220px; text-align: center; }
     .mobile-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
 
+    /* ========== CROSS-DOCUMENT TRANSITION OVERLAY ========== */
+    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
+    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
     /* ========== HERO ========== */
-    .games-hero { position: relative; width: 100%; min-height: 40vh; display: flex; align-items: flex-end; padding: 120px 48px 60px; overflow: hidden; }
-    .games-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13, 94, 175, 0.15) 0%, rgba(0, 212, 255, 0.08) 50%, transparent 100%); z-index: 0; }
-    .games-hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .games-hero-particles .particle { position: absolute; width: 3px; height: 3px; background: var(--cyan); border-radius: 50%; opacity: 0.3; animation: float 8s ease-in-out infinite; }
+    .news-hero { position: relative; width: 100%; min-height: 45vh; display: flex; align-items: flex-end; padding: 120px 48px 60px; overflow: hidden; }
+    .news-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13, 94, 175, 0.15) 0%, rgba(0, 212, 255, 0.08) 50%, transparent 100%); z-index: 0; }
+    .news-hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .news-hero-particles .particle { position: absolute; width: 3px; height: 3px; background: var(--cyan); border-radius: 50%; opacity: 0.3; animation: float 8s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-20px) translateX(10px); } 50% { transform: translateY(-10px) translateX(-10px); } 75% { transform: translateY(-30px) translateX(5px); } }
-    .games-hero-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%; }
-    .games-hero-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; opacity: 0; transform: translateY(20px); }
-    .games-hero-title { font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; opacity: 0; transform: translateY(30px); }
-    .games-hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.6; opacity: 0; transform: translateY(20px); }
-    .games-hero-meta { display: flex; align-items: center; gap: 24px; margin-top: 24px; opacity: 0; transform: translateY(20px); }
-    .games-hero-stat { display: flex; align-items: center; gap: 8px; }
-    .games-hero-stat-value { font-size: 24px; font-weight: 700; color: white; }
-    .games-hero-stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .games-hero-stat-divider { width: 1px; height: 32px; background: var(--border-subtle); }
+    .news-hero-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%; }
+    .news-hero-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; opacity: 0; transform: translateY(20px); }
+    .news-hero-title { font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; opacity: 0; transform: translateY(30px); }
+    .news-hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.6; opacity: 0; transform: translateY(20px); }
+    .news-hero-meta { display: flex; align-items: center; gap: 24px; margin-top: 24px; opacity: 0; transform: translateY(20px); }
+    .news-hero-stat { display: flex; align-items: center; gap: 8px; }
+    .news-hero-stat-value { font-size: 24px; font-weight: 700; color: white; }
+    .news-hero-stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .news-hero-stat-divider { width: 1px; height: 32px; background: var(--border-subtle); }
 
     /* ========== FILTER BAR ========== */
     .filter-bar { position: sticky; top: 64px; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); padding: 16px 48px; }
@@ -114,33 +113,29 @@
     .filter-sort-select { padding: 8px 32px 8px 14px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
     .filter-sort-select:focus { border-color: var(--border-accent); }
 
-    /* ========== GAMES GRID ========== */
-    .games-section { max-width: 1280px; margin: 0 auto; padding: 48px 48px 80px; }
-    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
-    .game-card { position: relative; background: var(--bg-card); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-subtle); cursor: pointer; transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1); opacity: 0; transform: translateY(40px); }
-    .game-card:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 40px rgba(0, 212, 255, 0.06); border-color: rgba(0, 212, 255, 0.15); }
-    .game-card-img-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
-    .game-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-    .game-card:hover .game-card-img { transform: scale(1.08); }
-    .game-card-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); }
-    .game-card-status { position: absolute; top: 16px; right: 16px; padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; z-index: 2; backdrop-filter: blur(8px); }
-    .game-card-status.available { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .game-card-status.coming-soon { background: rgba(0, 212, 255, 0.15); color: var(--cyan); border: 1px solid rgba(0, 212, 255, 0.25); }
-    .game-card-status.in-development { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.25); }
-    .game-card-category-tag { position: absolute; top: 16px; left: 16px; padding: 6px 14px; border-radius: 100px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); color: var(--cyan); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; z-index: 2; }
-    .game-card-body { padding: 24px; }
-    .game-card-icon { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; margin-bottom: 16px; border: 2px solid var(--border-subtle); }
-    .game-card-title { font-size: 22px; font-weight: 700; color: white; line-height: 1.35; margin-bottom: 10px; transition: color 0.2s ease; }
-    .game-card:hover .game-card-title { color: var(--cyan); }
-    .game-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 16px; }
-    .game-card-platforms { display: flex; gap: 8px; align-items: center; }
-    .game-card-platforms svg { width: 18px; height: 18px; fill: var(--text-muted); }
-    .game-card-platforms span { font-size: 12px; color: var(--text-muted); }
-    .game-card-arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
-    .game-card:hover .game-card-arrow { background: var(--cyan); }
-    .game-card-arrow svg { width: 14px; height: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
-    .game-card:hover .game-card-arrow svg { color: var(--bg-primary); }
-
+    /* ========== NEWS GRID ========== */
+    .news-section { max-width: 1280px; margin: 0 auto; padding: 48px 48px 80px; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
+    .news-card { position: relative; background: var(--bg-card); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-subtle); cursor: pointer; transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1); opacity: 0; transform: translateY(40px); }
+    .news-card:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 40px rgba(0, 212, 255, 0.06); border-color: rgba(0, 212, 255, 0.15); }
+    .news-card-img-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }
+    .news-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+    .news-card:hover .news-card-img { transform: scale(1.08); }
+    .news-card-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%); }
+    .news-card-category { position: absolute; top: 16px; left: 16px; padding: 6px 14px; border-radius: 100px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); color: var(--cyan); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; z-index: 2; }
+    .news-card-body { padding: 24px; }
+    .news-card-date { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .news-card-date svg { width: 14px; height: 14px; opacity: 0.5; }
+    .news-card-title { font-size: 20px; font-weight: 700; color: white; line-height: 1.35; margin-bottom: 12px; transition: color 0.2s ease; }
+    .news-card:hover .news-card-title { color: var(--cyan); }
+    .news-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 16px; }
+    .news-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+    .news-card-readtime { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+    .news-card-readtime svg { width: 14px; height: 14px; opacity: 0.5; }
+    .news-card-arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+    .news-card:hover .news-card-arrow { background: var(--cyan); }
+    .news-card-arrow svg { width: 14px; height: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
+    .news-card:hover .news-card-arrow svg { color: var(--bg-primary); }
 
     /* ========== EMPTY STATE ========== */
     .empty-state { display: none; flex-direction: column; align-items: center; justify-content: center; padding: 80px 24px; text-align: center; }
@@ -189,89 +184,35 @@
     .footer-bottom { max-width: 1280px; margin: 0 auto; padding: 24px 24px; display: flex; justify-content: center; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-copyright { font-size: 13px; color: var(--text-muted); text-align: center; }
 
-
-
-    /* ========== MODALS ========== */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 5000; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-    .modal-overlay.active { opacity: 1; pointer-events: all; }
-    .modal-container { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; width: 100%; max-width: 900px; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column; transform: scale(0.95) translateY(20px); transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
-    .modal-overlay.active .modal-container { transform: scale(1) translateY(0); }
-    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; border-bottom: 1px solid var(--border-subtle); }
-    .modal-title { font-size: 20px; font-weight: 700; color: white; }
-    .modal-close { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-secondary); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
-    .modal-close:hover { background: var(--cyan); color: var(--bg-primary); border-color: var(--cyan); }
-    .modal-body { padding: 32px; overflow-y: auto; flex: 1; }
-    .trailer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    .trailer-card { background: var(--bg-secondary); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease; }
-    .trailer-card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
-    .trailer-thumbnail { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg-card); overflow: hidden; }
-    .trailer-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-    .trailer-card:hover .trailer-thumbnail img { transform: scale(1.05); }
-    .trailer-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); transition: background 0.2s ease; }
-    .trailer-card:hover .trailer-play { background: rgba(0,0,0,0.2); }
-    .trailer-play svg { width: 48px; height: 48px; color: white; opacity: 0.9; transition: transform 0.2s ease, opacity 0.2s ease; }
-    .trailer-card:hover .trailer-play svg { transform: scale(1.1); opacity: 1; }
-    .trailer-info { padding: 16px; }
-    .trailer-game { font-size: 12px; color: var(--cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-    .trailer-title { font-size: 15px; font-weight: 600; color: white; line-height: 1.4; }
-    .wallpaper-body { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 48px 32px; }
-    .wallpaper-icon { width: 64px; height: 64px; color: var(--cyan); margin-bottom: 20px; opacity: 0.8; }
-    .wallpaper-title { font-size: 24px; font-weight: 700; color: white; margin-bottom: 12px; }
-    .wallpaper-text { font-size: 15px; color: var(--text-secondary); max-width: 400px; line-height: 1.6; }
-
-    /* ========== GAME CARD ACTIONS ========== */
-    .game-card-footer { padding-top: 16px; border-top: 1px solid var(--border-subtle); }
-    .game-card-actions { display: flex; gap: 8px; }
-    .game-card-action { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; white-space: nowrap; border: none; cursor: pointer; }
-    .game-card-action svg { width: 13px; height: 13px; flex-shrink: 0; }
-    .game-card-action.play { background: rgba(16, 185, 129, 0.15); color: #10b981; }
-    .game-card-action.play:hover { background: rgba(16, 185, 129, 0.25); }
-    .game-card-action.play.disabled { opacity: 0.4; cursor: not-allowed; }
-    .game-card-action.info { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
-    .game-card-action.info:hover { background: var(--bg-card-hover); color: var(--text-primary); border-color: rgba(255,255,255,0.15); }
-
-
-    /* ========== MEDIA SECTION ========== */
-    .media-section { max-width: 1280px; margin: 0 auto; padding: 0 48px 80px; }
-    .media-section-inner { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 48px; text-align: center; }
-    .media-section-title { font-size: 28px; font-weight: 700; color: white; margin-bottom: 24px; }
-    .media-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .media-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 12px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.2s ease; }
-    .media-btn:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 40px rgba(0, 212, 255, 0.06); border-color: rgba(0, 212, 255, 0.15); }
-    .media-btn svg { width: 20px; height: 20px; color: var(--cyan); }
-
     /* ========== RESPONSIVE ========== */
     @media (max-width: 1024px) {
-      .games-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+      .news-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
       .footer-top { grid-template-columns: repeat(3, 1fr); }
       .filter-sort { margin-left: 0; width: 100%; }
     }
     @media (max-width: 768px) {
       .navbar-links { display: none; }
       .hamburger { display: flex; }
-      .games-hero { padding: 100px 24px 40px; min-height: 40vh; }
-      .games-hero-meta { flex-wrap: wrap; gap: 12px; }
-      .games-hero-stat-divider { display: none; }
+      .news-hero { padding: 100px 24px 40px; min-height: 35vh; }
+      .news-hero-meta { flex-wrap: wrap; gap: 12px; }
+      .news-hero-stat-divider { display: none; }
       .filter-bar { padding: 12px 24px; }
       .filter-bar-inner { gap: 12px; }
       .filter-search { max-width: 100%; min-width: 100%; }
       .filter-sort { width: 100%; }
       .filter-sort-select { width: 100%; }
-      .games-section { padding: 32px 24px 60px; }
-      .games-grid { grid-template-columns: 1fr; gap: 20px; }
-      .media-section { padding: 0 24px 60px; }
-      .media-section-inner { padding: 32px 24px; }
-      .media-section-title { font-size: 22px; }
+      .news-section { padding: 32px 24px 60px; }
+      .news-grid { grid-template-columns: 1fr; gap: 20px; }
       .footer-top { grid-template-columns: 1fr; gap: 32px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-      .game-card { opacity: 1; transform: none; }
-      .games-hero-label, .games-hero-title, .games-hero-subtitle, .games-hero-meta { opacity: 1; transform: none; }
+      .news-card { opacity: 1; transform: none; }
+      .news-hero-label, .news-hero-title, .news-hero-subtitle, .news-hero-meta { opacity: 1; transform: none; }
     }
   </style>
-  <meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#000000">
   <meta name="msapplication-TileColor" content="#0D5EAF">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -285,17 +226,16 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:site" content="@greekgamestudio">
   <meta name="twitter:creator" content="@greekgamestudio">
-  <meta name="twitter:image:alt" content="Greek Games Studios Games">
-  <meta name="keywords" content="Greek Games Studios, indie games, mobile games, Try Not To Rage, Shapes Into Crime, Tech Company Tycoon, Android games, platformer games, puzzle games, simulation games">
+  <meta name="twitter:image:alt" content="Greek Games Studios News">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
   <meta name="bingbot" content="index, follow">
-  <meta name="ai-seo-content-type" content="game-catalog">
-  <meta name="ai-seo-primary-topic" content="indie mobile games catalog, Android game collection, Greek game developer portfolio">
-  <meta name="ai-seo-audience" content="mobile gamers, indie game enthusiasts, Android users, platformer fans">
-  <meta name="ai-seo-content-summary" content="Complete catalog of Greek Games Studios mobile games including Try Not To Rage series, Shapes Into Crime, Tech Company Tycoon, and GGS Hub.">
-  <meta name="ai-seo-entity-type" content="VideoGame, SoftwareApplication, Organization">
-  <meta name="ai-seo-key-entities" content="Greek Games Studios, Try Not To Rage, Shapes Into Crime, Tech Company Tycoon, GGS Hub, indie games, mobile games">
+  <meta name="ai-seo-content-type" content="newsroom">
+  <meta name="ai-seo-primary-topic" content="game development news, indie studio updates, mobile game releases">
+  <meta name="ai-seo-audience" content="gamers, game developers, mobile gaming community">
+  <meta name="ai-seo-content-summary" content="Latest news and updates from Greek Games Studios including new game releases, development updates, and community announcements.">
+  <meta name="ai-seo-entity-type" content="NewsArticle, Organization">
+  <meta name="ai-seo-key-entities" content="Greek Games Studios, Try Not To Rage, Play & Demos, Shapes Into Crime, mobile games">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#0D5EAF">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
@@ -305,15 +245,15 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Our Games - Greek Games Studios",
-    "description": "Discover all games by Greek Games Studios. From the rage-inducing Try Not To Rage series to upcoming titles like Shapes Into Crime and Tech Company Tycoon.",
-    "url": "https://www.greekgamesstudios.com/games.html",
+    "@type": "WebPage",
+    "name": "News - Greek Games Studios",
+    "description": "Stay updated with the latest news, updates, and announcements from Greek Games Studios.",
+    "url": "https://www.greekgamesstudios.com/news.html",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.greekgamesstudios.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://www.greekgamesstudios.com/games.html" }
+        { "@type": "ListItem", "position": 2, "name": "News", "item": "https://www.greekgamesstudios.com/news.html" }
       ]
     },
     "mainEntity": {
@@ -323,62 +263,39 @@
           "@type": "ListItem",
           "position": 1,
           "item": {
-            "@type": "VideoGame",
-            "name": "Try Not To Rage: Forest",
-            "description": "Enter the Forest of Fury in this intense 2D rage game! With 25 challenging levels, precise jumps and deadly traps await.",
-            "genre": "Platformer",
-            "gamePlatform": "Android",
-            "applicationCategory": "Game",
-            "operatingSystem": "Android",
-            "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottorageforest",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
-            "author": { "@type": "Organization", "name": "Greek Games Studios" }
+            "@type": "NewsArticle",
+            "headline": "Play & Demos v2: Major Update!",
+            "datePublished": "2026-05-08",
+            "description": "A massive update packed with optimizations, reworks, and 5 brand new mini games!",
+            "url": "https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html",
+            "author": { "@type": "Organization", "name": "Greek Games Studios" },
+            "publisher": { "@type": "Organization", "name": "Greek Games Studios", "logo": { "@type": "ImageObject", "url": "https://www.greekgamesstudios.com/images/ggs-logo.png" } }
           }
         },
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
-            "@type": "VideoGame",
-            "name": "Try Not To Rage: Sky",
-            "description": "Take the challenge to new heights in this sky-themed rage game! Navigate through floating islands and master precision jumps.",
-            "genre": "Platformer",
-            "gamePlatform": "Android",
-            "applicationCategory": "Game",
-            "operatingSystem": "Android",
-            "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
-            "author": { "@type": "Organization", "name": "Greek Games Studios" }
+            "@type": "NewsArticle",
+            "headline": "Play & Demos Is Now Live!",
+            "datePublished": "2026-02-20",
+            "description": "Play & Demos is now live on our website. Access mini games, prototypes and demos.",
+            "url": "https://greekgamesstudios.com/additionalHTMLS/WebLauncher/WebLauncher.html",
+            "author": { "@type": "Organization", "name": "Greek Games Studios" },
+            "publisher": { "@type": "Organization", "name": "Greek Games Studios" }
           }
         },
         {
           "@type": "ListItem",
           "position": 3,
           "item": {
-            "@type": "VideoGame",
-            "name": "Shapes Into Crime",
-            "description": "An immersive crime-themed experience where every shape hides a story, a mystery, or a criminal underworld waiting to be uncovered.",
-            "genre": "Puzzle",
-            "gamePlatform": "Android",
-            "applicationCategory": "Game",
-            "operatingSystem": "Android",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder" },
-            "author": { "@type": "Organization", "name": "Greek Games Studios" }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "item": {
-            "@type": "VideoGame",
-            "name": "Tech Company Tycoon",
-            "description": "Start from a small office making video games and build your own tech empire! Develop devices, consoles, cars, and robots.",
-            "genre": "Simulation",
-            "gamePlatform": "Android",
-            "applicationCategory": "Game",
-            "operatingSystem": "Android",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder" },
-            "author": { "@type": "Organization", "name": "Greek Games Studios" }
+            "@type": "NewsArticle",
+            "headline": "Try Not To Rage: Sky Official Release!",
+            "datePublished": "2025-10-12",
+            "description": "The newest game in the Try Not To Rage series is now officially available on Google Play.",
+            "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.trynottoragesky&pcampaignid=web_share",
+            "author": { "@type": "Organization", "name": "Greek Games Studios" },
+            "publisher": { "@type": "Organization", "name": "Greek Games Studios" }
           }
         }
       ]
@@ -393,7 +310,7 @@
     "name": "Main Navigation",
     "hasPart": [
       { "@type": "SiteNavigationElement", "name": "Home", "url": "https://www.greekgamesstudios.com/" },
-      { "@type": "SiteNavigationElement", "name": "Games", "url": "https://www.greekgamesstudios.com/games.html" },
+      { "@type": "SiteNavigationElement", "name": "Games", "url": "https://www.greekgamesstudios.com/#games" },
       { "@type": "SiteNavigationElement", "name": "News", "url": "https://www.greekgamesstudios.com/news.html" },
       { "@type": "SiteNavigationElement", "name": "About", "url": "https://www.greekgamesstudios.com/#about" },
       { "@type": "SiteNavigationElement", "name": "Support", "url": "https://www.greekgamesstudios.com/support.html" }
@@ -402,8 +319,9 @@
   </script>
 
 <base target="_blank">
+<base target="_blank">
 </head>
-<body itemscope itemtype="https://schema.org/CollectionPage">
+<body itemscope itemtype="https://schema.org/WebPage">
 
   <!-- Cross-Document Transition Overlay -->
   <div class="page-transition-overlay" id="transitionOverlay"></div>
@@ -415,8 +333,8 @@
         <img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios">
       </a>
       <div class="navbar-links">
-        <a href="/index.html" class="navbar-link" target="_self">Home</a>
-        <a href="/news.html" class="navbar-link" target="_self">News</a>
+        <a href="/index.html" class="navbar-link nav-transition" data-href="/index.html" target="_self">Home</a>
+        <a href="/games.html" class="navbar-link nav-transition" data-href="/games.html" target="_self">Games</a>
         <a href="/about-us.html" class="navbar-link" target="_self">About</a>
         <a href="/contact-us.html" class="navbar-link" target="_self">Contact</a>
         <a href="/support.html" class="navbar-link" target="_self">Support</a>
@@ -429,41 +347,38 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/index.html" class="mobile-link" target="_self">Home</a>
-    <a href="/games.html" class="mobile-link" target="_self">Games</a>
-    <a href="/news.html" class="mobile-link" target="_self">News</a>
+    <a href="/index.html" class="mobile-link nav-transition" data-href="/index.html" target="_self">Home</a>
+    <a href="/games.html" class="mobile-link nav-transition" data-href="/games.html" target="_self">Games</a>
     <a href="/about-us.html" class="mobile-link" target="_self">About</a>
     <a href="/contact-us.html" class="mobile-link" target="_self">Contact</a>
     <a href="/support.html" class="mobile-link" target="_self">Support</a>
   </div>
 
   <!-- HERO -->
-  <section class="games-hero" id="gamesHero">
-    <div class="games-hero-bg"></div>
-    <div class="games-hero-particles" id="heroParticles"></div>
-    <div class="games-hero-content">
-      <div class="games-hero-label" id="heroLabel">Game Library</div>
-      <h1 class="games-hero-title" id="heroTitle">Our Games</h1>
-      <p class="games-hero-subtitle" id="heroSubtitle">Explore our complete collection of indie mobile games, from released titles to upcoming projects. Every game is crafted with passion by our small team in Greece.</p>
-      <div class="games-hero-meta" id="heroMeta">
-        <div class="games-hero-stat">
-          <span class="games-hero-stat-value" id="statTotal">0</span>
-          <span class="games-hero-stat-label">Games</span>
+  <section class="news-hero" id="newsHero">
+    <div class="news-hero-bg"></div>
+    <div class="news-hero-particles" id="heroParticles"></div>
+    <div class="news-hero-content">
+      <div class="news-hero-label" id="heroLabel">Newsroom</div>
+      <h1 class="news-hero-title" id="heroTitle">All News & Updates</h1>
+      <p class="news-hero-subtitle" id="heroSubtitle">Stay in the loop with the latest announcements, game updates, behind-the-scenes stories and community highlights from Greek Games Studios.</p>
+      <div class="news-hero-meta" id="heroMeta">
+        <div class="news-hero-stat">
+          <span class="news-hero-stat-value" id="statTotal">0</span>
+          <span class="news-hero-stat-label">Articles</span>
         </div>
-        <div class="games-hero-stat-divider"></div>
-        <div class="games-hero-stat">
-          <span class="games-hero-stat-value" id="statAvailable">0</span>
-          <span class="games-hero-stat-label">Available</span>
+        <div class="news-hero-stat-divider"></div>
+        <div class="news-hero-stat">
+          <span class="news-hero-stat-value" id="statCategories">0</span>
+          <span class="news-hero-stat-label">Categories</span>
         </div>
-        <div class="games-hero-stat-divider"></div>
-        <div class="games-hero-stat">
-          <span class="games-hero-stat-value" id="statUpcoming">0</span>
-          <span class="games-hero-stat-label">Coming Soon</span>
+        <div class="news-hero-stat-divider"></div>
+        <div class="news-hero-stat">
+          <span class="news-hero-stat-value" id="statThisYear">0</span>
+          <span class="news-hero-stat-label">This Year</span>
         </div>
       </div>
     </div>
-
-
   </section>
 
   <!-- FILTER BAR -->
@@ -471,7 +386,7 @@
     <div class="filter-bar-inner">
       <div class="filter-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="searchInput" placeholder="Search games..." autocomplete="off">
+        <input type="text" id="searchInput" placeholder="Search news..." autocomplete="off">
       </div>
       <div class="filter-pills" id="categoryPills">
         <button class="filter-pill active" data-category="all">All</button>
@@ -479,27 +394,27 @@
       <div class="filter-sort">
         <span class="filter-sort-label">Sort</span>
         <select class="filter-sort-select" id="sortSelect">
-          <option value="default">Default</option>
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
           <option value="az">A-Z</option>
           <option value="za">Z-A</option>
-          <option value="status">Status</option>
         </select>
       </div>
     </div>
   </div>
 
-  <!-- GAMES SECTION -->
-  <section class="games-section">
+  <!-- NEWS SECTION -->
+  <section class="news-section">
     <!-- Loading State -->
     <div class="loading-state" id="loadingState">
       <div class="loading-spinner"></div>
-      <div class="loading-text">Loading games...</div>
+      <div class="loading-text">Loading news...</div>
     </div>
 
     <!-- Error State -->
     <div class="error-state" id="errorState">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-      <div class="error-state-title">Failed to load games</div>
+      <div class="error-state-title">Failed to load news</div>
       <div class="error-state-text">Please check your connection and try again.</div>
       <button class="error-state-retry" id="retryBtn">Retry</button>
     </div>
@@ -507,64 +422,14 @@
     <!-- Empty State -->
     <div class="empty-state" id="emptyState">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <div class="empty-state-title">No games found</div>
+      <div class="empty-state-title">No results found</div>
       <div class="empty-state-text">Try adjusting your search or filter to find what you're looking for.</div>
       <button class="empty-state-clear" id="clearFiltersBtn">Clear Filters</button>
     </div>
 
-    <!-- Games Grid -->
-    <div class="games-grid" id="gamesGrid"></div>
+    <!-- News Grid -->
+    <div class="news-grid" id="newsGrid"></div>
   </section>
-
-
-  <!-- TRAILERS MODAL -->
-  <div class="modal-overlay" id="trailersModal">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h2 class="modal-title">Game Trailers</h2>
-        <button class="modal-close" onclick="closeTrailersModal()" aria-label="Close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="trailer-grid" id="trailerGrid"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WALLPAPERS MODAL -->
-  <div class="modal-overlay" id="wallpapersModal">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h2 class="modal-title">Wallpapers</h2>
-        <button class="modal-close" onclick="closeWallpapersModal()" aria-label="Close">&times;</button>
-      </div>
-      <div class="modal-body wallpaper-body">
-        <div class="wallpaper-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        </div>
-        <h3 class="wallpaper-title">Coming Soon</h3>
-        <p class="wallpaper-text">Wallpapers will be available soon. Stay tuned for exclusive Greek Games Studios artwork and high-resolution game art!</p>
-      </div>
-    </div>
-  </div>
-
-
-<!-- BOTTOM BUTTONS -->
-<section style="max-width: 1280px; margin: 0 auto; padding: 0 48px 32px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-  <button class="filter-pill" onclick="openTrailersModal()" style="cursor: pointer; font-family: 'Inter', sans-serif;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 6px; display: inline-block;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-    Trailers
-  </button>
-  <button class="filter-pill" onclick="openWallpapersModal()" style="cursor: pointer; font-family: 'Inter', sans-serif;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 6px; display: inline-block;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-    Wallpapers
-  </button>
-  <a href="https://weblauncher.greekgamesstudios.com" class="filter-pill" target="_self" style="cursor: pointer; font-family: 'Inter', sans-serif;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 6px; display: inline-block;">
-      <path d="M5 3l14 9-14 9V3z"/>
-    </svg>
-    Play & Demos
-  </a>
-</section>
 
   <!-- FOOTER -->
   <footer class="footer" id="contact">
@@ -619,8 +484,6 @@
   // LENIS SMOOTH SCROLL
   // =====================
   const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
-  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
@@ -677,8 +540,7 @@
   });
 })();
 
-
-  // =====================
+// =====================
   // NAVBAR SCROLL
   // =====================
   const navbar = document.getElementById('navbar');
@@ -726,13 +588,12 @@
   // =====================
   // DATA & STATE
   // =====================
+  let allNews = [];
   let allGames = [];
-  let filteredGames = [];
+  let filteredNews = [];
   let activeCategory = 'all';
   let searchQuery = '';
-  let sortMode = 'default';
-
-  const androidIcon = `<svg viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0225 3.503C15.5902 8.4799 13.8533 8.1382 12 8.1382c-1.8533 0-3.5902.3417-5.1367.9529L4.8407 5.588a.416.416 0 00-.5676-.1521.4156.4156 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589.3432 18.6617h23.3136c0-4.0028-2.3457-7.475-5.775-9.3403"/></svg>`;
+  let sortMode = 'newest';
 
   // =====================
   // LOAD DATA
@@ -740,20 +601,25 @@
   async function loadData() {
     showLoading();
     try {
-      const res = await fetch('/games.json');
-      const gamesData = await res.json();
+      const [newsRes, gamesRes] = await Promise.all([
+        fetch('/news.json'),
+        fetch('/games.json')
+      ]);
+      const newsData = await newsRes.json();
+      const gamesData = await gamesRes.json();
       
+      allNews = [...(newsData.news || [])].sort((a, b) => new Date(b.date) - new Date(a.date));
       allGames = gamesData || [];
-      filteredGames = [...allGames];
+      filteredNews = [...allNews];
       
       hideLoading();
       renderCategoryPills();
-      renderGamesGrid();
+      renderNewsGrid();
       renderFooterGames();
       updateHeroStats();
       initScrollAnimations();
     } catch (e) {
-      console.error('Failed to load games:', e);
+      console.error('Failed to load data:', e);
       hideLoading();
       showError();
     }
@@ -763,7 +629,7 @@
     document.getElementById('loadingState').style.display = 'flex';
     document.getElementById('errorState').classList.remove('active');
     document.getElementById('emptyState').classList.remove('active');
-    document.getElementById('gamesGrid').style.display = 'none';
+    document.getElementById('newsGrid').style.display = 'none';
   }
 
   function hideLoading() {
@@ -773,7 +639,7 @@
   function showError() {
     document.getElementById('errorState').classList.add('active');
     document.getElementById('emptyState').classList.remove('active');
-    document.getElementById('gamesGrid').style.display = 'none';
+    document.getElementById('newsGrid').style.display = 'none';
   }
 
   function hideError() {
@@ -784,15 +650,17 @@
   // HERO STATS
   // =====================
   function updateHeroStats() {
-    const total = allGames.length;
-    const available = allGames.filter(g => g.status === 'Available').length;
-    const upcoming = allGames.filter(g => g.status === 'Coming Soon' || g.status === 'In Development').length;
+    const total = allNews.length;
+    const categories = new Set(allNews.map(n => n.tag)).size;
+    const currentYear = new Date().getFullYear();
+    const thisYear = allNews.filter(n => new Date(n.date).getFullYear() === currentYear).length;
     
     document.getElementById('statTotal').textContent = total;
-    document.getElementById('statAvailable').textContent = available;
-    document.getElementById('statUpcoming').textContent = upcoming;
+    document.getElementById('statCategories').textContent = categories;
+    document.getElementById('statThisYear').textContent = thisYear;
     
-    gsap.from('#heroMeta', { opacity: 0, y: 20, duration: 0.6, delay: 0.4, ease: 'power3.out' });
+    // Animate stats counter
+    gsap.to('#heroMeta', { opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: 'power3.out' });
   }
 
   // =====================
@@ -800,109 +668,85 @@
   // =====================
   function renderCategoryPills() {
     const container = document.getElementById('categoryPills');
-    const categories = [...new Set(allGames.map(g => g.category))].sort();
+    const categories = [...new Set(allNews.map(item => item.tag))].sort();
     
     container.innerHTML = '<button class="filter-pill active" data-category="all">All</button>' +
       categories.map(cat => `<button class="filter-pill" data-category="${escapeHtml(cat)}">${escapeHtml(cat)}</button>`).join('');
-    
-    // Add status pills
-    const statuses = [...new Set(allGames.map(g => g.status))].sort();
-    statuses.forEach(st => {
-      const label = st === 'Available' ? 'Released' : st === 'In Development' ? 'In Dev' : st;
-      container.innerHTML += `<button class="filter-pill" data-status="${escapeHtml(st)}">${escapeHtml(label)}</button>`;
-    });
     
     container.querySelectorAll('.filter-pill').forEach(pill => {
       pill.addEventListener('click', () => {
         container.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
-        if (pill.dataset.category) {
-          if (pill.dataset.category === 'all') {
-            activeCategory = 'all';
-          } else {
-            activeCategory = 'cat:' + pill.dataset.category;
-          }
-        } else if (pill.dataset.status) {
-          activeCategory = 'status:' + pill.dataset.status;
-        } else {
-          activeCategory = 'all';
-        }
+        activeCategory = pill.dataset.category;
         applyFilters();
       });
     });
   }
 
   // =====================
-  // RENDER GAMES GRID
+  // RENDER NEWS GRID
   // =====================
-  function renderGamesGrid() {
-    const grid = document.getElementById('gamesGrid');
-
-    if (filteredGames.length === 0) {
+  function renderNewsGrid() {
+    const grid = document.getElementById('newsGrid');
+    
+    if (filteredNews.length === 0) {
       grid.style.display = 'none';
       document.getElementById('emptyState').classList.add('active');
       hideError();
       return;
     }
-
+    
     grid.style.display = 'grid';
     document.getElementById('emptyState').classList.remove('active');
     hideError();
-
-    grid.innerHTML = filteredGames.map((game, i) => {
-      const img = game.images?.card || game.image || '/images/games-placeholder.jpg';
-      const category = game.category || 'Game';
-      const status = game.status || 'Unknown';
-      const statusClass = status === 'Available' ? 'available' : status === 'Coming Soon' ? 'coming-soon' : 'in-development';
-      const desc = game.desc || game.fullDesc || '';
-      const url = game.url || `/additionalHTMLS/Infos/${game.id}-info.html`;
-      const hasUrl = game.url && game.url.startsWith('http');
-      const infoUrl = `/additionalHTMLS/Infos/${game.id}-info.html`;
-
+    
+    grid.innerHTML = filteredNews.map((item, i) => {
+      const img = item.images?.featured || item.image || '/images/news-placeholder.jpg';
+      const category = item.tag || 'News';
+      const date = formatDate(item.date);
+      const desc = item.desc || item.description || item.subtitle || '';
+      const readTime = item.readTime || estimateReadTime(item.content || desc);
+      const url = item.url || '#';
+      
       return `
-        <article class="game-card" data-index="${i}" itemscope itemtype="https://schema.org/VideoGame">
-          <div class="game-card-img-wrap">
-            <div class="game-card-img" style="background-image: url('${img}')" itemprop="image"></div>
-            <div class="game-card-img-overlay"></div>
-            <span class="game-card-category-tag">${escapeHtml(category)}</span>
-            <span class="game-card-status ${statusClass}">${escapeHtml(status)}</span>
+        <article class="news-card" data-index="${i}" onclick="window.location.href='${url}'" itemscope itemtype="https://schema.org/NewsArticle">
+          <div class="news-card-img-wrap">
+            <div class="news-card-img" style="background-image: url('${img}')" itemprop="image"></div>
+            <div class="news-card-img-overlay"></div>
+            <span class="news-card-category">${escapeHtml(category)}</span>
           </div>
-          <div class="game-card-body">
-            <h3 class="game-card-title" itemprop="name">${escapeHtml(game.title)}</h3>
-            <p class="game-card-desc" itemprop="description">${escapeHtml(desc)}</p>
-            <div class="game-card-footer">
-              <div class="game-card-actions">
-                ${hasUrl 
-                  ? `<a href="${escapeHtml(url)}" class="game-card-action play" target="_blank" rel="noopener">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                      Play
-                    </a>`
-                  : `<span class="game-card-action play disabled">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                      Soon
-                    </span>`
-                }
-                <a href="${escapeHtml(infoUrl)}" class="game-card-action info" target="_self">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                  Info
-                </a>
+          <div class="news-card-body">
+            <div class="news-card-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <time itemprop="datePublished" datetime="${item.date}">${date}</time>
+            </div>
+            <h3 class="news-card-title" itemprop="headline">${escapeHtml(item.title)}</h3>
+            <p class="news-card-desc" itemprop="description">${escapeHtml(desc)}</p>
+            <div class="news-card-footer">
+              <span class="news-card-readtime">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                ${readTime}
+              </span>
+              <div class="news-card-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </div>
           </div>
         </article>
       `;
     }).join('');
-
-    gsap.fromTo('.game-card', 
+    
+    // Animate cards in with stagger
+    gsap.fromTo('.news-card', 
       { opacity: 0, y: 40 },
       { 
         opacity: 1, 
         y: 0, 
         duration: 0.6, 
-        stagger: 0.08,
+        stagger: 0.06,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: '#gamesGrid',
+          trigger: '#newsGrid',
           start: 'top 85%',
           toggleActions: 'play none none none'
         }
@@ -911,123 +755,37 @@
   }
 
   // =====================
-  // TRAILERS & WALLPAPERS MODALS
-  // =====================
-  // =====================
-  // TRAILERS (dynamic from games.json)
-  // =====================
-  function openTrailersModal() {
-    const modal = document.getElementById('trailersModal');
-    const grid = document.getElementById('trailerGrid');
-
-    // Build flat list of trailers from allGames
-    const trailers = [];
-    allGames.forEach(game => {
-      if (!game.trailers || !game.trailers.length) return;
-      game.trailers.forEach(t => {
-        trailers.push({
-          game: game.title,
-          title: t.title,
-          youtubeId: t.youtubeId,
-          // Use YouTube's own HQ thumbnail so we don't need a custom banner
-          thumbnail: `https://img.youtube.com/vi/${t.youtubeId}/hqdefault.jpg`
-        });
-      });
-    });
-
-    if (trailers.length === 0) {
-      grid.innerHTML = '<p style="color:var(--text-secondary);padding:24px;text-align:center;">No trailers available yet.</p>';
-    } else {
-      grid.innerHTML = trailers.map(t => `
-        <div class="trailer-card" onclick="openVideo('${escapeHtml(t.youtubeId)}')">
-          <div class="trailer-thumbnail">
-            <img src="${escapeHtml(t.thumbnail)}" alt="${escapeHtml(t.title)}" loading="lazy">
-            <div class="trailer-play">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
-          <div class="trailer-info">
-            <div class="trailer-game">${escapeHtml(t.game)}</div>
-            <div class="trailer-title">${escapeHtml(t.title)}</div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    modal.classList.add('active');
-    lenis.stop();
-  }
-
-  function closeTrailersModal() {
-    document.getElementById('trailersModal').classList.remove('active');
-    lenis.start();
-  }
-
-  function openWallpapersModal() {
-    document.getElementById('wallpapersModal').classList.add('active');
-    lenis.stop();
-  }
-
-  function closeWallpapersModal() {
-    document.getElementById('wallpapersModal').classList.remove('active');
-    lenis.start();
-  }
-
-  function openVideo(youtubeId) {
-    window.open(`https://www.youtube.com/watch?v=${youtubeId}`, '_blank');
-  }
-
-  // Close modals on Escape and backdrop click
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeTrailersModal();
-      closeWallpapersModal();
-    }
-  });
-  document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        overlay.classList.remove('active');
-        lenis.start();
-      }
-    });
-  });
-
-    // =====================
   // FILTERS & SORT
   // =====================
   function applyFilters() {
-    filteredGames = allGames.filter(game => {
-      let matchesCategory = true;
-      if (activeCategory.startsWith('cat:')) {
-        matchesCategory = game.category === activeCategory.replace('cat:', '');
-      } else if (activeCategory.startsWith('status:')) {
-        matchesCategory = game.status === activeCategory.replace('status:', '');
-      }
+    filteredNews = allNews.filter(item => {
+      const matchesCategory = activeCategory === 'all' || item.tag === activeCategory;
       const matchesSearch = !searchQuery || 
-        (game.title && game.title.toLowerCase().includes(searchQuery)) ||
-        (game.desc && game.desc.toLowerCase().includes(searchQuery)) ||
-        (game.fullDesc && game.fullDesc.toLowerCase().includes(searchQuery)) ||
-        (game.category && game.category.toLowerCase().includes(searchQuery)) ||
-        (game.status && game.status.toLowerCase().includes(searchQuery));
+        (item.title && item.title.toLowerCase().includes(searchQuery)) ||
+        (item.desc && item.desc.toLowerCase().includes(searchQuery)) ||
+        (item.description && item.description.toLowerCase().includes(searchQuery)) ||
+        (item.subtitle && item.subtitle.toLowerCase().includes(searchQuery)) ||
+        (item.tag && item.tag.toLowerCase().includes(searchQuery));
       return matchesCategory && matchesSearch;
     });
     
     applySort();
-    renderGamesGrid();
+    renderNewsGrid();
   }
 
   function applySort() {
     switch (sortMode) {
+      case 'newest':
+        filteredNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+        break;
+      case 'oldest':
+        filteredNews.sort((a, b) => new Date(a.date) - new Date(b.date));
+        break;
       case 'az':
-        filteredGames.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+        filteredNews.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
         break;
       case 'za':
-        filteredGames.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
-        break;
-      case 'status':
-        const statusOrder = { 'Available': 0, 'Coming Soon': 1, 'In Development': 2 };
-        filteredGames.sort((a, b) => (statusOrder[a.status] || 3) - (statusOrder[b.status] || 3));
+        filteredNews.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
         break;
     }
   }
@@ -1062,7 +820,7 @@
   // =====================
   // FOOTER GAMES
   // =====================
-function renderFooterGames() {
+  function renderFooterGames() {
     const container = document.getElementById('footerGames');
     if (!allGames || !allGames.length) return;
     const footerGames = allGames.filter(g => g.footer);
@@ -1078,10 +836,12 @@ function renderFooterGames() {
   gsap.registerPlugin(ScrollTrigger);
 
   function initScrollAnimations() {
-    gsap.to('.games-hero-label', { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: 'power3.out' });
-    gsap.to('.games-hero-title', { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' });
-    gsap.to('.games-hero-subtitle', { opacity: 1, y: 0, duration: 0.6, delay: 0.35, ease: 'power3.out' });
+    // Hero entrance
+    gsap.to('.news-hero-label', { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: 'power3.out' });
+    gsap.to('.news-hero-title', { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' });
+    gsap.to('.news-hero-subtitle', { opacity: 1, y: 0, duration: 0.6, delay: 0.35, ease: 'power3.out' });
     
+    // Filter bar
     gsap.from('#filterBar', { 
       y: -20, 
       opacity: 0, 
@@ -1089,13 +849,8 @@ function renderFooterGames() {
       delay: 0.5, 
       ease: 'power3.out' 
     });
-
-
     
-    gsap.from('.media-section-inner', { 
-      scrollTrigger: { trigger: '.media-section', start: 'top 85%', toggleActions: 'play none none none' },
-      y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' 
-    });
+    // Footer
     gsap.from('.footer-top > div', { 
       scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none none' },
       y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' 
@@ -1119,8 +874,6 @@ function renderFooterGames() {
   const copyrightEl = document.getElementById('footerCopyright');
   if (copyrightEl) copyrightEl.innerHTML = '&copy; ' + new Date().getFullYear() + ' Greek Games Studios. All rights reserved.';
 
-// =====================
-  // CROSS-DOCUMENT TRANSITIONS
   // =====================
   // UTILS
   // =====================
@@ -1129,6 +882,20 @@ function renderFooterGames() {
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    if (isNaN(d)) return dateStr;
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function estimateReadTime(content) {
+    if (!content) return '2 min read';
+    const words = content.split(/\s+/).length;
+    const mins = Math.max(1, Math.ceil(words / 200));
+    return mins + ' min read';
   }
 
   // =====================

@@ -3,1051 +3,1116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Privacy Policy - Greek Games Studios</title>
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.greekgamesstudios.com/privacy-policy.html">
-
-  <meta name="twitter:card" content="summary_large_image">
- meta name="twitter:title" content="Greek Games Studios">
-  <meta name="twitter:description" content="Read the Privacy Policy, Terms of Use, and Community Guidelines for Greek Games Studios.">
-  <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
-  
-  <meta name="description" content="Privacy Policy, Terms of Use, and Community Guidelines for Greek Games Studios. Learn how we handle your data, our rules, and community standards.">
-  <meta name="keywords" content="Greek Games Studios, Privacy Policy, Terms of Use, Community Guidelines, Gaming, Rules, Data Protection, GGS Coins, Leaderboards, COPPA, Age Verification">
+  <title>Legal - Greek Games Studios</title>
+  <meta name="description" content="Privacy Policy, Terms of Services, and Community Guidelines for Greek Games Studios. Learn how we handle your data, our rules, and community standards.">
   <meta name="author" content="Greek Games Studios">
-  
-  <meta property="og:title" content="Privacy Policy & Terms - Greek Games Studios">
-  <meta property="og:description" content="Read the Privacy Policy, Terms of Use, and Community Guidelines for Greek Games Studios.">
-  <meta property="og:image" content="/images/ggs-logo.png">
-  <meta property="og:url" content="https://greekgamesstudios.com/privacy-policy.html">
-  <meta property="og:type" content="website">
-
-  <link rel="icon" type="image/png" href="/images/ggs-logo.png">
-
+  <link rel="canonical" href="https://www.greekgamesstudios.com/privacy-policy.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legal - Greek Games Studios">
+  <meta name="twitter:description" content="Privacy Policy, Terms of Services, and Community Guidelines for Greek Games Studios.">
+  <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta property="og:title" content="Legal - Greek Games Studios" />
+  <meta property="og:description" content="Privacy Policy, Terms of Services, and Community Guidelines for Greek Games Studios." />
+  <meta property="og:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png" />
+  <meta property="og:url" content="https://www.greekgamesstudios.com/privacy-policy.html" />
+  <meta property="og:site_name" content="Greek Games Studios" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #000000; --bg-secondary: #0a0a0a; --bg-card: #111111; --bg-card-hover: #1a1a1a;
+      --greek-blue: #0D5EAF; --greek-blue-bright: #1478D9; --cyan: #00D4FF; --cyan-dim: rgba(0, 212, 255, 0.15);
+      --text-primary: #FFFFFF; --text-secondary: #A0A0A0; --text-muted: #666666;
+      --border-subtle: rgba(255, 255, 255, 0.08); --border-accent: rgba(0, 212, 255, 0.3);
     }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========== SKIP LINK ========== */
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--cyan); color: #000; padding: 8px 12px; text-decoration: none; z-index: 10000; font-weight: 600; border-radius: 0 0 4px 0; transition: top 0.2s ease; }
+    .skip-link:focus { top: 0; }
+
+    /* ========== CROSS-DOCUMENT TRANSITION ========== */
+    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
+    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
+    /* ========== NAVBAR ========== */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; }
+    .navbar.scrolled { background: rgba(0,0,0,0.95); }
+    .navbar-container { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .navbar-logo img { height: 36px; width: auto; display: block; }
+    .navbar-links { display: flex; align-items: center; gap: 40px; margin-left: auto; }
+    .navbar-link { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); transition: color 0.2s ease; position: relative; }
+    .navbar-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: var(--cyan); transform: scaleX(0); transition: transform 0.2s ease; }
+    .navbar-link:hover { color: var(--text-primary); }
+    .navbar-link:hover::after { transform: scaleX(1); }
+    .navbar-link.active { color: var(--text-primary); }
+    .navbar-link.active::after { transform: scaleX(1); }
+    .navbar-cta { padding: 10px 24px; border-radius: 100px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .navbar-cta:hover { transform: scale(1.03); box-shadow: 0 0 24px rgba(0, 212, 255, 0.3); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; cursor: pointer; padding: 0; position: relative; z-index: 1001; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; position: absolute; transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
+    .hamburger span:nth-child(1) { top: 11px; }
+    .hamburger span:nth-child(2) { top: 19px; }
+    .hamburger span:nth-child(3) { top: 27px; }
+    .hamburger.active span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+    .hamburger.active span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.98); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 0.3s ease; }
+    .mobile-menu.active { transform: translateY(0); }
+    .mobile-menu a { font-size: 20px; font-weight: 700; color: var(--text-secondary); transition: color 0.2s ease; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 32px; border-radius: 100px; min-width: 220px; text-align: center; }
+    .mobile-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+
+    /* ========== HERO ========== */
+    .legal-hero { position: relative; width: 100%; min-height: 35vh; display: flex; align-items: flex-end; padding: 120px 48px 60px; overflow: hidden; }
+    .legal-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13, 94, 175, 0.15) 0%, rgba(0, 212, 255, 0.08) 50%, transparent 100%); z-index: 0; }
+    .legal-hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .legal-hero-particles .particle { position: absolute; width: 3px; height: 3px; background: var(--cyan); border-radius: 50%; opacity: 0.3; animation: float 8s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-20px) translateX(10px); } 50% { transform: translateY(-10px) translateX(-10px); } 75% { transform: translateY(-30px) translateX(5px); } }
+    .legal-hero-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%; }
+    .legal-hero-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; opacity: 0; transform: translateY(20px); }
+    .legal-hero-title { font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; opacity: 0; transform: translateY(30px); }
+    .legal-hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.6; opacity: 0; transform: translateY(20px); }
+
+    /* ========== STICKY TABS ========== */
+    .legal-tabs { position: sticky; top: 64px; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); padding: 16px 48px; }
+    .legal-tabs-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .legal-tab { padding: 10px 24px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+    .legal-tab:hover { background: var(--bg-card-hover); color: var(--text-primary); border-color: rgba(255,255,255,0.15); }
+    .legal-tab.active { background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; border-color: transparent; }
+    .legal-tab svg { width: 16px; height: 16px; margin-right: 8px; vertical-align: middle; margin-top: -2px; }
+
+    /* ========== CONTENT ========== */
+    .legal-main { max-width: 1280px; margin: 0 auto; padding: 48px 48px 80px; }
+    .legal-section { display: none; animation: fadeIn 0.4s ease; }
+    .legal-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .legal-section h1 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 8px; line-height: 1.2; }
+    .legal-section h2 { font-size: 24px; font-weight: 700; color: white; margin-top: 40px; margin-bottom: 16px; }
+    .legal-section h3 { font-size: 18px; font-weight: 600; color: var(--cyan); margin-top: 28px; margin-bottom: 12px; }
+    .legal-section p { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; }
+    .legal-section ul { list-style: disc; padding-left: 24px; margin-bottom: 16px; }
+    .legal-section li { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.6; }
+    .legal-section a { color: var(--cyan); text-decoration: underline; transition: opacity 0.2s ease; }
+    .legal-section a:hover { opacity: 0.8; }
+    .legal-section code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--text-primary); border: 1px solid var(--border-subtle); }
+    .legal-section address { font-style: normal; font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
+    .legal-date { font-size: 14px; color: var(--cyan); margin-bottom: 32px; display: block; }
+    .legal-divider { width: 48px; height: 3px; background: var(--greek-blue); margin-bottom: 32px; border-radius: 2px; }
+
+    /* ========== FOOTER ========== */
+    .footer { background: #050505; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-top { max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; }
+    .footer-brand-logo img { height: 40px; width: auto; display: block; margin-bottom: 12px; }
+    .footer-brand-name { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+    .footer-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
+    .footer-links a:hover { color: white; }
+    .footer-socials { display: flex; gap: 12px; }
+    .footer-socials a { color: var(--text-secondary); transition: color 0.2s ease, transform 0.2s ease; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-subtle); }
+    .footer-socials a:hover { color: var(--cyan); transform: translateY(-2px); border-color: var(--border-accent); }
+    .footer-socials svg { width: 18px; height: 18px; }
+    .footer-handle { font-size: 14px; color: var(--text-muted); margin-top: 12px; }
+    .footer-bottom { max-width: 1280px; margin: 0 auto; padding: 24px 24px; display: flex; justify-content: center; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-copyright { font-size: 13px; color: var(--text-muted); text-align: center; }
+
+    /* ========== BACK TO TOP ========== */
+    .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 200; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease; }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .back-to-top:hover { background: var(--cyan); color: var(--bg-primary); border-color: var(--cyan); }
+    .back-to-top svg { width: 18px; height: 18px; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: repeat(3, 1fr); }
     }
-    
-    .gradient-border {
-      border-image: linear-gradient(90deg, #22d3ee, #a855f7) 1;
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hamburger { display: flex; }
+      .legal-hero { padding: 100px 24px 40px; min-height: 30vh; }
+      .legal-tabs { padding: 12px 24px; }
+      .legal-tabs-inner { gap: 8px; }
+      .legal-tab { padding: 8px 16px; font-size: 12px; }
+      .legal-main { padding: 32px 24px 60px; }
+      .legal-section h1 { font-size: 28px; }
+      .legal-section h2 { font-size: 20px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
     }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .animate-fade-in {
-      opacity: 0;
-      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    .current-page {
-      position: relative;
-      color: white !important;
-    }
-    
-    .current-page:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #22d3ee;
-      transform: scaleX(1);
-    }
-    
-    .policy-tab {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      will-change: transform, box-shadow;
-    }
-    
-    .policy-tab.active {
-      background: rgba(34, 211, 238, 0.1);
-      border-color: #22d3ee;
-      color: white;
-    }
-    
-    .policy-tab:not(.active):hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(34, 211, 238, 0.15);
-    }
-    
-    .content-section {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-    
-    .content-section.active {
-      display: block;
-      opacity: 1;
-    }
-    
-    .glow-effect {
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .legal-hero-label, .legal-hero-title, .legal-hero-subtitle { opacity: 1; transform: none; }
     }
   </style>
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-TileColor" content="#0D5EAF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="General">
+  <meta name="revisit-after" content="7 days">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@greekgamestudio">
+  <meta name="twitter:creator" content="@greekgamestudio">
+  <meta name="twitter:image:alt" content="Greek Games Studios Legal">
+  <meta name="keywords" content="Greek Games Studios, Privacy Policy, Terms of Services, Community Guidelines, Legal, Data Protection, COPPA, GDPR">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#0D5EAF">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Legal - Greek Games Studios",
+    "description": "Privacy Policy, Terms of Services, and Community Guidelines for Greek Games Studios.",
+    "url": "https://www.greekgamesstudios.com/privacy-policy.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.greekgamesstudios.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Legal", "item": "https://www.greekgamesstudios.com/privacy-policy.html" }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Greek Games Studios",
+      "logo": { "@type": "ImageObject", "url": "https://www.greekgamesstudios.com/images/ggs-logo.png" }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "name": "Main Navigation",
+    "hasPart": [
+      { "@type": "SiteNavigationElement", "name": "Home", "url": "https://www.greekgamesstudios.com/" },
+      { "@type": "SiteNavigationElement", "name": "Games", "url": "https://www.greekgamesstudios.com/games.html" },
+      { "@type": "SiteNavigationElement", "name": "News", "url": "https://www.greekgamesstudios.com/news.html" },
+      { "@type": "SiteNavigationElement", "name": "About", "url": "https://www.greekgamesstudios.com/#about" },
+      { "@type": "SiteNavigationElement", "name": "Support", "url": "https://www.greekgamesstudios.com/support.html" }
+    ]
+  }
+  </script>
+
+  <base target="_blank">
 </head>
-<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden selection:bg-cyan-500/30 selection:text-white">
+<body>
 
-  <header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16 md:h-20">
-        <div class="flex-shrink-0 flex items-center">
-          <a href="/index.html" aria-label="Greek Games Studios Home">
-            <div class="relative">
-              <img src="/images/ggs-logo.png" alt="Greek Games Studios Logo" class="h-10 w-auto" loading="lazy"> 
-            </div>
-          </a>
-        </div>
+  <!-- Skip Link -->
+  <!-- <a href="#legalMain" class="skip-link">Skip to main content</a> -->
 
-        <nav aria-label="Main Navigation" class="hidden md:flex space-x-1">
-          <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 group">
-            Home
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></span>
-          </a>
-          <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 group animate-fade-in">
-            Games
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></span>
-          </a>
-          <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 group animate-fade-in">
-            Contact Us
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></span>
-          </a>
-          <a href="/support.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 group animate-fade-in">
-            Support
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></span>
-          </a>
-          <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-150 transform hover:scale-105 animate-fade-in">
-            Experimentals
-          </a>
-          <a href="#privacy" aria-current="page" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-150 group">
-            Privacy Policy
-          </a>
-        </nav>
+  <!-- Cross-Document Transition Overlay -->
+  <div class="page-transition-overlay" id="transitionOverlay"></div>
 
-        <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group animate-fade-in">
-          <div class="relative w-6 h-6">
-            <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-150"></span>
-            <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-150"></span>
-            <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-150"></span>
-          </div>
-        </button>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="/index.html" class="navbar-logo" target="_self">
+        <img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios">
+      </a>
+      <div class="navbar-links">
+        <a href="/index.html" class="navbar-link" target="_self">Home</a>
+        <a href="/games.html" class="navbar-link" target="_self">Games</a>
+        <a href="/news.html" class="navbar-link" target="_self">News</a>
+        <a href="/about-us.html" class="navbar-link" target="_self">About</a>
+        <a href="/contact-us.html" class="navbar-link" target="_self">Contact</a>
+        <a href="/support.html" class="navbar-link" target="_self">Support</a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <nav id="mobile-menu" aria-label="Mobile Navigation" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden">
-      <div class="px-4 py-3 space-y-3">
-        <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Home</a>
-        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Games</a>
-        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Contact Us</a>
-        <a href="/support.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-150 transform hover:translate-x-2 animate-fade-in">Support</a>
-        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white animate-fade-in">Experimentals</a>
-        <a href="#privacy" aria-current="page" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-150">Privacy Policy</a>
-      </div>
-    </nav>
-  </header>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/index.html" class="mobile-link" target="_self">Home</a>
+    <a href="/games.html" class="mobile-link" target="_self">Games</a>
+    <a href="/news.html" class="mobile-link" target="_self">News</a>
+    <a href="/about-us.html" class="mobile-link" target="_self">About</a>
+    <a href="/contact-us.html" class="mobile-link" target="_self">Contact</a>
+    <a href="/support.html" class="mobile-link" target="_self">Support</a>
+  </div>
 
-  <main id="main-content" class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
-    
-    <section aria-label="Policy Navigation" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" role="tablist">
-      
-      <button role="tab" aria-selected="true" aria-controls="privacy-policy" id="tab-privacy" class="policy-tab active w-full text-left bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 cursor-pointer glow-effect focus:outline-none focus:ring-2 focus:ring-cyan-500" data-target="privacy-policy">
-        <div class="flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center mb-3 shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
-          <p class="text-gray-400 mt-2 text-sm text-center">How we handle your data and privacy</p>
-        </div>
+  <!-- HERO -->
+  <section class="legal-hero" id="legalHero">
+    <div class="legal-hero-bg"></div>
+    <div class="legal-hero-particles" id="heroParticles"></div>
+    <div class="legal-hero-content">
+      <div class="legal-hero-label" id="heroLabel">Legal</div>
+      <h1 class="legal-hero-title" id="heroTitle">Privacy & Terms</h1>
+      <p class="legal-hero-subtitle" id="heroSubtitle">Everything you need to know about how we handle your data, our rules and community standards.</p>
+    </div>
+  </section>
+
+  <!-- STICKY TABS -->
+  <div class="legal-tabs" id="legalTabs">
+    <div class="legal-tabs-inner">
+      <button class="legal-tab active" data-target="privacy-policy" data-hash="privacy-policy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Privacy Policy
       </button>
-      
-      <button role="tab" aria-selected="false" aria-controls="terms-of-use" id="tab-terms" class="policy-tab w-full text-left bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500" data-target="terms-of-use">
-        <div class="flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center mb-3 shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-white">Terms of Use</h3>
-          <p class="text-gray-400 mt-2 text-sm text-center">Rules and conditions for using our services</p>
-        </div>
+      <button class="legal-tab" data-target="terms-of-services" data-hash="terms-of-services">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Terms of Services
       </button>
-      
-      <button role="tab" aria-selected="false" aria-controls="community-guidelines" id="tab-community" class="policy-tab w-full text-left bg-[#1a1a1a]/80 border border-cyan-600/30 rounded-xl p-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-500" data-target="community-guidelines">
-        <div class="flex flex-col items-center">
-          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 flex items-center justify-center mb-3 shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-white">Community Guidelines</h3>
-          <p class="text-gray-400 mt-2 text-sm text-center">How to interact in our community spaces</p>
-        </div>
+      <button class="legal-tab" data-target="community-guidelines" data-hash="community-guidelines">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        Community Guidelines
       </button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="legal-main" id="legalMain">
+
+    <!-- PRIVACY POLICY -->
+    <section class="legal-section active" id="privacy-policy" itemscope itemtype="https://schema.org/WebPageElement">
+      <h1>Privacy Policy</h1>
+      <span class="legal-date">Last Updated: May 15, 2026</span>
+      <div class="legal-divider"></div>
+
+      <h2>1. Introduction</h2>
+      <p>Greek Games Studios ("we", "our", or "us") is committed to protecting the privacy of our users across all our platforms and services. This Privacy Policy explains how we collect, use, and protect information in connection with our games, apps, websites, and community services.</p>
+      <p>This policy applies to:</p>
+      <ul>
+        <li><strong>Main Games:</strong> Titles available on platforms such as Google Play Store and Steam</li>
+        <li><strong>Mini Games:</strong> Experiences on Roblox, Minecraft, and similar platforms</li>
+        <li><strong>GGS Hub Mobile App:</strong> Our official mobile application available on Google Play</li>
+        <li><strong>Official Website:</strong> https://greekgamesstudios.com</li>
+        <li><strong>Other Services:</strong> Including testing environments, Discord bots, servers, digital tools, and Play & Demo experiences</li>
+      </ul>
+
+      <h2>2. Data Collection</h2>
+      <p>We do not actively collect direct personal identifiers such as full names, home addresses, or phone numbers during normal gameplay or website browsing.</p>
+      <p>However, certain platform-based or technical identifiers may be automatically processed or stored to ensure proper functionality, performance, and moderation across our services.</p>
+
+      <h3>a. Gameplay Logs and Usernames</h3>
+      <p>Platform usernames, user IDs, and gameplay logs may be stored for analytics, moderation, or debugging purposes.</p>
+      <p>This may include:</p>
+      <ul>
+        <li>Error reports</li>
+        <li>In-game actions</li>
+        <li>Account-level information provided by the platform (e.g., Roblox User ID)</li>
+      </ul>
+      <p>When stored persistently for analytics, debugging, or moderation purposes, platform-provided identifiers (such as usernames or account IDs) may be treated as personal data under applicable data protection laws.</p>
+
+      <h3>b. GGS Hub App - Account Information (Firebase Authentication)</h3>
+      <p>When you create an account within the GGS Hub mobile app using email/password or Google Sign-In, we store:</p>
+      <ul>
+        <li>Email address</li>
+        <li>Encrypted authentication credentials (handled securely by Firebase)</li>
+        <li>Unique user ID (UID)</li>
+        <li>Nickname (display name) that you choose</li>
+      </ul>
+      <p>Passwords are never stored in plain text and are fully managed by Firebase Authentication.</p>
+
+      <h3>c. GGS Coins & Challenge Progress</h3>
+      <p>To operate our rewards system, we store:</p>
+      <ul>
+        <li>Your GGS Coin balance</li>
+        <li>Challenge completion status (to prevent duplicate claiming)</li>
+        <li>Challenge progress (e.g., playtime today, games played today)</li>
+      </ul>
+      <p>This data is used solely to reward you for completing daily, weekly, and special challenges.</p>
+
+      <h3>d. Game Scores & Leaderboards</h3>
+      <p>When you play mini-games within the GGS Hub app, we may store:</p>
+      <ul>
+        <li>Your score for each game</li>
+        <li>Timestamp of your best performance</li>
+        <li>Your nickname as displayed on leaderboards</li>
+        <li>Your unique user ID to associate scores with your account</li>
+      </ul>
+      <p>Leaderboard data is visible to other users to foster friendly competition.</p>
+
+      <h3>e. Push Notification Tokens (Firebase Cloud Messaging)</h3>
+      <p>With your permission, we collect a unique device token to send push notifications for:</p>
+      <ul>
+        <li>Daily challenge reminders</li>
+        <li>Reward claim confirmations</li>
+        <li>Important app updates and announcements</li>
+      </ul>
+      <p>You can disable notifications at any time through your device settings without affecting core app functionality.</p>
+
+      <h3>f. Testing and QA</h3>
+      <p>Users may participate in testing phases (public or private) as part of early releases. We may monitor gameplay behavior and interactions to improve game balance and performance.</p>
+      <p>Platform-provided identifiers (such as usernames or account IDs) may be used during these processes for moderation or debugging purposes.</p>
+
+      <h3>g. Moderation and Bans</h3>
+      <p>If a user violates community or platform rules, ban or moderation data may be stored. This may include timestamps, offense type, and actions taken.</p>
+      <p>Moderation-related data may be retained under our legitimate interest in maintaining safe and fair community environments. In some cases, moderation data may be shared with the relevant platform provider.</p>
+
+      <h3>h. Contacting Us (Support or "Message Us")</h3>
+      <p>If you voluntarily contact us through a support form, email, or "Message Us" feature on our website or services, we may temporarily store your email address and message content for the sole purpose of:</p>
+      <ul>
+        <li>Responding to your request</li>
+        <li>Providing technical assistance or support</li>
+        <li>Investigating reported issues</li>
+      </ul>
+      <p>We do not use submitted contact information for marketing or analytics purposes.</p>
+      <p>Support-related information is retained only for as long as necessary to resolve the request and is deleted thereafter.</p>
+      <p>Some technical data (such as IP address or browser metadata) may be automatically processed by our hosting provider when forms are submitted or pages are accessed. This information is managed by the hosting provider in accordance with their own privacy policies.</p>
+
+      <h2>3. Automatically Collected Technical Data</h2>
+      <p>Our services, including website access and browser-based Play & Demo experiences, may rely on essential technical data automatically processed by infrastructure providers to ensure stability and performance.</p>
+      <p>This may include:</p>
+      <ul>
+        <li>IP address</li>
+        <li>Device type</li>
+        <li>Browser version</li>
+        <li>Operating system</li>
+        <li>Basic session-level diagnostics</li>
+      </ul>
+      <p>We do not directly access or use this information for marketing or user profiling purposes.</p>
+
+      <h2>4. Third-Party Services</h2>
+      <p>We rely on external platforms and providers to operate certain services. Each platform manages its own data collection and privacy policies.</p>
+      <p>These may include:</p>
+      <ul>
+        <li><strong>Firebase (Google):</strong> Authentication, Cloud Firestore database, Cloud Messaging (push notifications)</li>
+        <li><strong>Google AdMob:</strong> In-app advertising</li>
+        <li><strong>Google Sign-In:</strong> Social authentication</li>
+        <li>Roblox Corporation</li>
+        <li>Mojang / Microsoft (Minecraft)</li>
+        <li>Google (Play Store, AdMob, Firebase)</li>
+        <li>Valve (Steam)</li>
+        <li>Discord (Bots, servers)</li>
+        <li>Netlify (Website hosting)</li>
+      </ul>
+      <p>Please refer to each provider's privacy policy for more information.</p>
+
+      <h2>5. Use of Data</h2>
+      <p>Any data accessed or processed through our services (including moderation logs or gameplay records) is used solely for:</p>
+      <ul>
+        <li>Improving gameplay stability and performance</li>
+        <li>Operating the Rewards system (coins, challenges, leaderboards)</li>
+        <li>Sending push notifications about challenges and app updates</li>
+        <li>Preventing abuse of our rewards system (e.g., duplicate claims)</li>
+        <li>Displaying personalized leaderboards</li>
+        <li>Fixing bugs and preventing exploits</li>
+        <li>Moderating communities and enforcing rules</li>
+        <li>Maintaining fair play and service integrity</li>
+        <li>Analyzing technical trends for development</li>
+        <li>Ensuring compliance with platform terms</li>
+      </ul>
+      <p><strong>We do not sell, rent, or trade user data under any circumstances.</strong></p>
+
+      <h2>6. Data Retention</h2>
+      <p>Gameplay, testing, demo usage, and moderation-related data may be stored for up to 12 months unless required for:</p>
+      <ul>
+        <li>Ongoing moderation</li>
+        <li>Security investigations</li>
+        <li>Technical analysis or service improvement</li>
+      </ul>
+      <p>Support communications are deleted once the related issue has been resolved.</p>
+      <p><strong>Additional retention for app features:</strong></p>
+      <ul>
+        <li>User accounts: Until you request deletion</li>
+        <li>Challenge completion data: Retained for historical leaderboard integrity</li>
+        <li>Push tokens: Deleted when you log out or uninstall the app</li>
+        <li>Score data: Retained as part of permanent leaderboards</li>
+      </ul>
+
+      <h2>7. Cookies and Tracking</h2>
+      <p>Our website may use cookies or similar technologies for:</p>
+      <ul>
+        <li>Functional purposes (navigation, login)</li>
+        <li>Analytics and traffic measurement</li>
+        <li>Improving user experience</li>
+      </ul>
+      <p>You can manage or disable cookies through your browser settings.</p>
+
+      <h2>8. Age Requirements (COPPA & GDPR Compliance)</h2>
+      <p>Our services are designed for users aged 13 and above. We strictly enforce age verification to comply with COPPA (Children's Online Privacy Protection Act) and GDPR requirements.</p>
+
+      <h3>a. Age Verification During Registration</h3>
+      <p>When creating an account, we require you to provide your date of birth in DD/MM/YYYY format. This information is used solely to verify that you are at least 13 years old, comply with legal age restrictions, and block account creation for users under 13.</p>
+
+      <h3>b. Data Stored</h3>
+      <p>Upon successful registration, we store in Firebase Firestore:</p>
+      <ul>
+        <li>Your date of birth (encrypted, accessible only to you and administrators)</li>
+        <li>Your calculated age at registration</li>
+        <li>A timestamp of when you provided age consent</li>
+        <li>COPPA compliance flag (boolean) and GDPR consent flag</li>
+      </ul>
+      <p>These fields are stored as <code>dateOfBirth</code>, <code>age</code>, <code>gdprConsent</code>, and <code>coppaCompliant</code>.</p>
+
+      <h3>c. Google Sign-In</h3>
+      <p>If you register using Google Sign-In, you are still required to provide your date of birth during first-time setup if not already stored. We do not automatically retrieve age information from Google.</p>
+
+      <h3>d. What We Do NOT Store</h3>
+      <p>We do not share your date of birth with third parties, use your age for marketing or profiling, or store birth dates of users who fail age verification (they are rejected immediately).</p>
+
+      <h3>e. Underage Users</h3>
+      <p>If we discover that a user under 13 has created an account, we will immediately suspend the account, delete all associated data (coins, scores, challenge progress), and notify the parent/guardian if contact information is available. Parents or guardians may request deletion by contacting us.</p>
+
+      <h3>f. European Users (GDPR)</h3>
+      <p>For users in the European Union, age verification is required under Article 8 of the GDPR. We do not process personal data of children under 13 without parental consent.</p>
+
+      <h2>9. User Rights and Requests</h2>
+      <p>Users may request access to or deletion of specific data linked to their activity (e.g., usernames, moderation logs, support messages). Requests must include proof of identity and will be handled within 30 days, where applicable.</p>
+      <p>Upon account deletion, all associated data (coins, scores, challenge progress) will be permanently removed.</p>
+
+      <h2>10. External Links</h2>
+      <p>Our services may contain links to external websites, stores, or platforms. We are not responsible for the content or privacy practices of these external services.</p>
+
+      <h2>11. Payments and In-Game Purchases</h2>
+      <p>Some of our games and apps may include paid features such as:</p>
+      <ul>
+        <li>Full game purchases</li>
+        <li>In-game or in-app purchases (virtual currency, passes, cosmetics)</li>
+        <li>Donation-based perks (e.g., Discord features)</li>
+      </ul>
+
+      <h3>a. Payment Processing</h3>
+      <p>All payments are handled by third-party platforms. We do not store or process billing data (such as credit card or banking information).</p>
+
+      <h3>b. Virtual Goods & Refunds</h3>
+      <p>Virtual items and currency are non-refundable and non-transferable, unless stated otherwise. Abuse of payment systems may result in bans or restricted access.</p>
+
+      <h3>c. Testing/Promo Access</h3>
+      <p>Some players may receive early or free access to premium content during tests or events. We reserve the right to remove or modify this content at any time without prior notice or compensation.</p>
+
+      <h2>12. Virtual Currency (GGS Coins)</h2>
+
+      <h3>a. Earning Coins</h3>
+      <p>GGS Coins are earned through completing challenges and are not purchasable with real money. Coins are awarded for:</p>
+      <ul>
+        <li>Daily login</li>
+        <li>Completing daily/weekly/special challenges</li>
+        <li>Achieving high scores</li>
+      </ul>
+
+      <h3>b. Non-Monetary Value</h3>
+      <p>GGS Coins have no real-world monetary value. They cannot be exchanged for cash or other currency, transferred between accounts, or refunded.</p>
+
+      <h3>c. Coin Balance</h3>
+      <p>Your coin balance is stored securely and may be viewed in your profile. We reserve the right to adjust balances in case of errors or abuse.</p>
+
+      <h3>d. Account Termination</h3>
+      <p>Upon account deletion, all associated coins and challenge progress are permanently removed.</p>
+
+      <h2>13. Push Notifications</h2>
+      <p>With your consent, we use Firebase Cloud Messaging (FCM) to send:</p>
+      <ul>
+        <li>Daily challenge reminders</li>
+        <li>Reward claim confirmations</li>
+        <li>Important app updates</li>
+      </ul>
+      <p>You can opt out at any time by disabling notifications in your device settings or signing out of your account. We do not share your FCM token with third parties for marketing purposes.</p>
+
+      <h2>14. Advertising (AdMob)</h2>
+      <p>Our app may display interstitial advertisements using Google AdMob. Ads are requested with non-personalized ad settings where possible. Google's privacy policy applies to any data collected through advertisements.</p>
+
+      <h2>15. Play & Demos</h2>
+      <p>Some of our services may include browser-based or downloadable Play & Demo experiences for testing or preview purposes.</p>
+      <p>During use of these features:</p>
+      <ul>
+        <li>Temporary gameplay progress may be stored locally on the user's device</li>
+        <li>Session-based technical data may be processed for performance monitoring</li>
+        <li>Platform-provided usernames or identifiers may be used for moderation or debugging in multiplayer or connected environments</li>
+      </ul>
+      <p>Play & Demo experiences are provided for preview or testing purposes only and may:</p>
+      <ul>
+        <li>Differ from final game versions</li>
+        <li>Be modified or removed without prior notice</li>
+        <li>Reset progress or saved states at any time</li>
+      </ul>
+
+      <h2>16. Changes to This Policy</h2>
+      <p>This Privacy Policy may be updated periodically. Updates will be posted on our official website with the "Last Updated" date. Continuing to use our services after changes means you accept the updated terms.</p>
+
+      <h2>17. Contact Information</h2>
+      <address>
+        <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com">greekgamesstudios@gmail.com</a><br>
+        <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer">https://discord.gg/UmrwZpYZP3</a><br>
+        <strong>Website:</strong> <a href="https://greekgamesstudios.com">https://greekgamesstudios.com</a>
+      </address>
     </section>
 
-    <div class="backdrop-blur-lg bg-[#1a1a1a]/80 rounded-3xl p-8 md:p-12 border border-cyan-600/30 shadow-[0_0_40px_#0ff1] animate-fade-in">
-      
-      <!-- ================================================================ -->
-      <!-- PRIVACY POLICY SECTION (FULLY PRESERVED + NEW FEATURES)          -->
-      <!-- ================================================================ -->
-      <article id="privacy-policy" role="tabpanel" aria-labelledby="tab-privacy" class="content-section active">
-        <header class="text-center mb-12 animate-fade-in">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">Privacy Policy</h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto"></div>
-          <p class="text-cyan-400 text-lg mt-6">Last Updated: May 15, 2026</p>
-        </header>
+    <!-- TERMS OF SERVICES -->
+    <section class="legal-section" id="terms-of-services" itemscope itemtype="https://schema.org/WebPageElement">
+      <h1>Terms of Services</h1>
+      <span class="legal-date">Last Updated: May 15, 2026</span>
+      <div class="legal-divider"></div>
 
-        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
-          
-          <!-- SECTION 1: Introduction (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">1. Introduction</h2>
-            <p class="mb-4">Greek Games Studios ("we", "our", or "us") is committed to protecting the privacy of our users across all our platforms and services. This Privacy Policy explains how we collect, use, and protect information in connection with our games, apps, websites, and community services.</p>
-            <p class="mb-2">This policy applies to:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li><strong>Main Games:</strong> Titles available on platforms such as Google Play Store and Steam</li>
-              <li><strong>Mini Games:</strong> Experiences on Roblox, Minecraft, and similar platforms</li>
-              <li><strong>GGS Hub Mobile App:</strong> Our official mobile application available on Google Play</li>
-              <li><strong>Official Website:</strong> https://greekgamesstudios.com</li>
-              <li><strong>Other Services:</strong> Including testing environments, Discord bots, servers, digital tools, and Play & Demo experiences</li>
-            </ul>
-          </section>
+      <h2>1. Introduction</h2>
+      <p>Welcome to Greek Games Studios ("we", "our", or "us"). By accessing or using any of our games, websites, Play & Demo experiences, or community services, you agree to these Terms of Services ("Terms"). If you do not agree with these Terms, please do not use our Services.</p>
+      <p>These Terms apply to:</p>
+      <ul>
+        <li><strong>Main Games:</strong> Titles available on platforms such as Google Play Store and Steam</li>
+        <li><strong>Mini Games:</strong> Experiences on Roblox, Minecraft, and similar platforms</li>
+        <li><strong>Play & Demo:</strong> Browser-based or downloadable testing experiences</li>
+        <li><strong>Official Website:</strong> https://greekgamesstudios.com</li>
+        <li><strong>Community Services:</strong> Including Discord servers, testing environments, and digital tools</li>
+      </ul>
 
-          <!-- SECTION 2: Data Collection (ORIGINAL + EXTENDED with APP FEATURES) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">2. Data Collection</h2>
-            <p class="mb-4">We do not actively collect direct personal identifiers such as full names, home addresses, or phone numbers during normal gameplay or website browsing.</p>
-            <p class="mb-4">However, certain platform-based or technical identifiers may be automatically processed or stored to ensure proper functionality, performance, and moderation across our services.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">a. Gameplay Logs and Usernames</h3>
-            <p class="mb-4">Platform usernames, user IDs, and gameplay logs may be stored for analytics, moderation, or debugging purposes.</p>
-            <p class="mb-2">This may include:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Error reports</li>
-              <li>In-game actions</li>
-              <li>Account-level information provided by the platform (e.g., Roblox User ID)</li>
-            </ul>
-            <p class="mb-4">When stored persistently for analytics, debugging, or moderation purposes, platform-provided identifiers (such as usernames or account IDs) may be treated as personal data under applicable data protection laws.</p>
-            
-            <!-- [NEW] GGS Hub App - Account Information -->
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">b. GGS Hub App - Account Information (Firebase Authentication)</h3>
-            <p class="mb-4">When you create an account within the GGS Hub mobile app using email/password or Google Sign-In, we store:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Email address</li>
-              <li>Encrypted authentication credentials (handled securely by Firebase)</li>
-              <li>Unique user ID (UID)</li>
-              <li>Nickname (display name) that you choose</li>
-            </ul>
-            <p class="mb-4">Passwords are never stored in plain text and are fully managed by Firebase Authentication.</p>
-            
-            <!-- [NEW] GGS Coins & Challenge Progress -->
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">c. GGS Coins & Challenge Progress</h3>
-            <p class="mb-4">To operate our rewards system, we store:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Your GGS Coin balance</li>
-              <li>Challenge completion status (to prevent duplicate claiming)</li>
-              <li>Challenge progress (e.g., playtime today, games played today)</li>
-            </ul>
-            <p class="mb-4">This data is used solely to reward you for completing daily, weekly, and special challenges.</p>
-            
-            <!-- [NEW] Game Scores & Leaderboards -->
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">d. Game Scores & Leaderboards</h3>
-            <p class="mb-4">When you play mini-games within the GGS Hub app, we may store:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Your score for each game</li>
-              <li>Timestamp of your best performance</li>
-              <li>Your nickname as displayed on leaderboards</li>
-              <li>Your unique user ID to associate scores with your account</li>
-            </ul>
-            <p class="mb-4">Leaderboard data is visible to other users to foster friendly competition.</p>
-            
-            <!-- [NEW] Push Notification Tokens -->
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">e. Push Notification Tokens (Firebase Cloud Messaging)</h3>
-            <p class="mb-4">With your permission, we collect a unique device token to send push notifications for:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Daily challenge reminders</li>
-              <li>Reward claim confirmations</li>
-              <li>Important app updates and announcements</li>
-            </ul>
-            <p class="mb-4">You can disable notifications at any time through your device settings without affecting core app functionality.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">f. Testing and QA</h3>
-            <p class="mb-4">Users may participate in testing phases (public or private) as part of early releases. We may monitor gameplay behavior and interactions to improve game balance and performance.</p>
-            <p class="mb-4">Platform-provided identifiers (such as usernames or account IDs) may be used during these processes for moderation or debugging purposes.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">g. Moderation and Bans</h3>
-            <p class="mb-4">If a user violates community or platform rules, ban or moderation data may be stored. This may include timestamps, offense type, and actions taken.</p>
-            <p class="mb-4">Moderation-related data may be retained under our legitimate interest in maintaining safe and fair community environments. In some cases, moderation data may be shared with the relevant platform provider.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">h. Contacting Us (Support or "Message Us")</h3>
-            <p class="mb-4">If you voluntarily contact us through a support form, email, or "Message Us" feature on our website or services, we may temporarily store your email address and message content for the sole purpose of:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Responding to your request</li>
-              <li>Providing technical assistance or support</li>
-              <li>Investigating reported issues</li>
-            </ul>
-            <p class="mb-4">We do not use submitted contact information for marketing or analytics purposes.</p>
-            <p class="mb-4">Support-related information is retained only for as long as necessary to resolve the request and is deleted thereafter.</p>
-            <p class="mb-4">Some technical data (such as IP address or browser metadata) may be automatically processed by our hosting provider when forms are submitted or pages are accessed. This information is managed by the hosting provider in accordance with their own privacy policies.</p>
-          </section>
+      <h2>2. Eligibility</h2>
+      <p>Our Services are intended for users aged 13 and older. If you are under 13, you are not permitted to access or use our Services. Parents or guardians are responsible for supervising minors' activity when using our Services.</p>
 
-          <!-- SECTION 3: Automatically Collected Technical Data (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">3. Automatically Collected Technical Data</h2>
-            <p class="mb-4">Our services, including website access and browser-based Play & Demo experiences, may rely on essential technical data automatically processed by infrastructure providers to ensure stability and performance.</p>
-            <p class="mb-2">This may include:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>IP address</li>
-              <li>Device type</li>
-              <li>Browser version</li>
-              <li>Operating system</li>
-              <li>Basic session-level diagnostics</li>
-            </ul>
-            <p class="mb-4">We do not directly access or use this information for marketing or user profiling purposes.</p>
-          </section>
+      <h2>3. Ownership and Intellectual Property</h2>
+      <p>All content provided by Greek Games Studios including but not limited to:</p>
+      <ul>
+        <li>Games, applications, and software</li>
+        <li>Logos, artwork, and visual assets</li>
+        <li>Music, sound effects, and videos</li>
+        <li>Websites, Play & Demo builds, and digital tools</li>
+      </ul>
+      <p>is the exclusive property of Greek Games Studios.</p>
+      <p>You may not:</p>
+      <ul>
+        <li>Copy, distribute, or modify our content without written permission</li>
+        <li>Use our assets, builds, or code for commercial purposes</li>
+        <li>Claim ownership or authorship of our projects or materials</li>
+      </ul>
+      <p>Violations may result in access restrictions, takedown requests, or legal action.</p>
 
-          <!-- SECTION 4: Third-Party Services (ORIGINAL + Firebase/AdMob) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">4. Third-Party Services</h2>
-            <p class="mb-4">We rely on external platforms and providers to operate certain services. Each platform manages its own data collection and privacy policies.</p>
-            <p class="mb-2">These may include:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li><strong>Firebase (Google):</strong> Authentication, Cloud Firestore database, Cloud Messaging (push notifications)</li>
-              <li><strong>Google AdMob:</strong> In-app advertising</li>
-              <li><strong>Google Sign-In:</strong> Social authentication</li>
-              <li>Roblox Corporation</li>
-              <li>Mojang / Microsoft (Minecraft)</li>
-              <li>Google (Play Store, AdMob, Firebase)</li>
-              <li>Valve (Steam)</li>
-              <li>Discord (Bots, servers)</li>
-              <li>Netlify (Website hosting)</li>
-            </ul>
-            <p class="mb-4">Please refer to each provider's privacy policy for more information.</p>
-          </section>
+      <h2>4. Acceptable Use</h2>
+      <p>When using our Services, you agree to follow all applicable laws and community standards. You must not:</p>
+      <ul>
+        <li>Use exploits, cheats, scripts, or third-party tools to gain unfair advantages</li>
+        <li>Exploit bugs or unintended mechanics in any Play & Demo experience</li>
+        <li>Engage in harassment, hate speech, or discriminatory behavior</li>
+        <li>Spam, advertise, or distribute malicious content</li>
+        <li>Attempt to interfere with service functionality or availability</li>
+        <li>Attempt to hack, decompile, or reverse-engineer our systems</li>
+        <li>Circumvent moderation systems or access restrictions</li>
+        <li>Impersonate Greek Games Studios or its members</li>
+      </ul>
+      <p>Failure to comply may lead to warnings, temporary suspension, or permanent bans from our Services.</p>
 
-          <!-- SECTION 5: Use of Data (ORIGINAL + NEW USES) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">5. Use of Data</h2>
-            <p class="mb-4">Any data accessed or processed through our services (including moderation logs or gameplay records) is used solely for:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Improving gameplay stability and performance</li>
-              <li>Operating the Rewards system (coins, challenges, leaderboards)</li>
-              <li>Sending push notifications about challenges and app updates</li>
-              <li>Preventing abuse of our rewards system (e.g., duplicate claims)</li>
-              <li>Displaying personalized leaderboards</li>
-              <li>Fixing bugs and preventing exploits</li>
-              <li>Moderating communities and enforcing rules</li>
-              <li>Maintaining fair play and service integrity</li>
-              <li>Analyzing technical trends for development</li>
-              <li>Ensuring compliance with platform terms</li>
-            </ul>
-            <p class="mb-4"><strong>We do not sell, rent, or trade user data under any circumstances.</strong></p>
-          </section>
+      <h2>5. Accounts and Platform Data</h2>
+      <p>Some Services may use platform-linked accounts. These accounts are created and managed by the respective platform providers.</p>
+      <p>We may access limited platform-provided data such as:</p>
+      <ul>
+        <li>Username</li>
+        <li>User ID</li>
+        <li>Gameplay logs or session progress</li>
+        <li>Moderation-related activity</li>
+        <li>Platform analytics</li>
+      </ul>
+      <p>This information may be used to maintain service functionality, fairness, and community safety.</p>
 
-          <!-- SECTION 6: Data Retention (ORIGINAL + NEW) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">6. Data Retention</h2>
-            <p class="mb-4">Gameplay, testing, demo usage, and moderation-related data may be stored for up to 12 months unless required for:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Ongoing moderation</li>
-              <li>Security investigations</li>
-              <li>Technical analysis or service improvement</li>
-            </ul>
-            <p class="mb-4">Support communications are deleted once the related issue has been resolved.</p>
-            <p class="mb-4"><strong>Additional retention for app features:</strong></p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>User accounts: Until you request deletion</li>
-              <li>Challenge completion data: Retained for historical leaderboard integrity</li>
-              <li>Push tokens: Deleted when you log out or uninstall the app</li>
-              <li>Score data: Retained as part of permanent leaderboards</li>
-            </ul>
-          </section>
+      <h2>6. GGS Hub Mobile App Account</h2>
+      <p>To access certain features (rewards, leaderboards, saved scores), you must create an account within the GGS Hub app. You are responsible for maintaining the confidentiality of your login credentials. We will never ask for your password. Account deletion permanently removes all associated data including coins, scores, and challenge progress.</p>
 
-          <!-- SECTION 7: Cookies and Tracking (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">7. Cookies and Tracking</h2>
-            <p class="mb-4">Our website may use cookies or similar technologies for:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Functional purposes (navigation, login)</li>
-              <li>Analytics and traffic measurement</li>
-              <li>Improving user experience</li>
-            </ul>
-            <p class="mb-4">You can manage or disable cookies through your browser settings.</p>
-          </section>
+      <h2>7. Play & Demo Experiences</h2>
+      <p>Our Services may provide access to Play & Demo versions of our games or interactive features for preview, testing, or evaluation purposes.</p>
+      <p>By accessing these experiences, you acknowledge that:</p>
+      <ul>
+        <li>Play & Demo versions may differ from final released products</li>
+        <li>Features, mechanics, or content may change at any time</li>
+        <li>Progress or saved session data may be reset or removed</li>
+        <li>Services may be modified, limited, or discontinued</li>
+        <li>Performance issues or incomplete functionality may occur</li>
+      </ul>
+      <p>Play & Demo environments are provided for testing purposes and are used at your own discretion.</p>
 
-          <!-- SECTION 8: Age Requirements (UPDATED with COPPA/GDPR - REPLACED) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">8. Age Requirements (COPPA & GDPR Compliance)</h2>
-            <p class="mb-4">Our services are designed for users aged 13 and above. We strictly enforce age verification to comply with COPPA (Children's Online Privacy Protection Act) and GDPR requirements.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">a. Age Verification During Registration</h3>
-            <p class="mb-4">When creating an account, we require you to provide your date of birth in DD/MM/YYYY format. This information is used solely to verify that you are at least 13 years old, comply with legal age restrictions, and block account creation for users under 13.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">b. Data Stored</h3>
-            <p class="mb-4">Upon successful registration, we store in Firebase Firestore:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Your date of birth (encrypted, accessible only to you and administrators)</li>
-              <li>Your calculated age at registration</li>
-              <li>A timestamp of when you provided age consent</li>
-              <li>COPPA compliance flag (boolean) and GDPR consent flag</li>
-            </ul>
-            <p class="mb-4">These fields are stored as <code class="bg-gray-800 px-1 rounded">dateOfBirth</code>, <code class="bg-gray-800 px-1 rounded">age</code>, <code class="bg-gray-800 px-1 rounded">gdprConsent</code>, and <code class="bg-gray-800 px-1 rounded">coppaCompliant</code>.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">c. Google Sign-In</h3>
-            <p class="mb-4">If you register using Google Sign-In, you are still required to provide your date of birth during first-time setup if not already stored. We do not automatically retrieve age information from Google.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">d. What We Do NOT Store</h3>
-            <p class="mb-4">We do not share your date of birth with third parties, use your age for marketing or profiling, or store birth dates of users who fail age verification (they are rejected immediately).</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">e. Underage Users</h3>
-            <p class="mb-4">If we discover that a user under 13 has created an account, we will immediately suspend the account, delete all associated data (coins, scores, challenge progress), and notify the parent/guardian if contact information is available. Parents or guardians may request deletion by contacting us.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">f. European Users (GDPR)</h3>
-            <p class="mb-4">For users in the European Union, age verification is required under Article 8 of the GDPR. We do not process personal data of children under 13 without parental consent.</p>
-          </section>
+      <h2>8. Virtual Items and Payments</h2>
+      <p>All payments are securely handled by third-party platforms such as Google Play, Steam, or Roblox. We do not process or store billing or credit card information. Virtual items and currency are non-refundable and non-transferable unless explicitly stated otherwise. Abuse of payment systems may lead to account restrictions or bans.</p>
 
-          <!-- SECTION 9: User Rights and Requests (ORIGINAL + ACCOUNT DELETION) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">9. User Rights and Requests</h2>
-            <p class="mb-4">Users may request access to or deletion of specific data linked to their activity (e.g., usernames, moderation logs, support messages). Requests must include proof of identity and will be handled within 30 days, where applicable.</p>
-            <p class="mb-4">Upon account deletion, all associated data (coins, scores, challenge progress) will be permanently removed.</p>
-          </section>
+      <h2>9. Challenges and Rewards System</h2>
 
-          <!-- SECTION 10: External Links (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">10. External Links</h2>
-            <p class="mb-4">Our services may contain links to external websites, stores, or platforms. We are not responsible for the content or privacy practices of these external services.</p>
-          </section>
+      <h3>a. Types of Challenges</h3>
+      <ul>
+        <li>Daily Challenges: Reset every 24 hours</li>
+        <li>Weekly Challenges: Reset every 7 days</li>
+        <li>Special Missions: One-time or seasonal</li>
+      </ul>
 
-          <!-- SECTION 11: Payments and In-Game Purchases (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">11. Payments and In-Game Purchases</h2>
-            <p class="mb-4">Some of our games and apps may include paid features such as:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Full game purchases</li>
-              <li>In-game or in-app purchases (virtual currency, passes, cosmetics)</li>
-              <li>Donation-based perks (e.g., Discord features)</li>
-            </ul>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">a. Payment Processing</h3>
-            <p class="mb-4">All payments are handled by third-party platforms. We do not store or process billing data (such as credit card or banking information).</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">b. Virtual Goods & Refunds</h3>
-            <p class="mb-4">Virtual items and currency are non-refundable and non-transferable, unless stated otherwise. Abuse of payment systems may result in bans or restricted access.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">c. Testing/Promo Access</h3>
-            <p class="mb-4">Some players may receive early or free access to premium content during tests or events. We reserve the right to remove or modify this content at any time without prior notice or compensation.</p>
-          </section>
+      <h3>b. Claiming Rewards</h3>
+      <p>Rewards must be claimed manually within the app. Unclaimed rewards expire when challenges reset. We reserve the right to verify challenge completion before awarding coins.</p>
 
-          <!-- SECTION 12: Virtual Currency (GGS Coins) - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">12. Virtual Currency (GGS Coins)</h2>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">a. Earning Coins</h3>
-            <p class="mb-4">GGS Coins are earned through completing challenges and are not purchasable with real money. Coins are awarded for:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Daily login</li>
-              <li>Completing daily/weekly/special challenges</li>
-              <li>Achieving high scores</li>
-            </ul>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">b. Non-Monetary Value</h3>
-            <p class="mb-4">GGS Coins have no real-world monetary value. They cannot be exchanged for cash or other currency, transferred between accounts, or refunded.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">c. Coin Balance</h3>
-            <p class="mb-4">Your coin balance is stored securely and may be viewed in your profile. We reserve the right to adjust balances in case of errors or abuse.</p>
-            
-            <h3 class="text-xl font-bold text-cyan-400 mt-6 mb-3">d. Account Termination</h3>
-            <p class="mb-4">Upon account deletion, all associated coins and challenge progress are permanently removed.</p>
-          </section>
+      <h3>c. Abuse Prevention</h3>
+      <p>The following actions are prohibited:</p>
+      <ul>
+        <li>Attempting to claim the same reward multiple times</li>
+        <li>Using automated tools to complete challenges</li>
+        <li>Exploiting bugs to earn coins illegitimately</li>
+        <li>Creating multiple accounts to farm rewards</li>
+      </ul>
+      <p>Violations may result in reversal of fraudulently earned coins, temporary or permanent suspension of rewards access, or account termination.</p>
 
-          <!-- SECTION 13: Push Notifications - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">13. Push Notifications</h2>
-            <p class="mb-4">With your consent, we use Firebase Cloud Messaging (FCM) to send:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Daily challenge reminders</li>
-              <li>Reward claim confirmations</li>
-              <li>Important app updates</li>
-            </ul>
-            <p class="mb-4">You can opt out at any time by disabling notifications in your device settings or signing out of your account. We do not share your FCM token with third parties for marketing purposes.</p>
-          </section>
+      <h3>d. Coin Balance Accuracy</h3>
+      <p>While we strive to maintain accurate balances, technical errors may occur. If you believe your balance is incorrect, contact us for review.</p>
 
-          <!-- SECTION 14: Advertising (AdMob) - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">14. Advertising (AdMob)</h2>
-            <p class="mb-4">Our app may display interstitial advertisements using Google AdMob. Ads are requested with non-personalized ad settings where possible. Google's privacy policy applies to any data collected through advertisements.</p>
-          </section>
+      <h2>10. Leaderboards</h2>
 
-          <!-- SECTION 15: Play & Demos (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">15. Play & Demos</h2>
-            <p class="mb-4">Some of our services may include browser-based or downloadable Play & Demo experiences for testing or preview purposes.</p>
-            <p class="mb-4">During use of these features:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Temporary gameplay progress may be stored locally on the user's device</li>
-              <li>Session-based technical data may be processed for performance monitoring</li>
-              <li>Platform-provided usernames or identifiers may be used for moderation or debugging in multiplayer or connected environments</li>
-            </ul>
-            <p class="mb-4">Play & Demo experiences are provided for preview or testing purposes only and may:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Differ from final game versions</li>
-              <li>Be modified or removed without prior notice</li>
-              <li>Reset progress or saved states at any time</li>
-            </ul>
-          </section>
+      <h3>a. Score Submission</h3>
+      <p>Scores submitted from mini-games are stored with your nickname, timestamp of achievement, and unique user identifier.</p>
 
-          <!-- SECTION 16: Changes to This Policy (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">16. Changes to This Policy</h2>
-            <p class="mb-4">This Privacy Policy may be updated periodically. Updates will be posted on our official website with the "Last Updated" date. Continuing to use our services after changes means you accept the updated terms.</p>
-          </section>
+      <h3>b. Score Validation</h3>
+      <p>We reserve the right to remove scores obtained through cheating or exploits, reset leaderboards in case of technical issues, and moderate offensive usernames displayed on leaderboards.</p>
 
-          <!-- SECTION 17: Contact Information (ORIGINAL) -->
-          <section>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">17. Contact Information</h2>
-            <p class="mb-4">For any questions, data requests, or privacy concerns, you can reach us at:</p>
-            <address class="not-italic">
-              <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com" class="text-cyan-400 hover:underline">greekgamesstudios@gmail.com</a><br>
-              <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">https://discord.gg/UmrwZpYZP3</a><br>
-              <strong>Website:</strong> <a href="https://greekgamesstudios.com" class="text-cyan-400 hover:underline">https://greekgamesstudios.com</a>
-            </address>
-          </section>
-        </div>
-      </article>
-      
-      <!-- ================================================================ -->
-      <!-- TERMS OF USE SECTION (FULLY PRESERVED + NEW FEATURES)            -->
-      <!-- ================================================================ -->
-      <article id="terms-of-use" role="tabpanel" aria-labelledby="tab-terms" class="content-section" hidden>
-        <header class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">Terms of Use</h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full mx-auto"></div>
-          <p class="text-purple-400 text-lg mt-6">Last Updated: May 15, 2026</p>
-        </header>
+      <h3>c. Score Deletion</h3>
+      <p>When you delete your account, all associated scores will be removed from leaderboards within 30 days.</p>
 
-        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
-          
-          <!-- SECTION 1: Introduction (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">1. Introduction</h2>
-            <p class="mb-4">Welcome to Greek Games Studios ("we", "our", or "us"). By accessing or using any of our games, websites, Play & Demo experiences, or community services, you agree to these Terms of Use ("Terms"). If you do not agree with these Terms, please do not use our Services.</p>
-            <p class="mb-2">These Terms apply to:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li><strong>Main Games:</strong> Titles available on platforms such as Google Play Store and Steam</li>
-              <li><strong>Mini Games:</strong> Experiences on Roblox, Minecraft, and similar platforms</li>
-              <li><strong>Play & Demo:</strong> Browser-based or downloadable testing experiences</li>
-              <li><strong>Official Website:</strong> https://greekgamesstudios.com</li>
-              <li><strong>Community Services:</strong> Including Discord servers, testing environments, and digital tools</li>
-            </ul>
-          </section>
+      <h2>11. Push Notifications</h2>
+      <p>By using our app with notifications enabled, you agree to receive challenge reminders, reward confirmations, and important app updates. You may disable notifications at any time through your device settings without affecting core app functionality.</p>
 
-          <!-- SECTION 2: Eligibility (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">2. Eligibility</h2>
-            <p class="mb-4">Our Services are intended for users aged 13 and older. If you are under 13, you are not permitted to access or use our Services. Parents or guardians are responsible for supervising minors' activity when using our Services.</p>
-          </section>
+      <h2>12. User-Generated Content</h2>
+      <p>By sharing content within our Services or community spaces, you grant us a non-exclusive right to use, display, or moderate that content for the purpose of maintaining safe and functional environments.</p>
+      <p>We reserve the right to remove or restrict any user content that violates these Terms or community guidelines.</p>
 
-          <!-- SECTION 3: Ownership and Intellectual Property (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">3. Ownership and Intellectual Property</h2>
-            <p class="mb-4">All content provided by Greek Games Studios including but not limited to:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Games, applications, and software</li>
-              <li>Logos, artwork, and visual assets</li>
-              <li>Music, sound effects, and videos</li>
-              <li>Websites, Play & Demo builds, and digital tools</li>
-            </ul>
-            <p class="mb-4">is the exclusive property of Greek Games Studios.</p>
-            <p class="mb-2">You may not:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Copy, distribute, or modify our content without written permission</li>
-              <li>Use our assets, builds, or code for commercial purposes</li>
-              <li>Claim ownership or authorship of our projects or materials</li>
-            </ul>
-            <p class="mb-4">Violations may result in access restrictions, takedown requests, or legal action.</p>
-          </section>
+      <h2>13. Moderation and Enforcement</h2>
+      <p>We may apply moderation actions if a user violates these Terms, service rules, or platform policies.</p>
+      <p>Moderation actions may include:</p>
+      <ul>
+        <li>Warnings</li>
+        <li>Temporary restrictions</li>
+        <li>Permanent suspension of access</li>
+        <li>Removal from Play & Demo environments</li>
+      </ul>
+      <p>Serious violations may be reported to platform providers or relevant authorities where required.</p>
 
-          <!-- SECTION 4: Acceptable Use (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">4. Acceptable Use</h2>
-            <p class="mb-4">When using our Services, you agree to follow all applicable laws and community standards. You must not:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Use exploits, cheats, scripts, or third-party tools to gain unfair advantages</li>
-              <li>Exploit bugs or unintended mechanics in any Play & Demo experience</li>
-              <li>Engage in harassment, hate speech, or discriminatory behavior</li>
-              <li>Spam, advertise, or distribute malicious content</li>
-              <li>Attempt to interfere with service functionality or availability</li>
-              <li>Attempt to hack, decompile, or reverse-engineer our systems</li>
-              <li>Circumvent moderation systems or access restrictions</li>
-              <li>Impersonate Greek Games Studios or its members</li>
-            </ul>
-            <p class="mb-4">Failure to comply may lead to warnings, temporary suspension, or permanent bans from our Services.</p>
-          </section>
+      <h2>14. Disclaimer of Warranty</h2>
+      <p>Our Services are provided "as is" and "as available." We do not guarantee uninterrupted operation, the correction of all technical issues, or compatibility with all devices or platforms.</p>
 
-          <!-- SECTION 5: Accounts and Platform Data (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">5. Accounts and Platform Data</h2>
-            <p class="mb-4">Some Services may use platform-linked accounts. These accounts are created and managed by the respective platform providers.</p>
-            <p class="mb-2">We may access limited platform-provided data such as:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Username</li>
-              <li>User ID</li>
-              <li>Gameplay logs or session progress</li>
-              <li>Moderation-related activity</li>
-              <li>Platform analytics</li>
-            </ul>
-            <p class="mb-4">This information may be used to maintain service functionality, fairness, and community safety.</p>
-          </section>
+      <h2>15. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, Greek Games Studios shall not be held liable for data loss, gameplay issues, service interruptions, technical failures, or indirect damages resulting from the use of our Services.</p>
+      <p>Your sole remedy for dissatisfaction is to discontinue use of our Services.</p>
 
-          <!-- SECTION 6: GGS Hub Mobile App Account - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">6. GGS Hub Mobile App Account</h2>
-            <p class="mb-4">To access certain features (rewards, leaderboards, saved scores), you must create an account within the GGS Hub app. You are responsible for maintaining the confidentiality of your login credentials. We will never ask for your password. Account deletion permanently removes all associated data including coins, scores, and challenge progress.</p>
-          </section>
+      <h2>16. Service Availability</h2>
+      <p>We reserve the right to:</p>
+      <ul>
+        <li>Modify or discontinue any part of our Services</li>
+        <li>Reset progress or testing data</li>
+        <li>Restrict access to maintain fairness or stability</li>
+      </ul>
+      <p>We are not responsible for any loss of progress or in-game data resulting from updates, resets, or technical issues.</p>
 
-          <!-- SECTION 7: Play & Demo Experiences (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">7. Play & Demo Experiences</h2>
-            <p class="mb-4">Our Services may provide access to Play & Demo versions of our games or interactive features for preview, testing, or evaluation purposes.</p>
-            <p class="mb-2">By accessing these experiences, you acknowledge that:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Play & Demo versions may differ from final released products</li>
-              <li>Features, mechanics, or content may change at any time</li>
-              <li>Progress or saved session data may be reset or removed</li>
-              <li>Services may be modified, limited, or discontinued</li>
-              <li>Performance issues or incomplete functionality may occur</li>
-            </ul>
-            <p class="mb-4">Play & Demo environments are provided for testing purposes and are used at your own discretion.</p>
-          </section>
+      <h2>17. Changes to the Terms</h2>
+      <p>We may update these Terms from time to time. Continued use of our Services after updates constitutes acceptance of the revised Terms.</p>
 
-          <!-- SECTION 8: Virtual Items and Payments (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">8. Virtual Items and Payments</h2>
-            <p class="mb-4">All payments are securely handled by third-party platforms such as Google Play, Steam, or Roblox. We do not process or store billing or credit card information. Virtual items and currency are non-refundable and non-transferable unless explicitly stated otherwise. Abuse of payment systems may lead to account restrictions or bans.</p>
-          </section>
+      <h2>18. Termination</h2>
+      <p>We reserve the right to suspend or terminate access to our Services at any time, with or without notice, for reasons including violation of these Terms.</p>
 
-          <!-- SECTION 9: Challenges and Rewards System - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">9. Challenges and Rewards System</h2>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">a. Types of Challenges</h3>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Daily Challenges: Reset every 24 hours</li>
-              <li>Weekly Challenges: Reset every 7 days</li>
-              <li>Special Missions: One-time or seasonal</li>
-            </ul>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">b. Claiming Rewards</h3>
-            <p class="mb-4">Rewards must be claimed manually within the app. Unclaimed rewards expire when challenges reset. We reserve the right to verify challenge completion before awarding coins.</p>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">c. Abuse Prevention</h3>
-            <p class="mb-4">The following actions are prohibited:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Attempting to claim the same reward multiple times</li>
-              <li>Using automated tools to complete challenges</li>
-              <li>Exploiting bugs to earn coins illegitimately</li>
-              <li>Creating multiple accounts to farm rewards</li>
-            </ul>
-            <p class="mb-4">Violations may result in reversal of fraudulently earned coins, temporary or permanent suspension of rewards access, or account termination.</p>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">d. Coin Balance Accuracy</h3>
-            <p class="mb-4">While we strive to maintain accurate balances, technical errors may occur. If you believe your balance is incorrect, contact us for review.</p>
-          </section>
+      <h2>19. Governing Law</h2>
+      <p>These Terms are governed by the laws of Greece and the European Union. Any disputes arising in connection with these Terms shall be subject to Greek jurisdiction.</p>
 
-          <!-- SECTION 10: Leaderboards - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">10. Leaderboards</h2>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">a. Score Submission</h3>
-            <p class="mb-4">Scores submitted from mini-games are stored with your nickname, timestamp of achievement, and unique user identifier.</p>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">b. Score Validation</h3>
-            <p class="mb-4">We reserve the right to remove scores obtained through cheating or exploits, reset leaderboards in case of technical issues, and moderate offensive usernames displayed on leaderboards.</p>
-            
-            <h3 class="text-xl font-bold text-purple-400 mt-6 mb-3">c. Score Deletion</h3>
-            <p class="mb-4">When you delete your account, all associated scores will be removed from leaderboards within 30 days.</p>
-          </section>
+      <h2>20. Contact Information</h2>
+      <address>
+        <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com">greekgamesstudios@gmail.com</a><br>
+        <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer">https://discord.gg/UmrwZpYZP3</a><br>
+        <strong>Website:</strong> <a href="https://greekgamesstudios.com">https://greekgamesstudios.com</a>
+      </address>
+    </section>
 
-          <!-- SECTION 11: Push Notifications - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">11. Push Notifications</h2>
-            <p class="mb-4">By using our app with notifications enabled, you agree to receive challenge reminders, reward confirmations, and important app updates. You may disable notifications at any time through your device settings without affecting core app functionality.</p>
-          </section>
+    <!-- COMMUNITY GUIDELINES -->
+    <section class="legal-section" id="community-guidelines" itemscope itemtype="https://schema.org/WebPageElement">
+      <h1>Community Guidelines</h1>
+      <span class="legal-date">Last Updated: May 15, 2026</span>
+      <div class="legal-divider"></div>
 
-          <!-- SECTION 12: User-Generated Content (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">12. User-Generated Content</h2>
-            <p class="mb-4">By sharing content within our Services or community spaces, you grant us a non-exclusive right to use, display, or moderate that content for the purpose of maintaining safe and functional environments.</p>
-            <p class="mb-4">We reserve the right to remove or restrict any user content that violates these Terms or community guidelines.</p>
-          </section>
+      <h2>1. Introduction</h2>
+      <p>Our goal is to maintain a safe, positive, and respectful environment for everyone across all our Services. These Community Guidelines apply to all users interacting with our games, Play & Demo experiences, website, Discord server, and other digital platforms. By participating in our Services, you agree to follow these rules.</p>
 
-          <!-- SECTION 13: Moderation and Enforcement (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">13. Moderation and Enforcement</h2>
-            <p class="mb-4">We may apply moderation actions if a user violates these Terms, service rules, or platform policies.</p>
-            <p class="mb-2">Moderation actions may include:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Warnings</li>
-              <li>Temporary restrictions</li>
-              <li>Permanent suspension of access</li>
-              <li>Removal from Play & Demo environments</li>
-            </ul>
-            <p class="mb-4">Serious violations may be reported to platform providers or relevant authorities where required.</p>
-          </section>
+      <h2>2. Respectful Behavior</h2>
+      <p>Treat all players, staff members, and community participants with respect.</p>
+      <p>The following behavior is not tolerated:</p>
+      <ul>
+        <li>Harassment or bullying</li>
+        <li>Discrimination or hate speech</li>
+        <li>Personal attacks or threats</li>
+        <li>Toxic or intentionally disruptive conduct</li>
+        <li>Doxxing or sharing private information</li>
+      </ul>
+      <p>We aim to maintain a welcoming environment for all users aged 13 and above.</p>
 
-          <!-- SECTION 14: Disclaimer of Warranty (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">14. Disclaimer of Warranty</h2>
-            <p class="mb-4">Our Services are provided "as is" and "as available." We do not guarantee uninterrupted operation, the correction of all technical issues, or compatibility with all devices or platforms.</p>
-          </section>
+      <h2>3. Fair Play</h2>
+      <p>All users must play fairly and avoid gaining unfair advantages.</p>
+      <p>You must not:</p>
+      <ul>
+        <li>Use cheats, exploits, or unintended mechanics</li>
+        <li>Use automation tools, scripts, or unauthorized software</li>
+        <li>Attempt to bypass game systems or progression</li>
+        <li>Interfere with gameplay experiences of others</li>
+      </ul>
+      <p>Users found violating fair play standards may face temporary or permanent restrictions.</p>
 
-          <!-- SECTION 15: Limitation of Liability (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">15. Limitation of Liability</h2>
-            <p class="mb-4">To the fullest extent permitted by law, Greek Games Studios shall not be held liable for data loss, gameplay issues, service interruptions, technical failures, or indirect damages resulting from the use of our Services.</p>
-            <p class="mb-4">Your sole remedy for dissatisfaction is to discontinue use of our Services.</p>
-          </section>
+      <h2>4. Leaderboard Conduct</h2>
+      <p>When participating in leaderboards, you must not:</p>
+      <ul>
+        <li>Use fake or offensive usernames</li>
+        <li>Submit scores achieved through cheating or exploits</li>
+        <li>Harass other players based on their rankings</li>
+        <li>Create multiple accounts to dominate leaderboards</li>
+      </ul>
+      <p>Violations may result in score removal, temporary leaderboard bans, or permanent account suspension.</p>
 
-          <!-- SECTION 16: Service Availability (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">16. Service Availability</h2>
-            <p class="mb-2">We reserve the right to:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Modify or discontinue any part of our Services</li>
-              <li>Reset progress or testing data</li>
-              <li>Restrict access to maintain fairness or stability</li>
-            </ul>
-            <p class="mb-4">We are not responsible for any loss of progress or in-game data resulting from updates, resets, or technical issues.</p>
-          </section>
+      <h2>5. Rewards and Challenges Conduct</h2>
+      <p>You agree to:</p>
+      <ul>
+        <li>Complete challenges legitimately through normal gameplay</li>
+        <li>Not use automated scripts or bots to claim rewards</li>
+        <li>Not exploit bugs to earn coins unfairly</li>
+        <li>Not create alternate accounts to claim multiple rewards</li>
+      </ul>
+      <p>We actively monitor for abuse. Accounts found violating these rules will have rewards revoked and may be banned.</p>
 
-          <!-- SECTION 17: Changes to the Terms (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">17. Changes to the Terms</h2>
-            <p class="mb-4">We may update these Terms from time to time. Continued use of our Services after updates constitutes acceptance of the revised Terms.</p>
-          </section>
+      <h2>6. Play & Demo Participation</h2>
+      <p>Some Services may include access to Play & Demo builds intended for preview or testing.</p>
+      <p>When participating in these environments, you must not:</p>
+      <ul>
+        <li>Exploit unfinished systems or mechanics</li>
+        <li>Attempt to gain unfair advantages using in-development features</li>
+        <li>Disrupt testing environments intentionally</li>
+        <li>Use third-party tools within testing builds</li>
+      </ul>
+      <p>Play & Demo environments may be modified, reset, or discontinued at any time to maintain fairness and stability.</p>
 
-          <!-- SECTION 18: Termination (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">18. Termination</h2>
-            <p class="mb-4">We reserve the right to suspend or terminate access to our Services at any time, with or without notice, for reasons including violation of these Terms.</p>
-          </section>
+      <h2>7. Appropriate Content</h2>
+      <p>Keep all messages, usernames, and shared content appropriate for all audiences aged 13 and above.</p>
+      <p>Do not share:</p>
+      <ul>
+        <li>NSFW or explicit content</li>
+        <li>Violent or disturbing material</li>
+        <li>Scam or phishing links</li>
+        <li>Malicious software or unauthorized downloads</li>
+        <li>False or misleading information</li>
+      </ul>
 
-          <!-- SECTION 19: Governing Law (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">19. Governing Law</h2>
-            <p class="mb-4">These Terms are governed by the laws of Greece and the European Union. Any disputes arising in connection with these Terms shall be subject to Greek jurisdiction.</p>
-          </section>
+      <h2>8. Account Responsibility</h2>
+      <p>You are responsible for keeping your platform accounts secure.</p>
+      <ul>
+        <li>Do not share your account credentials</li>
+        <li>Do not attempt to access accounts belonging to others</li>
+        <li>Report suspected impersonators or compromised accounts to moderators</li>
+      </ul>
+      <p>Greek Games Studios will never request your passwords or login credentials.</p>
 
-          <!-- SECTION 20: Contact Information (ORIGINAL) -->
-          <section>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">20. Contact Information</h2>
-            <address class="not-italic">
-              <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com" class="text-purple-400 hover:underline">greekgamesstudios@gmail.com</a><br>
-              <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">https://discord.gg/UmrwZpYZP3</a><br>
-              <strong>Website:</strong> <a href="https://greekgamesstudios.com" class="text-purple-400 hover:underline">https://greekgamesstudios.com</a>
-            </address>
-          </section>
-        </div>
-      </article>
-      
-      <!-- ================================================================ -->
-      <!-- COMMUNITY GUIDELINES SECTION (FULLY PRESERVED + NEW FEATURES)    -->
-      <!-- ================================================================ -->
-      <article id="community-guidelines" role="tabpanel" aria-labelledby="tab-community" class="content-section" hidden>
-        <header class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">Community Guidelines</h1>
-          <div class="w-24 h-1 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full mx-auto"></div>
-          <p class="text-pink-400 text-lg mt-6">Last Updated: May 15, 2026</p>
-        </header>
+      <h2>9. Advertising and Spam</h2>
+      <p>The following actions are not permitted:</p>
+      <ul>
+        <li>Excessive self-promotion</li>
+        <li>Repeated off-topic messages</li>
+        <li>Unauthorized advertisements</li>
+        <li>Distribution of unrelated Discord invites or external links</li>
+      </ul>
 
-        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
-          
-          <!-- SECTION 1: Introduction (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">1. Introduction</h2>
-            <p class="mb-4">Our goal is to maintain a safe, positive, and respectful environment for everyone across all our Services. These Community Guidelines apply to all users interacting with our games, Play & Demo experiences, website, Discord server, and other digital platforms. By participating in our Services, you agree to follow these rules.</p>
-          </section>
+      <h2>10. Testing and Feedback</h2>
+      <p>Constructive feedback is encouraged during testing phases.</p>
+      <p>However, users must not:</p>
+      <ul>
+        <li>Share unreleased content publicly</li>
+        <li>Leak in-development materials</li>
+        <li>Misuse testing builds for unintended purposes</li>
+      </ul>
+      <p>Participation in testing does not grant ownership or distribution rights to any in-development content.</p>
 
-          <!-- SECTION 2: Respectful Behavior (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">2. Respectful Behavior</h2>
-            <p class="mb-4">Treat all players, staff members, and community participants with respect.</p>
-            <p class="mb-2">The following behavior is not tolerated:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Harassment or bullying</li>
-              <li>Discrimination or hate speech</li>
-              <li>Personal attacks or threats</li>
-              <li>Toxic or intentionally disruptive conduct</li>
-              <li>Doxxing or sharing private information</li>
-            </ul>
-            <p class="mb-4">We aim to maintain a welcoming environment for all users aged 13 and above.</p>
-          </section>
+      <h2>11. Platform Compliance</h2>
+      <p>Users must follow both these Community Guidelines and the rules of the platforms used to access our Services, including but not limited to Roblox, Steam, Discord, or Google Play.</p>
+      <p>Failure to comply with platform-level terms may result in access restrictions within our Services.</p>
 
-          <!-- SECTION 3: Fair Play (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">3. Fair Play</h2>
-            <p class="mb-4">All users must play fairly and avoid gaining unfair advantages.</p>
-            <p class="mb-2">You must not:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Use cheats, exploits, or unintended mechanics</li>
-              <li>Use automation tools, scripts, or unauthorized software</li>
-              <li>Attempt to bypass game systems or progression</li>
-              <li>Interfere with gameplay experiences of others</li>
-            </ul>
-            <p class="mb-4">Users found violating fair play standards may face temporary or permanent restrictions.</p>
-          </section>
+      <h2>12. Moderation and Enforcement</h2>
+      <p>Violations of these Guidelines may result in:</p>
+      <ul>
+        <li>Warnings</li>
+        <li>Temporary mutes or restrictions</li>
+        <li>Removal from Play & Demo environments</li>
+        <li>Revocation of roles or permissions</li>
+        <li>Temporary or permanent bans</li>
+      </ul>
+      <p>Serious or repeated violations may also be reported to platform providers where applicable.</p>
 
-          <!-- SECTION 4: Leaderboard Conduct - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">4. Leaderboard Conduct</h2>
-            <p class="mb-4">When participating in leaderboards, you must not:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Use fake or offensive usernames</li>
-              <li>Submit scores achieved through cheating or exploits</li>
-              <li>Harass other players based on their rankings</li>
-              <li>Create multiple accounts to dominate leaderboards</li>
-            </ul>
-            <p class="mb-4">Violations may result in score removal, temporary leaderboard bans, or permanent account suspension.</p>
-          </section>
+      <h2>13. Updates to These Guidelines</h2>
+      <p>We may update these Community Guidelines periodically. Continued use of our Services after updates constitutes acceptance of the revised rules.</p>
 
-          <!-- SECTION 5: Rewards and Challenges Conduct - NEW -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">5. Rewards and Challenges Conduct</h2>
-            <p class="mb-4">You agree to:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Complete challenges legitimately through normal gameplay</li>
-              <li>Not use automated scripts or bots to claim rewards</li>
-              <li>Not exploit bugs to earn coins unfairly</li>
-              <li>Not create alternate accounts to claim multiple rewards</li>
-            </ul>
-            <p class="mb-4">We actively monitor for abuse. Accounts found violating these rules will have rewards revoked and may be banned.</p>
-          </section>
+      <h2>14. Contact Information</h2>
+      <address>
+        <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com">greekgamesstudios@gmail.com</a><br>
+        <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer">https://discord.gg/UmrwZpYZP3</a><br>
+        <strong>Website:</strong> <a href="https://greekgamesstudios.com">https://greekgamesstudios.com</a>
+      </address>
+    </section>
 
-          <!-- SECTION 6: Play & Demo Participation (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">6. Play & Demo Participation</h2>
-            <p class="mb-4">Some Services may include access to Play & Demo builds intended for preview or testing.</p>
-            <p class="mb-2">When participating in these environments, you must not:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Exploit unfinished systems or mechanics</li>
-              <li>Attempt to gain unfair advantages using in-development features</li>
-              <li>Disrupt testing environments intentionally</li>
-              <li>Use third-party tools within testing builds</li>
-            </ul>
-            <p class="mb-4">Play & Demo environments may be modified, reset, or discontinued at any time to maintain fairness and stability.</p>
-          </section>
-
-          <!-- SECTION 7: Appropriate Content (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">7. Appropriate Content</h2>
-            <p class="mb-4">Keep all messages, usernames, and shared content appropriate for all audiences aged 13 and above.</p>
-            <p class="mb-2">Do not share:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>NSFW or explicit content</li>
-              <li>Violent or disturbing material</li>
-              <li>Scam or phishing links</li>
-              <li>Malicious software or unauthorized downloads</li>
-              <li>False or misleading information</li>
-            </ul>
-          </section>
-
-          <!-- SECTION 8: Account Responsibility (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">8. Account Responsibility</h2>
-            <p class="mb-2">You are responsible for keeping your platform accounts secure.</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Do not share your account credentials</li>
-              <li>Do not attempt to access accounts belonging to others</li>
-              <li>Report suspected impersonators or compromised accounts to moderators</li>
-            </ul>
-            <p class="mb-4">Greek Games Studios will never request your passwords or login credentials.</p>
-          </section>
-
-          <!-- SECTION 9: Advertising and Spam (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">9. Advertising and Spam</h2>
-            <p class="mb-2">The following actions are not permitted:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Excessive self-promotion</li>
-              <li>Repeated off-topic messages</li>
-              <li>Unauthorized advertisements</li>
-              <li>Distribution of unrelated Discord invites or external links</li>
-            </ul>
-          </section>
-
-          <!-- SECTION 10: Testing and Feedback (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">10. Testing and Feedback</h2>
-            <p class="mb-4">Constructive feedback is encouraged during testing phases.</p>
-            <p class="mb-2">However, users must not:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Share unreleased content publicly</li>
-              <li>Leak in-development materials</li>
-              <li>Misuse testing builds for unintended purposes</li>
-            </ul>
-            <p class="mb-4">Participation in testing does not grant ownership or distribution rights to any in-development content.</p>
-          </section>
-
-          <!-- SECTION 11: Platform Compliance (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">11. Platform Compliance</h2>
-            <p class="mb-4">Users must follow both these Community Guidelines and the rules of the platforms used to access our Services, including but not limited to Roblox, Steam, Discord, or Google Play.</p>
-            <p class="mb-4">Failure to comply with platform-level terms may result in access restrictions within our Services.</p>
-          </section>
-
-          <!-- SECTION 12: Moderation and Enforcement (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">12. Moderation and Enforcement</h2>
-            <p class="mb-2">Violations of these Guidelines may result in:</p>
-            <ul class="list-disc pl-6 space-y-2 mb-4">
-              <li>Warnings</li>
-              <li>Temporary mutes or restrictions</li>
-              <li>Removal from Play & Demo environments</li>
-              <li>Revocation of roles or permissions</li>
-              <li>Temporary or permanent bans</li>
-            </ul>
-            <p class="mb-4">Serious or repeated violations may also be reported to platform providers where applicable.</p>
-          </section>
-
-          <!-- SECTION 13: Updates to These Guidelines (ORIGINAL) -->
-          <section class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">13. Updates to These Guidelines</h2>
-            <p class="mb-4">We may update these Community Guidelines periodically. Continued use of our Services after updates constitutes acceptance of the revised rules.</p>
-          </section>
-
-          <!-- SECTION 14: Contact Information (ORIGINAL) -->
-          <section>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">14. Contact Information</h2>
-            <address class="not-italic">
-              <strong>Email:</strong> <a href="mailto:greekgamesstudios@gmail.com" class="text-rose-400 hover:underline">greekgamesstudios@gmail.com</a><br>
-              <strong>Discord:</strong> <a href="https://discord.gg/UmrwZpYZP3" target="_blank" rel="noopener noreferrer" class="text-rose-400 hover:underline">https://discord.gg/UmrwZpYZP3</a><br>
-              <strong>Website:</strong> <a href="https://greekgamesstudios.com" class="text-rose-400 hover:underline">https://greekgamesstudios.com</a>
-            </address>
-          </section>
-        </div>
-      </article>
-      
-    </div>
   </main>
 
-  <footer class="py-12 px-6 border-t border-gray-800/50 animate-fade-in">
-    <div class="max-w-6xl mx-auto text-center">
-      <p class="text-gray-500 text-sm">
-        © <span id="current-year"></span> Greek Games Studios. All rights reserved.
-      </p>
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios"></div>
+        <div class="footer-brand-name">Greek Games Studios</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Games</div>
+        <ul class="footer-links" id="footerGames"></ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">More</div>
+        <ul class="footer-links">
+          <li><a href="/additionalHTMLS/Experimentals.html" target="_self">Experimentals</a></li>
+          <li><a href="/about-us.html" target="_self">About Us</a></li>
+          <li><a href="/support.html" target="_self">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Connect</div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/greekgamesstudios" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.youtube.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+          <a href="https://www.tiktok.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>
+          <a href="https://x.com/greekgamestudio" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://threads.net/@greekgamesstudios" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.804 1.157 8.554 0 12.14 0h.044c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.781 3.632 2.695 6.54 2.717 1.986-.013 3.758-.47 5.268-1.36 1.633-.979 2.832-2.438 3.565-4.338h-5.97v-2.112h8.362c.08 1.29-.026 2.525-.317 3.669-.729 2.91-2.325 5.27-4.742 7.028-2.326 1.691-5.094 2.58-8.168 2.232z"/></svg></a>
+          <a href="https://discord.com/invite/UUQcQQQKBY" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg></a>
+        </div>
+        <div class="footer-handle">@greekgamesstudios</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy.html#privacy-policy" target="_self">Privacy Policy</a></li>
+          <li><a href="/privacy-policy.html#terms-of-services" target="_self">Terms of Services</a></li>
+          <li><a href="/privacy-policy.html#community-guidelines" target="_self">Community Guidelines</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom"><div class="footer-copyright" id="footerCopyright"></div></div>
   </footer>
 
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      // Mobile menu functionality
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileLine1 = document.getElementById('mobile-line1');
-      const mobileLine2 = document.getElementById('mobile-line2');
-      const mobileLine3 = document.getElementById('mobile-line3');
-      
-      let menuOpen = false;
-      
-      if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', () => {
-          const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
-          mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-          menuOpen = !isExpanded;
-          
-          requestAnimationFrame(() => {
-            if (menuOpen) {
-              mobileMenu.classList.remove('hidden');
-              mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
-              mobileLine1.style.backgroundColor = '#fff';
-              mobileLine2.style.opacity = '0';
-              mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
-              mobileLine3.style.backgroundColor = '#fff';
-            } else {
-              mobileMenu.classList.add('hidden');
-              mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
-              mobileLine1.style.backgroundColor = '#9CA3AF';
-              mobileLine2.style.opacity = '1';
-              mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
-              mobileLine3.style.backgroundColor = '#9CA3AF';
-            }
-          });
-        });
-      }
+  // =====================
+  // LENIS SMOOTH SCROLL
+  // =====================
+  const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
 
-      // Set current year dynamically
-      const yearSpan = document.getElementById('current-year');
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-      }
+// =====================
+// CROSS-DOCUMENT TRANSITIONS – Universal with MutationObserver
+// =====================
+(function initTransitions() {
+  const overlay = document.getElementById('transitionOverlay');
+  if (!overlay) return;
 
-      // Hardware accelerated staggered fade-in animations
-      const elements = document.querySelectorAll('.animate-fade-in');
-      elements.forEach((el, index) => {
-        requestAnimationFrame(() => {
-          el.style.animationDelay = `${index * 0.03}s`;
-        });
-      });
+  const NAV_KEY = 'fromAnyPage';
 
-      // Policy tabs functionality
-      const policyTabs = document.querySelectorAll('.policy-tab');
-      const contentSections = document.querySelectorAll('.content-section');
-      
-      policyTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const targetId = tab.getAttribute('data-target');
-          
-          requestAnimationFrame(() => {
-            policyTabs.forEach(t => {
-              t.classList.remove('active', 'glow-effect');
-              t.setAttribute('aria-selected', 'false');
-            });
-            tab.classList.add('active', 'glow-effect');
-            tab.setAttribute('aria-selected', 'true');
-            
-            contentSections.forEach(section => {
-              section.classList.remove('active');
-              section.setAttribute('hidden', 'true');
-            });
-            
-            const targetSection = document.getElementById(targetId);
-            if(targetSection) {
-              targetSection.classList.add('active');
-              targetSection.removeAttribute('hidden');
-            }
-          });
-        });
-      });
-      
+  // ─── ΑΦΙΞΗ ──────────────────────────────────────────────
+  if (sessionStorage.getItem(NAV_KEY) === 'true') {
+    sessionStorage.removeItem(NAV_KEY);
+    overlay.classList.add('revealing');
+    setTimeout(() => overlay.classList.remove('revealing'), 700);
+  }
+
+  // ─── ΣΥΝΑΡΤΗΣΗ ΠΟΥ ΠΡΟΣΘΕΤΕΙ LISTENERS ────────────────
+  function attachTransitionListeners() {
+    const path = window.location.pathname;
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      if (href === path || href === path.replace('.html', '')) return;
+      if (href.includes('#') && href.split('#')[0] === path) return;
+
+      // Αφαιρούμε παλιό listener (για να μη διπλασιάζεται)
+      link.removeEventListener('click', transitionHandler);
+      link.addEventListener('click', transitionHandler);
     });
+  }
+
+  function transitionHandler(e) {
+    e.preventDefault();
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('animating');
+    sessionStorage.setItem('fromAnyPage', 'true');
+    setTimeout(() => window.location.href = this.getAttribute('href'), 500);
+  }
+
+  // ─── ΑΡΧΙΚΗ ΠΡΟΣΘΗΚΗ ──────────────────────────────────
+  attachTransitionListeners();
+
+  // ─── MUTATION OBSERVER ΓΙΑ ΝΕΟΥΣ ΣΥΝΔΕΣΜΟΥΣ ──────────
+  const observer = new MutationObserver(() => {
+    attachTransitionListeners();
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+})();
+
+
+  // =====================
+  // NAVBAR SCROLL
+  // =====================
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 100);
+  }, { passive: true });
+
+  // =====================
+  // MOBILE MENU
+  // =====================
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('active');
+    if (isOpen) { mobileMenu.classList.remove('active'); hamburger.classList.remove('active'); hamburger.setAttribute('aria-expanded', 'false'); lenis.start(); }
+    else { mobileMenu.classList.add('active'); hamburger.classList.add('active'); hamburger.setAttribute('aria-expanded', 'true'); lenis.stop(); }
+  });
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active'); hamburger.classList.remove('active'); hamburger.setAttribute('aria-expanded', 'false'); lenis.start();
+    });
+  });
+
+  // =====================
+  // HERO PARTICLES
+  // =====================
+  (function initParticles() {
+    const container = document.getElementById('heroParticles');
+    if (!container) return;
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.animationDuration = (6 + Math.random() * 6) + 's';
+      const size = 2 + Math.random() * 3;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      container.appendChild(p);
+    }
+  })();
+
+  // =====================
+  // TAB / HASH NAVIGATION
+  // =====================
+  const tabs = document.querySelectorAll('.legal-tab');
+  const sections = document.querySelectorAll('.legal-section');
+
+  function switchTab(targetId, updateHash = true) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.target === targetId));
+    sections.forEach(s => s.classList.toggle('active', s.id === targetId));
+    if (updateHash) {
+      history.replaceState(null, null, '#' + targetId);
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      switchTab(target, true);
+      const el = document.getElementById(target);
+      if (el) lenis.scrollTo(el, { offset: -140, duration: 0.8 });
+    });
+  });
+
+  // Handle initial hash on load
+  function handleHash() {
+    const hash = window.location.hash.replace('#', '');
+    const valid = ['privacy-policy', 'terms-of-services', 'community-guidelines'];
+    if (valid.includes(hash)) {
+      switchTab(hash, false);
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) lenis.scrollTo(el, { offset: -140, duration: 0.6 });
+      }, 300);
+    }
+  }
+  window.addEventListener('hashchange', () => handleHash());
+  handleHash();
+
+  // =====================
+  // GSAP ANIMATIONS
+  // =====================
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.navbar', { opacity: 0, duration: 0.4, ease: 'power3.out' });
+  gsap.to('.legal-hero-label', { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: 'power3.out' });
+  gsap.to('.legal-hero-title', { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' });
+  gsap.to('.legal-hero-subtitle', { opacity: 1, y: 0, duration: 0.6, delay: 0.35, ease: 'power3.out' });
+  gsap.from('#legalTabs', { y: -20, opacity: 0, duration: 0.5, delay: 0.5, ease: 'power3.out' });
+
+  gsap.from('.footer-top > div', {
+    scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none none' },
+    y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+  });
+
+  // =====================
+  // BACK TO TOP
+  // =====================
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => {
+    lenis.scrollTo(0, { duration: 1.2 });
+  });
+
+  // =====================
+  // COPYRIGHT YEAR
+  // =====================
+  const copyrightEl = document.getElementById('footerCopyright');
+  if (copyrightEl) copyrightEl.innerHTML = '&copy; ' + new Date().getFullYear() + ' Greek Games Studios. All rights reserved.';
+
+  // =====================
+  // DYNAMIC FOOTER GAMES
+  // =====================
+  function escapeHtml(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  async function loadFooterGames() {
+    try {
+      const res = await fetch('/games.json');
+      const games = await res.json();
+      const container = document.getElementById('footerGames');
+      if (!container || !games) return;
+      const footerGames = games.filter(g => g.footer);
+      container.innerHTML = footerGames.map(game => {
+        const url = escapeHtml(game.url || `/additionalHTMLS/Infos/${game.id}-info.html`);
+        return `<li><a href="${url}" target="_self">${escapeHtml(game.title)}</a></li>`;
+      }).join('');
+    } catch (e) { console.error('Failed to load footer games:', e); }
+  }
+  loadFooterGames();
   </script>
+
 </body>
 </html>

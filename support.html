@@ -3,321 +3,895 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support - Greek Games Studios</title>
-
-    <!-- Canonical -->
+  <title>Support Center - Greek Games Studios</title>
+  <meta name="description" content="Get help with Greek Games Studios titles. Browse FAQs, contact support, and find documentation for our indie mobile games.">
+  <meta name="author" content="Greek Games Studios">
   <link rel="canonical" href="https://www.greekgamesstudios.com/support.html">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Greek Games Studios">
-  <meta name="twitter:description" content="Need help or have feedback? Contact the Greek Games Studios support team. We’ll do our best to respond and improve your experience with our games.">
+  <meta name="twitter:title" content="Support Center - Greek Games Studios">
+  <meta name="twitter:description" content="Get help with Greek Games Studios titles. Browse FAQs and contact our support team.">
   <meta name="twitter:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png">
-  
-  <meta name="description" content="Need help or have feedback? Contact Greek Games Studios support. We’ll do our best to respond and improve your experience with our games.">
-  <meta name="keywords" content="Greek Games Studios, Support, FAQ, Help Center, Game Support, Contact">
-  <meta name="author" content="Greek Games Studios">
-  <meta name="robots" content="index, follow">
+  <meta name="twitter:site" content="@greekgamestudio">
+  <meta name="twitter:creator" content="@greekgamestudio">
+  <meta name="twitter:image:alt" content="Greek Games Studios Support">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Support - Greek Games Studios">
-  <meta property="og:description" content="Need help or have feedback? Contact the Greek Games Studios support team.">
-  <meta property="og:image" content="/images/ggs-logo.png">
-  <meta property="og:site_name" content="Greek Games Studios">
-  
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Support - Greek Games Studios">
-  <meta name="twitter:description" content="Need help or have feedback? Contact the Greek Games Studios support team.">
-  <meta name="twitter:image" content="/images/ggs-logo.png">
+  <meta property="og:title" content="Support Center - Greek Games Studios" />
+  <meta property="og:description" content="Get help with Greek Games Studios titles. Browse FAQs, contact support, and find documentation." />
+  <meta property="og:image" content="https://www.greekgamesstudios.com/images/ggs-logo.png" />
+  <meta property="og:url" content="https://www.greekgamesstudios.com/support.html" />
+  <meta property="og:site_name" content="Greek Games Studios" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-  <link rel="icon" type="image/png" href="/images/ggs-logo.png">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#0D5EAF">
+
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-TileColor" content="#0D5EAF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="General">
+  <meta name="revisit-after" content="7 days">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+
+  <meta name="keywords" content="Greek Games Studios support, game help, FAQ, indie game support, Android game help, Try Not To Rage support">
+  <meta name="ai-seo-content-type" content="support-center">
+  <meta name="ai-seo-primary-topic" content="game support, technical help, FAQ, customer service">
+  <meta name="ai-seo-audience" content="mobile gamers, indie game players, Android users">
+  <meta name="ai-seo-content-summary" content="Support center for Greek Games Studios with FAQs, contact options, and game documentation.">
+  <meta name="ai-seo-entity-type" content="FAQPage, Organization, WebPage">
+  <meta name="ai-seo-key-entities" content="Greek Games Studios, Try Not To Rage, Shapes Into Crime, Tech Company Tycoon, game support">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
 
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #000000; --bg-secondary: #0a0a0a; --bg-card: #111111; --bg-card-hover: #1a1a1a;
+      --greek-blue: #0D5EAF; --greek-blue-bright: #1478D9; --cyan: #00D4FF; --cyan-dim: rgba(0, 212, 255, 0.15);
+      --text-primary: #FFFFFF; --text-secondary: #A0A0A0; --text-muted: #666666;
+      --border-subtle: rgba(255, 255, 255, 0.08); --border-accent: rgba(0, 212, 255, 0.3);
     }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========== CROSS-DOCUMENT TRANSITION ========== */
+    .page-transition-overlay { position: fixed; inset: 0; background: var(--bg-primary); z-index: 9999; pointer-events: none; transform: translateY(100%); }
+    .page-transition-overlay.animating { animation: slideUp 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    .page-transition-overlay.revealing { animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
+    /* ========== NAVBAR ========== */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; height: 64px; z-index: 1000; background: rgba(0,0,0,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s ease; }
+    .navbar.scrolled { background: rgba(0,0,0,0.95); }
+    .navbar-container { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .navbar-logo img { height: 36px; width: auto; display: block; }
+    .navbar-links { display: flex; align-items: center; gap: 40px; margin-left: auto; }
+    .navbar-link { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); transition: color 0.2s ease; position: relative; }
+    .navbar-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: var(--cyan); transform: scaleX(0); transition: transform 0.2s ease; }
+    .navbar-link:hover { color: var(--text-primary); }
+    .navbar-link:hover::after { transform: scaleX(1); }
+    .navbar-link.active { color: var(--text-primary); }
+    .navbar-link.active::after { transform: scaleX(1); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; cursor: pointer; padding: 0; position: relative; z-index: 1001; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; position: absolute; transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
+    .hamburger span:nth-child(1) { top: 11px; }
+    .hamburger span:nth-child(2) { top: 19px; }
+    .hamburger span:nth-child(3) { top: 27px; }
+    .hamburger.active span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+    .hamburger.active span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.98); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 0.3s ease; }
+    .mobile-menu.active { transform: translateY(0); }
+    .mobile-menu a { font-size: 20px; font-weight: 700; color: var(--text-secondary); transition: color 0.2s ease; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 32px; border-radius: 100px; min-width: 220px; text-align: center; }
+    .mobile-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+
+    /* ========== HERO ========== */
+    .support-hero { position: relative; width: 100%; min-height: 40vh; display: flex; align-items: flex-end; padding: 120px 48px 60px; overflow: hidden; }
+    .support-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13, 94, 175, 0.12) 0%, rgba(0, 212, 255, 0.06) 50%, transparent 100%); z-index: 0; }
+    .support-hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .support-hero-particles .particle { position: absolute; width: 3px; height: 3px; background: var(--cyan); border-radius: 50%; opacity: 0.3; animation: float 8s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-20px) translateX(10px); } 50% { transform: translateY(-10px) translateX(-10px); } 75% { transform: translateY(-30px) translateX(5px); } }
+    .support-hero-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; width: 100%; }
+    .support-hero-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 16px; opacity: 0; transform: translateY(20px); }
+    .support-hero-title { font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; opacity: 0; transform: translateY(30px); }
+    .support-hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.6; opacity: 0; transform: translateY(20px); }
+    .support-hero-meta { display: flex; align-items: center; gap: 24px; margin-top: 24px; opacity: 0; transform: translateY(20px); }
+    .support-hero-stat { display: flex; align-items: center; gap: 8px; }
+    .support-hero-stat-value { font-size: 24px; font-weight: 700; color: white; }
+    .support-hero-stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .support-hero-stat-divider { width: 1px; height: 32px; background: var(--border-subtle); }
+
+    /* ========== FILTER BAR ========== */
+    .filter-bar { position: sticky; top: 64px; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); padding: 16px 48px; }
+    .filter-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .filter-search { position: relative; flex: 1; min-width: 240px; max-width: 360px; }
+    .filter-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-muted); pointer-events: none; }
+    .filter-search input { width: 100%; padding: 10px 14px 10px 38px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
+    .filter-search input:focus { border-color: var(--border-accent); box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1); }
+    .filter-search input::placeholder { color: var(--text-muted); }
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-pill { padding: 8px 18px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 13px; font-weight: 500; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
+    .filter-pill:hover { background: var(--bg-card-hover); color: var(--text-primary); border-color: rgba(255,255,255,0.15); }
+    .filter-pill.active { background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; border-color: transparent; }
+    .filter-results { margin-left: auto; font-size: 13px; color: var(--text-muted); }
+
+    /* ========== FAQ GRID ========== */
+    .faq-section { max-width: 1280px; margin: 0 auto; padding: 48px 48px 80px; }
+    .faq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; align-items: start; }
+    .faq-card { position: relative; background: var(--bg-card); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-subtle); cursor: pointer; transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.35s ease; opacity: 0; transform: translateY(40px); }
+    .faq-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 40px rgba(0, 212, 255, 0.06); border-color: rgba(0, 212, 255, 0.15); }
+    .faq-card.active { border-color: rgba(0, 212, 255, 0.25); }
+    .faq-card-header { padding: 24px 24px 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .faq-card-tag { display: inline-block; padding: 4px 12px; border-radius: 100px; background: rgba(13, 94, 175, 0.15); color: var(--cyan); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .faq-card-question { font-size: 17px; font-weight: 700; color: white; line-height: 1.4; padding-right: 8px; }
+    .faq-card-toggle { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--bg-secondary); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); margin-top: 2px; }
+    .faq-card:hover .faq-card-toggle { background: var(--cyan); border-color: var(--cyan); }
+    .faq-card-toggle svg { width: 14px; height: 14px; color: var(--text-secondary); transition: transform 0.3s ease, color 0.2s ease; }
+    .faq-card:hover .faq-card-toggle svg { color: var(--bg-primary); }
+    .faq-card.active .faq-card-toggle { transform: rotate(45deg); background: var(--cyan); border-color: var(--cyan); }
+    .faq-card.active .faq-card-toggle svg { color: var(--bg-primary); }
+    .faq-card-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1), padding 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+    .faq-card.active .faq-card-body { max-height: 400px; padding: 0 24px 24px; }
+    .faq-card-answer { font-size: 14px; color: var(--text-secondary); line-height: 1.7; border-top: 1px solid var(--border-subtle); padding-top: 20px; }
+
+    /* ========== EMPTY STATE ========== */
+    .empty-state { display: none; flex-direction: column; align-items: center; justify-content: center; padding: 80px 24px; text-align: center; }
+    .empty-state.active { display: flex; }
+    .empty-state svg { width: 64px; height: 64px; color: var(--text-muted); margin-bottom: 24px; opacity: 0.3; }
+    .empty-state-title { font-size: 22px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .empty-state-text { font-size: 15px; color: var(--text-secondary); max-width: 400px; }
+    .empty-state-clear { margin-top: 20px; padding: 10px 24px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary); font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s ease; }
+    .empty-state-clear:hover { background: var(--bg-card-hover); border-color: var(--border-accent); }
+
+    /* ========== CONTACT CTA ========== */
+    .contact-section { position: relative; padding: 100px 48px; overflow: hidden; }
+    .contact-section-bg { position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(13, 94, 175, 0.08) 50%, var(--bg-primary) 100%); z-index: 0; }
+    .contact-section-inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .contact-info h2 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: white; line-height: 1.15; margin-bottom: 20px; }
+    .contact-info p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; max-width: 480px; margin-bottom: 32px; }
+    .contact-methods { display: flex; flex-direction: column; gap: 16px; }
+    .contact-method { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; transition: all 0.3s ease; }
+    .contact-method:hover { background: var(--bg-card-hover); border-color: rgba(0, 212, 255, 0.15); transform: translateX(4px); }
+    .contact-method-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(13, 94, 175, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-method-icon svg { width: 18px; height: 18px; color: var(--cyan); }
+    .contact-method-text { display: flex; flex-direction: column; }
+    .contact-method-label { font-size: 13px; color: var(--text-muted); margin-bottom: 2px; }
+    .contact-method-value { font-size: 15px; font-weight: 600; color: white; }
+    .contact-cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 100px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); color: white; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; transition: all 0.3s ease; border: none; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 8px; }
+    .contact-cta-btn:hover { transform: scale(1.03); box-shadow: 0 0 32px rgba(0, 212, 255, 0.3); }
+    .contact-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .contact-visual-ring { position: absolute; width: 280px; height: 280px; border-radius: 50%; border: 1px solid rgba(0, 212, 255, 0.1); animation: pulse-ring 4s ease-in-out infinite; }
+    .contact-visual-ring:nth-child(2) { width: 220px; height: 220px; animation-delay: 1s; border-color: rgba(13, 94, 175, 0.15); }
+    .contact-visual-ring:nth-child(3) { width: 160px; height: 160px; animation-delay: 2s; border-color: rgba(0, 212, 255, 0.08); }
+    @keyframes pulse-ring { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.6; } }
+    .contact-visual-icon { position: relative; width: 80px; height: 80px; border-radius: 24px; background: linear-gradient(135deg, var(--greek-blue), var(--cyan)); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2); }
+    .contact-visual-icon svg { width: 36px; height: 36px; color: white; }
+
+    /* ========== FOOTER ========== */
+    .footer { background: #050505; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-top { max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; }
+    .footer-brand-logo img { height: 40px; width: auto; display: block; margin-bottom: 12px; }
+    .footer-brand-name { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+    .footer-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s ease; }
+    .footer-links a:hover { color: white; }
+    .footer-socials { display: flex; gap: 12px; }
+    .footer-socials a { color: var(--text-secondary); transition: color 0.2s ease, transform 0.2s ease; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-subtle); }
+    .footer-socials a:hover { color: var(--cyan); transform: translateY(-2px); border-color: var(--border-accent); }
+    .footer-socials svg { width: 18px; height: 18px; }
+    .footer-handle { font-size: 14px; color: var(--text-muted); margin-top: 12px; }
+    .footer-bottom { max-width: 1280px; margin: 0 auto; padding: 24px 24px; display: flex; justify-content: center; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-copyright { font-size: 13px; color: var(--text-muted); text-align: center; }
+
+    /* ========== BACK TO TOP ========== */
+    .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 200; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease; }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .back-to-top:hover { background: var(--cyan); color: var(--bg-primary); border-color: var(--cyan); }
+    .back-to-top svg { width: 18px; height: 18px; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .faq-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+      .contact-section-inner { gap: 40px; }
+      .footer-top { grid-template-columns: repeat(3, 1fr); }
+      .resources-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    
-    /* Optimized Animation Classes */
-    .fade-element {
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hamburger { display: flex; }
+      .support-hero { padding: 100px 24px 40px; min-height: 35vh; }
+      .support-hero-meta { flex-wrap: wrap; gap: 12px; }
+      .support-hero-stat-divider { display: none; }
+      .filter-bar { padding: 12px 24px; }
+      .filter-bar-inner { gap: 12px; }
+      .filter-search { max-width: 100%; min-width: 100%; }
+      .filter-results { margin-left: 0; width: 100%; }
+      .faq-section { padding: 32px 24px 60px; }
+      .faq-grid { grid-template-columns: 1fr; gap: 16px; }
+      .contact-section { padding: 60px 24px; }
+      .contact-section-inner { grid-template-columns: 1fr; text-align: center; }
+      .contact-info p { margin-left: auto; margin-right: auto; }
+      .contact-methods { align-items: center; }
+      .contact-method { width: 100%; max-width: 400px; }
+      .contact-visual { display: none; }
+            .resources-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
     }
-    
-    .fade-in-active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .current-page {
-      position: relative;
-      color: white !important;
-    }
-    
-    .current-page:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: cyan;
-      transform: scaleX(1);
-    }
-    
-    .faq-item {
-      transition: all 0.3s ease;
-      border-left: 3px solid transparent;
-    }
-    
-    .faq-item:hover {
-      border-left-color: #22d3ee;
-      background: rgba(34, 211, 238, 0.05);
-    }
-    
-    .support-btn {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .support-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.15);
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .faq-card, .resource-card, .support-hero-label, .support-hero-title, .support-hero-subtitle, .support-hero-meta { opacity: 1; transform: none; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "Support Center - Greek Games Studios",
+    "description": "Get help with Greek Games Studios titles. Browse FAQs, contact support, and find documentation for our indie mobile games.",
+    "url": "https://www.greekgamesstudios.com/support.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.greekgamesstudios.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Support", "item": "https://www.greekgamesstudios.com/support.html" }
+      ]
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I install your games?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our games are available across multiple platforms. For PC titles, download the installer directly from our website. Mobile games like Try Not To Rage: Forest can be downloaded from the Google Play Store."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the system requirements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "System requirements depend on the game. Our mobile games are optimized for most modern Android devices. Check each game page for detailed specs before downloading."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I report a bug?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Report bugs through the in-game support menu or by filling out the bug report form on our website. Include details like what you were doing, error messages, and screenshots."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I find my purchase history?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For mobile games, purchase history is available through your Google Play account. For PC games, download and license info is sent to your email after purchase."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "name": "Main Navigation",
+    "hasPart": [
+      { "@type": "SiteNavigationElement", "name": "Home", "url": "https://www.greekgamesstudios.com/" },
+      { "@type": "SiteNavigationElement", "name": "Games", "url": "https://www.greekgamesstudios.com/games.html" },
+      { "@type": "SiteNavigationElement", "name": "News", "url": "https://www.greekgamesstudios.com/news.html" },
+      { "@type": "SiteNavigationElement", "name": "Support", "url": "https://www.greekgamesstudios.com/support.html" }
+    ]
+  }
+  </script>
+<base target="_blank">
 </head>
-<body class="min-h-screen bg-gradient-to-br from-[#0d0d0d] via-[#111] to-[#0d0d0d] text-gray-300 overflow-x-hidden">
+<body>
 
-  <header class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-[#0d0d0d]/90 border-b border-cyan-500/20 shadow-xl" role="banner">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16 md:h-20">
-        <div class="flex-shrink-0 flex items-center">
-          <a href="/index.html" aria-label="Homepage">
-            <img src="/images/ggs-logo.png" alt="Greek Games Studios Logo" class="h-10 w-auto" loading="lazy"> 
-          </a>
-        </div>
+  <!-- Cross-Document Transition Overlay -->
+  <div class="page-transition-overlay" id="transitionOverlay"></div>
 
-        <nav class="hidden md:flex space-x-1" aria-label="Main Navigation">
-          <a href='/index.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Home
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="/games.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Games
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="/contact-us.html" class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Contact Us
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-          <a href="#support" aria-current="page" class="current-page relative px-4 py-2 rounded-lg text-sm font-medium text-white transition-all duration-300 group">
-            Support
-          </a>
-          <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="relative px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105">
-            Experimentals
-          </a>
-          <a href='/privacy-policy.html' class="relative px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 group">
-            Privacy Policy
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </a>
-        </nav>
-
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white focus:outline-none relative group" aria-label="Toggle Mobile Menu" aria-expanded="false" aria-controls="mobile-menu">
-          <div class="relative w-6 h-6">
-            <span id="mobile-line1" class="absolute block w-6 h-0.5 bg-gray-400 top-2 transition-all duration-300"></span>
-            <span id="mobile-line2" class="absolute block w-6 h-0.5 bg-gray-400 top-3 transition-all duration-300"></span>
-            <span id="mobile-line3" class="absolute block w-6 h-0.5 bg-gray-400 top-4 transition-all duration-300"></span>
-          </div>
-        </button>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="/index.html" class="navbar-logo" target="_self">
+        <img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios">
+      </a>
+      <div class="navbar-links">
+        <a href="/index.html" class="navbar-link" target="_self">Home</a>
+        <a href="/games.html" class="navbar-link" target="_self">Games</a>
+        <a href="/news.html" class="navbar-link" target="_self">News</a>
+        <a href="/about-us.html" class="navbar-link" target="_self">About</a>
+        <a href="/contact-us.html" class="navbar-link" target="_self">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
       </div>
     </div>
+  </nav>
 
-    <nav id="mobile-menu" class="md:hidden bg-[#0d0d0d]/95 border-t border-cyan-500/20 overflow-hidden hidden" aria-label="Mobile Navigation">
-      <div class="px-4 py-3 space-y-3">
-        <a href='/index.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">Home</a>
-        <a href="/games.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">Games</a>
-        <a href="/contact-us.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">Contact Us</a>
-        <a href="#support" aria-current="page" class="current-page block px-4 py-3 rounded-lg text-base font-medium text-white transition-all duration-300 bg-gray-800/30">Support</a>
-        <a href="/additionalHTMLS/Experimentals.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 rounded-lg text-base font-medium bg-gradient-to-r from-cyan-500 to-purple-600 text-white">Experimentals</a>
-        <a href='/privacy-policy.html' class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 transform hover:translate-x-2">Privacy Policy</a>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/index.html" target="_self">Home</a>
+    <a href="/games.html" target="_self">Games</a>
+    <a href="/news.html" target="_self">News</a>
+    <a href="/about-us.html" target="_self">About</a>
+    <a href="/contact-us.html" target="_self">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="support-hero" id="supportHero">
+    <div class="support-hero-bg"></div>
+    <div class="support-hero-particles" id="heroParticles"></div>
+    <div class="support-hero-content">
+      <div class="support-hero-label" id="heroLabel">Help Center</div>
+      <h1 class="support-hero-title" id="heroTitle">How Can We Help?</h1>
+      <p class="support-hero-subtitle" id="heroSubtitle">Find answers to common questions, reach out to the team and hopefully get the most out of our games.</p>
+      <div class="support-hero-meta" id="heroMeta">
+        <div class="support-hero-stat">
+          <span class="support-hero-stat-value" id="statFaqs">0</span>
+          <span class="support-hero-stat-label">FAQs</span>
+        </div>
+        <div class="support-hero-stat-divider"></div>
+        <div class="support-hero-stat">
+          <span class="support-hero-stat-value" id="statCategories">0</span>
+          <span class="support-hero-stat-label">Topics</span>
+        </div>
+        <div class="support-hero-stat-divider"></div>
+        <div class="support-hero-stat">
+          <span class="support-hero-stat-value">24h</span>
+          <span class="support-hero-stat-label">Response</span>
+        </div>
       </div>
-    </nav>
-  </header>
+    </div>
+  </section>
 
-  <main class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto" role="main">
-    <div class="backdrop-blur-lg bg-[#1a1a1a]/80 rounded-3xl p-8 md:p-12 border border-cyan-600/30 shadow-[0_0_40px_#0ff1] fade-element">
-      
-      <header class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-6">
-          Support Center
-        </h1>
-        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto"></div>
-      </header>
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filterBar">
+    <div class="filter-bar-inner">
+      <div class="filter-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search questions..." autocomplete="off">
+      </div>
+      <div class="filter-pills" id="categoryPills">
+        <button class="filter-pill active" data-category="all">All</button>
+      </div>
+      <div class="filter-results" id="filterResults"></div>
+    </div>
+  </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        
-        <section aria-labelledby="faq-heading">
-          <h2 id="faq-heading" class="text-2xl md:text-3xl font-bold text-white mb-6 gradient-text">Frequently Asked Questions</h2>
-          <div class="space-y-4">
-            
-            <article class="faq-item bg-[#1a1a1a]/50 p-5 rounded-lg fade-element">
-              <h3 class="text-lg font-semibold text-white mb-2">How do I install your games?</h3>
-              <p class="text-gray-400">Our games are available across multiple platforms. For PC titles, you can download the installer or launcher directly from our official website and follow the simple setup process. Mobile games like Try Not To Rage: Forest can be downloaded from the Google Play Store. iOS support is planned for the future.</p>
-            </article>
-            
-            <article class="faq-item bg-[#1a1a1a]/50 p-5 rounded-lg fade-element">
-              <h3 class="text-lg font-semibold text-white mb-2">What are the system requirements?</h3>
-              <p class="text-gray-400">System requirements depend on the game. Our mobile games are optimized to run smoothly on most modern Android devices. For PC games, we always aim to balance performance and quality just check the game’s page for detailed specs before downloading.</p>
-            </article>
-            
-            <article class="faq-item bg-[#1a1a1a]/50 p-5 rounded-lg fade-element">
-              <h3 class="text-lg font-semibold text-white mb-2">How can I report a bug?</h3>
-              <p class="text-gray-400">If you encounter a bug, you can report it through the in-game support menu (where available) or by filling out the bug report form on our website. Please include as much detail as possible, like what you were doing, any error messages and screenshots if available.</p>
-            </article>
-            
-            <article class="faq-item bg-[#1a1a1a]/50 p-5 rounded-lg fade-element">
-              <h3 class="text-lg font-semibold text-white mb-2">Where can I find my purchase history?</h3>
-              <p class="text-gray-400">For mobile games, your purchase history is available through your Google Play account. For PC games, we currently don’t support account based purchases, but all download and license info is sent directly to your email after purchase. If you need help, feel free to contact our support team.</p>
-            </article>
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="empty-state-title">No results found</div>
+      <div class="empty-state-text">Try a different search term or browse all categories.</div>
+      <button class="empty-state-clear" id="clearFiltersBtn">Clear Search</button>
+    </div>
 
-          </div>
-        </section>
+    <!-- FAQ Grid -->
+    <div class="faq-grid" id="faqGrid"></div>
+  </section>
 
-        <section class="flex flex-col justify-center" aria-labelledby="help-heading">
-          <div class="bg-[#1a1a1a]/50 border border-cyan-600/30 rounded-xl p-8 h-full flex flex-col justify-center fade-element">
-            <div class="text-center">
-              <div class="w-20 h-20 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h2 id="help-heading" class="text-2xl font-bold text-white mb-4">Need More Help?</h2>
-              <p class="text-gray-400 mb-6">Can't find what you're looking for? Our support team is ready to assist you with any questions or issues you may have.</p>
-              <a href="/additionalHTMLS/support-form.html" target="_blank" class="support-btn inline-block px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30">
-                Contact Support
-              </a>
+  <!-- CONTACT CTA -->
+  <section class="contact-section" id="contact">
+    <div class="contact-section-bg"></div>
+    <div class="contact-section-inner">
+      <div class="contact-info">
+        <h2>Still Need Help?</h2>
+        <p>Our team is based in Greece and we read every message. Whether it is a bug report, a feature request, or just feedback, we want to hear from you.</p>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="contact-method-text">
+              <span class="contact-method-label">Email Us</span>
+              <span class="contact-method-value">greekgamesstudios@gmail.com</span>
             </div>
           </div>
-        </section>
-      </div>
-
-      <section class="fade-element" aria-labelledby="resources-heading">
-        <h2 id="resources-heading" class="text-2xl md:text-3xl font-bold text-white mb-6 gradient-text">Additional Resources</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <article class="bg-[#1a1a1a]/50 border border-purple-600/30 rounded-xl p-6 hover:border-purple-500 transition-colors">
-            <h3 class="text-xl font-bold text-white mb-3 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Documentation
-            </h3>
-            <p class="text-gray-400">Browse our comprehensive game manuals and technical documentation.</p>
-          </article>
-          
-          <article class="bg-[#1a1a1a]/50 border border-cyan-600/30 rounded-xl p-6 hover:border-cyan-500 transition-colors">
-            <h3 class="text-xl font-bold text-white mb-3 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-              Community Forum
-            </h3>
-            <p class="text-gray-400">Join discussions with other players and get community support.</p>
-          </article>
-          
-          <article class="bg-[#1a1a1a]/50 border border-pink-600/30 rounded-xl p-6 hover:border-pink-500 transition-colors">
-            <h3 class="text-xl font-bold text-white mb-3 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              Mobile Support
-            </h3>
-            <p class="text-gray-400">Find specific help for our mobile games and applications.</p>
-          </article>
-
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </div>
+            <div class="contact-method-text">
+              <span class="contact-method-label">Discord Community</span>
+              <span class="contact-method-value">Join our server for live help</span>
+            </div>
+          </div>
         </div>
-      </section>
+        <a href="/additionalHTMLS/support-form.html" target="_self" class="contact-cta-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          Fill out a form
+        </a>
+      </div>
+      <div class="contact-visual">
+        <div class="contact-visual-ring"></div>
+        <div class="contact-visual-ring"></div>
+        <div class="contact-visual-ring"></div>
+        <div class="contact-visual-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer class="py-12 px-6 border-t border-gray-800/50 fade-element" role="contentinfo">
-    <div class="max-w-6xl mx-auto text-center">
-      <p class="text-gray-500 text-sm">
-        © <span id="current-year"></span> Greek Games Studios. All rights reserved.
-      </p>
+<!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><img src="/images/ggs-logo.png" alt="GGS - Greek Games Studios"></div>
+        <div class="footer-brand-name">Greek Games Studios</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Games</div>
+        <ul class="footer-links" id="footerGames"></ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">More</div>
+        <ul class="footer-links">
+          <li><a href="/additionalHTMLS/Experimentals.html" target="_self">Experimentals</a></li>
+          <li><a href="/about-us.html" target="_self">About Us</a></li>
+          <li><a href="/support.html" target="_self">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Connect</div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/greekgamesstudios" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.youtube.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+          <a href="https://www.tiktok.com/@greekgamesstudios" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>
+          <a href="https://x.com/greekgamestudio" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://threads.net/@greekgamesstudios" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.804 1.157 8.554 0 12.14 0h.044c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.781 3.632 2.695 6.54 2.717 1.986-.013 3.758-.47 5.268-1.36 1.633-.979 2.832-2.438 3.565-4.338h-5.97v-2.112h8.362c.08 1.29-.026 2.525-.317 3.669-.729 2.91-2.325 5.27-4.742 7.028-2.326 1.691-5.094 2.58-8.168 2.232z"/></svg></a>
+          <a href="https://discord.com/invite/UUQcQQQKBY" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg></a>
+        </div>
+        <div class="footer-handle">@greekgamesstudios</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy.html#privacy-policy" target="_self">Privacy Policy</a></li>
+          <li><a href="/privacy-policy.html#terms-of-services" target="_self">Terms of Services</a></li>
+          <li><a href="/privacy-policy.html#community-guidelines" target="_self">Community Guidelines</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom"><div class="footer-copyright" id="footerCopyright"></div></div>
   </footer>
 
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Mobile menu toggle with accessibility updates
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileLine1 = document.getElementById('mobile-line1');
-      const mobileLine2 = document.getElementById('mobile-line2');
-      const mobileLine3 = document.getElementById('mobile-line3');
-      
-      let menuOpen = false;
-      
-      const toggleMenu = () => {
-        menuOpen = !menuOpen;
-        mobileMenuButton.setAttribute('aria-expanded', menuOpen);
-        
-        if (menuOpen) {
-          mobileMenu.classList.remove('hidden');
-          mobileLine1.style.transform = 'rotate(45deg) translate(5px, 6px)';
-          mobileLine1.style.backgroundColor = '#fff';
-          mobileLine2.style.opacity = '0';
-          mobileLine3.style.transform = 'rotate(-45deg) translate(5px, -6px)';
-          mobileLine3.style.backgroundColor = '#fff';
-        } else {
-          mobileMenu.classList.add('hidden');
-          mobileLine1.style.transform = 'rotate(0) translate(0, 0)';
-          mobileLine1.style.backgroundColor = '#9CA3AF';
-          mobileLine2.style.opacity = '1';
-          mobileLine3.style.transform = 'rotate(0) translate(0, 0)';
-          mobileLine3.style.backgroundColor = '#9CA3AF';
+  // =====================
+  // LENIS SMOOTH SCROLL
+  // =====================
+  const lenis = new Lenis({ lerp: 0.1, duration: 1.2 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+// =====================
+// CROSS-DOCUMENT TRANSITIONS – Universal with MutationObserver
+// =====================
+(function initTransitions() {
+  const overlay = document.getElementById('transitionOverlay');
+  if (!overlay) return;
+
+  const NAV_KEY = 'fromAnyPage';
+
+  // ─── ΑΦΙΞΗ ──────────────────────────────────────────────
+  if (sessionStorage.getItem(NAV_KEY) === 'true') {
+    sessionStorage.removeItem(NAV_KEY);
+    overlay.classList.add('revealing');
+    setTimeout(() => overlay.classList.remove('revealing'), 700);
+  }
+
+  // ─── ΣΥΝΑΡΤΗΣΗ ΠΟΥ ΠΡΟΣΘΕΤΕΙ LISTENERS ────────────────
+  function attachTransitionListeners() {
+    const path = window.location.pathname;
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      if (href === path || href === path.replace('.html', '')) return;
+      if (href.includes('#') && href.split('#')[0] === path) return;
+
+      // Αφαιρούμε παλιό listener (για να μη διπλασιάζεται)
+      link.removeEventListener('click', transitionHandler);
+      link.addEventListener('click', transitionHandler);
+    });
+  }
+
+  function transitionHandler(e) {
+    e.preventDefault();
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('animating');
+    sessionStorage.setItem('fromAnyPage', 'true');
+    setTimeout(() => window.location.href = this.getAttribute('href'), 500);
+  }
+
+  // ─── ΑΡΧΙΚΗ ΠΡΟΣΘΗΚΗ ──────────────────────────────────
+  attachTransitionListeners();
+
+  // ─── MUTATION OBSERVER ΓΙΑ ΝΕΟΥΣ ΣΥΝΔΕΣΜΟΥΣ ──────────
+  const observer = new MutationObserver(() => {
+    attachTransitionListeners();
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+})();
+
+
+  // =====================
+  // NAVBAR SCROLL
+  // =====================
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 100);
+  }, { passive: true });
+
+  // =====================
+  // MOBILE MENU
+  // =====================
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-menu a');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('active');
+    if (isOpen) { mobileMenu.classList.remove('active'); hamburger.classList.remove('active'); lenis.start(); }
+    else { mobileMenu.classList.add('active'); hamburger.classList.add('active'); lenis.stop(); }
+  });
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active'); hamburger.classList.remove('active'); lenis.start();
+    });
+  });
+
+  // =====================
+  // HERO PARTICLES
+  // =====================
+  (function initParticles() {
+    const container = document.getElementById('heroParticles');
+    if (!container) return;
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.animationDuration = (6 + Math.random() * 6) + 's';
+      const size = 2 + Math.random() * 3;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      container.appendChild(p);
+    }
+  })();
+
+  // =====================
+  // FAQ DATA
+  // =====================
+  const faqData = [
+    {
+      id: 'install',
+      question: 'How do I install your games?',
+      answer: 'Our games are only on Android through the Google Play Store. Search for the game name, hit install and you are set. No iOS/PC versions right now.',
+      category: 'General'
+    },
+    {
+      id: 'requirements',
+      question: 'What are the system requirements?',
+      answer: 'Our games are built for Android. They should run on most modern devices, though performance varies depending on your phone. Check the Play Store listing for specific requirements.',
+      category: 'Technical'
+    },
+    {
+      id: 'bug-report',
+      question: 'How can I report a bug?',
+      answer: 'You can report bugs through the form on our website, or through the in-game feedback option if the game has one. Tell us what happened, what you were doing and your device model. Screenshots help if you have them. We check submissions when we can, but response times vary. as much detail as possible, like what you were doing, any error messages and screenshots if available.',
+      category: 'Support'
+    },
+    {
+      id: 'purchase-history',
+      question: 'Where can I find my purchase history?',
+      answer: 'We do not charge for anything right now. All our games are free, so there is no purchase history to track.',
+      category: 'Billing'
+    },
+    {
+      id: 'save-data',
+      question: 'Is my save data backed up to the cloud?',
+      answer: "Most of the time, no. Your save data is usually stored locally on your device. In some specific cases we use Play Games Services or Firebase for cloud saves, but that is the exception, not the rule. If you switch devices or uninstall, your progress is probably gone unless we explicitly state otherwise in that game's settings.",
+      category: 'Technical'
+    },
+    {
+      id: 'offline',
+      question: 'Can I play your games offline?',
+      answer: "Most of our games work offline once downloaded. Some features like leaderboards or achievements need internet. If a game requires a connection, it'll say so on the Play Store page.",
+      category: 'General'
+    },
+    {
+      id: 'update',
+      question: 'How do I update a game to the latest version?',
+      answer: "Updates come through the Google Play Store. If auto-updates are on, it'll happen in the background. Otherwise, check the Play Store manually.",
+      category: 'Technical'
+    },
+    {
+      id: 'refund',
+      question: 'What is your refund policy?',
+      answer: "We don't sell anything, so refunds aren't really a thing. Our games are free. If you ever paid for something by mistake through Google Play, you'd need to contact them directly.",
+      category: 'Billing'
+    }
+  ];
+
+  let allFaqs = [...faqData];
+  let filteredFaqs = [...allFaqs];
+  let activeCategory = 'all';
+  let searchQuery = '';
+  let expandedCard = null;
+
+  // =====================
+  // RENDER FAQ GRID
+  // =====================
+  function renderFaqGrid() {
+    const grid = document.getElementById('faqGrid');
+    const resultsEl = document.getElementById('filterResults');
+
+    if (filteredFaqs.length === 0) {
+      grid.style.display = 'none';
+      document.getElementById('emptyState').classList.add('active');
+      resultsEl.textContent = '';
+      return;
+    }
+
+    grid.style.display = 'grid';
+    document.getElementById('emptyState').classList.remove('active');
+    resultsEl.textContent = filteredFaqs.length + ' result' + (filteredFaqs.length !== 1 ? 's' : '');
+
+    grid.innerHTML = filteredFaqs.map((faq, i) => {
+      return `
+        <article class="faq-card" data-id="${escapeHtml(faq.id)}" data-index="${i}" onclick="toggleFaq('${escapeHtml(faq.id)}')">
+          <div class="faq-card-header">
+            <div>
+              <span class="faq-card-tag">${escapeHtml(faq.category)}</span>
+              <h3 class="faq-card-question">${escapeHtml(faq.question)}</h3>
+            </div>
+            <div class="faq-card-toggle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-card-body">
+            <div class="faq-card-answer">${escapeHtml(faq.answer)}</div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    gsap.fromTo('.faq-card',
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0, duration: 0.6, stagger: 0.06,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '#faqGrid', start: 'top 85%', toggleActions: 'play none none none' }
+      }
+    );
+  }
+
+  function toggleFaq(id) {
+    const card = document.querySelector(`[data-id="${id}"]`);
+    if (!card) return;
+
+    const wasActive = card.classList.contains('active');
+
+    // Close any previously expanded
+    document.querySelectorAll('.faq-card.active').forEach(c => c.classList.remove('active'));
+
+    if (!wasActive) {
+      card.classList.add('active');
+      expandedCard = id;
+      // Scroll into view if needed
+      setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight - 100) {
+          lenis.scrollTo(card, { offset: -120, duration: 0.8 });
         }
-      };
+      }, 100);
+    } else {
+      expandedCard = null;
+    }
+  }
 
-      mobileMenuButton.addEventListener('click', toggleMenu);
+  // =====================
+  // CATEGORY PILLS
+  // =====================
+  function renderCategoryPills() {
+    const container = document.getElementById('categoryPills');
+    const categories = [...new Set(allFaqs.map(f => f.category))].sort();
 
-      // 2. Set current year dynamically
-      document.getElementById('current-year').textContent = new Date().getFullYear();
+    container.innerHTML = '<button class="filter-pill active" data-category="all">All</button>' +
+      categories.map(cat => `<button class="filter-pill" data-category="${escapeHtml(cat)}">${escapeHtml(cat)}</button>`).join('');
 
-      // 3. Performance: IntersectionObserver + requestAnimationFrame for animations
-      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-
-      const fadeObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            requestAnimationFrame(() => {
-              entry.target.classList.add('fade-in-active');
-              observer.unobserve(entry.target);
-            });
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.fade-element').forEach((el, index) => {
-        // Add slight stagger delay via inline style
-        el.style.transitionDelay = `${index * 0.1}s`;
-        fadeObserver.observe(el);
+    container.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        container.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.dataset.category;
+        applyFilters();
       });
     });
+  }
+
+  // =====================
+  // FILTERS
+  // =====================
+  function applyFilters() {
+    filteredFaqs = allFaqs.filter(faq => {
+      const matchesCategory = activeCategory === 'all' || faq.category === activeCategory;
+      const matchesSearch = !searchQuery ||
+        faq.question.toLowerCase().includes(searchQuery) ||
+        faq.answer.toLowerCase().includes(searchQuery) ||
+        faq.category.toLowerCase().includes(searchQuery);
+      return matchesCategory && matchesSearch;
+    });
+    renderFaqGrid();
+  }
+
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    applyFilters();
+  });
+
+  document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+    searchQuery = '';
+    activeCategory = 'all';
+    document.getElementById('searchInput').value = '';
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('[data-category="all"]').classList.add('active');
+    applyFilters();
+  });
+
+  // =====================
+  // HERO STATS
+  // =====================
+  function updateHeroStats() {
+    const total = allFaqs.length;
+    const categories = new Set(allFaqs.map(f => f.category)).size;
+    document.getElementById('statFaqs').textContent = total;
+    document.getElementById('statCategories').textContent = categories;
+    gsap.to('#heroMeta', { opacity: 1, y: 0, duration: 0.6, delay: 0.4, ease: 'power3.out' });
+  }
+
+  // =====================
+  // FOOTER GAMES
+  // =====================
+  let allGames = [];
+  async function renderFooterGames() {
+    const container = document.getElementById('footerGames');
+    try {
+      const res = await fetch('/games.json');
+      const gamesData = await res.json();
+      allGames = gamesData || [];
+      const footerGames = allGames.filter(g => g.footer);
+      if (footerGames.length === 0) {
+        container.innerHTML = '<li><a href="/games.html" target="_self">All Games</a></li>';
+        return;
+      }
+      container.innerHTML = footerGames.map(game => {
+        const url = game.url || `/additionalHTMLS/Infos/${game.id}-info.html`;
+        return `<li><a href="${url}" target="_self">${escapeHtml(game.title)}</a></li>`;
+      }).join('');
+    } catch (e) {
+      container.innerHTML = '<li><a href="/games.html" target="_self">All Games</a></li>';
+    }
+  }
+
+  // =====================
+  // GSAP ANIMATIONS
+  // =====================
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initScrollAnimations() {
+    gsap.to('.support-hero-label', { opacity: 1, y: 0, duration: 0.6, delay: 0.15, ease: 'power3.out' });
+    gsap.to('.support-hero-title', { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' });
+    gsap.to('.support-hero-subtitle', { opacity: 1, y: 0, duration: 0.6, delay: 0.35, ease: 'power3.out' });
+
+    gsap.from('#filterBar', { y: -20, opacity: 0, duration: 0.5, delay: 0.5, ease: 'power3.out' });
+
+    gsap.from('.contact-info', {
+      scrollTrigger: { trigger: '.contact-section', start: 'top 75%', toggleActions: 'play none none none' },
+      x: -40, opacity: 0, duration: 0.8, ease: 'power3.out'
+    });
+
+    gsap.from('.contact-visual', {
+      scrollTrigger: { trigger: '.contact-section', start: 'top 75%', toggleActions: 'play none none none' },
+      x: 40, opacity: 0, duration: 0.8, delay: 0.15, ease: 'power3.out'
+    });
+
+
+
+    gsap.from('.footer-top > div', {
+      scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none none' },
+      y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+    });
+  }
+
+  // =====================
+  // BACK TO TOP
+  // =====================
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => {
+    lenis.scrollTo(0, { duration: 1.2 });
+  });
+
+  // =====================
+  // COPYRIGHT YEAR
+  // =====================
+  const copyrightEl = document.getElementById('footerCopyright');
+  if (copyrightEl) copyrightEl.innerHTML = '&copy; ' + new Date().getFullYear() + ' Greek Games Studios. All rights reserved.';
+
+  // =====================
+  // UTILS
+  // =====================
+  function escapeHtml(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // =====================
+  // INIT
+  // =====================
+  gsap.from('.navbar', { opacity: 0, duration: 0.4, ease: 'power3.out' });
+  renderCategoryPills();
+  renderFaqGrid();
+  updateHeroStats();
+  renderFooterGames();
+  initScrollAnimations();
   </script>
+
 </body>
 </html>
