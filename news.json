@@ -1,5 +1,5 @@
 {
-  "minVersion": "4.0.7",
+  "minVersion": "3.9.6",
   "heroSlides": [
     {
       "id": "slide_ggshub",
@@ -53,6 +53,34 @@
     "url": "https://greekgamesstudios.com/"
   },
   "news": [
+      {
+    "id": "14",
+    "title": "Referral Codes & Reward Codes Update",
+    "date": "July 22, 2026",
+    "tag": "UPDATE",
+    "url": "https://play.google.com/store/apps/details?id=com.greekgamesstudios.ggshub",
+    "desc": "The latest GGS Hub update introduces Referral Codes and Reward Codes, making it easier to earn exclusive rewards.",
+    "fullText": "The latest GGS Hub update brings two exciting new features: Referral Codes and Reward Codes. Share your Referral Code with friends and earn rewards as new users join the community. You can also redeem Reward Codes shared through our official social media channels to unlock exclusive in-app rewards. This update is another step toward making GGS Hub more rewarding, with even more features and events planned for future updates.",
+    "image": "https://greekgamesstudios.com/images/ReferralCodes.png",
+    "images": {
+      "featured": "https://greekgamesstudios.com/images/ReferralCodes.png",
+      "card": "https://greekgamesstudios.com/images/GGSHubCodes.png"
+    },
+    "author": "Greek Games Studios",
+    "publisher": "Greek Games Studios",
+    "inLanguage": "en",
+    "articleSection": "UPDATE",
+    "keywords": [
+      "UPDATE",
+      "GGS Hub",
+      "Referral Codes",
+      "Reward Codes",
+      "Rewards"
+    ],
+    "wordCount": 67,
+    "articleBody": "The latest GGS Hub update introduces Referral Codes and Reward Codes. Invite friends using your Referral Code to earn rewards, and redeem Reward Codes shared on our official social media channels for exclusive in-app rewards. More features, rewards and events are coming in future updates.",
+    "mainEntityOfPage": "https://www.greekgamesstudios.com/news.html"
+    },
     {
   "id": "13",
   "title": "GGS Hub Official Release!",
